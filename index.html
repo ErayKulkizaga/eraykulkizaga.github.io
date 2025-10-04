@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eray Kulkizaga — Portfolio</title>
+    <meta name="description" content="Eray Kulkizaga — Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <link rel="canonical" href="https://eraykulkizaga.com/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eray Kulkizaga — Portfolio" />
+    <meta property="og:description" content="Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <meta property="og:url" content="https://eraykulkizaga.com/" />
+    <meta property="og:image" content="/images/hero.gif" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eray Kulkizaga — Portfolio" />
+    <meta name="twitter:description" content="Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <meta name="twitter:image" content="/images/hero.gif" />
+
+    <!-- Meta colors & PWA basics -->
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="apple-touch-icon" href="images/main.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="images/main.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        
+        <a href="#hero" class="brand__ghost" aria-label="Go to hero"></a>
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
+      <nav class="mobile-nav__panel" aria-label="Mobile">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+
+    <main id="main">
+      <!-- Hero -->
+      <section id="hero" class="section hero">
+        <!-- Decorative parallax layers -->
+        <div class="parallax-layer layer-1 parallax" data-speed="0.25" aria-hidden="true"></div>
+        <div class="parallax-layer layer-2 parallax" data-speed="0.15" aria-hidden="true"></div>
+        <div class="parallax-layer layer-3 parallax" data-speed="0.35" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content reveal">
+            <h1 class="hero__title">Eray Kulkızaga</h1>
+            <p class="hero__subtitle">
+              AI & ML Engineer | MLOps | Data Science
+            </p>
+            <p class="hero__subtitle">
+              Crafting clean, scalable solutions. Building
+              intelligent systems and elegant user experiences.
+            </p> 
+            <div class="hero__cta">
+              <a href="#projects" class="btn btn--primary">View Projects</a>
+            </div>
+          </div>
+
+          <div class="hero__embed reveal" aria-label="3D model preview">
+            <div class="embed__frame-wrapper">
+              <img 
+                src="images/hero.gif" 
+                alt="Tablet robot face animation"
+                class="hero__gif"
+                loading="lazy" decoding="async" width="800" height="600" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section projects">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2>Projects</h2>
+            <p class="section__subtitle">A selection of my recent work.</p>
+          </div>
+
+          <div class="projects__grid">
+            <article class="card reveal">
+              <h3 class="card__title">AI-Powered Sign Language Translation</h3>
+              <p class="card__desc">Creates a real-time translate to sign language into text or visualizes texts with 3D avatar.</p>
+              <div class="card__links">
+                <a href="#" class="link">GitHub</a>
+                <a href="project-sign-language.html" class="link">Demo</a>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <h3 class="card__title">EMU Book Exchange</h3>
+              <p class="card__desc">A book sales platform that builds bridges between students on campus.</p>
+              <div class="card__links">
+                <a href="#" class="link">GitHub</a>
+                <a href="project-emu-book-exchange.html" class="link">Demo</a>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <h3 class="card__title">eraykulkizaga.com</h3>
+              <p class="card__desc">This minimalist, performant site with scroll animations and parallax effects.</p>
+              <div class="card__links">
+                <a href="#" class="link">GitHub</a>
+                <a href="project-eraykulkizaga.html" class="link">Demo</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="about__grid">
+            <div class="about__content reveal">
+              <h2>About</h2>
+              <p>
+                Skilled in Data Science, Deep Learning, Computer Vision, and MLOps. I have hands-on experience in model development, optimization, and deployment, including large language and multimodal models. I focus on building production-ready AI systems with an emphasis on fairness, security, and explainability.
+              </p>
+              <p class="education-row">
+                <img src="images/dau.png" alt="Eastern Mediterranean University logo" class="edu__logo" loading="lazy" decoding="async" width="120" height="120" />
+                <span class="education-text"><strong>Education</strong> Eastern Mediterranean University BSc. in Computer Science <span class="muted abet">ABET Accredited Program</span></span>
+              </p>
+            </div>
+            <div class="about__media reveal">
+              <div class="about__card">
+                <p class="muted">Currently exploring:</p>
+                    <ul class="list">
+                      <li>3D vision and pose estimation</li>
+                      <li>Image enhancement and restoration techniques</li>
+                      <li>Edge AI for real-time visual analytics</li>
+                    </ul>
+              </div>
+              <div class="edu-stats reveal" aria-label="Education stats">
+                <div class="stat">
+                  <span class="stat__label">GPA</span>
+                  <span class="stat__value" data-target="2.95" data-decimals="2">0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section skills">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2>Skills</h2>
+            <p class="section__subtitle">Tools and technologies I work with.</p>
+          </div>
+          <div class="badges reveal">
+            <span class="badge">Python</span>
+            <span class="badge">NumPy</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">Matplotlib</span>
+            <span class="badge">Seaborn</span>
+            <span class="badge">SQL</span>
+            <span class="badge">scikit-learn</span>
+            <span class="badge">XGBoost</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">Hugging Face</span>
+            <span class="badge">OpenCV</span>
+            <span class="badge">MediaPipe</span>
+            <span class="badge">Docker</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">Git & GitHub</span>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates -->
+      <section id="certificates" class="section certificates">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2>Certificates</h2>
+            <p class="section__subtitle">Testimonials from universities and institutes around the world.</p>
+          </div>
+          <div class="certs__grid">
+            <a class="cert reveal" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener noreferrer">
+              <span class="cert__badge"><img src="images/stnfrd.png" alt="Stanford University" loading="lazy" decoding="async" width="80" height="80" /></span>
+              <span class="cert__content">
+                <span class="cert__logo">Stanford University</span>
+                <span class="cert__title">Machine Learning Specialization</span>
+                <ul class="cert__sublist">
+                  <li>Supervised Machine Learning: Regression and Classification</li>
+                  <li>Advanced Learning Algorithms</li>
+                  <li>Unsupervised Learning, Recommenders, Reinforcement Learning</li>
+                </ul>
+              </span>
+            </a>
+            <a class="cert reveal" href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank" rel="noopener noreferrer">
+              <span class="cert__badge"><img src="images/IBM.png" alt="IBM" loading="lazy" decoding="async" width="80" height="80" /></span>
+              <span class="cert__content">
+                <span class="cert__logo">IBM</span>
+                <span class="cert__title">Data Science Professional Certificate</span>
+                <ul class="cert__sublist">
+                  <li>What is Data Science?</li>
+                  <li>Tools for Data Science</li>
+                  <li>Data Science Methodology</li>
+                  <li>Python for Data Science, Artificial Intelligence, and Development</li>
+                  <li>Python Project for Data Science</li>
+                  <li>Databases and SQL for Data Science with Python</li>
+                  <li>Data Analysis with Python</li>
+                  <li>Data Visualization with Python</li>
+                </ul>
+              </span>
+            </a>
+            <a class="cert reveal" href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener noreferrer">
+              <span class="cert__badge"><img src="images/dlai.png" alt="DeepLearning.AI" loading="lazy" decoding="async" width="80" height="80" /></span>
+              <span class="cert__content">
+                <span class="cert__logo">DeepLearning.AI</span>
+                <span class="cert__title">Deep Learning Specialization</span>
+                <ul class="cert__sublist">
+                  <li>Neural Networks and Deep Learning</li>
+                  <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization</li>
+                  <li>Structuring Machine Learning Projects</li>
+                  <li>Convolutional Neural Networks</li>
+                  <li>Sequence Models</li>
+                </ul>
+              </span>
+            </a>
+            <a class="cert reveal" href="https://www.coursera.org/specializations/mlops-machine-learning-duke" target="_blank" rel="noopener noreferrer">
+              <span class="cert__badge"><img src="images/duke.png" alt="Duke University" loading="lazy" decoding="async" width="80" height="80" /></span>
+              <span class="cert__content">
+                <span class="cert__logo">Duke University</span>
+                <span class="cert__title">MLOps Specialization</span>
+                <ul class="cert__sublist">
+                  <li>Python Fundamentals for MLOps</li>
+                  <li>DevOps, DataOps, MLOps</li>
+                  <li>MLOps Platforms: Amazon SageMaker and Azure ML</li>
+                  <li>MLOps Tools: MLflow and Hugging Face</li>
+                </ul>
+              </span>
+            </a>
+          </div>
+          <p class="muted certs__total reveal">Total certificates = <span id="cert-total" data-target="13">0</span></p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2>Contact</h2>
+            <p class="section__subtitle">Let’s connect or drop me a line.</p>
+          </div>
+
+          <div class="contact__grid">
+            <div class="contact__links reveal">
+              <a class="icon-link" href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8.5h4.96V24H.5V8.5Zm7.49 0h4.76v2.11h.07c.66-1.25 2.27-2.57 4.68-2.57 5 0 5.92 3.29 5.92 7.57V24h-4.97v-6.74c0-1.61-.03-3.69-2.25-3.69-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5Z" fill="currentColor"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <a class="icon-link" href="https://github.com/eraykulkizaga" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.33-1.29-1.68-1.29-1.68-1.06-.73.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.39.96.11-.76.41-1.26.75-1.55-2.6-.3-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.2-3.15-.12-.3-.52-1.5.11-3.13 0 0 .98-.31 3.2 1.2.93-.26 1.92-.4 2.9-.41.98.01 1.97.15 2.9.41 2.22-1.51 3.2-1.2 3.2-1.2.63 1.63.23 2.83.11 3.13.75.82 1.2 1.86 1.2 3.15 0 4.52-2.74 5.5-5.36 5.79.42.36.8 1.06.8 2.14v3.17c0 .31.22.68.81.56A11.5 11.5 0 0 0 12 .5Z" fill="currentColor"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+
+            <form id="contact-form" class="contact__form reveal" novalidate>
+              <div class="form__row">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div class="form__row">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
+              </div>
+              <div class="form__actions">
+                <button type="submit" class="btn btn--primary">Send</button>
+                <p class="form__hint muted">— opens your email client.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
+        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="container">
+        <p class="muted" style="padding:16px 0;">Note: Enable JavaScript to see scroll animations and parallax effects.</p>
+      </div>
+    </noscript>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
+
+  <!-- JSON-LD Person & Website -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eray Kulkızaga",
+    "url": "https://eraykulkizaga.com/",
+    "jobTitle": "Machine Learning Engineer",
+    "sameAs": [
+      "https://github.com/eraykulkizaga",
+      "https://www.linkedin.com/in/eraykulkizaga/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Eray Kulkızaga — Portfolio",
+    "url": "https://eraykulkizaga.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.google.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>

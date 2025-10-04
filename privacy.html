@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Eray Kulkızaga</title>
+    <meta name="description" content="Privacy policy for eraykulkizaga.com" />
+    <link rel="icon" href="images/main.png" type="image/png" />
+    <!-- Match index header typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html#hero" class="brand__ghost" aria-label="Go to hero"></a>
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
+      <nav class="mobile-nav__panel" aria-label="Mobile">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+      </nav>
+    </div>
+    <main class="section" id="main">
+      <div class="container reveal is-visible">
+        <h1>Privacy Policy</h1>
+        <p class="muted">This site does not collect personal data beyond standard analytics and contact via mailto links.</p>
+        <ul class="list">
+          <li>Analytics data is anonymized and used to improve the site.</li>
+          <li>No contact form data is stored; emails are sent via your client.</li>
+          <li>You can request data removal anytime via email.</li>
+        </ul>
+        <p>For inquiries, contact <a href="mailto:eraykulkizaga@hotmail.com" class="link">eraykulkizaga@hotmail.com</a>.</p>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
+        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+      </div>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+  </html>
+
+

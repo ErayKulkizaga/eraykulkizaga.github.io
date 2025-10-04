@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>eraykulkizaga.com — Project</title>
+    <meta name="description" content="Project details for this portfolio site." />
+    <link rel="canonical" href="https://eraykulkizaga.com/project-eraykulkizaga.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="eraykulkizaga.com — Project" />
+    <meta property="og:description" content="Minimalist, performant portfolio with scroll animations and parallax." />
+    <meta property="og:url" content="https://eraykulkizaga.com/project-eraykulkizaga.html" />
+    <meta property="og:image" content="/images/hero.gif" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" href="images/main.png" type="image/png" />
+    <!-- Inter font to match index header typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html#hero" class="brand__ghost" aria-label="Go to hero"></a>
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
+      <nav class="mobile-nav__panel" aria-label="Mobile">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+
+    <main>
+      <section id="project" class="section project-detail">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2>eraykulkizaga.com</h2>
+            <p class="section__subtitle">Minimalist, performant portfolio with scroll animations and parallax.</p>
+          </div>
+
+          <article class="reveal">
+            <p>
+              This site is built from scratch with clean, accessible HTML/CSS/JS and light interactions:
+              reveal-on-scroll animations, a responsive overlay navigation, and tasteful parallax effects. It is optimized
+              for readability, performance, and maintainability.
+            </p>
+            <p>
+              Return to <a class="link" href="index.html#projects">Projects</a> to see other work.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
+        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
+
+

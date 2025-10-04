@@ -1,0 +1,12 @@
+{
+  "name": "Eray Kulkızaga — Portfolio",
+  "short_name": "EK Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfbfb",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "images/main.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
+
