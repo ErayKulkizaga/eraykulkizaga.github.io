@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', syncHeaderVisibility, { passive: true });
   window.addEventListener('touchmove', syncHeaderVisibility, { passive: true });
   window.addEventListener('resize', syncHeaderVisibility, { passive: true });
+
+  // Previously moved 3D model on mobile; now static order in HTML
 });
 
 // Intersection Observer for reveal-on-scroll
@@ -119,6 +121,74 @@ if ('IntersectionObserver' in window) {
       });
     });
   });
+})();
+
+// Simple image modal for certificate preview
+(function initImageModal() {
+  const modal = document.getElementById('img-modal');
+  if (!modal) return;
+  const backdrop = modal.querySelector('.img-modal__backdrop');
+  const modalImg = modal.querySelector('img');
+  const trigger = document.getElementById('cert1-mobile');
+  if (!trigger || !modalImg || !backdrop) return;
+
+  const open = (src, alt) => {
+    modalImg.src = src;
+    modalImg.alt = alt || 'Certificate preview';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  trigger.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); open(trigger.src, trigger.alt); });
+  backdrop.addEventListener('click', close);
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+// Match PNG box aspect ratio to the GIF's natural ratio
+(function matchMediaAspectRatioToGif() {
+  const gif = document.getElementById('gif-media');
+  const gifBox = document.getElementById('gif-box');
+  if (!gif || !gifBox) return;
+  const mediaBoxes = document.querySelectorAll('.section.project-media .media-box');
+  const applyRatio = () => {
+    if (!gif.naturalWidth || !gif.naturalHeight) return;
+    const ratio = gif.naturalWidth / gif.naturalHeight;
+    const ratioValue = `${ratio}`;
+    mediaBoxes.forEach((box) => {
+      box.style.setProperty('--media-ar', ratioValue);
+    });
+  };
+  if (gif.complete) {
+    applyRatio();
+  } else {
+    gif.addEventListener('load', applyRatio, { once: true });
+  }
+})();
+
+// Lazy-activate Sketchfab iframe when visible to reduce third-party errors
+(function lazyActivateSketchfab() {
+  const iframe = document.querySelector('.sketchfab-embed-wrapper iframe[data-src]');
+  if (!iframe) return;
+  const activate = () => {
+    if (iframe.getAttribute('src')) return;
+    const src = iframe.getAttribute('data-src');
+    if (src) iframe.setAttribute('src', src);
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) { activate(); io.disconnect(); } });
+    }, { threshold: 0.1 });
+    io.observe(iframe);
+  } else {
+    // Fallback
+    setTimeout(activate, 1000);
+  }
 })();
 
 // Contact form -> mailto fallback (no backend)
