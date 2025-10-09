@@ -191,6 +191,60 @@ if ('IntersectionObserver' in window) {
   }
 })();
 
+// EMU slider: auto-build from images/mobil*.{png,jpg,jpeg,gif}
+(function initEmuSlider() {
+  const slider = document.getElementById('emu-slider');
+  if (!slider) return;
+  const track = slider.querySelector('.slider__track');
+  if (!track) return;
+  // Ensure track lays out horizontally and hides overflow
+  track.style.whiteSpace = 'nowrap';
+  track.style.willChange = 'transform';
+
+  // Explicit file list: use data-files if provided, else default to mobil0..mobil6.png
+  const filesAttr = slider.getAttribute('data-files');
+  const files = (filesAttr && filesAttr.trim().length)
+    ? filesAttr.split(',').map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith('images/') ? s : `images/${s}`)
+    : ['images/mobil0.png','images/mobil1.png','images/mobil2.png','images/mobil3.png','images/mobil4.png','images/mobil5.png','images/mobil6.png'];
+
+  const slides = [];
+  let started = false;
+  let intervalId = null;
+  const intervalMs = parseInt(slider.getAttribute('data-interval') || '4000', 10);
+
+  const addSlide = (src, index) => {
+    const slide = document.createElement('div');
+    slide.className = 'slider__slide';
+    const imgEl = new Image();
+    // First two images eager for instant start; others lazy
+    if (index < 2) { imgEl.loading = 'eager'; imgEl.fetchPriority = 'high'; }
+    else { imgEl.loading = 'lazy'; }
+    imgEl.decoding = 'async';
+    imgEl.alt = 'App screenshot';
+    imgEl.src = src;
+    slide.appendChild(imgEl);
+    track.appendChild(slide);
+    slides.push(slide);
+  };
+
+  const start = () => {
+    started = true;
+    let idx = 0;
+    track.style.transform = 'translateX(0)';
+    if (slides.length <= 1) return;
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+    }, Math.max(1000, intervalMs));
+  };
+
+  // Build slides immediately from provided list to avoid delayed start
+  files.forEach((src, idx) => addSlide(src, idx));
+  // Start once at least two slides exist
+  if (slides.length >= 2) start();
+})();
+
 // Contact form -> mailto fallback (no backend)
 const form = document.getElementById('contact-form');
 if (form) {
