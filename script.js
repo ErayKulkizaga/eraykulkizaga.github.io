@@ -66,23 +66,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Previously moved 3D model on mobile; now static order in HTML
 
-  // EMU slider: make visible immediately if present and preload first images
+  // EMU slider: make visible immediately if present and preload images
   const emuSlider = document.getElementById('emu-slider');
   if (emuSlider) {
     const revealAncestor = emuSlider.closest('.reveal');
     if (revealAncestor) revealAncestor.classList.add('is-visible');
-    // Preload first two images for faster paint
+    // Preload all slider images for faster first cycle
     const filesAttr = emuSlider.getAttribute('data-files');
     const files = (filesAttr && filesAttr.trim().length)
       ? filesAttr.split(',').map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith('images/') ? s : `images/${s}`)
-      : ['images/mobil0.png','images/mobil1.png'];
+      : ['images/mobil0.png','images/mobil1.png','images/mobil2.png','images/mobil3.png','images/mobil4.png','images/mobil5.png','images/mobil6.png'];
     const head = document.head || document.getElementsByTagName('head')[0];
-    files.slice(0, 2).forEach((href) => {
+    files.forEach((href, i) => {
       const l = document.createElement('link');
       l.rel = 'preload';
       l.as = 'image';
       l.href = href;
-      l.fetchPriority = 'high';
+      if (i < 2) l.fetchPriority = 'high';
       head.appendChild(l);
     });
   }
