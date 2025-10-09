@@ -101,8 +101,13 @@ section { scroll-margin-top: 80px; }
 .project-detail__thumbs img { width: 100%; height: 220px; display: block; border-radius: 12px; object-fit: contain; background: #fff; }
 .project-detail__aside { color: var(--muted); line-height: 1.7; }
 /* Sketchfab embed */
-.project-embed { margin-top: 28px; }
+.project-embed { margin-top: 1px; }
 .project-embed iframe { width: 100%; height: 520px; border: 0; border-radius: 12px; }
+
+/* Uniform media sizing for project page (match GIF ratio, contain) */
+.section.project-media .project-detail__media .media-box { position: relative; width: 100%; aspect-ratio: var(--media-ar, auto); background: #ffffff; border-radius: 12px; display: block; }
+.section.project-media .project-detail__media .media-box + .media-box { margin-top: 20px; }
+.section.project-media .project-detail__media .media-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
 
 /* Technologies section */
 .techs { margin: 24px 0 28px; }
@@ -190,8 +195,8 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); }
 .site-footer .small {
-  font-size: 0.6rem;
-  opacity: 0.5;
+  font-size: 0.8rem;
+  opacity: 0.7;
 }
 .site-footer p {
   margin: 0;
@@ -244,7 +249,13 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
   .hero__title { font-size: 34px; text-align: center; }
   .hero__subtitle { font-size: 15px; text-align: center; }
   .projects__grid { grid-template-columns: 1fr; }
-  .certs__grid { grid-template-columns: 1fr; }
+  .certs__grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+  /* Mobile certificate order: IBM, Stanford, DeepLearning.AI, Duke */
+  .certs__grid .cert { order: 5; }
+  .certs__grid .cert:has(.cert__badge img[alt="IBM"]) { order: 1; }
+  .certs__grid .cert:has(.cert__badge img[alt="Stanford University"]) { order: 2; }
+  .certs__grid .cert:has(.cert__badge img[alt="DeepLearning.AI"]) { order: 3; }
+  .certs__grid .cert:has(.cert__badge img[alt="Duke University"]) { order: 4; }
   .nav-toggle { display: inline-flex; }
   .nav { position: fixed; inset: 64px 0 0 0; background: #ffffff; display: flex; flex-direction: column; padding: 0; gap: 0; transform: translateY(-100%); transition: transform .25s ease, opacity .2s ease; border-top: 1px solid var(--border); opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(2,6,23,.12); z-index: 60; max-height: calc(100vh - 64px); overflow-y: auto; }
   .nav[data-open="true"] { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
@@ -267,6 +278,26 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
   /* Ensure vertical spacing between stacked images */
   .project-detail__media > img + img { margin-top: 20px !important; }
 }
+
+/* Mobile-only certificate preview below IBM cert content */
+.cert-mobile-preview { display: none; margin: 16px 0 0; }
+/* Square, moulded (çıtalı) white frame */
+.certificate-frame { padding: 16px; border-radius: 0; background: #ffffff; position: relative; box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+.certificate-frame::before { content: none; }
+/* inner slatted mouldings */
+.certificate-frame::after { content: ""; position: absolute; inset: 0; border-radius: 0; pointer-events: none; box-shadow: inset 0 0 0 2px #e5e7eb, inset 0 0 0 10px #ffffff, inset 0 0 0 12px #e5e7eb, inset 0 0 0 20px #ffffff, inset 0 0 0 22px #e5e7eb; }
+.certificate-frame img { width: 100%; height: auto; display: block; border-radius: 0; cursor: zoom-in; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
+
+@media (max-width: 640px) {
+  .cert-mobile-preview { display: block; }
+}
+
+/* Image modal */
+.img-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; }
+.img-modal.is-open { display: flex; }
+.img-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.img-modal__content { position: relative; max-width: 92vw; max-height: 92vh; padding: 0; border-radius: 12px; box-shadow: var(--shadow); }
+.img-modal__content img { display: block; max-width: 92vw; max-height: 92vh; width: auto; height: auto; border-radius: 12px; }
 
 
 
