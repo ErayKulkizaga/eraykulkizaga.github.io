@@ -77,6 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ? filesAttr.split(',').map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith('images/') ? s : `images/${s}`)
       : ['images/mobil0.png','images/mobil1.png','images/mobil2.png','images/mobil3.png','images/mobil4.png','images/mobil5.png','images/mobil6.png'];
     const head = document.head || document.getElementsByTagName('head')[0];
+    let loadedCount = 0;
+    const done = () => {
+      loadedCount += 1;
+      if (loadedCount >= files.length) {
+        const loader = emuSlider.querySelector('.slider__loader');
+        if (loader) loader.style.display = 'none';
+      }
+    };
     files.forEach((href, i) => {
       const l = document.createElement('link');
       l.rel = 'preload';
@@ -84,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
       l.href = href;
       if (i < 2) l.fetchPriority = 'high';
       head.appendChild(l);
+      const img = new Image();
+      img.onload = done;
+      img.onerror = done;
+      img.src = href;
     });
   }
 });
@@ -150,8 +162,9 @@ if ('IntersectionObserver' in window) {
   if (!modal) return;
   const backdrop = modal.querySelector('.img-modal__backdrop');
   const modalImg = modal.querySelector('img');
-  const trigger = document.getElementById('cert1-mobile');
-  if (!trigger || !modalImg || !backdrop) return;
+  // Any image inside mobile certificate preview should open the modal
+  const triggers = Array.from(document.querySelectorAll('.cert-mobile-preview img'));
+  if (!triggers.length || !modalImg || !backdrop) return;
 
   const open = (src, alt) => {
     modalImg.src = src;
@@ -166,7 +179,13 @@ if ('IntersectionObserver' in window) {
     document.body.style.overflow = '';
   };
 
-  trigger.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); open(trigger.src, trigger.alt); });
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      open(trigger.src, trigger.alt);
+    });
+  });
   backdrop.addEventListener('click', close);
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
