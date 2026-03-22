@@ -156,14 +156,50 @@ if ('IntersectionObserver' in window) {
   });
 })();
 
+// Certificate preview sliders
+(function initCertPreviews() {
+  document.querySelectorAll('.cert-previews').forEach((container) => {
+    const track = container.querySelector('.cert-previews__track');
+    const dots = Array.from(container.querySelectorAll('.cert-previews__dot'));
+    const slides = Array.from(track ? track.querySelectorAll('.certificate-frame') : []);
+    if (!track || slides.length <= 1) return;
+
+    let current = 0;
+    let timer = null;
+
+    const goTo = (n) => {
+      current = n;
+      track.style.transform = `translateX(-${n * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === n));
+    };
+
+    const next = () => goTo((current + 1) % slides.length);
+
+    const resetTimer = () => {
+      clearInterval(timer);
+      timer = setInterval(next, 3500);
+    };
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(i);
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+  });
+})();
+
 // Simple image modal for certificate preview
 (function initImageModal() {
   const modal = document.getElementById('img-modal');
   if (!modal) return;
   const backdrop = modal.querySelector('.img-modal__backdrop');
   const modalImg = modal.querySelector('img');
-  // Any image inside mobile certificate preview should open the modal
-  const triggers = Array.from(document.querySelectorAll('.cert-mobile-preview img'));
+  const triggers = Array.from(document.querySelectorAll('.cert-previews img'));
   if (!triggers.length || !modalImg || !backdrop) return;
 
   const open = (src, alt) => {
