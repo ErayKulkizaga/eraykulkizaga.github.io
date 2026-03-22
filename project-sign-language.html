@@ -3,22 +3,63 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI-Powered Sign Language Translation — Project</title>
-    <meta name="description" content="Project details for AI-Powered Sign Language Translation." />
+    <title>Turkish Sign Language Translator — Project</title>
+    <meta name="description" content="Real-time Turkish Sign Language recognition from webcam using BiLSTM (Top-1: 76.1%) + text-to-sign 3D stick figure animation. Built with FastAPI, TensorFlow, Three.js." />
     <link rel="canonical" href="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AI-Powered Sign Language Translation — Project" />
-    <meta property="og:description" content="Real-time translation to and from sign language with ML/CV." />
+    <meta property="og:title" content="Turkish Sign Language Translator — Project" />
+    <meta property="og:description" content="Real-time TİD recognition and animation system using BiLSTM + MediaPipe." />
     <meta property="og:url" content="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:image" content="/images/hero.gif" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0f172a" />
     <link rel="icon" href="images/main.png" type="image/png" />
-    <!-- Inter font to match index header typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .proj-hero { padding: 60px 0 40px; }
+      .proj-hero__tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; margin-bottom: 20px; }
+      .proj-hero__title { font-size: clamp(28px, 5vw, 44px); letter-spacing: -0.03em; margin: 0 0 14px; line-height: 1.15; }
+      .proj-hero__sub { color: var(--muted); max-width: 640px; margin: 0 0 28px; font-size: 16px; line-height: 1.65; }
+      .proj-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      .proj-section-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px; }
+      .proj-card { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: var(--card); }
+      .proj-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .proj-stat { text-align: center; padding: 20px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+      .proj-stat__value { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; color: var(--primary); display: block; }
+      .proj-stat__label { font-size: 13px; color: var(--muted); margin-top: 4px; display: block; }
+      .proj-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .proj-pipeline { display: flex; flex-direction: column; gap: 0; }
+      .proj-pipeline__step { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+      .proj-pipeline__step:last-child { border-bottom: none; }
+      .proj-pipeline__num { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+      .proj-pipeline__content h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+      .proj-pipeline__content p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+      .proj-pipeline__content code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
+      .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      .data-table th { text-align: left; font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--border); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+      .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+      .data-table tr:last-child td { border-bottom: none; }
+      .data-table td strong { color: var(--primary); }
+      .proj-arch { background: #0f172a; border-radius: 14px; padding: 24px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #94a3b8; overflow-x: auto; }
+      .proj-arch span.hl { color: #7dd3fc; }
+      .proj-arch span.grn { color: #86efac; }
+      .proj-media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .proj-media-grid img { width: 100%; height: auto; border-radius: 12px; display: block; border: 1px solid var(--border); }
+      .proj-media-single img { width: 100%; height: auto; border-radius: 12px; display: block; border: 1px solid var(--border); }
+      @media (max-width: 820px) {
+        .proj-two-col { grid-template-columns: 1fr; }
+        .proj-media-grid { grid-template-columns: 1fr; }
+        .proj-stats-row { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 640px) {
+        .proj-stats-row { grid-template-columns: 1fr; }
+        .proj-hero__actions { flex-direction: column; }
+        .proj-hero__actions .btn { width: 100%; justify-content: center; }
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#project">Skip to content</a>
@@ -42,7 +83,6 @@
       </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
     <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
       <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
       <nav class="mobile-nav__panel" aria-label="Mobile">
@@ -55,124 +95,230 @@
       </nav>
     </div>
 
-    <main>
-      <section id="project" class="section project-detail">
+    <main id="project">
+
+      <!-- Hero -->
+      <section class="section proj-hero">
         <div class="container">
-          <div class="section__head reveal">
-            <h2>AI-Powered Sign Language Translation</h2>
-            <p class="section__subtitle">Real-time translation to and from sign language with ML/CV.</p>
+          <p class="proj-hero__tag reveal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Machine Learning · Computer Vision · NLP
+          </p>
+          <h1 class="proj-hero__title reveal">Turkish Sign Language<br>Recognition &amp; Animation</h1>
+          <p class="proj-hero__sub reveal">
+            Real-time TİD recognition from webcam using a BiLSTM model (Top-1: 76.14%), plus a text-to-sign 3D stick figure animation system. No GPU required for inference — runs entirely in the browser backed by a FastAPI server.
+          </p>
+          <div class="proj-hero__actions reveal">
+            <a href="https://github.com/ErayKulkizaga/turkish-sign-language-translator" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              View on GitHub
+            </a>
+            <a href="index.html#projects" class="btn">← Back to Projects</a>
           </div>
         </div>
       </section>
 
-      <section class="section project-embed">
+      <!-- Demo media -->
+      <section class="section" style="padding-top:0">
         <div class="container">
-          <div class="sketchfab-embed-wrapper">
-            <iframe title="Female hand" frameborder="0" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; magnetometer; gyroscope" data-src="https://sketchfab.com/models/3e9b8ad1942048e3a267d92fb1124d46/embed?lite=1&autostart=0&ui_hint=0&ui_watermark=0&ui_infos=0&dnt=1" referrerpolicy="strict-origin-when-cross-origin"> </iframe>
-            <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-              <a href="https://sketchfab.com/3d-models/female-hand-3e9b8ad1942048e3a267d92fb1124d46?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9b8ad1942048e3a267d92fb1124d46" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Female hand </a> by
-              <a href="https://sketchfab.com/deep3dstudio?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9b8ad1942048e3a267d92fb1124d46" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> deep3dstudio </a> on
-              <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9b8ad1942048e3a267d92fb1124d46" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-            </p>
+          <div class="proj-media-grid reveal">
+            <img src="images/1.gif" alt="Sign language recognition demo" loading="lazy" decoding="async" />
+            <img src="images/2.png" alt="Sign language animation demo" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
 
-      <section class="section project-description">
+      <!-- Model performance -->
+      <section class="section" style="padding-top:0">
         <div class="container">
-          <article class="reveal">
-            <aside class="project-detail__aside">
-              <p>
-                This project aims to build a <strong>two-way communication system</strong> that bridges the gap between 
-                hearing and hearing-impaired individuals through real-time <strong>sign language translation</strong>.
+          <h2 class="proj-section-title reveal">Model Performance</h2>
+          <div class="proj-stats-row reveal">
+            <div class="proj-stat">
+              <span class="proj-stat__value">76.1%</span>
+              <span class="proj-stat__label">Top-1 Accuracy</span>
+            </div>
+            <div class="proj-stat">
+              <span class="proj-stat__value">89.3%</span>
+              <span class="proj-stat__label">Top-3 Accuracy</span>
+            </div>
+            <div class="proj-stat">
+              <span class="proj-stat__value">91.9%</span>
+              <span class="proj-stat__label">Top-5 Accuracy</span>
+            </div>
+          </div>
+          <p class="muted reveal" style="font-size:13px; margin-top:12px;">
+            Evaluated on a <strong>cross-subject</strong> validation split — 31 training signers / 6 validation signers, reflecting real-world generalization.
+          </p>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="proj-two-col">
+            <div class="proj-card reveal">
+              <p class="proj-section-title" style="margin-bottom:10px;">🤟 Recognition</p>
+              <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
+                MediaPipe Holistic runs entirely in the browser (WASM) and extracts hand + pose landmarks in real time. The 252-dimensional vectors are streamed via WebSocket to a FastAPI backend where the BiLSTM model performs inference.
               </p>
-              <p>&nbsp;</p>
-              <ul>
-                <li>
-                  <strong>Sign Language → Text + Speech :</strong>  
-                  A camera captures sign language gestures. The system detects hand and body movements, 
-                  converts them into text, and generates speech output.
-                </li>
-                <li>
-                  <strong>Text → 3D Avatar (Sign Animation) :</strong>  
-                  When a user enters text, a 3D avatar interprets and performs the corresponding sign language gestures.
-                </li>
+              <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
+                <li>Top-3 predictions with confidence bars</li>
+                <li>Session stats: total predictions, avg confidence, latency ms</li>
+                <li>Scrollable prediction history</li>
+                <li>226 sign classes, 16 frames per sample</li>
               </ul>
-            </aside>
-          </article>
-        </div>
-      </section>
-
-      <section class="section project-media">
-        <div class="container">
-          <div class="project-detail__media">
-            <div class="media-box" id="gif-box">
-              <img id="gif-media" src="images/1.gif" alt="Sign language demo 1" loading="lazy" decoding="async" width="900" height="600" />
             </div>
-            <div class="media-box">
-              <img id="png-media" src="images/2.png" alt="Sign language demo 2" loading="lazy" decoding="async" width="900" height="600" />
+            <div class="proj-card reveal">
+              <p class="proj-section-title" style="margin-bottom:10px;">🎭 Animation</p>
+              <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
+                Type any word or sentence — a Three.js 3D stick figure performs each sign sequentially with smooth frame interpolation. Landmark data comes directly from AUTSL videos, not synthesized motion.
+              </p>
+              <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
+                <li>184 available signs in animation mode</li>
+                <li>Pose + hand bones rendered as colored cylinders</li>
+                <li>Smooth interpolation between consecutive signs</li>
+                <li>Browsable sign grid with all available words</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section project-techs">
+      <!-- Pipeline -->
+      <section class="section" style="padding-top:0">
         <div class="container">
-          <div class="techs">
-            <h3 class="techs__title">Technologies Used</h3>
-            <div class="techs__grid">
-              <div class="techs__group">
-                <h3> Programming Languages</h3>
-                <div class="badges">
-                  <span class="badge">Python</span>
-                  <span class="badge">JavaScript</span>
+          <h2 class="proj-section-title reveal">Development Pipeline</h2>
+          <div class="proj-card reveal">
+            <div class="proj-pipeline">
+              <div class="proj-pipeline__step">
+                <div class="proj-pipeline__num">1</div>
+                <div class="proj-pipeline__content">
+                  <h4>Landmark Extraction</h4>
+                  <p>MediaPipe Holistic (<code>model_complexity=2</code>) processes every AUTSL video. 16 frames sampled per video → 225 landmarks per frame (21 left-hand + 21 right-hand + 33 pose keypoints × xyz). Color and depth streams concatenated: <strong>450 features/frame</strong> for the Transformer model.</p>
                 </div>
               </div>
-              <div class="techs__group">
-                <h3> Machine Learning & AI</h3>
-                <div class="badges">
-                  <span class="badge">TensorFlow</span>
-                  <span class="badge">Keras</span>
-                  <span class="badge">Scikit-learn</span>
+              <div class="proj-pipeline__step">
+                <div class="proj-pipeline__num">2</div>
+                <div class="proj-pipeline__content">
+                  <h4>Transformer Baseline — 226 classes</h4>
+                  <p>Transformer Encoder with sinusoidal positional encoding, 4× Multi-Head Attention blocks (8 heads), AdamW optimizer with cosine decay, label smoothing 0.1, data augmentation (Gaussian noise, time masking, scale jitter, horizontal flip). Input: <code>(16, 450)</code>.</p>
                 </div>
               </div>
-              <div class="techs__group">
-                <h3> Computer Vision & Data Processing</h3>
-                <div class="badges">
-                  <span class="badge">OpenCV</span>
-                  <span class="badge">MediaPipe</span>
-                  <span class="badge">NumPy</span>
-                  <span class="badge">Pandas</span>
-                </div>
-              </div>
-              <div class="techs__group">
-                <h3> 3D Visualization & Animation</h3>
-                <div class="badges">
-                  <span class="badge">Three.js</span>
-                  <span class="badge">Mixamo</span>
-                  <span class="badge">glTF format</span>
-                </div>
-              </div>
-              <div class="techs__group">
-                <h3> Speech & Interface</h3>
-                <div class="badges">
-                  <span class="badge">gTTS</span>
-                  <span class="badge">Streamlit</span>
-                </div>
-              </div>
-              <div class="techs__group">
-                <h3> API & Tools</h3>
-                <div class="badges">
-                  <span class="badge">REST API</span>
-                  <span class="badge">Git</span>
-                  <span class="badge">Webhooks</span>
-                  <span class="badge">JSON</span>
+              <div class="proj-pipeline__step">
+                <div class="proj-pipeline__num">3</div>
+                <div class="proj-pipeline__content">
+                  <h4>BiLSTM Final Model — 184 classes</h4>
+                  <p>42 low-accuracy classes removed (val accuracy &lt; 50%). Redesigned to use only hand landmarks (<code>feat_dim=252</code>) to reduce input noise. Bidirectional LSTM(256) → LSTM(128) → Dense(512) → Dense(256) → Dense(184, softmax). Labels remapped with <code>sklearn.LabelEncoder</code>.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Dataset -->
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="proj-two-col">
+            <div>
+              <h2 class="proj-section-title reveal">Dataset — AUTSL</h2>
+              <div class="proj-card reveal">
+                <table class="data-table">
+                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Total classes</td><td><strong>226 words</strong></td></tr>
+                    <tr><td>Total videos</td><td>~38,000</td></tr>
+                    <tr><td>Format</td><td>RGB + Depth, 512×512, 30fps</td></tr>
+                    <tr><td>Total signers</td><td>43</td></tr>
+                    <tr><td>Train signers</td><td>31 (~28k videos)</td></tr>
+                    <tr><td>Validation signers</td><td>6 (~4.4k videos)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h2 class="proj-section-title reveal">Architecture Overview</h2>
+              <div class="proj-arch reveal">
+<span class="hl">Browser</span>                    <span class="hl">FastAPI Backend</span>
+─────────────────────    ──────────────────────────
+
+Webcam
+ → MediaPipe (WASM)  →   WebSocket
+   16 × 252 features      → BiLSTM
+                           → Top-3 + confidence
+
+Text Input
+ → GET /landmark     →   Read landmark JSON
+ → Three.js                (30 frames × keypoints)
+   <span class="grn">3D stick figure</span>
+</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech stack -->
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <h2 class="proj-section-title reveal">Technologies Used</h2>
+          <div class="techs__grid reveal">
+            <div class="techs__group">
+              <h3>Backend</h3>
+              <div class="badges">
+                <span class="badge">Python</span>
+                <span class="badge">FastAPI</span>
+                <span class="badge">Uvicorn</span>
+                <span class="badge">WebSocket</span>
+                <span class="badge">Docker</span>
+              </div>
+            </div>
+            <div class="techs__group">
+              <h3>Machine Learning</h3>
+              <div class="badges">
+                <span class="badge">TensorFlow</span>
+                <span class="badge">Keras</span>
+                <span class="badge">BiLSTM</span>
+                <span class="badge">Transformer</span>
+                <span class="badge">Scikit-learn</span>
+              </div>
+            </div>
+            <div class="techs__group">
+              <h3>Computer Vision</h3>
+              <div class="badges">
+                <span class="badge">MediaPipe</span>
+                <span class="badge">OpenCV</span>
+                <span class="badge">NumPy</span>
+                <span class="badge">Pandas</span>
+              </div>
+            </div>
+            <div class="techs__group">
+              <h3>Frontend / 3D</h3>
+              <div class="badges">
+                <span class="badge">JavaScript</span>
+                <span class="badge">Three.js</span>
+                <span class="badge">MediaPipe WASM</span>
+              </div>
+            </div>
+            <div class="techs__group">
+              <h3>Training</h3>
+              <div class="badges">
+                <span class="badge">Google Colab</span>
+                <span class="badge">T4 GPU</span>
+                <span class="badge">Mixed Precision fp16</span>
+              </div>
+            </div>
+            <div class="techs__group">
+              <h3>Dataset</h3>
+              <div class="badges">
+                <span class="badge">AUTSL</span>
+                <span class="badge">Ankara University</span>
+                <span class="badge">226 Sign Classes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
@@ -184,7 +330,4 @@
 
     <script src="script.js" defer></script>
   </body>
-  </html>
-
-
-
+</html>
