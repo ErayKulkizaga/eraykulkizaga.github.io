@@ -167,9 +167,11 @@ if ('IntersectionObserver' in window) {
     let current = 0;
     let timer = null;
 
+    const getSlideWidth = () => container.offsetWidth;
+
     const goTo = (n) => {
       current = n;
-      track.style.transform = `translateX(-${n * 100}%)`;
+      track.style.transform = `translateX(-${n * getSlideWidth()}px)`;
       dots.forEach((d, i) => d.classList.toggle('is-active', i === n));
     };
 
@@ -179,6 +181,13 @@ if ('IntersectionObserver' in window) {
       clearInterval(timer);
       timer = setInterval(next, 3500);
     };
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+      track.style.transition = 'none';
+      goTo(current);
+      requestAnimationFrame(() => { track.style.transition = ''; });
+    });
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', (e) => {
