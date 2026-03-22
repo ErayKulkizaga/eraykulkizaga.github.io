@@ -308,7 +308,6 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
   .hero__subtitle { font-size: 15px; text-align: center; }
   .projects__grid { grid-template-columns: 1fr; }
   .certs__grid { grid-template-columns: repeat(2, 1fr); }
-  .certificate-frame img { height: 110px; }
   .nav-toggle { display: inline-flex; }
   .nav { position: fixed; inset: 64px 0 0 0; background: #ffffff; display: flex; flex-direction: column; padding: 0; gap: 0; transform: translateY(-100%); transition: transform .25s ease, opacity .2s ease; border-top: 1px solid var(--border); opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(2,6,23,.12); z-index: 60; max-height: calc(100vh - 64px); overflow-y: auto; }
   .nav[data-open="true"] { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
@@ -343,7 +342,7 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 .certificate-frame { background: #fff; border: 1px solid #e5e7eb; padding: 6px; position: relative; box-sizing: border-box; overflow: hidden; }
 .certificate-frame::before { content: none; }
 .certificate-frame::after { content: ""; position: absolute; inset: 4px; border: 1px solid #e5e7eb; pointer-events: none; }
-.certificate-frame img { width: 100%; height: 140px; object-fit: cover; object-position: center 20%; display: block; cursor: zoom-in; }
+.certificate-frame img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; object-position: center; display: block; cursor: zoom-in; background: #fff; }
 
 /* Image modal */
 .img-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; }
