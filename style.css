@@ -231,7 +231,7 @@ section { scroll-margin-top: 80px; }
 .cert__badge img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .cert__content { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; flex: 1; }
 .cert__logo { font-weight: 600; color: var(--muted); font-size: 13px; text-align: center; }
-.cert__title { font-size: 13px; text-align: center; line-height: 1.4; }
+.cert__title { font-size: 13px; text-align: center; line-height: 1.4; margin-top: auto; }
 
 /* Certificates total counter */
 .certs__total { margin-top: 12px; text-align: center; }
@@ -307,8 +307,9 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
   .hero__title { font-size: 34px; text-align: center; }
   .hero__subtitle { font-size: 15px; text-align: center; }
   .projects__grid { grid-template-columns: 1fr; }
-  .certs__grid { grid-template-columns: repeat(2, 1fr); }
-  .certificate-frame img { aspect-ratio: 1 / 1; }
+  .certs__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cert { padding: 12px 8px; }
+  .certificate-frame { padding: 3px; }
   .nav-toggle { display: inline-flex; }
   .nav { position: fixed; inset: 64px 0 0 0; background: #ffffff; display: flex; flex-direction: column; padding: 0; gap: 0; transform: translateY(-100%); transition: transform .25s ease, opacity .2s ease; border-top: 1px solid var(--border); opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(2,6,23,.12); z-index: 60; max-height: calc(100vh - 64px); overflow-y: auto; }
   .nav[data-open="true"] { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
@@ -340,10 +341,10 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 .cert-previews__dot { width: 6px; height: 6px; border-radius: 50%; border: none; background: #d1d5db; cursor: pointer; padding: 0; transition: background 0.2s; flex-shrink: 0; }
 .cert-previews__dot.is-active { background: #0f172a; }
 /* Certificate frame */
-.certificate-frame { background: #fff; border: 1px solid #e5e7eb; padding: 6px; position: relative; box-sizing: border-box; overflow: hidden; }
+.certificate-frame { background: #fff; border: 1px solid #e5e7eb; padding: 6px; position: relative; box-sizing: border-box; overflow: hidden; aspect-ratio: 4 / 3; }
 .certificate-frame::before { content: none; }
 .certificate-frame::after { content: ""; position: absolute; inset: 4px; border: 1px solid #e5e7eb; pointer-events: none; }
-.certificate-frame img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; object-position: center; display: block; cursor: zoom-in; background: #fff; }
+.certificate-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; cursor: zoom-in; }
 
 /* Image modal */
 .img-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; }
