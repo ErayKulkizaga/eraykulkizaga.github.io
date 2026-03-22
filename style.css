@@ -343,7 +343,7 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 .certificate-frame { background: #fff; border: 1px solid #e5e7eb; padding: 6px; position: relative; box-sizing: border-box; overflow: hidden; }
 .certificate-frame::before { content: none; }
 .certificate-frame::after { content: ""; position: absolute; inset: 4px; border: 1px solid #e5e7eb; pointer-events: none; }
-.certificate-frame img { width: 100%; height: 140px; object-fit: contain; object-position: center; display: block; cursor: zoom-in; background: #fff; }
+.certificate-frame img { width: 100%; height: 140px; object-fit: cover; object-position: center 20%; display: block; cursor: zoom-in; }
 
 /* Image modal */
 .img-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; }
