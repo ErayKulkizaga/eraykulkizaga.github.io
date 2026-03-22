@@ -49,6 +49,8 @@
       .proj-media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
       .proj-media-grid .proj-media-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); height: 260px; }
       .proj-media-grid .proj-media-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+      .proj-media-item--full { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+      .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 400px; object-fit: contain; background: #f8fafc; }
       .proj-media-single img { width: 100%; height: auto; border-radius: 12px; display: block; border: 1px solid var(--border); }
       /* Architecture diagram */
       .arch-diagram { background: #0f172a; border-radius: 14px; padding: 28px 24px; display: flex; align-items: stretch; gap: 0; overflow-x: auto; }
@@ -139,13 +141,8 @@
       <!-- Demo media -->
       <section class="section" style="padding-top:0">
         <div class="container">
-          <div class="proj-media-grid reveal">
-            <div class="proj-media-item">
-              <img src="images/1.gif" alt="Sign language recognition demo" loading="lazy" decoding="async" />
-            </div>
-            <div class="proj-media-item">
-              <img src="images/2.png" alt="Hand landmark diagram" loading="lazy" decoding="async" />
-            </div>
+          <div class="proj-media-item proj-media-item--full reveal">
+            <img src="images/1.gif" alt="Sign language recognition demo" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -201,6 +198,15 @@
                 <li>Browsable sign grid with all available words</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Landmark diagram before pipeline -->
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="proj-media-item proj-media-item--full reveal">
+            <img src="images/2.png" alt="Hand landmark diagram" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
