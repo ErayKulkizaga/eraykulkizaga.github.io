@@ -307,13 +307,8 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
   .hero__title { font-size: 34px; text-align: center; }
   .hero__subtitle { font-size: 15px; text-align: center; }
   .projects__grid { grid-template-columns: 1fr; }
-  .certs__grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-  /* Mobile certificate order: IBM, Stanford, DeepLearning.AI, Duke */
-  .certs__grid .cert { order: 5; }
-  .certs__grid .cert:has(.cert__badge img[alt="IBM"]) { order: 1; }
-  .certs__grid .cert:has(.cert__badge img[alt="Stanford University"]) { order: 2; }
-  .certs__grid .cert:has(.cert__badge img[alt="DeepLearning.AI"]) { order: 3; }
-  .certs__grid .cert:has(.cert__badge img[alt="Duke University"]) { order: 4; }
+  .certs__grid { grid-template-columns: repeat(2, 1fr); }
+  .certificate-frame img { height: 110px; }
   .nav-toggle { display: inline-flex; }
   .nav { position: fixed; inset: 64px 0 0 0; background: #ffffff; display: flex; flex-direction: column; padding: 0; gap: 0; transform: translateY(-100%); transition: transform .25s ease, opacity .2s ease; border-top: 1px solid var(--border); opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(2,6,23,.12); z-index: 60; max-height: calc(100vh - 64px); overflow-y: auto; }
   .nav[data-open="true"] { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
@@ -341,7 +336,7 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 .cert-previews { width: 100%; overflow: hidden; margin-top: auto; padding-top: 12px; }
 .cert-previews__track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
 .cert-previews__track .certificate-frame { flex: 0 0 100%; width: 100%; box-sizing: border-box; }
-.cert-previews__dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.cert-previews__dots { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 8px; min-height: 14px; }
 .cert-previews__dot { width: 6px; height: 6px; border-radius: 50%; border: none; background: #d1d5db; cursor: pointer; padding: 0; transition: background 0.2s; flex-shrink: 0; }
 .cert-previews__dot.is-active { background: #0f172a; }
 /* Certificate frame */
