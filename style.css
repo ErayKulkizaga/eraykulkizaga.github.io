@@ -346,18 +346,18 @@ input:focus, textarea:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(
 }
 
 /* Certificate preview slider (desktop + mobile) */
-.cert-previews { margin: 16px 0 0; overflow: hidden; }
+.cert-previews { margin: 12px 0 0; overflow: hidden; }
 .cert-previews__track { display: flex; transition: transform 0.5s ease; will-change: transform; }
 .cert-previews__track .certificate-frame { min-width: 100%; flex-shrink: 0; }
-.cert-previews__dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+.cert-previews__dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
 .cert-previews__dot { width: 7px; height: 7px; border-radius: 999px; border: none; background: #d1d5db; cursor: pointer; padding: 0; transition: background 0.2s; }
 .cert-previews__dot.is-active { background: #0f172a; }
 /* Square, moulded (çıtalı) white frame */
-.certificate-frame { padding: 16px; border-radius: 0; background: #ffffff; position: relative; box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+.certificate-frame { padding: 8px; border-radius: 0; background: #ffffff; position: relative; box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
 .certificate-frame::before { content: none; }
 /* inner slatted mouldings */
-.certificate-frame::after { content: ""; position: absolute; inset: 0; border-radius: 0; pointer-events: none; box-shadow: inset 0 0 0 2px #e5e7eb, inset 0 0 0 10px #ffffff, inset 0 0 0 12px #e5e7eb, inset 0 0 0 20px #ffffff, inset 0 0 0 22px #e5e7eb; }
-.certificate-frame img { width: 100%; height: auto; display: block; border-radius: 0; cursor: zoom-in; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
+.certificate-frame::after { content: ""; position: absolute; inset: 0; border-radius: 0; pointer-events: none; box-shadow: inset 0 0 0 2px #e5e7eb, inset 0 0 0 6px #ffffff, inset 0 0 0 8px #e5e7eb; }
+.certificate-frame img { width: 100%; height: 150px; object-fit: contain; display: block; border-radius: 0; cursor: zoom-in; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
 
 /* Image modal */
 .img-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; }
