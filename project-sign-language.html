@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Turkish Sign Language Translator — Project</title>
-    <meta name="description" content="Real-time Turkish Sign Language recognition from webcam using BiLSTM (Top-1: 76.1%) + text-to-sign 3D stick figure animation. Built with FastAPI, TensorFlow, Three.js." />
+    <title>SignaTurk — Turkish Sign Language Recognition Runtime</title>
+    <meta name="description" content="SignaTurk is a FastAPI and React Turkish Sign Language recognition runtime using webcam inference, HF RTMW whole-body landmarks, and a 226-class ensemble model." />
     <link rel="canonical" href="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Turkish Sign Language Translator — Project" />
-    <meta property="og:description" content="Real-time TİD recognition and animation system using BiLSTM + MediaPipe." />
+    <meta property="og:title" content="SignaTurk — Turkish Sign Language Recognition Runtime" />
+    <meta property="og:description" content="Real-time Turkish Sign Language recognition with FastAPI, React, HF RTMW landmarks, TensorFlow/Keras, ONNX Runtime, and a 226-class ensemble." />
     <meta property="og:url" content="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:image" content="/images/hero.gif" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SignaTurk — Turkish Sign Language Recognition Runtime" />
+    <meta name="twitter:description" content="Real-time Turkish Sign Language recognition runtime with webcam inference and 3D avatar support." />
+    <meta name="twitter:image" content="/images/hero.gif" />
     <meta name="theme-color" content="#0f172a" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,60 +24,39 @@
     <style>
       .proj-hero { padding: 60px 0 40px; }
       .proj-hero__tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; margin-bottom: 20px; }
-      .proj-hero__title { font-size: clamp(28px, 5vw, 44px); letter-spacing: -0.03em; margin: 0 0 14px; line-height: 1.15; }
-      .proj-hero__sub { color: var(--muted); max-width: 640px; margin: 0 0 28px; font-size: 16px; line-height: 1.65; }
+      .proj-hero__title { font-size: clamp(30px, 5vw, 52px); letter-spacing: -0.03em; margin: 0 0 14px; line-height: 1.08; }
+      .proj-hero__sub { color: var(--muted); max-width: 760px; margin: 0 0 28px; font-size: 16px; line-height: 1.65; }
       .proj-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
       .proj-section-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px; }
       .proj-card { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: var(--card); }
       .proj-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-      .proj-stat { text-align: center; padding: 20px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+      .proj-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .proj-stat { text-align: center; padding: 20px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
       .proj-stat__value { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; color: var(--primary); display: block; }
       .proj-stat__label { font-size: 13px; color: var(--muted); margin-top: 4px; display: block; }
-      .proj-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
       .proj-pipeline { display: flex; flex-direction: column; gap: 0; }
       .proj-pipeline__step { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--border); }
       .proj-pipeline__step:last-child { border-bottom: none; }
       .proj-pipeline__num { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
       .proj-pipeline__content h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
       .proj-pipeline__content p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-      .proj-pipeline__content code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
+      .proj-pipeline__content code, .proj-card code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
       .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
       .data-table th { text-align: left; font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--border); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-      .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+      .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
       .data-table tr:last-child td { border-bottom: none; }
       .data-table td strong { color: var(--primary); }
-      .proj-arch { background: #0f172a; border-radius: 14px; padding: 24px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #94a3b8; overflow-x: auto; }
+      .proj-arch { background: #0f172a; border-radius: 14px; padding: 24px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.75; color: #94a3b8; overflow-x: auto; }
       .proj-arch span.hl { color: #7dd3fc; }
       .proj-arch span.grn { color: #86efac; }
-      .proj-media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
-      .proj-media-grid .proj-media-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); height: 260px; }
-      .proj-media-grid .proj-media-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-      .proj-media-item--full { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-      .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 400px; object-fit: contain; background: #f8fafc; }
-      .proj-media-single img { width: 100%; height: auto; border-radius: 12px; display: block; border: 1px solid var(--border); }
-      /* Architecture diagram */
-      .arch-diagram { background: #0f172a; border-radius: 14px; padding: 28px 24px; display: flex; align-items: stretch; gap: 0; overflow-x: auto; }
-      .arch-side { flex: 1; min-width: 0; }
-      .arch-side__label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #475569; margin-bottom: 14px; font-family: 'SF Mono','Fira Code',monospace; padding-bottom: 6px; border-bottom: 1px solid #1e293b; }
-      .arch-side__nodes { display: flex; flex-direction: column; gap: 0; }
-      .arch-node { border-radius: 8px; padding: 10px 14px; font-size: 12px; font-family: 'SF Mono','Fira Code',monospace; line-height: 1.4; }
-      .arch-node--blue { background: #0c1f38; border: 1px solid #38bdf8; color: #7dd3fc; }
-      .arch-node--green { background: #0c2318; border: 1px solid #4ade80; color: #86efac; }
-      .arch-node__sub { font-size: 10px; opacity: 0.65; margin-top: 3px; }
-      .arch-vline { width: 1px; height: 16px; background: #334155; margin: 0 auto; }
-      .arch-step-arrow { text-align: center; color: #475569; font-size: 13px; line-height: 1; padding: 1px 0; }
-      .arch-connector { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 18px; gap: 6px; flex-shrink: 0; }
-      .arch-connector__label { font-size: 10px; font-family: 'SF Mono','Fira Code',monospace; color: #475569; white-space: nowrap; letter-spacing: 0.04em; }
-      .arch-connector__arrow { color: #334155; font-size: 18px; line-height: 1; }
-      .arch-connector__line { width: 1px; flex: 1; background: #1e293b; }
-      @media (max-width: 820px) {
+      .proj-media-item--full { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #f8fafc; }
+      .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 430px; object-fit: contain; background: #f8fafc; }
+      .callout { border-left: 3px solid var(--primary); padding: 14px 16px; background: rgba(59,130,246,0.08); border-radius: 10px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+      @media (max-width: 900px) {
         .proj-two-col { grid-template-columns: 1fr; }
-        .proj-media-grid { grid-template-columns: 1fr; }
-        .proj-media-grid .proj-media-item { height: 220px; }
-        .proj-stats-row { grid-template-columns: repeat(3, 1fr); }
+        .proj-stats-row { grid-template-columns: repeat(2, 1fr); }
       }
       @media (max-width: 640px) {
-        .proj-media-grid .proj-media-item { height: 180px; }
         .proj-stats-row { grid-template-columns: 1fr; }
         .proj-hero__actions { flex-direction: column; }
         .proj-hero__actions .btn { width: 100%; justify-content: center; }
@@ -116,126 +98,123 @@
     </div>
 
     <main id="project">
-
-      <!-- Hero -->
       <section class="section proj-hero">
         <div class="container">
-          <p class="proj-hero__tag reveal">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            Machine Learning · Computer Vision · NLP
-          </p>
-          <h1 class="proj-hero__title reveal">Turkish Sign Language<br>Recognition &amp; Animation</h1>
+          <p class="proj-hero__tag reveal">Machine Learning · Computer Vision · MLOps</p>
+          <h1 class="proj-hero__title reveal">SignaTurk<br>Turkish Sign Language Runtime</h1>
           <p class="proj-hero__sub reveal">
-            Real-time TİD recognition from webcam using a BiLSTM model (Top-1: 76.14%). No GPU required for inference — runs entirely in the browser backed by a FastAPI server.
+            A real-time Turkish Sign Language recognition application built with FastAPI, a React CDN frontend, HF RTMW/RTMPose whole-body landmark extraction, and a 226-class Keras ensemble. The system turns webcam frames into pose and hand landmark streams, predicts signs, stores confident results, and serves a dictionary/3D avatar experience.
           </p>
           <div class="proj-hero__actions reveal">
-            <a href="https://github.com/ErayKulkizaga/turkish-sign-language-translator" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <a href="https://github.com/ErayKulkizaga/SignaTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
               View on GitHub
             </a>
-            <a href="index.html#projects" class="btn">← Back to Projects</a>
+            <a href="index.html#projects" class="btn">Back to Projects</a>
           </div>
         </div>
       </section>
 
-      <!-- Demo media -->
       <section class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/1.gif" alt="Sign language recognition demo" loading="lazy" decoding="async" />
+            <img src="images/1.gif" alt="SignaTurk live recognition interface preview" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
 
-      <!-- Model performance -->
       <section class="section" style="padding-top:0">
         <div class="container">
-          <h2 class="proj-section-title reveal">Model Performance</h2>
+          <h2 class="proj-section-title reveal">Project Snapshot</h2>
           <div class="proj-stats-row reveal">
             <div class="proj-stat">
-              <span class="proj-stat__value">76.1%</span>
-              <span class="proj-stat__label">Top-1 Accuracy</span>
+              <span class="proj-stat__value">226</span>
+              <span class="proj-stat__label">Sign Classes</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">89.3%</span>
-              <span class="proj-stat__label">Top-3 Accuracy</span>
+              <span class="proj-stat__value">75x4</span>
+              <span class="proj-stat__label">Landmark Layout</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">91.9%</span>
-              <span class="proj-stat__label">Top-5 Accuracy</span>
+              <span class="proj-stat__value">4</span>
+              <span class="proj-stat__label">Ensemble Streams</span>
+            </div>
+            <div class="proj-stat">
+              <span class="proj-stat__value">LFS</span>
+              <span class="proj-stat__label">Model Assets</span>
             </div>
           </div>
-          <p class="muted reveal" style="font-size:13px; margin-top:12px;">
-            Evaluated on a <strong>cross-subject</strong> validation split — 31 training signers / 6 validation signers, reflecting real-world generalization.
-          </p>
         </div>
       </section>
 
-      <!-- Overview -->
       <section class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-two-col">
             <div class="proj-card reveal">
-              <p class="proj-section-title" style="margin-bottom:10px;">Recognition</p>
+              <p class="proj-section-title" style="margin-bottom:10px;">Live Recognition</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                MediaPipe Holistic runs entirely in the browser (WASM) and extracts hand + pose landmarks in real time. The 252-dimensional vectors are streamed via WebSocket to a FastAPI backend where the BiLSTM model performs inference.
+                The browser streams webcam frames to the FastAPI backend through WebSocket. The backend extracts whole-body and hand landmarks, builds skeleton/motion feature streams, runs the SignaTurk ensemble, and returns top predictions with confidence values.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li>Top-3 predictions with confidence bars</li>
-                <li>Session stats: total predictions, avg confidence, latency ms</li>
-                <li>Scrollable prediction history</li>
-                <li>226 sign classes, 16 frames per sample</li>
+                <li>Webcam-to-WebSocket live inference flow</li>
+                <li>HF RTMW / RTMPose whole-body landmark extraction</li>
+                <li>Top predictions, confidence values, and live diagnostics</li>
+                <li>SQLite fallback when Supabase is unavailable</li>
               </ul>
             </div>
             <div class="proj-card reveal">
-              <p class="proj-section-title" style="margin-bottom:10px;">Animation</p>
+              <p class="proj-section-title" style="margin-bottom:10px;">Dictionary & Avatar</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                Type any word or sentence — a stick figure performs each sign sequentially with smooth frame interpolation. Landmark data comes directly from AUTSL videos, not synthesized motion.
+                The application also includes a dictionary-style landmark endpoint and a 3D avatar screen. Sign animation data is served from local landmark JSON and smoothed before playback for clearer motion.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li>184 available signs in animation mode</li>
-                <li>Smooth interpolation between consecutive signs</li>
-                <li>Browsable sign grid with all available words</li>
+                <li>Local <code>model/landmarks.json</code> dictionary data</li>
+                <li>Smoothed landmark playback endpoint</li>
+                <li>Three.js avatar assets stored with Git LFS</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Landmark diagram before pipeline -->
       <section class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/2.png" alt="Hand landmark diagram" loading="lazy" decoding="async" />
+            <img src="images/2.png" alt="Hand landmark diagram used in sign language recognition" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
 
-      <!-- Pipeline -->
       <section class="section" style="padding-top:0">
         <div class="container">
-          <h2 class="proj-section-title reveal">Development Pipeline</h2>
+          <h2 class="proj-section-title reveal">Runtime Pipeline</h2>
           <div class="proj-card reveal">
             <div class="proj-pipeline">
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">1</div>
                 <div class="proj-pipeline__content">
-                  <h4>Landmark Extraction</h4>
-                  <p>MediaPipe Holistic (<code>model_complexity=2</code>) processes every AUTSL video. 16 frames sampled per video → 225 landmarks per frame (21 left-hand + 21 right-hand + 33 pose keypoints × xyz). Color and depth streams concatenated: <strong>450 features/frame</strong> for the Transformer model.</p>
+                  <h4>Frame Capture</h4>
+                  <p>The React CDN frontend captures webcam frames and sends them to <code>/api/predict/live</code>. The live path is designed to keep only a small number of frames in flight so the UI stays responsive.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">2</div>
                 <div class="proj-pipeline__content">
-                  <h4>Transformer Baseline — 226 classes</h4>
-                  <p>Transformer Encoder with sinusoidal positional encoding, 4× Multi-Head Attention blocks (8 heads), AdamW optimizer with cosine decay, label smoothing 0.1, data augmentation (Gaussian noise, time masking, scale jitter, horizontal flip). Input: <code>(16, 450)</code>.</p>
+                  <h4>Landmark Extraction</h4>
+                  <p>HF RTMW/RTMPose extracts whole-body landmarks. The active layout is <code>pose33 + left_hand21 + right_hand21</code>, represented as <code>75 x 4</code> values for x, y, z, and confidence.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">3</div>
                 <div class="proj-pipeline__content">
-                  <h4>BiLSTM Final Model — 184 classes</h4>
-                  <p>42 low-accuracy classes removed (val accuracy &lt; 50%). Redesigned to use only hand landmarks (<code>feat_dim=252</code>) to reduce input noise. Bidirectional LSTM(256) → LSTM(128) → Dense(512) → Dense(256) → Dense(184, softmax). Labels remapped with <code>sklearn.LabelEncoder</code>.</p>
+                  <h4>Feature Builder</h4>
+                  <p>The runtime converts landmarks into joint, bone, joint-motion, bone-motion, and extra streams. Orientation controls are available for camera mirroring and left/right hand debugging.</p>
+                </div>
+              </div>
+              <div class="proj-pipeline__step">
+                <div class="proj-pipeline__num">4</div>
+                <div class="proj-pipeline__content">
+                  <h4>Ensemble Prediction</h4>
+                  <p>The ensemble combines <code>skeleton_v2</code>, <code>skeleton_v4_seed</code>, <code>skeleton_v6_seed</code>, and <code>hand_stream</code> Keras models to produce a 226-class Turkish Sign Language prediction.</p>
                 </div>
               </div>
             </div>
@@ -243,69 +222,72 @@
         </div>
       </section>
 
-      <!-- Dataset -->
       <section class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-two-col">
             <div>
-              <h2 class="proj-section-title reveal">Dataset — AUTSL</h2>
-              <div class="proj-card reveal">
-                <table class="data-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
-                  <tbody>
-                    <tr><td>Total classes</td><td><strong>226 words</strong></td></tr>
-                    <tr><td>Total videos</td><td>~38,000</td></tr>
-                    <tr><td>Format</td><td>RGB + Depth, 512×512, 30fps</td></tr>
-                    <tr><td>Total signers</td><td>43</td></tr>
-                    <tr><td>Train signers</td><td>31 (~28k videos)</td></tr>
-                    <tr><td>Validation signers</td><td>6 (~4.4k videos)</td></tr>
-                  </tbody>
-                </table>
+              <h2 class="proj-section-title reveal">Architecture</h2>
+              <div class="proj-arch reveal">
+<span class="hl">Browser UI</span><br>
+  webcam frame -> WebSocket<br>
+  live result panel -> history -> avatar screen<br><br>
+<span class="hl">FastAPI Backend</span><br>
+  /api/predict/live<br>
+  frame decode + RGB conversion<br>
+  HF RTMW whole-body extraction<br><br>
+<span class="grn">Feature Runtime</span><br>
+  75x4 landmarks<br>
+  joint / bone / motion / extra streams<br>
+  orientation + hand filtering diagnostics<br><br>
+<span class="grn">Model Ensemble</span><br>
+  skeleton_v2 + skeleton_v4_seed + skeleton_v6_seed + hand_stream<br>
+  226-class softmax output
               </div>
             </div>
             <div>
-              <h2 class="proj-section-title reveal">Architecture Overview</h2>
-              <div class="arch-diagram reveal">
-                <div class="arch-side">
-                  <div class="arch-side__label">Browser</div>
-                  <div class="arch-side__nodes">
-                    <div class="arch-node arch-node--blue">
-                      <div>📷 Webcam</div>
-                    </div>
-                    <div class="arch-step-arrow">↓</div>
-                    <div class="arch-node arch-node--blue">
-                      <div>MediaPipe (WASM)</div>
-                      <div class="arch-node__sub">16 × 252 features/frame</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="arch-connector">
-                  <div class="arch-connector__line"></div>
-                  <div class="arch-connector__label">WebSocket</div>
-                  <div class="arch-connector__arrow">→</div>
-                  <div class="arch-connector__line"></div>
-                </div>
-                <div class="arch-side">
-                  <div class="arch-side__label">FastAPI Backend</div>
-                  <div class="arch-side__nodes">
-                    <div class="arch-node arch-node--green">
-                      <div>BiLSTM Model</div>
-                      <div class="arch-node__sub">256 → 128 → 184 classes</div>
-                    </div>
-                    <div class="arch-step-arrow">↓</div>
-                    <div class="arch-node arch-node--green">
-                      <div>Top-3 + confidence</div>
-                      <div class="arch-node__sub">returned to browser</div>
-                    </div>
-                  </div>
-                </div>
+              <h2 class="proj-section-title reveal">Key Files</h2>
+              <div class="proj-card reveal">
+                <table class="data-table">
+                  <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>backend.py</strong></td><td>FastAPI app, live inference, history, admin/debug endpoints</td></tr>
+                    <tr><td><strong>signaturk_runtime/</strong></td><td>Extractor, feature builder, realtime state, ensemble runtime</td></tr>
+                    <tr><td><strong>frontend/</strong></td><td>React CDN UI, live recognition screen, avatar screen</td></tr>
+                    <tr><td><strong>model/signaturk/</strong></td><td>Config, labels, Keras models, ONNX landmark extractors</td></tr>
+                    <tr><td><strong>model/landmarks.json</strong></td><td>Dictionary and avatar landmark animation data</td></tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Tech stack -->
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <h2 class="proj-section-title reveal">Model Assets</h2>
+          <div class="proj-card reveal">
+            <p class="muted" style="font-size:14px; line-height:1.65; margin-top:0;">
+              The GitHub repository stores large runtime assets with Git LFS so reviewers can clone the project and pull the model files without a separate download link.
+            </p>
+            <table class="data-table">
+              <thead><tr><th>Asset</th><th>Role</th></tr></thead>
+              <tbody>
+                <tr><td><strong>skeleton_v2.keras</strong></td><td>Skeleton stream model</td></tr>
+                <tr><td><strong>skeleton_v4_seed.keras</strong></td><td>Skeleton stream ensemble member</td></tr>
+                <tr><td><strong>skeleton_v6_seed.keras</strong></td><td>Skeleton stream ensemble member</td></tr>
+                <tr><td><strong>hand_stream.keras</strong></td><td>Dedicated hand-stream model</td></tr>
+                <tr><td><strong>yolox_m.onnx</strong></td><td>Person detection for RTMW pipeline</td></tr>
+                <tr><td><strong>rtmw-dw-x-l_simcc-cocktail14.onnx</strong></td><td>Whole-body pose and hand landmark extractor</td></tr>
+              </tbody>
+            </table>
+            <p class="callout" style="margin:18px 0 0;">
+              Reviewer setup: install Git LFS, clone the repository, then run <code>git lfs pull</code>. The README includes the exact commands and the expected model file paths.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" style="padding-top:0">
         <div class="container">
           <h2 class="proj-section-title reveal">Technologies Used</h2>
@@ -317,7 +299,7 @@
                 <span class="badge">FastAPI</span>
                 <span class="badge">Uvicorn</span>
                 <span class="badge">WebSocket</span>
-                <span class="badge">Docker</span>
+                <span class="badge">SQLAlchemy</span>
               </div>
             </div>
             <div class="techs__group">
@@ -325,45 +307,47 @@
               <div class="badges">
                 <span class="badge">TensorFlow</span>
                 <span class="badge">Keras</span>
-                <span class="badge">BiLSTM</span>
-                <span class="badge">Transformer</span>
-                <span class="badge">Scikit-learn</span>
+                <span class="badge">ONNX Runtime</span>
+                <span class="badge">Ensemble Learning</span>
               </div>
             </div>
             <div class="techs__group">
               <h3>Computer Vision</h3>
               <div class="badges">
-                <span class="badge">MediaPipe</span>
+                <span class="badge">HF RTMW</span>
+                <span class="badge">RTMPose</span>
                 <span class="badge">OpenCV</span>
-                <span class="badge">NumPy</span>
-                <span class="badge">Pandas</span>
+                <span class="badge">Landmark Streams</span>
               </div>
             </div>
             <div class="techs__group">
               <h3>Frontend</h3>
               <div class="badges">
+                <span class="badge">React CDN</span>
                 <span class="badge">JavaScript</span>
-                <span class="badge">MediaPipe WASM</span>
+                <span class="badge">CSS</span>
+                <span class="badge">Three.js</span>
               </div>
             </div>
             <div class="techs__group">
-              <h3>Training</h3>
+              <h3>Data & Storage</h3>
               <div class="badges">
-                <span class="badge">Google Colab</span>
-                <span class="badge">T4 GPU</span>
-                <span class="badge">Mixed Precision fp16</span>
+                <span class="badge">SQLite Fallback</span>
+                <span class="badge">Supabase-ready</span>
+                <span class="badge">Git LFS</span>
               </div>
             </div>
             <div class="techs__group">
-              <h3>Dataset</h3>
+              <h3>Deployment Target</h3>
               <div class="badges">
-                <span class="badge">AUTSL - Ankara University</span>
+                <span class="badge">Local Runtime</span>
+                <span class="badge">Windows-ready</span>
+                <span class="badge">CPU Inference</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="site-footer">
