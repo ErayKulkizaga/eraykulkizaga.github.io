@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SignTurk — Award-Winning Turkish Sign Language Platform</title>
-    <meta name="description" content="SignTurk is an award-winning FastAPI Turkish Sign Language platform with live webcam inference, RTMW whole-body landmarks, a 226-class ensemble model, dashboards, and 3D avatar experiences." />
+    <meta name="description" content="SignTurk is an award-winning FastAPI Turkish Sign Language project with a MediaPipe-to-WebSocket recognition runtime, a BiLSTM model, and Three.js sign animation." />
     <link rel="canonical" href="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
-    <meta property="og:description" content="Real-time Turkish Sign Language recognition with FastAPI, React, HF RTMW landmarks, TensorFlow/Keras, ONNX Runtime, and a 226-class ensemble." />
+    <meta property="og:description" content="Real-time Turkish Sign Language recognition with MediaPipe, FastAPI, WebSocket, TensorFlow/Keras, and Three.js animation." />
     <meta property="og:url" content="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:image" content="/images/signturk-homepage.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -46,9 +46,9 @@
       .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
       .data-table tr:last-child td { border-bottom: none; }
       .data-table td strong { color: var(--primary); }
-      .proj-arch { background: #0f172a; border-radius: 14px; padding: 24px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.75; color: #94a3b8; overflow-x: auto; }
-      .proj-arch span.hl { color: #7dd3fc; }
-      .proj-arch span.grn { color: #86efac; }
+      .proj-arch { background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 24px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.75; color: #475569; overflow-x: auto; }
+      .proj-arch span.hl { color: #1d4ed8; font-weight: 700; }
+      .proj-arch span.grn { color: #047857; font-weight: 700; }
       .proj-media-item--full { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #f8fafc; }
       .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 640px; object-fit: contain; background: #f8fafc; }
       .callout { border-left: 3px solid var(--primary); padding: 14px 16px; background: rgba(59,130,246,0.08); border-radius: 10px; color: var(--muted); line-height: 1.65; font-size: 14px; }
@@ -61,6 +61,9 @@
       .proj-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
       .proj-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; display: block; background: #f8fafc; }
       .proj-gallery figcaption { padding: 12px 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .contribution-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+      .contribution-list li + li { margin-top: 8px; }
+      .model-note { margin: 0 0 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
       @media (max-width: 900px) {
         .proj-two-col { grid-template-columns: 1fr; }
         .proj-stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -114,7 +117,7 @@
           <p class="proj-hero__tag reveal">Outstanding Graduation Project · AI · Computer Vision · Backend</p>
           <h1 class="proj-hero__title reveal">SignTurk<br>Turkish Sign Language Platform</h1>
           <p class="proj-hero__sub reveal">
-            An award-winning, real-time Turkish Sign Language recognition platform built with FastAPI, a browser-based interface, HF RTMW/RTMPose whole-body landmark extraction, and a 226-class Keras ensemble. SignTurk combines live translation, prediction history, administration, a sign dictionary, and 3D avatar experiences in one product.
+            An award-winning Turkish Sign Language project that combines webcam recognition and sign animation. The public GitHub runtime uses browser-side MediaPipe landmarks, WebSocket communication, a FastAPI inference service, and a BiLSTM model; the final graduation-project interface extends that core with dashboard, dictionary, avatar, and administration experiences.
           </p>
           <div class="proj-hero__actions reveal">
             <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
@@ -151,16 +154,16 @@
           <h2 class="proj-section-title reveal">Project Snapshot</h2>
           <div class="proj-stats-row reveal">
             <div class="proj-stat">
-              <span class="proj-stat__value">226</span>
-              <span class="proj-stat__label">Sign Classes</span>
+              <span class="proj-stat__value">184</span>
+              <span class="proj-stat__label">Runtime Classes</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">75x4</span>
-              <span class="proj-stat__label">Landmark Layout</span>
+              <span class="proj-stat__value">16</span>
+              <span class="proj-stat__label">Frames per Sequence</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">4</span>
-              <span class="proj-stat__label">Ensemble Streams</span>
+              <span class="proj-stat__value">76.14%</span>
+              <span class="proj-stat__label">Selected Runtime Top-1</span>
             </div>
             <div class="proj-stat">
               <span class="proj-stat__value">Award</span>
@@ -172,28 +175,43 @@
 
       <section class="section" style="padding-top:0">
         <div class="container">
+          <h2 class="proj-section-title reveal">My Contribution</h2>
+          <div class="proj-card reveal">
+            <p class="model-note">My primary responsibility in the graduation-project team was model design, training, and evaluation. The surrounding interface, integration, data preparation, and 3D animation work was shared across the team.</p>
+            <ul class="contribution-list">
+              <li>Designed and trained the recognition-model variants evaluated on the AUTSL dataset.</li>
+              <li>Compared Transformer, BiLSTM, temporal-attention, and class-filtering experiments.</li>
+              <li>Evaluated Top-1, Top-3, and Top-5 performance and investigated weak or visually similar sign classes.</li>
+              <li>Helped select the lower-accuracy 184-class model for the public demo because it fit the existing 16-frame MediaPipe/WebSocket pipeline more reliably.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="container">
           <div class="proj-two-col">
             <div class="proj-card reveal">
               <p class="proj-section-title" style="margin-bottom:10px;">Live Recognition</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                The browser streams webcam frames to the FastAPI backend through WebSocket. The backend extracts whole-body and hand landmarks, builds skeleton/motion feature streams, runs the SignTurk ensemble, and returns top predictions with confidence values.
+                MediaPipe runs in the browser and converts webcam input into hand landmarks. Sixteen-frame sequences are sent to the FastAPI backend through <code>/ws</code>, where the selected BiLSTM runtime returns the top predictions, confidence values, and inference latency.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li>Webcam-to-WebSocket live inference flow</li>
-                <li>HF RTMW / RTMPose whole-body landmark extraction</li>
-                <li>Top predictions, confidence values, and live diagnostics</li>
-                <li>SQLite fallback when Supabase is unavailable</li>
+                <li>Browser-side MediaPipe Holistic landmark extraction</li>
+                <li>16-frame sequence collection and WebSocket inference</li>
+                <li>184-class runtime configuration with Top-3 results</li>
+                <li>Health and startup diagnostics exposed by FastAPI</li>
               </ul>
             </div>
             <div class="proj-card reveal">
               <p class="proj-section-title" style="margin-bottom:10px;">Dictionary &amp; Avatar</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                The application also includes a dictionary-style landmark endpoint and a 3D avatar screen. Sign animation data is served from local landmark JSON and smoothed before playback for clearer motion.
+                The public demo also exposes sign and landmark endpoints for a Three.js animation experience. Local landmark sequences drive the browser renderer, with smooth transitions between requested words.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li>Local <code>model/landmarks.json</code> dictionary data</li>
-                <li>Smoothed landmark playback endpoint</li>
-                <li>Three.js avatar assets stored with Git LFS</li>
+                <li><code>/signs</code> and <code>/landmark/{word}</code> endpoints</li>
+                <li>Local JSON and BVH animation assets</li>
+                <li>Three.js browser rendering</li>
               </ul>
             </div>
           </div>
@@ -203,6 +221,7 @@
       <section class="section" style="padding-top:0">
         <div class="container">
           <h2 class="proj-section-title reveal">Product Experience</h2>
+          <p class="model-note reveal">These screens document the broader graduation-project interface. The public GitHub repository currently contains the leaner recognition-and-animation demo that powers the core model workflow.</p>
           <div class="proj-gallery">
             <figure class="reveal">
               <img src="images/signturk-live-translation.png" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" />
@@ -240,29 +259,29 @@
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">1</div>
                 <div class="proj-pipeline__content">
-                  <h4>Frame Capture</h4>
-                  <p>The browser interface captures webcam frames and sends them to <code>/api/predict/live</code>. The live path is designed to keep only a small number of frames in flight so the UI stays responsive.</p>
+                  <h4>Browser Landmark Extraction</h4>
+                  <p>MediaPipe Holistic runs in browser-side WASM. It extracts left- and right-hand landmarks from webcam frames and starts a sequence only when hands are detected.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">2</div>
                 <div class="proj-pipeline__content">
-                  <h4>Landmark Extraction</h4>
-                  <p>HF RTMW/RTMPose extracts whole-body landmarks. The active layout is <code>pose33 + left_hand21 + right_hand21</code>, represented as <code>75 x 4</code> values for x, y, z, and confidence.</p>
+                  <h4>Sequence Transport</h4>
+                  <p>The client collects 16 frames and sends landmark payloads over <code>/ws</code>. The FastAPI service maintains a separate buffer for each WebSocket session.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">3</div>
                 <div class="proj-pipeline__content">
-                  <h4>Feature Builder</h4>
-                  <p>The runtime converts landmarks into joint, bone, joint-motion, bone-motion, and extra streams. Orientation controls are available for camera mirroring and left/right hand debugging.</p>
+                  <h4>Runtime Preprocessing</h4>
+                  <p>The selected demo contract normalizes the configured 252-feature input with the stored training statistics before passing the sequence to the Keras model.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">4</div>
                 <div class="proj-pipeline__content">
-                  <h4>Ensemble Prediction</h4>
-                  <p>The ensemble combines <code>skeleton_v2</code>, <code>skeleton_v4_seed</code>, <code>skeleton_v6_seed</code>, and <code>hand_stream</code> Keras models to produce a 226-class Turkish Sign Language prediction.</p>
+                  <h4>BiLSTM Prediction</h4>
+                  <p>The 184-class model returns Top-3 labels, confidence scores, and latency. The lower-accuracy model was retained because it fits this existing live pipeline without replacing the frontend feature contract.</p>
                 </div>
               </div>
             </div>
@@ -277,19 +296,17 @@
               <h2 class="proj-section-title reveal">Architecture</h2>
               <div class="proj-arch reveal">
 <span class="hl">Browser UI</span><br>
-  webcam frame -> WebSocket<br>
-  live result panel -> history -> avatar screen<br><br>
+  webcam -> MediaPipe Holistic (WASM)<br>
+  16-frame hand-landmark sequence -> /ws<br><br>
 <span class="hl">FastAPI Backend</span><br>
-  /api/predict/live<br>
-  frame decode + RGB conversion<br>
-  HF RTMW whole-body extraction<br><br>
-<span class="grn">Feature Runtime</span><br>
-  75x4 landmarks<br>
-  joint / bone / motion / extra streams<br>
-  orientation + hand filtering diagnostics<br><br>
-<span class="grn">Model Ensemble</span><br>
-  skeleton_v2 + skeleton_v4_seed + skeleton_v6_seed + hand_stream<br>
-  226-class softmax output
+  /ws + /health + /startup-check<br>
+  per-session buffer + normalization<br><br>
+<span class="grn">Recognition Runtime</span><br>
+  model.keras -> 184-class BiLSTM<br>
+  Top-3 labels + confidence + latency<br><br>
+<span class="grn">Animation Runtime</span><br>
+  /signs + /landmark/{word}<br>
+  local landmark data -> Three.js
               </div>
             </div>
             <div>
@@ -298,11 +315,11 @@
                 <table class="data-table">
                   <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>backend.py</strong></td><td>FastAPI app, live inference, history, admin/debug endpoints</td></tr>
-                    <tr><td><strong>Runtime package</strong></td><td>Extractor, feature builder, realtime state, ensemble runtime</td></tr>
-                    <tr><td><strong>frontend/</strong></td><td>React CDN UI, live recognition screen, avatar screen</td></tr>
-                    <tr><td><strong>Model package</strong></td><td>Config, labels, Keras models, ONNX landmark extractors</td></tr>
-                    <tr><td><strong>model/landmarks.json</strong></td><td>Dictionary and avatar landmark animation data</td></tr>
+                    <tr><td><strong>backend.py</strong></td><td>FastAPI app, WebSocket buffering, model inference, and landmark endpoints</td></tr>
+                    <tr><td><strong>index.html</strong></td><td>Browser UI, MediaPipe capture, recognition results, and Three.js animation</td></tr>
+                    <tr><td><strong>model_assets/</strong></td><td>Keras model, runtime config, label map, and normalization statistics</td></tr>
+                    <tr><td><strong>extract_landmarks.py</strong></td><td>AUTSL landmark extraction utility</td></tr>
+                    <tr><td><strong>dataset/landmarks/</strong></td><td>Local sign-animation landmark sequences</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -313,24 +330,19 @@
 
       <section class="section" style="padding-top:0">
         <div class="container">
-          <h2 class="proj-section-title reveal">Model Assets</h2>
+          <h2 class="proj-section-title reveal">Model Selection &amp; Trade-off</h2>
           <div class="proj-card reveal">
-            <p class="muted" style="font-size:14px; line-height:1.65; margin-top:0;">
-              The GitHub repository stores large runtime assets with Git LFS so reviewers can clone SignTurk and pull the model files without a separate download link.
-            </p>
+            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk kept the lower-accuracy model in the public demo because its inputs already matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably.</p>
             <table class="data-table">
-              <thead><tr><th>Asset</th><th>Role</th></tr></thead>
+              <thead><tr><th>Model</th><th>Status and decision</th></tr></thead>
               <tbody>
-                <tr><td><strong>skeleton_v2.keras</strong></td><td>Skeleton stream model</td></tr>
-                <tr><td><strong>skeleton_v4_seed.keras</strong></td><td>Skeleton stream ensemble member</td></tr>
-                <tr><td><strong>skeleton_v6_seed.keras</strong></td><td>Skeleton stream ensemble member</td></tr>
-                <tr><td><strong>hand_stream.keras</strong></td><td>Dedicated hand-stream model</td></tr>
-                <tr><td><strong>yolox_m.onnx</strong></td><td>Person detection for RTMW pipeline</td></tr>
-                <tr><td><strong>rtmw-dw-x-l_simcc-cocktail14.onnx</strong></td><td>Whole-body pose and hand landmark extractor</td></tr>
+                <tr><td><strong>184-class BiLSTM</strong></td><td>Selected public runtime; 16 frames, 252 configured features, and 76.14% reported Top-1 accuracy.</td></tr>
+                <tr><td><strong>179-class improved model</strong></td><td>Trained experiment with color-only normalization, finger-angle features, temporal attention, and 85.65% Top-1; not integrated into the public demo pipeline.</td></tr>
+                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Later offline research result documented in the final report; not presented as the model running in the public GitHub demo.</td></tr>
               </tbody>
             </table>
             <p class="callout" style="margin:18px 0 0;">
-              Reviewer setup: install Git LFS, clone the repository, then run <code>git lfs pull</code>. The README includes the exact commands and the expected model file paths.
+              Engineering decision: optimize for a working end-to-end product contract, then treat higher-accuracy model migration as a separate integration task with explicit preprocessing and regression tests.
             </p>
           </div>
         </div>
@@ -347,7 +359,6 @@
                 <span class="badge">FastAPI</span>
                 <span class="badge">Uvicorn</span>
                 <span class="badge">WebSocket</span>
-                <span class="badge">SQLAlchemy</span>
               </div>
             </div>
             <div class="techs__group">
@@ -355,42 +366,44 @@
               <div class="badges">
                 <span class="badge">TensorFlow</span>
                 <span class="badge">Keras</span>
-                <span class="badge">ONNX Runtime</span>
-                <span class="badge">Ensemble Learning</span>
+                <span class="badge">BiLSTM</span>
+                <span class="badge">Temporal Attention</span>
               </div>
             </div>
             <div class="techs__group">
               <h3>Computer Vision</h3>
               <div class="badges">
-                <span class="badge">HF RTMW</span>
-                <span class="badge">RTMPose</span>
-                <span class="badge">OpenCV</span>
-                <span class="badge">Landmark Streams</span>
+                <span class="badge">MediaPipe Holistic</span>
+                <span class="badge">Hand Landmarks</span>
+                <span class="badge">16-frame Sequences</span>
+                <span class="badge">AUTSL</span>
               </div>
             </div>
             <div class="techs__group">
               <h3>Frontend</h3>
               <div class="badges">
-                <span class="badge">Browser UI</span>
+                <span class="badge">HTML</span>
                 <span class="badge">JavaScript</span>
                 <span class="badge">CSS</span>
                 <span class="badge">Three.js</span>
               </div>
             </div>
             <div class="techs__group">
-              <h3>Data &amp; Storage</h3>
+              <h3>Model &amp; Animation Assets</h3>
               <div class="badges">
-                <span class="badge">SQLite Fallback</span>
-                <span class="badge">PostgreSQL / Supabase</span>
-                <span class="badge">Git LFS</span>
+                <span class="badge">Keras Model</span>
+                <span class="badge">JSON Landmarks</span>
+                <span class="badge">BVH</span>
+                <span class="badge">GLB</span>
               </div>
             </div>
             <div class="techs__group">
-              <h3>Deployment Target</h3>
+              <h3>Runtime</h3>
               <div class="badges">
                 <span class="badge">Local Runtime</span>
-                <span class="badge">Windows-ready</span>
                 <span class="badge">CPU Inference</span>
+                <span class="badge">Docker Compose</span>
+                <span class="badge">Browser WASM</span>
               </div>
             </div>
           </div>
