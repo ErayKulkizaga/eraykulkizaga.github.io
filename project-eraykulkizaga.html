@@ -12,20 +12,20 @@
     <meta property="og:title" content="eraykulkizaga.com — Portfolio Website" />
     <meta property="og:description" content="Minimalist, performant portfolio built from scratch with pure HTML/CSS/JS." />
     <meta property="og:url" content="https://www.eraykulkizaga.com/project-eraykulkizaga.html" />
-    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png" />
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Eray Kulkizaga Software Engineer portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="eraykulkizaga.com — Portfolio Website" />
     <meta name="twitter:description" content="A dependency-free, responsive and accessible portfolio built with semantic HTML, modern CSS and focused JavaScript." />
-    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png" />
-    <meta name="theme-color" content="#f5f5f7" />
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
+    <meta name="theme-color" content="#08080a" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260721-2" />
+    <link rel="stylesheet" href="style.css?v=20260721-4" />
     <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
@@ -143,13 +143,13 @@
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">⟳</span>
-              <p class="feature-card__title">Focused Motion</p>
-              <p class="feature-card__desc">Subtle reveal transitions support the content hierarchy and are disabled automatically for users who prefer reduced motion.</p>
+              <p class="feature-card__title">System Motion</p>
+              <p class="feature-card__desc">The opening signature, developer console, runtime signals, and reveal transitions create motion without a video or third-party visual.</p>
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">◫</span>
               <p class="feature-card__title">Certificate Slider</p>
-              <p class="feature-card__desc">Auto-advancing image carousel inside each certificate card. Pixel-based JS translation (not %-based) ensures exact alignment across all card widths.</p>
+              <p class="feature-card__desc">User-controlled certificate previews use pixel-based translation to stay aligned across every card width.</p>
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">☰</span>
@@ -192,7 +192,7 @@
                   <li><span><strong>Prefers-reduced-motion</strong> respected — all animations and transitions are disabled via a single media query block.</span></li>
                   <li><span><strong>Semantic HTML</strong> throughout — <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">header, main, section, article, footer, nav</code> used appropriately.</span></li>
                   <li><span><strong>Mobile-first responsive</strong> — layouts adapt from 1-column on phones to 3–4 columns on wide screens using CSS Grid breakpoints.</span></li>
-                  <li><span><strong>Minimal paint budget</strong> — backdrop-filter only on the sticky header, box-shadow only on hover, no heavy gradients in the critical path.</span></li>
+                  <li><span><strong>Purposeful visual system</strong> — alternating light and dark scenes, restrained gradients, and code-native motion create hierarchy without an animation library.</span></li>
                   <li><span><strong>Deployed on GitHub Pages</strong> with the custom domain <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">www.eraykulkizaga.com</code> and a CNAME record.</span></li>
                 </ul>
               </div>
@@ -286,7 +286,7 @@
                 <ul class="impl-list">
                   <li><span><strong>style.css</strong> — Single shared stylesheet across all pages</span></li>
                   <li><span><strong>script.js</strong> — Single shared JS file, feature-detected at runtime</span></li>
-                  <li><span><strong>images/</strong> — All static assets (hero GIF, logos, certificates, SignTurk product media)</span></li>
+                  <li><span><strong>images/</strong> — Logos, credentials, social artwork, and SignTurk product media</span></li>
                   <li><span><strong>manifest.webmanifest</strong> — PWA manifest for add-to-home-screen</span></li>
                   <li><span><strong>sitemap.xml</strong> — All page URLs for search engines</span></li>
                   <li><span><strong>CNAME</strong> — Custom domain record for GitHub Pages</span></li>
@@ -299,13 +299,16 @@
 
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+    <footer id="footer" class="site-footer">
+      <div class="footer-aura" aria-hidden="true"></div>
+      <div class="container footer-shell">
+        <div class="footer-heading"><p class="footer-kicker">End of page. Start of a conversation.</p><p class="footer-title">Let’s engineer<br>what’s next.</p></div>
+        <a class="footer-launch" href="mailto:eraykulkizaga@hotmail.com"><span>Start a project</span><b aria-hidden="true">↗</b></a>
+        <div class="footer-command" role="group" aria-label="Developer connection command"><span>eray@portfolio:~</span><code>$ connect --worldwide</code><i aria-hidden="true"></i></div>
+        <div class="footer-meta"><p>© <span id="year"></span> Eray Kulkızaga · Türkiye → Worldwide</p><nav aria-label="Footer navigation"><a href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="privacy.html">Privacy</a><a href="index.html#hero">Back to top ↑</a></nav></div>
       </div>
     </footer>
 
-    <script src="script.js?v=20260721-2" defer></script>
+    <script src="script.js?v=20260721-4" defer></script>
   </body>
 </html>

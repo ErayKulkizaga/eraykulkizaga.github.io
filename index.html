@@ -13,26 +13,32 @@
     <meta property="og:title" content="Eray Kulkizaga — Software Engineer">
     <meta property="og:description" content="Real-time AI, computer vision, and backend systems — engineered from model training to deployment.">
     <meta property="og:url" content="https://www.eraykulkizaga.com/">
-    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png">
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Eray Kulkizaga — Software Engineer portfolio">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Eray Kulkizaga — Software Engineer">
     <meta name="twitter:description" content="Real-time AI, computer vision, and backend systems.">
-    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png">
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png">
 
-    <meta name="theme-color" content="#f5f5f7">
+    <meta name="theme-color" content="#08080a">
     <link rel="apple-touch-icon" href="images/main-192.png">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="icon" href="images/main.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=20260721-2">
+    <link rel="stylesheet" href="style.css?v=20260721-4">
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
+    <div class="intro-screen" aria-hidden="true">
+      <div class="intro-screen__mark"><span>E</span><span>R</span><span>A</span><span>Y</span></div>
+      <div class="intro-screen__track"><span></span></div>
+      <p>software · systems · intelligence</p>
+    </div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
@@ -70,22 +76,35 @@
       <section id="hero" class="section hero">
         <div class="container hero__inner">
           <div class="hero__content reveal">
-            <p class="eyebrow">Software Engineer · AI/ML · Computer Vision</p>
-            <h1 class="hero__title">Eray Kulkızaga</h1>
-            <p class="hero__lead">I build real-time AI products and backend systems — from model training and landmark extraction to low-latency FastAPI and WebSocket deployment.</p>
+            <p class="hero__status"><span aria-hidden="true"></span> Software Engineer · Available worldwide</p>
+            <h1 class="hero__title">Software that <em>sees.</em><br>Systems that respond.</h1>
+            <p class="hero__lead">I’m Eray Kulkızaga. I turn computer vision models into reliable, low-latency products.</p>
             <div class="hero__cta">
-              <a href="#projects" class="btn btn--primary">View my work</a>
-              <a href="documents/eray-kulkizaga-cv.pdf" class="btn" target="_blank" rel="noopener noreferrer">Download CV</a>
+              <a href="#projects" class="btn btn--primary btn--light">Explore selected work</a>
+              <a href="documents/eray-kulkizaga-cv.pdf" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View CV</a>
             </div>
-            <p class="availability-note">Based in Türkiye · Open to worldwide remote work, Türkiye-based onsite roles, and international relocation.</p>
+            <p class="availability-note">Türkiye → worldwide remote · onsite · relocation</p>
           </div>
-          <figure class="hero__embed reveal">
-            <div class="embed__frame-wrapper">
-              <img src="images/hero.gif" alt="Animated robot face representing human-centred AI systems" class="hero__gif" loading="eager" decoding="async" width="622" height="384">
+
+          <div class="hero-console reveal" role="region" aria-label="Animated developer profile console">
+            <div class="hero-console__glow" aria-hidden="true"></div>
+            <div class="hero-console__chrome">
+              <span class="console-dot console-dot--red"></span><span class="console-dot console-dot--amber"></span><span class="console-dot console-dot--green"></span>
+              <span class="hero-console__path">~/eray/systems</span>
             </div>
-            <figcaption class="sr-only">Human-centred artificial intelligence illustration.</figcaption>
-          </figure>
+            <pre class="hero-console__code"><code><span class="code-line"><b>const</b> engineer = {</span>
+<span class="code-line">  focus: [<i>"AI/ML"</i>, <i>"vision"</i>, <i>"backend"</i>],</span>
+<span class="code-line">  method: <i>"build → measure → ship"</i>,</span>
+<span class="code-line">  location: <i>"Türkiye → worldwide"</i></span>
+<span class="code-line">};</span>
+<span class="code-line code-line--command"><b>await</b> engineer.create(<i>"useful software"</i>);<span class="code-cursor" aria-hidden="true"></span></span></code></pre>
+            <div class="hero-console__signals" aria-hidden="true">
+              <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
+            </div>
+            <div class="hero-console__footer"><span><i class="live-dot" aria-hidden="true"></i> systems.online</span><span>product-minded engineering</span></div>
+          </div>
         </div>
+        <a class="hero__scroll" href="#projects" aria-label="Scroll to selected work"><span></span>Selected work</a>
       </section>
 
       <section id="projects" class="section section--tinted projects">
@@ -109,25 +128,35 @@
           </div>
           <div class="projects__grid">
             <article class="card card--featured reveal">
-              <div class="card__eyebrow">Award-winning graduation project · 2025–2026</div>
-              <h3 class="card__title">SignTurk</h3>
-              <p class="card__desc">Real-time Turkish Sign Language recognition and animation with a 179-class BiLSTM runtime, MediaPipe landmarks, FastAPI, WebSocket, and Three.js.</p>
-              <ul class="card__metrics" aria-label="SignTurk highlights">
-                <li><strong>85.65%</strong> selected runtime Top-1</li>
-                <li><strong>94.09%</strong> offline RTMW ensemble Top-1</li>
-              </ul>
-              <div class="card__actions">
-                <a href="project-sign-language.html" class="card__link">Case study</a>
-                <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+              <div class="card__media"><img src="images/signturk-homepage.webp" alt="SignTurk Turkish Sign Language platform interface" loading="lazy" decoding="async" width="1919" height="1078"></div>
+              <div class="card__body">
+                <div class="card__eyebrow">Award-winning graduation project · 2025–2026</div>
+                <h3 class="card__title">SignTurk</h3>
+                <p class="card__desc">Real-time Turkish Sign Language recognition, animation, and a deployment-first model pipeline.</p>
+                <ul class="card__metrics" aria-label="SignTurk highlights">
+                  <li><strong>179</strong> runtime classes</li>
+                  <li><strong>94.09%</strong> offline RTMW Top-1</li>
+                </ul>
+                <div class="card__actions">
+                  <a href="project-sign-language.html" class="card__link">Case study</a>
+                  <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+                </div>
               </div>
             </article>
             <article class="card reveal">
-              <div class="card__eyebrow">Portfolio engineering</div>
-              <h3 class="card__title">eraykulkizaga.com</h3>
-              <p class="card__desc">A dependency-free, responsive portfolio built with semantic HTML, modern CSS, and focused JavaScript interactions.</p>
-              <div class="card__actions">
-                <a href="project-eraykulkizaga.html" class="card__link">Case study</a>
-                <a href="https://github.com/ErayKulkizaga/eraykulkizaga.github.io" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+              <div class="card__media card__media--code" aria-hidden="true">
+                <span class="mini-code"><b>01</b><i>design</i> clarity;</span>
+                <span class="mini-code"><b>02</b><i>build</i> semantic;</span>
+                <span class="mini-code"><b>03</b><i>ship</i> fast;</span>
+              </div>
+              <div class="card__body">
+                <div class="card__eyebrow">Portfolio engineering</div>
+                <h3 class="card__title">eraykulkizaga.com</h3>
+                <p class="card__desc">A dependency-free portfolio shaped with semantic HTML, expressive CSS, and focused JavaScript.</p>
+                <div class="card__actions">
+                  <a href="project-eraykulkizaga.html" class="card__link">Case study</a>
+                  <a href="https://github.com/ErayKulkizaga/eraykulkizaga.github.io" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+                </div>
               </div>
             </article>
           </div>
@@ -191,7 +220,7 @@
         </div>
       </section>
 
-      <section id="about" class="section section--tinted about">
+      <section id="about" class="section section--dark about">
         <div class="container about__grid">
           <div class="about__content reveal">
             <p class="eyebrow">Profile</p>
@@ -211,7 +240,7 @@
         </div>
       </section>
 
-      <section id="skills" class="section skills">
+      <section id="skills" class="section section--blue skills">
         <div class="container">
           <div class="section__head reveal">
             <p class="eyebrow">Engineering toolkit</p>
@@ -305,10 +334,19 @@
       </div>
     </div>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+    <footer id="footer" class="site-footer">
+      <div class="footer-aura" aria-hidden="true"></div>
+      <div class="container footer-shell">
+        <div class="footer-heading">
+          <p class="footer-kicker">End of page. Start of a conversation.</p>
+          <p class="footer-title">Let’s engineer<br>what’s next.</p>
+        </div>
+        <a class="footer-launch" href="mailto:eraykulkizaga@hotmail.com"><span>Start a project</span><b aria-hidden="true">↗</b></a>
+        <div class="footer-command" role="group" aria-label="Developer connection command"><span>eray@portfolio:~</span><code>$ connect --worldwide</code><i aria-hidden="true"></i></div>
+        <div class="footer-meta">
+          <p>© <span id="year"></span> Eray Kulkızaga · Türkiye → Worldwide</p>
+          <nav aria-label="Footer navigation"><a href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="privacy.html">Privacy</a><a href="#hero">Back to top ↑</a></nav>
+        </div>
       </div>
     </footer>
 
@@ -340,6 +378,6 @@
       "url": "https://www.eraykulkizaga.com/"
     }
     </script>
-    <script src="script.js?v=20260721-2" defer></script>
+    <script src="script.js?v=20260721-4" defer></script>
   </body>
 </html>
