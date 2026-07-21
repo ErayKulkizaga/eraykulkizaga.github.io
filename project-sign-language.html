@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260721-7" />
+    <link rel="stylesheet" href="style.css?v=20260721-8" />
     <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
@@ -69,6 +69,42 @@
       .proj-gallery .project-image-button { display: grid; place-items: center; aspect-ratio: 16 / 10; background: #f8fafc; }
       .proj-gallery img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: #f8fafc; }
       .proj-gallery figcaption { padding: 12px 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .product-tour { overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: #fff; box-shadow: 0 18px 50px rgba(15,23,42,.07); }
+      .product-tour__tabs { display: flex; gap: 4px; overflow-x: auto; padding: 10px; border-bottom: 1px solid var(--border); scrollbar-width: none; }
+      .product-tour__tabs::-webkit-scrollbar { display: none; }
+      .product-tour__tab { flex: 0 0 auto; min-height: 40px; padding: 9px 14px; border: 0; border-radius: 10px; background: transparent; color: #62626a; font: 650 12px/1.2 Inter,sans-serif; cursor: pointer; transition: background .25s ease,color .25s ease; }
+      .product-tour__tab:hover { background: #f3f4f6; color: #111116; }
+      .product-tour__tab[aria-selected="true"] { background: #111116; color: #fff; }
+      .product-tour__tab:focus-visible { outline: 3px solid rgba(8,120,255,.28); outline-offset: 1px; }
+      .product-tour__stage { min-width: 0; }
+      .product-tour__media { display: grid; place-items: center; aspect-ratio: 16 / 8.8; overflow: hidden; background: linear-gradient(135deg,#f7f8fa,#eef1f5); }
+      .product-tour__media img { width: 100%; height: 100%; object-fit: contain; transition: opacity .22s ease,transform .42s cubic-bezier(.2,.8,.2,1); }
+      .product-tour.is-changing .product-tour__media img { opacity: .18; transform: translateY(8px) scale(.985); }
+      .product-tour__caption { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px; align-items: end; padding: 22px 24px 24px; border-top: 1px solid var(--border); }
+      .product-tour__index { display: block; margin-bottom: 7px; color: var(--primary); font: 700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .12em; }
+      .product-tour__caption h3 { margin: 0; font-size: 21px; letter-spacing: -.025em; }
+      .product-tour__caption p { max-width: 760px; margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .product-tour__nav { display: flex; gap: 8px; }
+      .product-tour__nav button { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 50%; background: #fff; color: #111116; font-size: 18px; cursor: pointer; transition: background .2s ease,border-color .2s ease,transform .2s ease; }
+      .product-tour__nav button:hover { border-color: #aeb0b8; background: #f5f6f8; transform: translateY(-2px); }
+      .model-lab { overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: #fff; }
+      .model-lab__switch { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px; border-bottom: 1px solid var(--border); background: #f6f7f9; }
+      .model-lab__switch button { min-height: 46px; border: 0; border-radius: 12px; background: transparent; color: #67676f; font: 700 13px/1.2 Inter,sans-serif; cursor: pointer; }
+      .model-lab__switch button[aria-selected="true"] { background: #fff; color: #111116; box-shadow: 0 3px 14px rgba(15,23,42,.08); }
+      .model-lab__panel { padding: clamp(24px,4vw,42px); }
+      .model-lab__panel[hidden] { display: none; }
+      .model-lab__panel.is-entering { animation: model-panel-in .42s cubic-bezier(.2,.8,.2,1) both; }
+      .model-lab__headline { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 28px; align-items: start; }
+      .model-lab__eyebrow { margin: 0 0 9px; color: var(--primary); font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+      .model-lab__headline h3 { margin: 0; font-size: clamp(24px,3vw,36px); letter-spacing: -.04em; }
+      .model-lab__headline p { max-width: 690px; margin: 13px 0 0; color: var(--muted); line-height: 1.7; }
+      .model-lab__score { color: #111116; font-size: clamp(42px,6vw,72px); font-weight: 780; line-height: .9; letter-spacing: -.06em; text-align: right; }
+      .model-lab__score small { display: block; margin-top: 9px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+      .model-lab__facts { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-top: 32px; }
+      .model-lab__fact { padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: #fafafa; }
+      .model-lab__fact strong { display: block; font-size: 18px; letter-spacing: -.025em; }
+      .model-lab__fact span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+      @keyframes model-panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
       .contribution-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.75; }
       .contribution-list li + li { margin-top: 8px; }
       .model-note { margin: 0 0 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
@@ -82,6 +118,7 @@
         .proj-gallery { grid-template-columns: 1fr; }
         .proj-hero__actions { flex-direction: column; }
         .proj-hero__actions .btn { width: 100%; justify-content: center; }
+        .product-tour { border-radius: 16px; }.product-tour__tabs { padding: 8px; }.product-tour__media { aspect-ratio: 16 / 10; }.product-tour__caption { grid-template-columns: 1fr; gap: 18px; padding: 18px; }.product-tour__nav { justify-content: flex-end; }.model-lab__switch { grid-template-columns: 1fr; }.model-lab__headline { grid-template-columns: 1fr; }.model-lab__score { text-align: left; }.model-lab__facts { grid-template-columns: 1fr 1fr; }
       }
     </style>
   </head>
@@ -239,43 +276,31 @@
         <div class="container">
           <h2 class="proj-section-title reveal">Product Experience</h2>
           <p class="model-note reveal">These screens document the current product experience included in the public repository: live translation, approval-driven sentence building, avatar playback, dictionary, history, settings, and administrator views.</p>
-          <div class="proj-gallery">
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-live-translation.webp" aria-label="Open the SignTurk live translation screen">
-                <img src="images/signturk-live-translation.webp" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" width="1908" height="831" />
+          <div class="product-tour reveal" data-product-tour>
+            <div class="product-tour__tabs" role="tablist" aria-label="SignTurk product screens">
+              <button id="tour-tab-live" class="product-tour__tab" type="button" role="tab" aria-selected="true" aria-controls="product-tour-panel" data-tour-index="0" data-image-src="images/signturk-live-translation.webp" data-image-alt="SignTurk live translation screen with camera inference and prediction panels" data-title="Live Translation" data-copy="Authenticated webcam inference, ranked predictions, approval controls, and live diagnostics in one focused workspace.">Live Translation</button>
+              <button id="tour-tab-recognition" class="product-tour__tab" type="button" role="tab" aria-selected="false" aria-controls="product-tour-panel" data-tour-index="1" data-image-src="images/signturk-recognition.webp" data-image-alt="SignTurk recognition experience showing a detected Turkish sign" data-title="Recognition" data-copy="A clear result state presents the detected sign, confidence, and visual landmark feedback without obscuring the camera view.">Recognition</button>
+              <button id="tour-tab-avatar" class="product-tour__tab" type="button" role="tab" aria-selected="false" aria-controls="product-tour-panel" data-tour-index="2" data-image-src="images/signturk-avatar-studio.webp" data-image-alt="SignTurk avatar studio for sign language visualization" data-title="Avatar Studio" data-copy="Searchable sign vocabulary connects local landmark sequences to an interactive Three.js avatar experience.">Avatar Studio</button>
+              <button id="tour-tab-animation" class="product-tour__tab" type="button" role="tab" aria-selected="false" aria-controls="product-tour-panel" data-tour-index="3" data-image-src="images/signturk-3d-animation.webp" data-image-alt="SignTurk 3D sign animation interface" data-title="3D Animation" data-copy="Smoothed JSON and BVH motion assets provide repeatable browser-based sign playback and word-to-word transitions.">3D Animation</button>
+              <button id="tour-tab-admin" class="product-tour__tab" type="button" role="tab" aria-selected="false" aria-controls="product-tour-panel" data-tour-index="4" data-image-src="images/signturk-admin-overview.webp" data-image-alt="SignTurk administration overview with activity and infrastructure status" data-title="Admin Overview" data-copy="Role-protected administration surfaces users, activity, model readiness, and infrastructure status without public demo credentials.">Admin</button>
+              <button id="tour-tab-dictionary" class="product-tour__tab" type="button" role="tab" aria-selected="false" aria-controls="product-tour-panel" data-tour-index="5" data-image-src="images/signturk-dictionary.webp" data-image-alt="SignTurk Turkish Sign Language dictionary screen" data-title="Sign Dictionary" data-copy="A searchable class registry links Turkish and English labels with the avatar and animation catalogue.">Dictionary</button>
+            </div>
+            <div id="product-tour-panel" class="product-tour__stage" role="tabpanel" aria-labelledby="tour-tab-live">
+              <button class="project-image-button product-tour__media" type="button" data-tour-image-button data-image-modal="images/signturk-live-translation.webp" aria-label="Open the Live Translation screen">
+                <img data-tour-image src="images/signturk-live-translation.webp" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" width="1908" height="831" />
               </button>
-              <figcaption>Live Translation — webcam inference, confidence, top predictions, and diagnostics.</figcaption>
-            </figure>
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-recognition.webp" aria-label="Open the SignTurk recognition screen">
-                <img src="images/signturk-recognition.webp" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" width="1906" height="923" />
-              </button>
-              <figcaption>Recognition — real-time sign results presented as a focused product experience.</figcaption>
-            </figure>
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-avatar-studio.webp" aria-label="Open the SignTurk avatar studio screen">
-                <img src="images/signturk-avatar-studio.webp" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" width="1911" height="979" />
-              </button>
-              <figcaption>Avatar Studio — interactive sign visualization built on landmark animation data.</figcaption>
-            </figure>
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-3d-animation.webp" aria-label="Open the SignTurk 3D animation screen">
-                <img src="images/signturk-3d-animation.webp" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" width="1911" height="983" />
-              </button>
-              <figcaption>3D Animation — smoothed motion playback for clearer sign demonstrations.</figcaption>
-            </figure>
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-admin-overview.webp" aria-label="Open the SignTurk administration overview screen">
-                <img src="images/signturk-admin-overview.webp" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" width="1911" height="980" />
-              </button>
-              <figcaption>Admin Overview — platform activity, user intelligence, and infrastructure readiness.</figcaption>
-            </figure>
-            <figure class="reveal">
-              <button class="project-image-button" type="button" data-image-modal="images/signturk-dictionary.webp" aria-label="Open the SignTurk dictionary screen">
-                <img src="images/signturk-dictionary.webp" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" width="1911" height="982" />
-              </button>
-              <figcaption>Dictionary — searchable signs connected to the avatar and animation experience.</figcaption>
-            </figure>
+              <div class="product-tour__caption">
+                <div>
+                  <span class="product-tour__index" data-tour-count>01 / 06</span>
+                  <h3 data-tour-title>Live Translation</h3>
+                  <p data-tour-copy>Authenticated webcam inference, ranked predictions, approval controls, and live diagnostics in one focused workspace.</p>
+                </div>
+                <div class="product-tour__nav" aria-label="Product tour navigation">
+                  <button type="button" data-tour-prev aria-label="Previous product screen">←</button>
+                  <button type="button" data-tour-next aria-label="Next product screen">→</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -363,18 +388,44 @@
       <section class="section" style="padding-top:0">
         <div class="container">
           <h2 class="proj-section-title reveal">Model Selection &amp; Trade-off</h2>
-          <div class="proj-card reveal">
-            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk selected the 85.65% Top-1 model because it matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably. The 94.17% RTMW ensemble remained an offline research result.</p>
-            <table class="data-table">
-              <thead><tr><th>Model</th><th>Status and decision</th></tr></thead>
-              <tbody>
-                <tr><td><strong>179-class BiLSTM + temporal attention</strong></td><td>Selected product model; 16 frames, 156 features, and 85.65% reported Top-1 accuracy. It aligned with the existing MediaPipe/WebSocket pipeline.</td></tr>
-                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Achieved 94.17% Top-1 in offline evaluation, but was not integrated because it required a different extractor and multi-stream runtime.</td></tr>
-              </tbody>
-            </table>
-            <p class="callout" style="margin:18px 0 0;">
-              Engineering decision: optimize for a working end-to-end product contract, then treat higher-accuracy model migration as a separate integration task with explicit preprocessing and regression tests.
-            </p>
+          <div class="model-lab reveal" data-model-lab>
+            <div class="model-lab__switch" role="tablist" aria-label="Compare SignTurk recognition models">
+              <button id="model-tab-live" type="button" role="tab" aria-selected="true" aria-controls="model-panel-live" data-model-target="model-panel-live">Selected live model</button>
+              <button id="model-tab-research" type="button" role="tab" aria-selected="false" aria-controls="model-panel-research" data-model-target="model-panel-research">Higher-accuracy research model</button>
+            </div>
+            <div id="model-panel-live" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-live">
+              <div class="model-lab__headline">
+                <div>
+                  <p class="model-lab__eyebrow">Integrated runtime</p>
+                  <h3>BiLSTM + temporal attention</h3>
+                  <p>Selected because its MediaPipe feature contract fits the authenticated webcam/WebSocket pipeline and the complete product flow reliably.</p>
+                </div>
+                <div class="model-lab__score">85.65%<small>Top-1</small></div>
+              </div>
+              <div class="model-lab__facts">
+                <div class="model-lab__fact"><strong>179</strong><span>runtime classes</span></div>
+                <div class="model-lab__fact"><strong>16</strong><span>frames per sequence</span></div>
+                <div class="model-lab__fact"><strong>156</strong><span>features per frame</span></div>
+                <div class="model-lab__fact"><strong>95.59%</strong><span>Top-5 accuracy</span></div>
+              </div>
+            </div>
+            <div id="model-panel-research" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-research" hidden>
+              <div class="model-lab__headline">
+                <div>
+                  <p class="model-lab__eyebrow">Offline research track</p>
+                  <h3>RTMW multi-stream ensemble</h3>
+                  <p>Reached the higher offline score, but requires a different whole-body extractor, 32-frame input, and multi-stream runtime rather than a drop-in model swap.</p>
+                </div>
+                <div class="model-lab__score">94.17%<small>Top-1</small></div>
+              </div>
+              <div class="model-lab__facts">
+                <div class="model-lab__fact"><strong>226</strong><span>AUTSL classes</span></div>
+                <div class="model-lab__fact"><strong>32</strong><span>RGB frames</span></div>
+                <div class="model-lab__fact"><strong>4</strong><span>temporal streams</span></div>
+                <div class="model-lab__fact"><strong>Offline</strong><span>research role</span></div>
+              </div>
+            </div>
+            <p class="callout" style="margin:0 24px 24px;">Engineering decision: ship the model that satisfies the complete product contract; migrate the higher-accuracy research model only with its extractor and regression pipeline.</p>
           </div>
         </div>
       </section>
@@ -446,7 +497,7 @@
                 <span class="badge">Local Runtime</span>
                 <span class="badge">CPU Inference</span>
                 <span class="badge">Docker Compose</span>
-                <span class="badge">Browser WASM</span>
+                <span class="badge">Authenticated WebSocket</span>
               </div>
             </div>
           </div>
@@ -484,6 +535,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260721-7" defer></script>
+    <script src="script.js?v=20260721-8" defer></script>
   </body>
 </html>

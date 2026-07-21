@@ -104,6 +104,100 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => goTo(current, false), { passive: true });
   });
 
+  document.querySelectorAll('[data-product-tour]').forEach((tour) => {
+    const tabs = Array.from(tour.querySelectorAll('[data-tour-index]'));
+    const panel = tour.querySelector('[role="tabpanel"]');
+    const imageButton = tour.querySelector('[data-tour-image-button]');
+    const image = tour.querySelector('[data-tour-image]');
+    const title = tour.querySelector('[data-tour-title]');
+    const copy = tour.querySelector('[data-tour-copy]');
+    const count = tour.querySelector('[data-tour-count]');
+    const previous = tour.querySelector('[data-tour-prev]');
+    const next = tour.querySelector('[data-tour-next]');
+    if (!tabs.length || !panel || !imageButton || !image || !title || !copy || !count) return;
+
+    let current = 0;
+    let transitionTimer = 0;
+    tabs.forEach((tab) => {
+      const preload = new Image();
+      preload.src = tab.dataset.imageSrc || '';
+    });
+
+    const selectScreen = (index, moveFocus = false) => {
+      const normalizedIndex = (index + tabs.length) % tabs.length;
+      const tab = tabs[normalizedIndex];
+      if (!tab) return;
+      current = normalizedIndex;
+      tabs.forEach((item, itemIndex) => {
+        item.setAttribute('aria-selected', String(itemIndex === current));
+        item.tabIndex = itemIndex === current ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', tab.id);
+      window.clearTimeout(transitionTimer);
+      tour.classList.add('is-changing');
+      transitionTimer = window.setTimeout(() => {
+        const source = tab.dataset.imageSrc || '';
+        const alt = tab.dataset.imageAlt || '';
+        image.src = source;
+        image.alt = alt;
+        imageButton.setAttribute('data-image-modal', source);
+        imageButton.setAttribute('aria-label', `Open the ${tab.dataset.title || 'product'} screen`);
+        title.textContent = tab.dataset.title || '';
+        copy.textContent = tab.dataset.copy || '';
+        count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(tabs.length).padStart(2, '0')}`;
+        requestAnimationFrame(() => tour.classList.remove('is-changing'));
+      }, 130);
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.tabIndex = index === 0 ? 0 : -1;
+      tab.addEventListener('click', () => selectScreen(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === 'Home') selectScreen(0, true);
+        else if (event.key === 'End') selectScreen(tabs.length - 1, true);
+        else selectScreen(index + (event.key === 'ArrowRight' ? 1 : -1), true);
+      });
+    });
+    previous?.addEventListener('click', () => selectScreen(current - 1));
+    next?.addEventListener('click', () => selectScreen(current + 1));
+  });
+
+  document.querySelectorAll('[data-model-lab]').forEach((lab) => {
+    const tabs = Array.from(lab.querySelectorAll('[data-model-target]'));
+    if (!tabs.length) return;
+    const selectModel = (tab, moveFocus = false) => {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(item.dataset.modelTarget || '');
+        if (!panel) return;
+        panel.hidden = !selected;
+        panel.classList.remove('is-entering');
+        if (selected) requestAnimationFrame(() => panel.classList.add('is-entering'));
+      });
+      if (moveFocus) tab.focus();
+    };
+    tabs.forEach((tab, index) => {
+      tab.tabIndex = index === 0 ? 0 : -1;
+      tab.addEventListener('click', () => selectModel(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'Home'
+          ? 0
+          : event.key === 'End'
+            ? tabs.length - 1
+            : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        selectModel(tabs[nextIndex], true);
+      });
+    });
+  });
+
   const modal = document.getElementById('img-modal');
   const modalImage = modal?.querySelector('img');
   const modalContent = modal?.querySelector('.img-modal__content');
