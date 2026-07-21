@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260721-5" />
+    <link rel="stylesheet" href="style.css?v=20260721-6" />
     <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
@@ -341,12 +341,12 @@
         <div class="container">
           <h2 class="proj-section-title reveal">Model Selection &amp; Trade-off</h2>
           <div class="proj-card reveal">
-            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk selected the 85.65% Top-1 model because it matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably. The 94.09% RTMW ensemble remained an offline research result.</p>
+            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk selected the 85.65% Top-1 model because it matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably. The 94.17% RTMW ensemble remained an offline research result.</p>
             <table class="data-table">
               <thead><tr><th>Model</th><th>Status and decision</th></tr></thead>
               <tbody>
                 <tr><td><strong>179-class BiLSTM + temporal attention</strong></td><td>Selected product model; 16 frames, 156 features, and 85.65% reported Top-1 accuracy. It aligned with the existing MediaPipe/WebSocket pipeline.</td></tr>
-                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Achieved 94.09% Top-1 in offline evaluation, but was not integrated because it required a different extractor and multi-stream runtime.</td></tr>
+                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Achieved 94.17% Top-1 in offline evaluation, but was not integrated because it required a different extractor and multi-stream runtime.</td></tr>
               </tbody>
             </table>
             <p class="callout" style="margin:18px 0 0;">
@@ -429,6 +429,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260721-5" defer></script>
+    <script src="script.js?v=20260721-6" defer></script>
   </body>
 </html>
