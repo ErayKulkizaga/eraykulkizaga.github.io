@@ -13,7 +13,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; overflow-x: clip; }
 body {
   margin: 0;
   background: var(--bg);
@@ -23,6 +23,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
 }
 body.nav-open, body.modal-open { overflow: hidden; }
 img { max-width: 100%; }
@@ -30,7 +31,7 @@ a { color: var(--primary); }
 button, input, textarea { font: inherit; }
 button { color: inherit; }
 
-.container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+.container { width: min(var(--max), calc(100% - 40px - env(safe-area-inset-left) - env(safe-area-inset-right))); margin: 0 auto; }
 .section { padding: 112px 0; position: relative; }
 .section--tinted { background: var(--surface); }
 .section__head { max-width: 760px; margin-bottom: 44px; }
@@ -74,8 +75,8 @@ button { color: inherit; }
 .mobile-nav { position: fixed; inset: 0; z-index: 70; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s ease, visibility .25s ease; }
 .mobile-nav.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
 .mobile-nav__backdrop { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: rgba(0, 0, 0, .22); }
-.mobile-nav__panel { position: absolute; top: 64px; left: 0; right: 0; display: flex; flex-direction: column; background: rgba(255, 255, 255, .98); box-shadow: 0 24px 48px rgba(0, 0, 0, .14); }
-.mobile-nav__panel a { display: flex; align-items: center; min-height: 52px; padding: 0 24px; border-bottom: 1px solid var(--border); color: var(--text); text-decoration: none; }
+.mobile-nav__panel { position: absolute; top: 64px; left: 0; right: 0; max-height: calc(100dvh - 64px); display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; background: rgba(255, 255, 255, .98); box-shadow: 0 24px 48px rgba(0, 0, 0, .14); -webkit-overflow-scrolling: touch; }
+.mobile-nav__panel a { display: flex; align-items: center; min-height: 52px; padding: 0 max(24px, env(safe-area-inset-left)); border-bottom: 1px solid var(--border); color: var(--text); text-decoration: none; }
 .mobile-nav__panel a:last-child { border-bottom: 0; }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: #fff; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
@@ -176,6 +177,9 @@ button { color: inherit; }
 .techs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .techs__group { padding: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); }
 .techs__group h3 { margin: 0 0 10px; font-size: 16px; }
+.proj-two-col > *, .proj-three-col > *, .proj-card { min-width: 0; }
+.data-table { max-width: 100%; table-layout: fixed; }
+.data-table th, .data-table td { overflow-wrap: anywhere; word-break: break-word; }
 .list { padding-left: 20px; }
 .link { font-weight: 600; }
 
@@ -205,19 +209,19 @@ button { color: inherit; }
   .experience-card { grid-template-columns: 130px 1fr; }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 960px) {
   .section { padding: 82px 0; }
   .nav { display: none; }
   .nav-toggle { display: block; }
-  .hero { min-height: auto; padding-top: 74px; }
-  .hero__inner { display: flex; flex-direction: column-reverse; gap: 18px; text-align: center; }
-  .hero__embed { width: min(520px, 100%); }
+  .hero { min-height: auto; padding-top: 68px; }
+  .hero__inner { display: flex; flex-direction: column; gap: 30px; text-align: center; }
+  .hero__embed { width: min(460px, 100%); margin: 4px auto 0; }
   .hero__cta { justify-content: center; }
   .availability-note { margin-left: auto; margin-right: auto; }
   .award-feature { grid-template-columns: 1fr; }
   .projects__grid, .about__grid { grid-template-columns: 1fr; }
   .experience-card { grid-template-columns: 1fr; gap: 22px; }
-  .experience-card__logo { width: 160px; }
+  .experience-card__logo { width: min(190px, 100%); }
   .experience-card__heading { flex-direction: column; gap: 6px; }
   .experience-card__date { text-align: left; white-space: normal; }
   .skills-grid { grid-template-columns: 1fr; }
@@ -225,14 +229,14 @@ button { color: inherit; }
 }
 
 @media (max-width: 640px) {
-  .container { width: min(100% - 28px, var(--max)); }
-  .section { padding: 64px 0; }
+  .container { width: min(calc(100% - 28px - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--max)); }
+  .section { padding: 56px 0; }
   .section__head h2, .about__content h2 { font-size: 38px; }
   .section__head { margin-bottom: 28px; }
   .hero { padding-top: 44px; }
-  .hero__title { font-size: 50px; }
+  .hero__title { font-size: clamp(42px, 13vw, 50px); }
   .hero__lead { font-size: 17px; }
-  .hero__gif { max-height: 250px; }
+  .hero__gif { max-height: 190px; }
   .award-feature, .card, .experience-card { padding: 22px; border-radius: 20px; }
   .projects__head { margin-top: 64px; }
   .profile-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -241,6 +245,22 @@ button { color: inherit; }
   .techs__grid { grid-template-columns: 1fr; }
   .contact-panel__lead { font-size: 17px; }
   .contact-actions .btn { flex: 1 1 calc(50% - 10px); }
+}
+
+@media (max-width: 420px) {
+  .hero__cta { flex-direction: column; }
+  .hero__cta .btn { width: 100%; }
+  .profile-stats { grid-template-columns: 1fr; }
+  .profile-stat { min-height: 112px; }
+  .contact-actions { flex-direction: column; }
+  .contact-actions .btn { width: 100%; flex-basis: auto; }
+  .contact-email { max-width: 100%; overflow-wrap: anywhere; }
+}
+
+@media (max-width: 960px) and (max-height: 520px) {
+  .mobile-nav__panel a { min-height: 46px; }
+  .hero { padding-top: 42px; }
+  .hero__embed { width: min(360px, 80%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
