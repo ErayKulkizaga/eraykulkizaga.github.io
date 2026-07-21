@@ -4,20 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>eraykulkizaga.com — Portfolio Website Project</title>
-    <meta name="description" content="A minimalist, performant personal portfolio built from scratch with pure HTML, CSS and JavaScript. Scroll animations, parallax effects, cert sliders and contact form — no frameworks." />
-    <link rel="canonical" href="https://eraykulkizaga.com/project-eraykulkizaga.html" />
+    <meta name="description" content="A minimalist, accessible personal portfolio built from scratch with semantic HTML, modern CSS and focused JavaScript interactions — no frameworks." />
+    <link rel="canonical" href="https://www.eraykulkizaga.com/project-eraykulkizaga.html" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="eraykulkizaga.com — Portfolio Website" />
     <meta property="og:description" content="Minimalist, performant portfolio built from scratch with pure HTML/CSS/JS." />
-    <meta property="og:url" content="https://eraykulkizaga.com/project-eraykulkizaga.html" />
-    <meta property="og:image" content="/images/hero.gif" />
+    <meta property="og:url" content="https://www.eraykulkizaga.com/project-eraykulkizaga.html" />
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eray Kulkizaga Software Engineer portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="twitter:title" content="eraykulkizaga.com — Portfolio Website" />
+    <meta name="twitter:description" content="A dependency-free, responsive and accessible portfolio built with semantic HTML, modern CSS and focused JavaScript." />
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png" />
+    <meta name="theme-color" content="#f5f5f7" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
       .proj-hero__tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; margin-bottom: 20px; }
@@ -60,31 +69,33 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="index.html#hero" class="brand__text" aria-label="Go to hero">E R A Y</a>
-        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
         <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
           <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
           <a href="index.html#about">About</a>
           <a href="index.html#skills">Skills</a>
-          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#certificates">Credentials</a>
           <a href="index.html#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
       </div>
     </header>
 
-    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
-      <nav class="mobile-nav__panel" aria-label="Mobile">
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
         <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#certificates">Credentials</a>
         <a href="index.html#contact">Contact</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       </nav>
     </div>
 
@@ -99,7 +110,7 @@
           </p>
           <h1 class="proj-hero__title reveal">eraykulkizaga.com<br>Portfolio Website</h1>
           <p class="proj-hero__sub reveal">
-            A minimalist, performant personal portfolio built entirely from scratch with pure HTML, CSS and JavaScript — no frameworks, no build tools. Designed for speed, accessibility, and clean code.
+            A minimalist personal portfolio built entirely from scratch with semantic HTML, modern CSS and focused JavaScript — no frameworks or build tools. Designed for clarity, accessibility, and responsive performance.
           </p>
           <div class="proj-hero__actions reveal">
             <a href="https://github.com/ErayKulkizaga/eraykulkizaga.github.io" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
@@ -132,8 +143,8 @@
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">⟳</span>
-              <p class="feature-card__title">Parallax Layers</p>
-              <p class="feature-card__desc">Subtle depth effects on the hero section via CSS transforms driven by scroll position, disabled automatically for users who prefer reduced motion.</p>
+              <p class="feature-card__title">Focused Motion</p>
+              <p class="feature-card__desc">Subtle reveal transitions support the content hierarchy and are disabled automatically for users who prefer reduced motion.</p>
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">◫</span>
@@ -143,12 +154,12 @@
             <div class="feature-card reveal">
               <span class="feature-card__icon">☰</span>
               <p class="feature-card__title">Responsive Navigation</p>
-              <p class="feature-card__desc">Sticky header with a glassmorphism effect on desktop. Full-screen overlay menu on mobile with focus trapping, Escape key support, and ARIA attributes.</p>
+              <p class="feature-card__desc">Sticky glass-style navigation on desktop and a full-width mobile menu with focus trapping, Escape key support, and accurate ARIA state.</p>
             </div>
             <div class="feature-card reveal">
               <span class="feature-card__icon">✉</span>
-              <p class="feature-card__title">Contact Form</p>
-              <p class="feature-card__desc">Mailto-based form that opens the user's email client with pre-filled subject and body — no backend, no third-party service, no privacy concerns.</p>
+              <p class="feature-card__title">Direct Contact</p>
+              <p class="feature-card__desc">A visible email address and direct links to LinkedIn, GitHub, and the current CV remove unnecessary form friction.</p>
             </div>
           </div>
         </div>
@@ -162,11 +173,11 @@
               <h2 class="proj-section-title reveal">Implementation Highlights</h2>
               <div class="proj-card reveal">
                 <ul class="impl-list">
-                  <li><span><strong>IntersectionObserver</strong> powers all reveal animations with a 0.12 threshold — elements animate exactly once as they scroll into view.</span></li>
+                  <li><span><strong>IntersectionObserver</strong> powers reveal animations with a 0.15 threshold — elements animate exactly once as they scroll into view.</span></li>
                   <li><span><strong>CSS custom properties</strong> (<code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">--bg, --text, --border, --shadow</code>) enable effortless theming from a single :root block.</span></li>
-                  <li><span><strong>Pixel-based slider</strong> reads <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">container.offsetWidth</code> at runtime so slide transitions are always exact, even on resize.</span></li>
-                  <li><span><strong>Sticky header</strong> hides on scroll-down, re-appears on scroll-up using a velocity threshold — reduces visual noise while keeping navigation accessible.</span></li>
-                  <li><span><strong>Animated counters</strong> use <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">easeOutCubic</code> easing and trigger only when the element enters the viewport.</span></li>
+                  <li><span><strong>Pixel-based slider</strong> reads <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">container.clientWidth</code> at runtime so slide transitions remain aligned after resize.</span></li>
+                  <li><span><strong>Sticky navigation</strong> remains available throughout the page, with a separate keyboard-trapped mobile dialog at smaller breakpoints.</span></li>
+                  <li><span><strong>Focus management</strong> returns keyboard focus to the originating control after menus and image previews close.</span></li>
                   <li><span><strong>Image modal</strong> for certificate previews — click any cert image to zoom in, close with Escape or backdrop click.</span></li>
                   <li><span><strong>JSON-LD structured data</strong> (Person + Website schemas) embedded for search engine rich results.</span></li>
                 </ul>
@@ -182,7 +193,7 @@
                   <li><span><strong>Semantic HTML</strong> throughout — <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">header, main, section, article, footer, nav</code> used appropriately.</span></li>
                   <li><span><strong>Mobile-first responsive</strong> — layouts adapt from 1-column on phones to 3–4 columns on wide screens using CSS Grid breakpoints.</span></li>
                   <li><span><strong>Minimal paint budget</strong> — backdrop-filter only on the sticky header, box-shadow only on hover, no heavy gradients in the critical path.</span></li>
-                  <li><span><strong>Deployed on GitHub Pages</strong> with a custom domain (<code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">eraykulkizaga.com</code>) and CNAME record.</span></li>
+                  <li><span><strong>Deployed on GitHub Pages</strong> with the custom domain <code style="font-size:11px;background:#f1f5f9;padding:1px 4px;border-radius:3px;">www.eraykulkizaga.com</code> and a CNAME record.</span></li>
                 </ul>
               </div>
             </div>
@@ -220,7 +231,7 @@
                 <span class="badge">Vanilla JavaScript</span>
                 <span class="badge">IntersectionObserver</span>
                 <span class="badge">RequestAnimationFrame</span>
-                <span class="badge">Web Animations API</span>
+                <span class="badge">Keyboard Interaction</span>
               </div>
             </div>
             <div class="techs__group">
@@ -263,7 +274,7 @@
               <div>
                 <p style="font-weight:600;font-size:14px;margin:0 0 10px;">Pages</p>
                 <ul class="impl-list">
-                  <li><span><strong>index.html</strong> — Hero, Projects, About, Skills, Certificates, Contact sections</span></li>
+                  <li><span><strong>index.html</strong> — Hero, Projects, Experience, About, Skills, Credentials, and Contact sections</span></li>
                   <li><span><strong>project-sign-language.html</strong> — Award-winning SignTurk project detail page</span></li>
                   <li><span><strong>project-eraykulkizaga.html</strong> — This portfolio site detail page</span></li>
                   <li><span><strong>privacy.html</strong> — Privacy policy</span></li>
@@ -291,7 +302,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
       </div>
     </footer>
 

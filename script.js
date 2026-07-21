@@ -1,348 +1,153 @@
-// Year in footer
 document.addEventListener('DOMContentLoaded', () => {
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
 
-  // Cache toggle for overlay menu
+  const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
   const toggle = document.querySelector('.nav-toggle');
-
-  // Fresh mobile overlay nav
   const mobileNav = document.getElementById('mobile-nav');
-  const backdrop = mobileNav ? mobileNav.querySelector('.mobile-nav__backdrop') : null;
-  if (mobileNav && toggle) {
-    const openMobile = () => {
-      mobileNav.classList.add('is-open');
-      mobileNav.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      toggle.setAttribute('aria-expanded', 'true');
-      const firstLink = mobileNav.querySelector('.mobile-nav__panel a');
-      if (firstLink) firstLink.focus();
-    };
-    const closeMobile = () => {
-      mobileNav.classList.remove('is-open');
-      mobileNav.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      toggle.setAttribute('aria-expanded', 'false');
-    };
-    toggle.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.contains('is-open');
-      isOpen ? closeMobile() : openMobile();
-    });
-    if (backdrop) backdrop.addEventListener('click', closeMobile);
-    mobileNav.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && t.matches('a')) closeMobile();
-    });
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
-  }
+  const mobileBackdrop = mobileNav?.querySelector('.mobile-nav__backdrop');
 
-  // Add lazy/async and fallback for certificate badge images
-  document.querySelectorAll('.cert__badge img').forEach((img) => {
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.addEventListener('error', () => {
-      if (img.dataset.fallbackApplied) return;
-      img.dataset.fallbackApplied = 'true';
-      img.src = 'images/ibm.png';
-      img.alt = 'Logo';
-    }, { once: true });
-  });
-  // Mobile header: hidden at top, shown after scroll; hides again when scrolled back to top
-  const header = document.querySelector('.site-header');
-  const isSmall = () => window.matchMedia('(max-width: 640px)').matches;
-  const heroEl = document.getElementById('hero');
-  const syncHeaderVisibility = () => {
-    if (!header) return;
-    // Only apply hide-at-top behavior on the homepage (has #hero) and on small screens
-    if (!isSmall() || !heroEl) { header.classList.remove('is-hidden'); return; }
-    const topThreshold = 20; // px
-    const atTop = (window.scrollY || document.documentElement.scrollTop || 0) < topThreshold;
-    header.classList.toggle('is-hidden', atTop);
+  const closeMobileNav = (restoreFocus = true) => {
+    if (!mobileNav || !toggle) return;
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    mobileNav.setAttribute('inert', '');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    document.body.classList.remove('nav-open');
+    if (restoreFocus) toggle.focus();
   };
-  syncHeaderVisibility();
-  window.addEventListener('scroll', syncHeaderVisibility, { passive: true });
-  window.addEventListener('touchmove', syncHeaderVisibility, { passive: true });
-  window.addEventListener('resize', syncHeaderVisibility, { passive: true });
 
-  // Previously moved 3D model on mobile; now static order in HTML
+  const openMobileNav = () => {
+    if (!mobileNav || !toggle) return;
+    mobileNav.removeAttribute('inert');
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation');
+    document.body.classList.add('nav-open');
+    mobileNav.querySelector(focusableSelector)?.focus();
+  };
 
-});
-
-// Intersection Observer for reveal-on-scroll
-const revealEls = Array.from(document.querySelectorAll('.reveal'));
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', () => {
+      mobileNav.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
+    });
+    mobileBackdrop?.addEventListener('click', () => closeMobileNav());
+    mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMobileNav(false)));
+    mobileNav.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(mobileNav.querySelectorAll(focusableSelector));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     });
-  }, { threshold: 0.15 });
+  }
 
-  revealEls.forEach((el) => io.observe(el));
-} else {
-  // Fallback: make everything visible
-  revealEls.forEach((el) => el.classList.add('is-visible'));
-}
-
-// Lightweight parallax on mouse move (desktop) and scroll
-(function initParallax() {
-  const layers = Array.from(document.querySelectorAll('.parallax'));
-  if (!layers.length) return;
-  // Disable on touch devices to avoid unnecessary listeners/perf cost
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouch) return;
-
-  const apply = () => {
-    const scrollY = window.scrollY || window.pageYOffset;
-    layers.forEach((layer) => {
-      const speed = parseFloat(layer.getAttribute('data-speed') || '0.2');
-      const translateY = Math.round(scrollY * speed);
-      layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-    });
-  };
-
-  apply();
-  window.addEventListener('scroll', apply, { passive: true });
-
-  // Subtle mouse-based parallax for depth
-  let rafId = null;
-  window.addEventListener('mousemove', (e) => {
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      const { innerWidth, innerHeight } = window;
-      const relX = (e.clientX / innerWidth - 0.5) * 2; // -1..1
-      const relY = (e.clientY / innerHeight - 0.5) * 2;
-      layers.forEach((layer, idx) => {
-        const depth = (idx + 1) / (layers.length + 1);
-        const tx = relX * depth * 8;
-        const ty = relY * depth * 6;
-        layer.style.transform = `translate3d(${tx}px, ${ty + (window.scrollY * parseFloat(layer.getAttribute('data-speed') || '0.2'))}px, 0)`;
+  const revealElements = Array.from(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
-    });
-  });
-})();
+    }, { threshold: 0.15 });
+    revealElements.forEach((element) => observer.observe(element));
+  } else {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
+  }
 
-// Certificate preview sliders
-(function initCertPreviews() {
-  document.querySelectorAll('.cert-previews').forEach((container) => {
+  document.querySelectorAll('[data-slider]').forEach((container) => {
     const track = container.querySelector('.cert-previews__track');
     const dots = Array.from(container.querySelectorAll('.cert-previews__dot'));
-    const slides = Array.from(track ? track.querySelectorAll('.certificate-frame') : []);
-    if (!track || slides.length <= 1) return;
+    const slides = track ? Array.from(track.querySelectorAll('.certificate-frame')) : [];
+    if (!track || slides.length <= 1 || dots.length !== slides.length) return;
 
     let current = 0;
-    let timer = null;
-
-    const getSlideWidth = () => container.offsetWidth;
-
-    const goTo = (n) => {
-      current = n;
-      track.style.transform = `translateX(-${n * getSlideWidth()}px)`;
-      dots.forEach((d, i) => d.classList.toggle('is-active', i === n));
-    };
-
-    const next = () => goTo((current + 1) % slides.length);
-
-    const resetTimer = () => {
-      clearInterval(timer);
-      timer = setInterval(next, 3500);
-    };
-
-    // Recalculate on resize
-    window.addEventListener('resize', () => {
-      track.style.transition = 'none';
-      goTo(current);
-      requestAnimationFrame(() => { track.style.transition = ''; });
-    });
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        goTo(i);
-        resetTimer();
+    const goTo = (index, animate = true) => {
+      current = index;
+      if (!animate) track.style.transition = 'none';
+      track.style.transform = `translateX(-${index * container.clientWidth}px)`;
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === index);
+        if (dotIndex === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
       });
-    });
+      if (!animate) requestAnimationFrame(() => { track.style.transition = ''; });
+    };
 
-    resetTimer();
+    dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+    window.addEventListener('resize', () => goTo(current, false), { passive: true });
   });
-})();
 
-// Image modal for certificate and award previews
-(function initImageModal() {
   const modal = document.getElementById('img-modal');
-  if (!modal) return;
-  const backdrop = modal.querySelector('.img-modal__backdrop');
-  const modalImg = modal.querySelector('img');
-  const triggers = Array.from(document.querySelectorAll('.cert-previews img, [data-image-modal]'));
-  if (!triggers.length || !modalImg || !backdrop) return;
+  const modalImage = modal?.querySelector('img');
+  const modalContent = modal?.querySelector('.img-modal__content');
+  const modalClose = modal?.querySelector('.img-modal__close');
+  const modalBackdrop = modal?.querySelector('.img-modal__backdrop');
+  let modalTrigger = null;
 
-  const open = (src, alt) => {
-    modalImg.src = src;
-    modalImg.alt = alt || 'Certificate preview';
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-  const close = () => {
+  const closeModal = () => {
+    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    modal.setAttribute('inert', '');
+    document.body.classList.remove('modal-open');
+    if (modalTrigger instanceof HTMLElement) modalTrigger.focus();
+    modalTrigger = null;
   };
 
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const image = trigger.matches('img') ? trigger : trigger.querySelector('img');
-      const source = trigger.getAttribute('data-image-modal') || image?.src;
-      if (source) open(source, image?.alt);
+  const openModal = (trigger) => {
+    if (!modal || !modalImage || !modalContent) return;
+    const source = trigger.getAttribute('data-image-modal');
+    if (!source) return;
+    const image = trigger.querySelector('img');
+    modalTrigger = trigger;
+    modalImage.src = source;
+    modalImage.alt = image?.alt || 'Image preview';
+    modal.removeAttribute('inert');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    modalClose?.focus();
+  };
+
+  if (modal && modalImage && modalContent) {
+    document.querySelectorAll('[data-image-modal]').forEach((trigger) => {
+      trigger.addEventListener('click', () => openModal(trigger));
     });
-  });
-  backdrop.addEventListener('click', close);
-  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-})();
-
-// Match PNG box aspect ratio to the GIF's natural ratio
-(function matchMediaAspectRatioToGif() {
-  const gif = document.getElementById('gif-media');
-  const gifBox = document.getElementById('gif-box');
-  if (!gif || !gifBox) return;
-  const mediaBoxes = document.querySelectorAll('.section.project-media .media-box');
-  const applyRatio = () => {
-    if (!gif.naturalWidth || !gif.naturalHeight) return;
-    const ratio = gif.naturalWidth / gif.naturalHeight;
-    const ratioValue = `${ratio}`;
-    mediaBoxes.forEach((box) => {
-      box.style.setProperty('--media-ar', ratioValue);
+    modalClose?.addEventListener('click', closeModal);
+    modalBackdrop?.addEventListener('click', closeModal);
+    modal.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(modal.querySelectorAll(focusableSelector));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     });
-  };
-  if (gif.complete) {
-    applyRatio();
-  } else {
-    gif.addEventListener('load', applyRatio, { once: true });
   }
-})();
 
-// Lazy-activate Sketchfab iframe when visible to reduce third-party errors
-(function lazyActivateSketchfab() {
-  const iframe = document.querySelector('.sketchfab-embed-wrapper iframe[data-src]');
-  if (!iframe) return;
-  const activate = () => {
-    if (iframe.getAttribute('src')) return;
-    const src = iframe.getAttribute('data-src');
-    if (src) iframe.setAttribute('src', src);
-  };
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) { activate(); io.disconnect(); } });
-    }, { threshold: 0.1 });
-    io.observe(iframe);
-  } else {
-    // Fallback
-    setTimeout(activate, 1000);
-  }
-})();
-
-// Contact form -> mailto fallback (no backend)
-const form = document.getElementById('contact-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = /** @type {HTMLInputElement} */ (document.getElementById('name')).value.trim();
-    const message = /** @type {HTMLTextAreaElement} */ (document.getElementById('message')).value.trim();
-
-    const subject = encodeURIComponent(`Portfolio contact from ${name || 'Visitor'}`);
-    const body = encodeURIComponent(`Name: ${name}\n\n${message}`);
-    window.location.href = `mailto:eraykulkizaga@hotmail.com?subject=${subject}&body=${body}`;
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileNav?.classList.contains('is-open')) closeMobileNav();
   });
-}
-
-// 404 fallback for static hosting (optional): redirect unknown paths to 404.html
-(function redirectTo404IfMissing() {
-  // Only run when not on index or known pages and fetch fails
-  const known = [
-    '/', '/index.html', '/project-sign-language.html', '/project-eraykulkizaga.html',
-    '/privacy.html', '/404.html'
-  ];
-  try {
-    const path = location.pathname.replace(/\\+/g,'/');
-    if (known.includes(path)) return;
-    fetch(location.href, { method: 'HEAD' }).then((res) => {
-      if (!res.ok) location.replace('/404.html');
-    }).catch(() => location.replace('/404.html'));
-  } catch (_) { /* noop */ }
-})();
-
-// Animated counter for total certificates
-(function animateCertTotal() {
-  const totalEl = document.getElementById('cert-total');
-  if (!totalEl) return;
-
-  const target = parseInt(totalEl.getAttribute('data-target') || '0', 10);
-  if (!Number.isFinite(target) || target <= 0) { totalEl.textContent = '0'; return; }
-
-  const durationMs = 1200; // total animation time
-  let startTs = null;
-
-  const step = (ts) => {
-    if (startTs === null) startTs = ts;
-    const progress = Math.min(1, (ts - startTs) / durationMs);
-    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic 
-    const current = Math.max(0, Math.round(eased * target));
-    totalEl.textContent = String(current);
-    if (progress < 1) requestAnimationFrame(step);
-  };
-
-  // Start when element is visible
-  const start = () => requestAnimationFrame(step);
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { start(); io.disconnect(); }
-      });
-    }, { threshold: 0.2 });
-    io.observe(totalEl);
-  } else {
-    start();
-  }
-})();
-
-// Decimal counters for GPA
-(function animateEduStats() {
-  const values = Array.from(document.querySelectorAll('.edu-stats .stat__value'));
-  if (!values.length) return;
-
-  const startCounter = (el) => {
-    const target = parseFloat(el.getAttribute('data-target') || '0');
-    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-    const durationMs = 2000;
-    let startTs = null;
-    const step = (ts) => {
-      if (startTs === null) startTs = ts;
-      const progress = Math.min(1, (ts - startTs) / durationMs);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.max(0, target * eased);
-      el.textContent = current.toFixed(decimals);
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  const startAll = () => values.forEach((el) => startCounter(el));
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { startAll(); io.disconnect(); }
-      });
-    }, { threshold: 0.2 });
-    io.observe(values[0]);
-  } else {
-    startAll();
-  }
-})();
-
-
-
+});

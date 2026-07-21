@@ -1,424 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eray Kulkizaga — Backend &amp; AI Software Engineer</title>
-    <meta name="description" content="Eray Kulkizaga — Backend &amp; AI Software Engineer building production-ready Python backends, AI systems, and real-time computer vision products." />
-    <link rel="canonical" href="https://eraykulkizaga.com/" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eray Kulkizaga — Software Engineer, AI/ML &amp; Backend Systems</title>
+    <meta name="description" content="Eray Kulkizaga is a Software Engineer building real-time AI, computer vision, and backend systems with Python, FastAPI, WebSocket, ONNX Runtime, and TensorFlow.">
+    <link rel="canonical" href="https://www.eraykulkizaga.com/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
 
-    <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Eray Kulkizaga — Backend &amp; AI Software Engineer" />
-    <meta property="og:description" content="Production-ready Python backends, AI systems, and real-time computer vision products." />
-    <meta property="og:url" content="https://eraykulkizaga.com/" />
-    <meta property="og:image" content="/images/hero.gif" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Eray Kulkizaga — Backend &amp; AI Software Engineer" />
-    <meta name="twitter:description" content="Production-ready Python backends, AI systems, and real-time computer vision products." />
-    <meta name="twitter:image" content="/images/hero.gif" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eray Kulkizaga — Software Engineer">
+    <meta property="og:description" content="Real-time AI, computer vision, and backend systems — engineered from model training to deployment.">
+    <meta property="og:url" content="https://www.eraykulkizaga.com/">
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Eray Kulkizaga — Software Engineer portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eray Kulkizaga — Software Engineer">
+    <meta name="twitter:description" content="Real-time AI, computer vision, and backend systems.">
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio.png">
 
-    <!-- Meta colors & PWA basics -->
-    <meta name="theme-color" content="#0f172a" />
-    <link rel="apple-touch-icon" href="images/main.png" />
-    <link rel="manifest" href="manifest.webmanifest" />
-
-    <!-- Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-
-    <link rel="icon" href="images/main.png" type="image/png" />
-    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#f5f5f7">
+    <link rel="apple-touch-icon" href="images/main-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="icon" href="images/main.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container header-inner">
-        
-        <a href="#hero" class="brand__text" aria-label="Go to hero">E R A Y</a>
-        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+        <a href="#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
-        <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
+        <nav id="primary-nav" class="nav" aria-label="Primary navigation">
           <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
-          <a href="#certificates">Certificates</a>
+          <a href="#certificates">Credentials</a>
           <a href="#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
       </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
-    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
-      <nav class="mobile-nav__panel" aria-label="Mobile">
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#certificates">Certificates</a>
+        <a href="#certificates">Credentials</a>
         <a href="#contact">Contact</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       </nav>
     </div>
 
     <main id="main">
-      <!-- Hero -->
       <section id="hero" class="section hero">
-        <!-- Decorative parallax layers -->
-        <div class="parallax-layer layer-1 parallax" data-speed="0.25" aria-hidden="true"></div>
-        <div class="parallax-layer layer-2 parallax" data-speed="0.15" aria-hidden="true"></div>
-        <div class="parallax-layer layer-3 parallax" data-speed="0.35" aria-hidden="true"></div>
-
         <div class="container hero__inner">
           <div class="hero__content reveal">
+            <p class="eyebrow">Software Engineer · AI/ML · Computer Vision</p>
             <h1 class="hero__title">Eray Kulkızaga</h1>
-            <p class="hero__subtitle">
-              Backend Software Engineer | AI Systems
-            </p>
-            <p class="hero__subtitle">
-              Building production-ready Python backends and AI products with
-              clean architecture, testing, observability, and reliable deployment.
-            </p> 
+            <p class="hero__lead">I build real-time AI products and backend systems — from model training and landmark extraction to low-latency FastAPI and WebSocket deployment.</p>
             <div class="hero__cta">
-              <a href="#projects" class="btn btn--primary">View Projects</a>
+              <a href="#projects" class="btn btn--primary">View my work</a>
+              <a href="documents/eray-kulkizaga-cv.pdf" class="btn" target="_blank" rel="noopener noreferrer">Download CV</a>
             </div>
+            <p class="availability-note">Based in Türkiye · Open to worldwide remote work, Türkiye-based onsite roles, and international relocation.</p>
           </div>
-
-          <div class="hero__embed reveal" aria-label="3D model preview">
+          <figure class="hero__embed reveal">
             <div class="embed__frame-wrapper">
-              <img 
-                src="images/hero.gif" 
-                alt="Tablet robot face animation"
-                class="hero__gif"
-                loading="lazy" decoding="async" width="800" height="600" />
+              <img src="images/hero.gif" alt="Animated robot face representing human-centred AI systems" class="hero__gif" loading="eager" decoding="async" width="622" height="384">
             </div>
-          </div>
+            <figcaption class="sr-only">Human-centred artificial intelligence illustration.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="section projects">
+      <section id="projects" class="section section--tinted projects">
         <div class="container">
           <article class="award-feature reveal" aria-labelledby="award-title">
             <div class="award-feature__copy">
-              <p class="award-feature__eyebrow">Eastern Mediterranean University</p>
-              <h3 id="award-title">Outstanding Project Award</h3>
-              <p>SignTurk was recognized as an outstanding graduation project by the Faculty of Engineering, Department of Computer Engineering, for the 2025–2026 Spring Semester.</p>
-              <a href="project-sign-language.html#award" class="btn">View the award and product →</a>
+              <p class="award-feature__eyebrow">Eastern Mediterranean University · 2025–2026</p>
+              <h2 id="award-title">Outstanding Project Award</h2>
+              <p>SignTurk was selected as an outstanding graduation project by the Faculty of Engineering, Department of Computer Engineering.</p>
+              <a href="project-sign-language.html#award" class="btn">View the award and product</a>
             </div>
-            <button class="award-feature__image" type="button" data-image-modal="images/signturk-outstanding-project.png" aria-label="Open Outstanding Project certificate">
-              <img src="images/signturk-outstanding-project.png" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="lazy" decoding="async" />
+            <button class="award-feature__image" type="button" data-image-modal="images/signturk-outstanding-project.webp" aria-label="Open Outstanding Project certificate">
+              <img src="images/signturk-outstanding-project.webp" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="lazy" decoding="async" width="1166" height="799">
             </button>
           </article>
 
           <div class="section__head projects__head reveal">
+            <p class="eyebrow">Selected work</p>
             <h2>Projects</h2>
-            <p class="section__subtitle">A selection of my recent work.</p>
+            <p class="section__subtitle">A focused selection of systems I can explain from architecture to trade-offs.</p>
           </div>
-
           <div class="projects__grid">
-            <a href="project-sign-language.html" class="card card--featured reveal">
-              <div class="card__eyebrow">Outstanding Graduation Project · 2025–2026</div>
+            <article class="card card--featured reveal">
+              <div class="card__eyebrow">Award-winning graduation project · 2025–2026</div>
               <h3 class="card__title">SignTurk</h3>
-              <p class="card__desc">An award-winning Turkish Sign Language project with a MediaPipe-to-WebSocket recognition runtime, a BiLSTM model, and Three.js sign animation.</p>
-              <span class="card__link">Explore the project →</span>
-            </a>
-
-            <a href="project-eraykulkizaga.html" class="card reveal">
-              <h3 class="card__title">www.eraykulkizaga.com</h3>
-              <p class="card__desc">This minimalist, performant site with scroll animations and parallax effects.</p>
-            </a>
+              <p class="card__desc">Real-time Turkish Sign Language recognition and animation with a 179-class BiLSTM runtime, MediaPipe landmarks, FastAPI, WebSocket, and Three.js.</p>
+              <ul class="card__metrics" aria-label="SignTurk highlights">
+                <li><strong>85.65%</strong> selected runtime Top-1</li>
+                <li><strong>94.09%</strong> offline RTMW ensemble Top-1</li>
+              </ul>
+              <div class="card__actions">
+                <a href="project-sign-language.html" class="card__link">Case study</a>
+                <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+              </div>
+            </article>
+            <article class="card reveal">
+              <div class="card__eyebrow">Portfolio engineering</div>
+              <h3 class="card__title">eraykulkizaga.com</h3>
+              <p class="card__desc">A dependency-free, responsive portfolio built with semantic HTML, modern CSS, and focused JavaScript interactions.</p>
+              <div class="card__actions">
+                <a href="project-eraykulkizaga.html" class="card__link">Case study</a>
+                <a href="https://github.com/ErayKulkizaga/eraykulkizaga.github.io" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- About -->
-      <section id="about" class="section about">
+      <section id="experience" class="section experience">
         <div class="container">
-          <div class="about__grid">
-            <div class="about__content reveal">
-              <h2>About</h2>
-              <p>
-                I build backend and AI systems with Python, combining API design, relational data, asynchronous workloads, model integration, and real-time computer vision. My focus is on software that is tested, observable, deployable, and easy to explain—from FastAPI services to RAG and model-powered products.
-              </p>
-              <p class="education-row">
-                <img src="images/dau.png" alt="Eastern Mediterranean University logo" class="edu__logo" loading="lazy" decoding="async" width="120" height="120" />
-                <span class="education-text"><strong>Education</strong> Eastern Mediterranean University BSc. in Computer Science <span class="muted abet">ABET Accredited Program</span></span>
-              </p>
-            </div>
-            <div class="about__media reveal">
-              <div class="about__card">
-                <p class="muted">Current 12-week roadmap:</p>
-                    <ul class="list">
-                      <li>Production APIs with FastAPI, PostgreSQL, SQLAlchemy, and Alembic</li>
-                      <li>Redis caching, Celery workers, and background job design</li>
-                      <li>pytest, Ruff, Pyright, Docker, and GitHub Actions</li>
-                      <li>LLM APIs, RAG, pgvector, and retrieval evaluation</li>
-                      <li>Render deployment plus logs, metrics, and traces</li>
-                    </ul>
+          <div class="section__head reveal">
+            <p class="eyebrow">Professional journey</p>
+            <h2>Experience</h2>
+            <p class="section__subtitle">Work across AI research, search intelligence, and enterprise software engineering.</p>
+          </div>
+          <div class="experience-list">
+            <article class="experience-card reveal">
+              <div class="experience-card__logo experience-card__logo--wide">
+                <img src="images/logo-microsoft.png" alt="" width="260" height="56" loading="lazy" decoding="async">
               </div>
-              <div class="edu-stats reveal" aria-label="Education stats">
-                <div class="stat">
-                  <span class="stat__label">GPA</span>
-                  <span class="stat__value" data-target="3.83" data-decimals="2">0.00</span>
+              <div class="experience-card__body">
+                <div class="experience-card__heading">
+                  <div><h3>AI Innovators Summer Intern</h3><p class="experience-card__company">Microsoft</p></div>
+                  <p class="experience-card__date">Jun 2026 – Aug 2026 · Ongoing</p>
                 </div>
-                <div class="stat">
-                  <span class="stat__label">CGPA</span>
-                  <span class="stat__value" data-target="2.58" data-decimals="2">0.00</span>
-                </div>
+                <p>Developing quantum-computing fundamentals with Q# and the Microsoft Quantum Development Kit, including gate-level circuit design, state-preparation workflows, and research-based technical outputs.</p>
+                <div class="badges badges--compact"><span class="badge">Q#</span><span class="badge">Quantum Development Kit</span><span class="badge">GitHub</span><span class="badge">Technical Documentation</span></div>
               </div>
-            </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div class="experience-card__logo experience-card__logo--dark">
+                <img src="images/logo-flyrank.svg" alt="" width="96" height="96" loading="lazy" decoding="async">
+              </div>
+              <div class="experience-card__body">
+                <div class="experience-card__heading">
+                  <div><h3>AI Intern</h3><p class="experience-card__company">FlyRank.ai</p></div>
+                  <p class="experience-card__date">Jul 2026 – Sep 2026 · Ongoing · Remote</p>
+                </div>
+                <p>Supporting AI-powered search visibility, SEO/AEO research, content optimisation, automation, and structured problem-solving across business-oriented workflows.</p>
+                <div class="badges badges--compact"><span class="badge">AI Search</span><span class="badge">SEO/AEO</span><span class="badge">Automation</span><span class="badge">Research</span></div>
+              </div>
+            </article>
+
+            <article class="experience-card reveal">
+              <div class="experience-card__logo experience-card__logo--wide">
+                <img src="images/logo-iskur.png" alt="" width="500" height="132" loading="lazy" decoding="async">
+              </div>
+              <div class="experience-card__body">
+                <div class="experience-card__heading">
+                  <div><h3>SAP/ABAP Software Engineering Intern</h3><p class="experience-card__company">İSKUR Holding</p></div>
+                  <p class="experience-card__date">Jun 2024 – Aug 2024</p>
+                </div>
+                <p>Built SAP ABAP data workflows, Open SQL JOIN queries, contract tracking, barcode verification, and audit logging for enterprise operations.</p>
+                <ul class="experience-card__outcomes">
+                  <li>Reduced a data-processing workflow from 120 seconds to 70 seconds — a 41% improvement.</li>
+                  <li>Helped reduce operational errors and manual control issues by approximately 66–70%.</li>
+                </ul>
+                <div class="badges badges--compact"><span class="badge">SAP ABAP</span><span class="badge">Open SQL</span><span class="badge">Enterprise Systems</span><span class="badge">Audit Logging</span></div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Skills -->
+      <section id="about" class="section section--tinted about">
+        <div class="container about__grid">
+          <div class="about__content reveal">
+            <p class="eyebrow">Profile</p>
+            <h2>About</h2>
+            <p>I am a Software Engineering graduate focused on real-time AI, computer vision, and backend AI systems. I enjoy the part where models become products: reliable APIs, structured pipelines, measurable latency, and interfaces that make technical work understandable.</p>
+            <div class="education-row">
+              <img src="images/dau.png" alt="Eastern Mediterranean University logo" class="edu__logo" loading="lazy" decoding="async" width="1000" height="1000">
+              <span class="education-text"><strong>B.Sc. in Software Engineering</strong><span>Eastern Mediterranean University · 2021–2026</span><span class="muted abet">ABET-accredited · 100% English-taught programme</span></span>
+            </div>
+          </div>
+          <div class="profile-stats reveal" role="list" aria-label="Education and language highlights">
+            <div class="profile-stat" role="listitem"><strong>3.83<span>/4.00</span></strong><p>Final semester GPA</p></div>
+            <div class="profile-stat" role="listitem"><strong>C1</strong><p>English proficiency</p></div>
+            <div class="profile-stat" role="listitem"><strong>2026</strong><p>Software Engineering graduate</p></div>
+            <div class="profile-stat" role="listitem"><strong>Global</strong><p>Remote and relocation ready</p></div>
+          </div>
+        </div>
+      </section>
+
       <section id="skills" class="section skills">
         <div class="container">
           <div class="section__head reveal">
+            <p class="eyebrow">Engineering toolkit</p>
             <h2>Skills</h2>
-            <p class="section__subtitle">Tools and technologies I work with.</p>
+            <p class="section__subtitle">Grouped by the systems and projects where I use them.</p>
           </div>
-          <div class="badges reveal">
-            <span class="badge">Python</span>
-            <span class="badge">FastAPI</span>
-            <span class="badge">PostgreSQL</span>
-            <span class="badge">SQLAlchemy</span>
-            <span class="badge">Alembic</span>
-            <span class="badge">Redis</span>
-            <span class="badge">Celery</span>
-            <span class="badge">pytest</span>
-            <span class="badge">Ruff</span>
-            <span class="badge">Pyright</span>
-            <span class="badge">Docker</span>
-            <span class="badge">GitHub Actions</span>
-            <span class="badge">Render</span>
-            <span class="badge">OpenTelemetry</span>
-            <span class="badge">LLM APIs</span>
-            <span class="badge">RAG</span>
-            <span class="badge">pgvector</span>
-            <span class="badge">TensorFlow</span>
-            <span class="badge">ONNX Runtime</span>
-            <span class="badge">OpenCV</span>
-            <span class="badge">Git &amp; GitHub</span>
-
+          <div class="skills-grid reveal">
+            <article class="skill-group"><h3>Programming</h3><div class="badges"><span class="badge">Python</span><span class="badge">JavaScript</span><span class="badge">TypeScript</span><span class="badge">SQL</span><span class="badge">ABAP</span></div></article>
+            <article class="skill-group"><h3>AI/ML &amp; Computer Vision</h3><div class="badges"><span class="badge">TensorFlow/Keras</span><span class="badge">OpenCV</span><span class="badge">ONNX Runtime</span><span class="badge">YOLO-OBB</span><span class="badge">MediaPipe</span><span class="badge">RTMPose/RTMW</span></div></article>
+            <article class="skill-group"><h3>Backend &amp; Real-Time</h3><div class="badges"><span class="badge">FastAPI</span><span class="badge">REST APIs</span><span class="badge">WebSocket</span><span class="badge">Pydantic</span><span class="badge">SQLAlchemy</span><span class="badge">PostgreSQL</span></div></article>
+            <article class="skill-group"><h3>Delivery &amp; Visualisation</h3><div class="badges"><span class="badge">Docker</span><span class="badge">Git &amp; GitHub</span><span class="badge">MLflow</span><span class="badge">React</span><span class="badge">Three.js</span><span class="badge">React Three Fiber</span></div></article>
           </div>
         </div>
       </section>
 
-      <!-- Certificates -->
-      <section id="certificates" class="section certificates">
+      <section id="certificates" class="section section--tinted certificates">
         <div class="container">
           <div class="section__head reveal">
-            <h2>Certificates</h2>
-            <p class="section__subtitle">Testimonials from universities and institutes around the world.</p>
+            <p class="eyebrow">Continued learning</p>
+            <h2>Credentials</h2>
+            <p class="section__subtitle">Selected certificates and technical learning programmes.</p>
           </div>
           <div class="certs__grid">
-            <a class="cert reveal" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/stnfrd.png" alt="Stanford University" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">Stanford University</span>
-                <span class="cert__title">Machine Learning Specialization</span>
-              </span>
-              <div class="cert-previews">
+            <article class="cert reveal">
+              <div class="cert__badge"><img src="images/stnfrd.png" alt="Stanford University" loading="lazy" decoding="async" width="225" height="225"></div>
+              <div class="cert__content"><p class="cert__logo">Stanford University · DeepLearning.AI</p><h3 class="cert__title">Machine Learning Specialization</h3><a class="cert__program-link" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener noreferrer">Programme page</a></div>
+              <div class="cert-previews" data-slider>
                 <div class="cert-previews__track">
-                  <div class="certificate-frame">
-                    <img src="images/cert2.png" alt="Machine Learning Specialization" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="certificate-frame">
-                    <img src="images/cert6.png" alt="Unsupervised Learning, Recommenders, Reinforcement Learning" loading="lazy" decoding="async" />
-                  </div>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert2.webp" aria-label="Open Supervised Machine Learning certificate"><img src="images/cert2.webp" alt="Supervised Machine Learning certificate" loading="lazy" decoding="async" width="1052" height="814"></button>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert6.webp" aria-label="Open Unsupervised Learning certificate"><img src="images/cert6.webp" alt="Unsupervised Learning, Recommenders, Reinforcement Learning certificate" loading="lazy" decoding="async" width="1120" height="863"></button>
                 </div>
-                <div class="cert-previews__dots">
-                  <button class="cert-previews__dot is-active" aria-label="Slide 1"></button>
-                  <button class="cert-previews__dot" aria-label="Slide 2"></button>
-                </div>
+                <div class="cert-previews__dots" role="group" aria-label="Choose certificate"><button class="cert-previews__dot is-active" type="button" aria-label="Show certificate 1" aria-current="true"></button><button class="cert-previews__dot" type="button" aria-label="Show certificate 2"></button></div>
               </div>
-            </a>
-            <a class="cert reveal" href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/ibm.png" alt="IBM" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">IBM</span>
-                <span class="cert__title">Data Science Professional Certificate</span>
-              </span>
-              <div class="cert-previews">
+            </article>
+
+            <article class="cert reveal">
+              <div class="cert__badge"><img src="images/ibm.png" alt="IBM" loading="lazy" decoding="async" width="256" height="256"></div>
+              <div class="cert__content"><p class="cert__logo">IBM</p><h3 class="cert__title">Data Science Professional Certificate</h3><a class="cert__program-link" href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank" rel="noopener noreferrer">Programme page</a></div>
+              <div class="cert-previews" data-slider>
                 <div class="cert-previews__track">
-                  <div class="certificate-frame">
-                    <img src="images/cert1.png" alt="Data Science Professional Certificate" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="certificate-frame">
-                    <img src="images/cert7.png" alt="Tools for Data Science" loading="lazy" decoding="async" />
-                  </div>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert1.webp" aria-label="Open Data Science certificate"><img src="images/cert1.webp" alt="Data Science Professional Certificate" loading="lazy" decoding="async" width="955" height="739"></button>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert7.webp" aria-label="Open Tools for Data Science certificate"><img src="images/cert7.webp" alt="Tools for Data Science certificate" loading="lazy" decoding="async" width="743" height="569"></button>
                 </div>
-                <div class="cert-previews__dots">
-                  <button class="cert-previews__dot is-active" aria-label="Slide 1"></button>
-                  <button class="cert-previews__dot" aria-label="Slide 2"></button>
-                </div>
+                <div class="cert-previews__dots" role="group" aria-label="Choose certificate"><button class="cert-previews__dot is-active" type="button" aria-label="Show certificate 1" aria-current="true"></button><button class="cert-previews__dot" type="button" aria-label="Show certificate 2"></button></div>
               </div>
-            </a>
-            <!-- Hidden temporarily: DeepLearning.AI and Duke University -->
-            <!--
-            <a class="cert reveal" href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/dlai.png" alt="DeepLearning.AI" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">DeepLearning.AI</span>
-                <span class="cert__title">Deep Learning Specialization</span>
-                <ul class="cert__sublist">
-                  <li>Neural Networks and Deep Learning</li>
-                  <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization, and Optimization</li>
-                  <li>Structuring Machine Learning Projects</li>
-                  <li>Convolutional Neural Networks</li>
-                  <li>Sequence Models</li>
-                </ul>
-              </span>
-            </a>
-            <a class="cert reveal" href="https://www.coursera.org/specializations/mlops-machine-learning-duke" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/duke.png" alt="Duke University" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">Duke University</span>
-                <span class="cert__title">MLOps Specialization</span>
-                <ul class="cert__sublist">
-                  <li>Python Fundamentals for MLOps</li>
-                  <li>DevOps, DataOps, MLOps</li>
-                  <li>MLOps Platforms: Amazon SageMaker and Azure ML</li>
-                  <li>MLOps Tools: MLflow and Hugging Face</li>
-                </ul>
-              </span>
-            </a>
-            -->
-            <a class="cert reveal" href="#" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/dau.png" alt="Eastern Mediterranean University" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">Eastern Mediterranean University</span>
-                <span class="cert__title">Seminars and Conferences</span>
-              </span>
-              <div class="cert-previews">
+            </article>
+
+            <article class="cert reveal">
+              <div class="cert__badge"><img src="images/dau.png" alt="Eastern Mediterranean University" loading="lazy" decoding="async" width="1000" height="1000"></div>
+              <div class="cert__content"><p class="cert__logo">Eastern Mediterranean University</p><h3 class="cert__title">Seminars and Conferences</h3></div>
+              <div class="cert-previews" data-slider>
                 <div class="cert-previews__track">
-                  <div class="certificate-frame">
-                    <img src="images/cert3.jpg" alt="Veri Bilimi ve Yapay Zekanın Geleceğimize ve Kariyer Hedeflerimize Etkisi" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="certificate-frame">
-                    <img src="images/cert4.jpg" alt="Silikon Vadisi Yapay Zeka Kariyeri" loading="lazy" decoding="async" />
-                  </div>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert3.webp" aria-label="Open Data Science and AI seminar certificate"><img src="images/cert3.webp" alt="Data Science and AI seminar certificate" loading="lazy" decoding="async" width="800" height="571"></button>
+                  <button class="certificate-frame" type="button" data-image-modal="images/cert4.webp" aria-label="Open Silicon Valley AI Career seminar certificate"><img src="images/cert4.webp" alt="Silicon Valley AI Career seminar certificate" loading="lazy" decoding="async" width="800" height="570"></button>
                 </div>
-                <div class="cert-previews__dots">
-                  <button class="cert-previews__dot is-active" aria-label="Slide 1"></button>
-                  <button class="cert-previews__dot" aria-label="Slide 2"></button>
-                </div>
+                <div class="cert-previews__dots" role="group" aria-label="Choose certificate"><button class="cert-previews__dot is-active" type="button" aria-label="Show certificate 1" aria-current="true"></button><button class="cert-previews__dot" type="button" aria-label="Show certificate 2"></button></div>
               </div>
-            </a>
-            <a class="cert reveal" href="#" target="_blank" rel="noopener noreferrer">
-              <span class="cert__badge"><img src="images/btk.jpg" alt="BTK Akademi" loading="lazy" decoding="async" width="80" height="80" /></span>
-              <span class="cert__content">
-                <span class="cert__logo">BTK Akademi</span>
-                <span class="cert__title">Yapay Zeka Sertifikaları</span>
-              </span>
-              <div class="cert-previews">
-                <div class="cert-previews__track">
-                  <div class="certificate-frame">
-                    <img src="images/cert5.png" alt="Yapay Zekaya Giriş" loading="lazy" decoding="async" />
-                  </div>
-                </div>
-                <div class="cert-previews__dots" aria-hidden="true"></div>
-              </div>
-            </a>
+            </article>
+
+            <article class="cert reveal">
+              <div class="cert__badge"><img src="images/btk.jpg" alt="BTK Akademi" loading="lazy" decoding="async" width="900" height="900"></div>
+              <div class="cert__content"><p class="cert__logo">BTK Akademi</p><h3 class="cert__title">Introduction to Artificial Intelligence</h3></div>
+              <div class="cert-previews"><div class="cert-previews__track"><button class="certificate-frame" type="button" data-image-modal="images/cert5.webp" aria-label="Open Introduction to Artificial Intelligence certificate"><img src="images/cert5.webp" alt="Introduction to Artificial Intelligence certificate" loading="lazy" decoding="async" width="1429" height="1010"></button></div></div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Contact -->
       <section id="contact" class="section contact">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2>Contact</h2>
-            <p class="section__subtitle">Let’s connect or drop me a line.</p>
-          </div>
-
-          <div class="contact__grid">
-            <div class="contact__links reveal">
-              <a class="icon-link" href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8.5h4.96V24H.5V8.5Zm7.49 0h4.76v2.11h.07c.66-1.25 2.27-2.57 4.68-2.57 5 0 5.92 3.29 5.92 7.57V24h-4.97v-6.74c0-1.61-.03-3.69-2.25-3.69-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5Z" fill="currentColor"/></svg>
-                <span>LinkedIn</span>
-              </a>
-              <a class="icon-link" href="https://github.com/eraykulkizaga" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.33-1.29-1.68-1.29-1.68-1.06-.73.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.39.96.11-.76.41-1.26.75-1.55-2.6-.3-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.2-3.15-.12-.3-.52-1.5.11-3.13 0 0 .98-.31 3.2 1.2.93-.26 1.92-.4 2.9-.41.98.01 1.97.15 2.9.41 2.22-1.51 3.2-1.2 3.2-1.2.63 1.63.23 2.83.11 3.13.75.82 1.2 1.86 1.2 3.15 0 4.52-2.74 5.5-5.36 5.79.42.36.8 1.06.8 2.14v3.17c0 .31.22.68.81.56A11.5 11.5 0 0 0 12 .5Z" fill="currentColor"/></svg>
-                <span>GitHub</span>
-              </a>
-            </div>
-
-            <form id="contact-form" class="contact__form reveal" novalidate>
-              <div class="form__row">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your name" required />
-              </div>
-              <div class="form__row">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
-              </div>
-              <div class="form__actions">
-                <button type="submit" class="btn btn--primary">Send</button>
-                <p class="form__hint muted">— opens your email client.</p>
-              </div>
-            </form>
+        <div class="container contact-panel reveal">
+          <p class="eyebrow">Available for the right opportunity</p>
+          <h2>Let’s build something useful.</h2>
+          <p class="contact-panel__lead">Open to worldwide remote roles, onsite opportunities in Türkiye, and international relocation. My strongest direction is Software Engineering across AI/ML, computer vision, and backend AI systems.</p>
+          <a class="contact-email" href="mailto:eraykulkizaga@hotmail.com">eraykulkizaga@hotmail.com</a>
+          <div class="contact-actions">
+            <a class="btn btn--primary" href="mailto:eraykulkizaga@hotmail.com">Email me</a>
+            <a class="btn" href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">View CV</a>
           </div>
         </div>
       </section>
     </main>
 
-    <div id="img-modal" class="img-modal" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="img-modal__backdrop" tabindex="-1" aria-hidden="true"></div>
-      <div class="img-modal__content">
-        <img alt="Certificate preview" />
+    <div id="img-modal" class="img-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="img-modal-title" inert>
+      <button class="img-modal__backdrop" type="button" tabindex="-1" aria-label="Close image preview"></button>
+      <div class="img-modal__content" tabindex="-1">
+        <h2 id="img-modal-title" class="sr-only">Image preview</h2>
+        <button class="img-modal__close" type="button" aria-label="Close image preview">×</button>
+        <img src="images/signturk-outstanding-project.webp" alt="">
       </div>
     </div>
 
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
       </div>
     </footer>
 
-    <noscript>
-      <div class="container">
-        <p class="muted" style="padding:16px 0;">Note: Enable JavaScript to see scroll animations and parallax effects.</p>
-      </div>
-    </noscript>
-
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Eray Kulkızaga",
+      "alternateName": "Eray Kulkizaga",
+      "url": "https://www.eraykulkizaga.com/",
+      "jobTitle": "Software Engineer",
+      "email": "mailto:eraykulkizaga@hotmail.com",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Eastern Mediterranean University"
+      },
+      "knowsAbout": ["Software Engineering", "Artificial Intelligence", "Computer Vision", "FastAPI", "WebSocket", "ONNX Runtime", "TensorFlow"],
+      "sameAs": [
+        "https://github.com/ErayKulkizaga",
+        "https://www.linkedin.com/in/eraykulkizaga/"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Eray Kulkızaga — Portfolio",
+      "url": "https://www.eraykulkizaga.com/"
+    }
+    </script>
     <script src="script.js" defer></script>
   </body>
-  </html>
-
-  <!-- JSON-LD Person & Website -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Eray Kulkızaga",
-    "url": "https://eraykulkizaga.com/",
-    "jobTitle": "Backend & AI Software Engineer",
-    "sameAs": [
-      "https://github.com/eraykulkizaga",
-      "https://www.linkedin.com/in/eraykulkizaga/"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Eray Kulkızaga — Portfolio",
-    "url": "https://eraykulkizaga.com/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.google.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+</html>

@@ -5,38 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found — Eray Kulkızaga</title>
     <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f5f5f7" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; upgrade-insecure-requests" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a href="index.html#hero" class="brand__text" aria-label="Go to hero">E R A Y</a>
-        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
         <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
           <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
           <a href="index.html#about">About</a>
           <a href="index.html#skills">Skills</a>
-          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#certificates">Credentials</a>
           <a href="index.html#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
       </div>
     </header>
     <!-- Mobile Nav Overlay -->
-    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
-      <nav class="mobile-nav__panel" aria-label="Mobile">
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
         <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#certificates">Credentials</a>
         <a href="index.html#contact">Contact</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       </nav>
     </div>
     <main class="section" id="main">
@@ -49,7 +55,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
       </div>
     </footer>
     <script src="script.js" defer></script>

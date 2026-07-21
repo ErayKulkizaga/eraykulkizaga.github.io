@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SignTurk — Award-Winning Turkish Sign Language Platform</title>
     <meta name="description" content="SignTurk is an award-winning FastAPI Turkish Sign Language project with a MediaPipe-to-WebSocket recognition runtime, a BiLSTM model, and Three.js sign animation." />
-    <link rel="canonical" href="https://eraykulkizaga.com/project-sign-language.html" />
+    <link rel="canonical" href="https://www.eraykulkizaga.com/project-sign-language.html" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
     <meta property="og:description" content="Real-time Turkish Sign Language recognition with MediaPipe, FastAPI, WebSocket, TensorFlow/Keras, and Three.js animation." />
-    <meta property="og:url" content="https://eraykulkizaga.com/project-sign-language.html" />
-    <meta property="og:image" content="/images/signturk-homepage.png" />
+    <meta property="og:url" content="https://www.eraykulkizaga.com/project-sign-language.html" />
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/signturk-homepage.png" />
+    <meta property="og:image:width" content="1919" />
+    <meta property="og:image:height" content="1078" />
+    <meta property="og:image:alt" content="SignTurk Turkish Sign Language platform interface" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
     <meta name="twitter:description" content="Real-time Turkish Sign Language recognition runtime with webcam inference and 3D avatar support." />
-    <meta name="twitter:image" content="/images/signturk-homepage.png" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/signturk-homepage.png" />
+    <meta name="theme-color" content="#f5f5f7" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
       .proj-hero__tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; margin-bottom: 20px; }
@@ -38,7 +44,7 @@
       .proj-pipeline__step { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--border); }
       .proj-pipeline__step:last-child { border-bottom: none; }
       .proj-pipeline__num { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-      .proj-pipeline__content h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+      .proj-pipeline__content h3 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
       .proj-pipeline__content p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
       .proj-pipeline__content code, .proj-card code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
       .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -83,31 +89,33 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="index.html#hero" class="brand__text" aria-label="Go to hero">E R A Y</a>
-        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
         <nav id="primary-nav" class="nav" aria-label="Primary" data-open="false">
           <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
           <a href="index.html#about">About</a>
           <a href="index.html#skills">Skills</a>
-          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#certificates">Credentials</a>
           <a href="index.html#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
       </div>
     </header>
 
-    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="mobile-nav__backdrop" tabindex="-1" aria-hidden="true"></div>
-      <nav class="mobile-nav__panel" aria-label="Mobile">
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
         <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="index.html#certificates">Certificates</a>
+        <a href="index.html#certificates">Credentials</a>
         <a href="index.html#contact">Contact</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       </nav>
     </div>
 
@@ -128,7 +136,7 @@
         </div>
       </section>
 
-      <section id="award" class="section" style="padding-top:0">
+      <div id="award" class="section" style="padding-top:0">
         <div class="container">
           <article class="award-banner reveal">
             <div>
@@ -136,18 +144,18 @@
               <h2>Outstanding Project Award</h2>
               <p>The Faculty of Engineering, Department of Computer Engineering recognized SignTurk as an outstanding graduation project for the Spring Semester. The award highlights the project’s engineering depth, product scope, and accessibility impact.</p>
             </div>
-            <img src="images/signturk-outstanding-project.png" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="eager" decoding="async" />
+            <img src="images/signturk-outstanding-project.webp" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="eager" decoding="async" width="1166" height="799" />
           </article>
         </div>
-      </section>
+      </div>
 
-      <section class="section" style="padding-top:0">
+      <div class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/signturk-homepage.png" alt="SignTurk product homepage presenting real-time Turkish Sign Language recognition" loading="eager" fetchpriority="high" decoding="async" />
+            <img src="images/signturk-homepage.webp" alt="SignTurk product homepage presenting real-time Turkish Sign Language recognition" loading="eager" fetchpriority="high" decoding="async" width="1919" height="1078" />
           </div>
         </div>
-      </section>
+      </div>
 
       <section class="section" style="padding-top:0">
         <div class="container">
@@ -190,9 +198,10 @@
 
       <section class="section" style="padding-top:0">
         <div class="container">
+          <h2 class="sr-only">System Capabilities</h2>
           <div class="proj-two-col">
             <div class="proj-card reveal">
-              <p class="proj-section-title" style="margin-bottom:10px;">Live Recognition</p>
+              <h3 class="proj-section-title" style="margin-bottom:10px;">Live Recognition</h3>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
                 MediaPipe runs in the browser and converts webcam input into hand landmarks. Sixteen-frame sequences are sent to the FastAPI backend through <code>/ws</code>, where the selected BiLSTM runtime returns the top predictions, confidence values, and inference latency.
               </p>
@@ -204,7 +213,7 @@
               </ul>
             </div>
             <div class="proj-card reveal">
-              <p class="proj-section-title" style="margin-bottom:10px;">Dictionary &amp; Avatar</p>
+              <h3 class="proj-section-title" style="margin-bottom:10px;">Dictionary &amp; Avatar</h3>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
                 The public demo also exposes sign and landmark endpoints for a Three.js animation experience. Local landmark sequences drive the browser renderer, with smooth transitions between requested words.
               </p>
@@ -224,27 +233,27 @@
           <p class="model-note reveal">These screens document the broader graduation-project interface. The public GitHub repository currently contains the leaner recognition-and-animation demo that powers the core model workflow.</p>
           <div class="proj-gallery">
             <figure class="reveal">
-              <img src="images/signturk-live-translation.png" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" />
+              <img src="images/signturk-live-translation.webp" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" width="1908" height="831" />
               <figcaption>Live Translation — webcam inference, confidence, top predictions, and diagnostics.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-recognition.png" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" />
+              <img src="images/signturk-recognition.webp" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" width="1906" height="923" />
               <figcaption>Recognition — real-time sign results presented as a focused product experience.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-avatar-studio.png" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" />
+              <img src="images/signturk-avatar-studio.webp" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" width="1911" height="979" />
               <figcaption>Avatar Studio — interactive sign visualization built on landmark animation data.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-3d-animation.png" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" />
+              <img src="images/signturk-3d-animation.webp" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" width="1911" height="983" />
               <figcaption>3D Animation — smoothed motion playback for clearer sign demonstrations.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-admin-overview.png" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" />
+              <img src="images/signturk-admin-overview.webp" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" width="1911" height="980" />
               <figcaption>Admin Overview — platform activity, user intelligence, and infrastructure readiness.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-dictionary.png" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" />
+              <img src="images/signturk-dictionary.webp" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" width="1911" height="982" />
               <figcaption>Dictionary — searchable signs connected to the avatar and animation experience.</figcaption>
             </figure>
           </div>
@@ -259,28 +268,28 @@
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">1</div>
                 <div class="proj-pipeline__content">
-                  <h4>Browser Landmark Extraction</h4>
+                  <h3>Browser Landmark Extraction</h3>
                   <p>MediaPipe Holistic runs in browser-side WASM. It extracts left- and right-hand landmarks from webcam frames and starts a sequence only when hands are detected.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">2</div>
                 <div class="proj-pipeline__content">
-                  <h4>Sequence Transport</h4>
+                  <h3>Sequence Transport</h3>
                   <p>The client collects 16 frames and sends landmark payloads over <code>/ws</code>. The FastAPI service maintains a separate buffer for each WebSocket session.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">3</div>
                 <div class="proj-pipeline__content">
-                  <h4>Runtime Preprocessing</h4>
+                  <h3>Runtime Preprocessing</h3>
                   <p>The selected model contract normalizes 126 hand-landmark coordinates relative to the wrists, combines them with 30 finger-angle features, and assembles 156 features across a 16-frame temporal sequence.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">4</div>
                 <div class="proj-pipeline__content">
-                  <h4>BiLSTM Prediction</h4>
+                  <h3>BiLSTM Prediction</h3>
                   <p>The 179-class BiLSTM model with temporal attention returns Top-3 labels, confidence scores, and latency. It was retained because it fits the existing live pipeline without replacing the frontend feature contract.</p>
                 </div>
               </div>
@@ -413,7 +422,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="muted">© <span id="year"></span> Eray Kulkızaga. All rights reserved.</p>
-        <p class="muted small">Visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
+        <p class="muted small"><a href="privacy.html">Privacy</a> · Robot visual © 2018 Michael Jae-Yoon Chung — <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a></p>
       </div>
     </footer>
 
