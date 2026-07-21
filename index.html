@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="icon" href="images/main.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=20260721-8">
+    <link rel="stylesheet" href="style.css?v=20260721-9">
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body class="home">
@@ -75,24 +75,39 @@
     <main id="main">
       <section id="hero" class="section hero">
         <div class="container hero__inner">
-          <div class="hero__content reveal">
+          <div class="hero__content hero-entrance">
             <p class="hero__status">Eray Kulkızaga</p>
-            <h1 class="hero__title">Backend.<br><em>Intelligence.</em></h1>
+            <h1 class="hero__title"><span class="hero__title-line">Backend.</span><span class="hero__title-line"><em>Intelligence.</em></span></h1>
             <p class="hero__lead">Python × AI systems.</p>
             <a href="#projects" class="hero__work-link">Selected work <span aria-hidden="true">↓</span></a>
           </div>
 
-          <div class="hero-console reveal" role="region" aria-label="Developer profile notes">
-            <div class="hero-console__chrome">
-              <span class="hero-console__label">Engineering notes</span>
-              <span class="hero-console__path">01 / selected stack</span>
+          <div class="hero-blueprint-wrap hero-entrance">
+            <div class="hero-blueprint" data-hero-blueprint role="region" aria-label="Interactive software systems blueprint">
+              <div class="hero-blueprint__head">
+                <span>Software systems</span>
+                <span>Selected practice / 2026</span>
+              </div>
+              <div class="hero-blueprint__canvas">
+                <div class="hero-blueprint__axis hero-blueprint__axis--x" aria-hidden="true"></div>
+                <div class="hero-blueprint__axis hero-blueprint__axis--y" aria-hidden="true"></div>
+                <span class="hero-blueprint__coordinate hero-blueprint__coordinate--top" aria-hidden="true">01</span>
+                <span class="hero-blueprint__coordinate hero-blueprint__coordinate--side" aria-hidden="true">03</span>
+                <button class="hero-module hero-module--backend is-active" type="button" data-blueprint-module data-index="01 / BACKEND" data-detail="Reliable APIs, data models, and asynchronous services." aria-pressed="true">
+                  <span class="hero-module__number">01</span><strong>Backend</strong><small>FastAPI · PostgreSQL · Async</small>
+                </button>
+                <button class="hero-module hero-module--intelligence" type="button" data-blueprint-module data-index="02 / INTELLIGENCE" data-detail="Computer vision, retrieval, and production inference." aria-pressed="false">
+                  <span class="hero-module__number">02</span><strong>Intelligence</strong><small>CV · RAG · Inference</small>
+                </button>
+                <button class="hero-module hero-module--delivery" type="button" data-blueprint-module data-index="03 / DELIVERY" data-detail="Measured releases with testing and repeatable delivery." aria-pressed="false">
+                  <span class="hero-module__number">03</span><strong>Delivery</strong><small>Testing · Docker · CI</small>
+                </button>
+              </div>
+              <div class="hero-blueprint__foot" aria-live="polite">
+                <span data-blueprint-index>01 / BACKEND</span>
+                <p data-blueprint-detail>Reliable APIs, data models, and asynchronous services.</p>
+              </div>
             </div>
-            <pre class="hero-console__code"><code><span class="code-line">focus = [<i>"backend"</i>, <i>"AI"</i>];</span>
-<span class="code-line code-line--command"><b>ship</b>(<i>"useful software"</i>);</span></code></pre>
-            <div class="hero-console__signals" aria-hidden="true">
-              <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
-            </div>
-            <div class="hero-console__footer"><span>Python · FastAPI · PostgreSQL</span><span>Build → Measure → Ship</span></div>
           </div>
         </div>
       </section>
@@ -121,7 +136,7 @@
               <div class="card__media"><img src="images/signturk-homepage.webp" alt="SignTurk Turkish Sign Language platform interface" loading="lazy" decoding="async" width="1919" height="1078"></div>
               <div class="card__body">
                 <div class="card__eyebrow">Award-winning graduation project · 2025–2026</div>
-                <h3 class="card__title">SignTurk</h3>
+                <h3 class="card__title"><a class="card__primary-link" href="project-sign-language.html" aria-label="Open the SignTurk case study">SignTurk</a></h3>
                 <p class="card__desc">Real-time Turkish Sign Language recognition, approved-word sentence assembly, speech output, persistence, and 3D animation.</p>
                 <ul class="card__metrics" aria-label="SignTurk highlights">
                   <li><strong>179</strong> runtime classes</li>
@@ -141,7 +156,7 @@
               </div>
               <div class="card__body">
                 <div class="card__eyebrow">Portfolio engineering</div>
-                <h3 class="card__title">eraykulkizaga.com</h3>
+                <h3 class="card__title"><a class="card__primary-link" href="project-eraykulkizaga.html" aria-label="Open the eraykulkizaga.com case study">eraykulkizaga.com</a></h3>
                 <p class="card__desc">A dependency-free portfolio shaped with semantic HTML, expressive CSS, and focused JavaScript.</p>
                 <div class="card__actions">
                   <a href="project-eraykulkizaga.html" class="card__link">Case study</a>
@@ -301,7 +316,7 @@
             <article class="cert reveal">
               <div class="cert__badge"><img src="images/btk.jpg" alt="BTK Akademi" loading="lazy" decoding="async" width="900" height="900"></div>
               <div class="cert__content"><p class="cert__logo">BTK Akademi</p><h3 class="cert__title">Introduction to Artificial Intelligence</h3></div>
-              <div class="cert-previews"><div class="cert-previews__track"><button class="certificate-frame" type="button" data-image-modal="images/cert5.webp" aria-label="Open Introduction to Artificial Intelligence certificate"><img src="images/cert5.webp" alt="Introduction to Artificial Intelligence certificate" loading="lazy" decoding="async" width="1429" height="1010"></button></div></div>
+              <div class="cert-previews"><div class="cert-previews__track"><button class="certificate-frame" type="button" data-image-modal="images/cert5.webp" aria-label="Open Introduction to Artificial Intelligence certificate"><img src="images/cert5.webp" alt="Introduction to Artificial Intelligence certificate" loading="lazy" decoding="async" width="1429" height="1010"></button></div><div class="cert-previews__dots cert-previews__dots--placeholder" aria-hidden="true"></div></div>
             </article>
           </div>
         </div>
@@ -387,6 +402,6 @@
       "url": "https://www.eraykulkizaga.com/"
     }
     </script>
-    <script src="script.js?v=20260721-8" defer></script>
+    <script src="script.js?v=20260721-9" defer></script>
   </body>
 </html>

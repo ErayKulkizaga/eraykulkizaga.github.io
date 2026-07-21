@@ -17,6 +17,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  const blueprint = document.querySelector('[data-hero-blueprint]');
+  if (blueprint) {
+    const modules = Array.from(blueprint.querySelectorAll('[data-blueprint-module]'));
+    const indexLabel = blueprint.querySelector('[data-blueprint-index]');
+    const detail = blueprint.querySelector('[data-blueprint-detail]');
+
+    const selectModule = (module) => {
+      modules.forEach((item) => {
+        const selected = item === module;
+        item.classList.toggle('is-active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      if (indexLabel) indexLabel.textContent = module.dataset.index || '';
+      if (detail) detail.textContent = module.dataset.detail || '';
+    };
+
+    modules.forEach((module) => {
+      module.addEventListener('click', () => selectModule(module));
+      module.addEventListener('focus', () => selectModule(module));
+    });
+
+    const supportsPointerDetail = window.matchMedia('(pointer: fine)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      && window.matchMedia('(min-width: 961px)').matches;
+    if (supportsPointerDetail) {
+      let pointerFrame = 0;
+      blueprint.addEventListener('pointermove', (event) => {
+        const bounds = blueprint.getBoundingClientRect();
+        const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
+        window.cancelAnimationFrame(pointerFrame);
+        pointerFrame = window.requestAnimationFrame(() => {
+          blueprint.style.setProperty('--blueprint-rx', `${vertical * -3.2}deg`);
+          blueprint.style.setProperty('--blueprint-ry', `${horizontal * 4.2}deg`);
+        });
+      });
+      blueprint.addEventListener('pointerleave', () => {
+        blueprint.style.setProperty('--blueprint-rx', '0deg');
+        blueprint.style.setProperty('--blueprint-ry', '0deg');
+      });
+    }
+  }
+
   const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   const toggle = document.querySelector('.nav-toggle');
