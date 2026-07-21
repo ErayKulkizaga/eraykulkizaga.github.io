@@ -18,7 +18,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 - **Developer-system hero** — code, runtime signals, and status motion establish the engineering direction immediately
 - **Alternating section surfaces** — dark, white, neutral, and blue-tinted scenes separate the portfolio narrative
 - **Reveal-on-scroll animations** — `IntersectionObserver`-powered elements animate once as they enter the viewport
-- **Sticky header** — compact dark navigation with a glass-like `backdrop-filter`
+- **Hero-first navigation** — the home page opens without navigation chrome, then reveals the compact glass-like header after scrolling
 - **Responsive overlay navigation** — full-screen mobile menu with focus trapping, Escape key support, ARIA roles
 - **Certificate slider** — user-controlled image carousel with pixel-based JS translation for exact alignment
 - **Image modal** — click certificate or award media to zoom in; close with Escape or backdrop click

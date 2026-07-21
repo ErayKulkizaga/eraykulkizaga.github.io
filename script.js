@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
+  const header = document.querySelector('.site-header');
+  if (header && document.body.classList.contains('home')) {
+    let ticking = false;
+    const updateHeader = () => {
+      header.classList.toggle('is-visible', window.scrollY > 24);
+      ticking = false;
+    };
+    updateHeader();
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateHeader);
+    }, { passive: true });
+  }
+
   const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   const toggle = document.querySelector('.nav-toggle');
