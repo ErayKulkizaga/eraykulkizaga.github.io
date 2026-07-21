@@ -1,6 +1,6 @@
 # eraykulkizaga.github.io
 
-Personal portfolio website for **Eray Kulkızaga** — Machine Learning Engineer.
+Personal portfolio website for **Eray Kulkızaga** — Backend & AI Software Engineer.
 
 **Live:** [www.eraykulkizaga.com](https://www.eraykulkizaga.com)
 
@@ -19,7 +19,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 - **Sticky header** — hides on scroll-down, reappears on scroll-up; glassmorphism effect via `backdrop-filter`
 - **Responsive overlay navigation** — full-screen mobile menu with focus trapping, Escape key support, ARIA roles
 - **Certificate slider** — auto-advancing image carousel with pixel-based JS translation (not %-based) for exact alignment
-- **Image modal** — click any certificate image to zoom in; close with Escape or backdrop click
+- **Image modal** — click certificate or award media to zoom in; close with Escape or backdrop click
 - **Animated counters** — GPA and cert count animate on scroll with `easeOutCubic` easing
 - **Contact form** — `mailto:` based, no backend, no third-party service
 - **Custom 404 page** with live 404 detection via `fetch HEAD`
@@ -45,8 +45,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 | Page | Description |
 |---|---|
 | `index.html` | Main portfolio — Hero, Projects, About, Skills, Certificates, Contact |
-| `project-sign-language.html` | [Turkish Sign Language Translator](https://github.com/ErayKulkizaga/turkish-sign-language-translator) detail |
-| `project-emu-book-exchange.html` | EMU Book Exchange detail |
+| `project-sign-language.html` | [SignTurk](https://github.com/ErayKulkizaga/SignTurk) — award-winning Turkish Sign Language platform |
 | `project-eraykulkizaga.html` | This portfolio site detail |
 | `privacy.html` | Privacy policy |
 | `404.html` | Custom not-found page |
@@ -57,8 +56,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 
 ```
 ├── index.html                  # Main page
-├── project-sign-language.html  # Project detail — Sign Language Translator
-├── project-emu-book-exchange.html # Project detail — EMU Book Exchange
+├── project-sign-language.html  # Project detail — SignTurk
 ├── project-eraykulkizaga.html  # Project detail — This portfolio
 ├── privacy.html                # Privacy policy
 ├── 404.html                    # Custom 404
@@ -72,8 +70,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
     ├── hero.gif                # Hero animation (MIT License — Michael Jae-Yoon Chung)
     ├── main.png                # Favicon / logo
     ├── cert1–cert7.*           # Certificate preview images
-    ├── 1.gif, 2.png            # Sign language project media
-    └── mobil0–6.png            # EMU Book Exchange app screenshots
+    └── signturk-*.png          # SignTurk UI and award media
 ```
 
 ---

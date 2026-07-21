@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SignaTurk — Turkish Sign Language Recognition Runtime</title>
-    <meta name="description" content="SignaTurk is a FastAPI and React Turkish Sign Language recognition runtime using webcam inference, HF RTMW whole-body landmarks, and a 226-class ensemble model." />
+    <title>SignTurk — Award-Winning Turkish Sign Language Platform</title>
+    <meta name="description" content="SignTurk is an award-winning FastAPI Turkish Sign Language platform with live webcam inference, RTMW whole-body landmarks, a 226-class ensemble model, dashboards, and 3D avatar experiences." />
     <link rel="canonical" href="https://eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="SignaTurk — Turkish Sign Language Recognition Runtime" />
+    <meta property="og:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
     <meta property="og:description" content="Real-time Turkish Sign Language recognition with FastAPI, React, HF RTMW landmarks, TensorFlow/Keras, ONNX Runtime, and a 226-class ensemble." />
     <meta property="og:url" content="https://eraykulkizaga.com/project-sign-language.html" />
-    <meta property="og:image" content="/images/hero.gif" />
+    <meta property="og:image" content="/images/signturk-homepage.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SignaTurk — Turkish Sign Language Recognition Runtime" />
+    <meta name="twitter:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
     <meta name="twitter:description" content="Real-time Turkish Sign Language recognition runtime with webcam inference and 3D avatar support." />
-    <meta name="twitter:image" content="/images/hero.gif" />
+    <meta name="twitter:image" content="/images/signturk-homepage.png" />
     <meta name="theme-color" content="#0f172a" />
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <style>
       .proj-hero { padding: 60px 0 40px; }
@@ -50,14 +50,25 @@
       .proj-arch span.hl { color: #7dd3fc; }
       .proj-arch span.grn { color: #86efac; }
       .proj-media-item--full { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #f8fafc; }
-      .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 430px; object-fit: contain; background: #f8fafc; }
+      .proj-media-item--full img { width: 100%; height: auto; display: block; max-height: 640px; object-fit: contain; background: #f8fafc; }
       .callout { border-left: 3px solid var(--primary); padding: 14px 16px; background: rgba(59,130,246,0.08); border-radius: 10px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+      .award-banner { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; align-items: center; border: 1px solid #bfdbfe; border-radius: 18px; padding: 24px; background: linear-gradient(135deg, #eff6ff, #fff 65%); }
+      .award-banner__eyebrow { margin: 0 0 8px; color: #1d4ed8; font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+      .award-banner h2 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.03em; }
+      .award-banner p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
+      .award-banner img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 10px 28px rgba(15,23,42,.16); }
+      .proj-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .proj-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+      .proj-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; display: block; background: #f8fafc; }
+      .proj-gallery figcaption { padding: 12px 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
       @media (max-width: 900px) {
         .proj-two-col { grid-template-columns: 1fr; }
         .proj-stats-row { grid-template-columns: repeat(2, 1fr); }
+        .award-banner { grid-template-columns: 1fr; }
       }
       @media (max-width: 640px) {
         .proj-stats-row { grid-template-columns: 1fr; }
+        .proj-gallery { grid-template-columns: 1fr; }
         .proj-hero__actions { flex-direction: column; }
         .proj-hero__actions .btn { width: 100%; justify-content: center; }
       }
@@ -100,13 +111,13 @@
     <main id="project">
       <section class="section proj-hero">
         <div class="container">
-          <p class="proj-hero__tag reveal">Machine Learning · Computer Vision · MLOps</p>
-          <h1 class="proj-hero__title reveal">SignaTurk<br>Turkish Sign Language Runtime</h1>
+          <p class="proj-hero__tag reveal">Outstanding Graduation Project · AI · Computer Vision · Backend</p>
+          <h1 class="proj-hero__title reveal">SignTurk<br>Turkish Sign Language Platform</h1>
           <p class="proj-hero__sub reveal">
-            A real-time Turkish Sign Language recognition application built with FastAPI, a React CDN frontend, HF RTMW/RTMPose whole-body landmark extraction, and a 226-class Keras ensemble. The system turns webcam frames into pose and hand landmark streams, predicts signs, stores confident results, and serves a dictionary/3D avatar experience.
+            An award-winning, real-time Turkish Sign Language recognition platform built with FastAPI, a browser-based interface, HF RTMW/RTMPose whole-body landmark extraction, and a 226-class Keras ensemble. SignTurk combines live translation, prediction history, administration, a sign dictionary, and 3D avatar experiences in one product.
           </p>
           <div class="proj-hero__actions reveal">
-            <a href="https://github.com/ErayKulkizaga/SignaTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+            <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
               View on GitHub
             </a>
             <a href="index.html#projects" class="btn">Back to Projects</a>
@@ -114,10 +125,23 @@
         </div>
       </section>
 
+      <section id="award" class="section" style="padding-top:0">
+        <div class="container">
+          <article class="award-banner reveal">
+            <div>
+              <p class="award-banner__eyebrow">Eastern Mediterranean University · 2025–2026</p>
+              <h2>Outstanding Project Award</h2>
+              <p>The Faculty of Engineering, Department of Computer Engineering recognized SignTurk as an outstanding graduation project for the Spring Semester. The award highlights the project’s engineering depth, product scope, and accessibility impact.</p>
+            </div>
+            <img src="images/signturk-outstanding-project.png" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="eager" decoding="async" />
+          </article>
+        </div>
+      </section>
+
       <section class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/1.gif" alt="SignaTurk live recognition interface preview" loading="lazy" decoding="async" />
+            <img src="images/signturk-homepage.png" alt="SignTurk product homepage presenting real-time Turkish Sign Language recognition" loading="eager" fetchpriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -139,8 +163,8 @@
               <span class="proj-stat__label">Ensemble Streams</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">LFS</span>
-              <span class="proj-stat__label">Model Assets</span>
+              <span class="proj-stat__value">Award</span>
+              <span class="proj-stat__label">Outstanding Project</span>
             </div>
           </div>
         </div>
@@ -152,7 +176,7 @@
             <div class="proj-card reveal">
               <p class="proj-section-title" style="margin-bottom:10px;">Live Recognition</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                The browser streams webcam frames to the FastAPI backend through WebSocket. The backend extracts whole-body and hand landmarks, builds skeleton/motion feature streams, runs the SignaTurk ensemble, and returns top predictions with confidence values.
+                The browser streams webcam frames to the FastAPI backend through WebSocket. The backend extracts whole-body and hand landmarks, builds skeleton/motion feature streams, runs the SignTurk ensemble, and returns top predictions with confidence values.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
                 <li>Webcam-to-WebSocket live inference flow</li>
@@ -162,7 +186,7 @@
               </ul>
             </div>
             <div class="proj-card reveal">
-              <p class="proj-section-title" style="margin-bottom:10px;">Dictionary & Avatar</p>
+              <p class="proj-section-title" style="margin-bottom:10px;">Dictionary &amp; Avatar</p>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
                 The application also includes a dictionary-style landmark endpoint and a 3D avatar screen. Sign animation data is served from local landmark JSON and smoothed before playback for clearer motion.
               </p>
@@ -178,8 +202,32 @@
 
       <section class="section" style="padding-top:0">
         <div class="container">
-          <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/2.png" alt="Hand landmark diagram used in sign language recognition" loading="lazy" decoding="async" />
+          <h2 class="proj-section-title reveal">Product Experience</h2>
+          <div class="proj-gallery">
+            <figure class="reveal">
+              <img src="images/signturk-live-translation.png" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" />
+              <figcaption>Live Translation — webcam inference, confidence, top predictions, and diagnostics.</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="images/signturk-recognition.png" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" />
+              <figcaption>Recognition — real-time sign results presented as a focused product experience.</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="images/signturk-avatar-studio.png" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" />
+              <figcaption>Avatar Studio — interactive sign visualization built on landmark animation data.</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="images/signturk-3d-animation.png" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" />
+              <figcaption>3D Animation — smoothed motion playback for clearer sign demonstrations.</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="images/signturk-admin-overview.png" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" />
+              <figcaption>Admin Overview — platform activity, user intelligence, and infrastructure readiness.</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="images/signturk-dictionary.png" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" />
+              <figcaption>Dictionary — searchable signs connected to the avatar and animation experience.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -193,7 +241,7 @@
                 <div class="proj-pipeline__num">1</div>
                 <div class="proj-pipeline__content">
                   <h4>Frame Capture</h4>
-                  <p>The React CDN frontend captures webcam frames and sends them to <code>/api/predict/live</code>. The live path is designed to keep only a small number of frames in flight so the UI stays responsive.</p>
+                  <p>The browser interface captures webcam frames and sends them to <code>/api/predict/live</code>. The live path is designed to keep only a small number of frames in flight so the UI stays responsive.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
@@ -251,9 +299,9 @@
                   <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><strong>backend.py</strong></td><td>FastAPI app, live inference, history, admin/debug endpoints</td></tr>
-                    <tr><td><strong>signaturk_runtime/</strong></td><td>Extractor, feature builder, realtime state, ensemble runtime</td></tr>
+                    <tr><td><strong>Runtime package</strong></td><td>Extractor, feature builder, realtime state, ensemble runtime</td></tr>
                     <tr><td><strong>frontend/</strong></td><td>React CDN UI, live recognition screen, avatar screen</td></tr>
-                    <tr><td><strong>model/signaturk/</strong></td><td>Config, labels, Keras models, ONNX landmark extractors</td></tr>
+                    <tr><td><strong>Model package</strong></td><td>Config, labels, Keras models, ONNX landmark extractors</td></tr>
                     <tr><td><strong>model/landmarks.json</strong></td><td>Dictionary and avatar landmark animation data</td></tr>
                   </tbody>
                 </table>
@@ -268,7 +316,7 @@
           <h2 class="proj-section-title reveal">Model Assets</h2>
           <div class="proj-card reveal">
             <p class="muted" style="font-size:14px; line-height:1.65; margin-top:0;">
-              The GitHub repository stores large runtime assets with Git LFS so reviewers can clone the project and pull the model files without a separate download link.
+              The GitHub repository stores large runtime assets with Git LFS so reviewers can clone SignTurk and pull the model files without a separate download link.
             </p>
             <table class="data-table">
               <thead><tr><th>Asset</th><th>Role</th></tr></thead>
@@ -323,17 +371,17 @@
             <div class="techs__group">
               <h3>Frontend</h3>
               <div class="badges">
-                <span class="badge">React CDN</span>
+                <span class="badge">Browser UI</span>
                 <span class="badge">JavaScript</span>
                 <span class="badge">CSS</span>
                 <span class="badge">Three.js</span>
               </div>
             </div>
             <div class="techs__group">
-              <h3>Data & Storage</h3>
+              <h3>Data &amp; Storage</h3>
               <div class="badges">
                 <span class="badge">SQLite Fallback</span>
-                <span class="badge">Supabase-ready</span>
+                <span class="badge">PostgreSQL / Supabase</span>
                 <span class="badge">Git LFS</span>
               </div>
             </div>

@@ -66,38 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Previously moved 3D model on mobile; now static order in HTML
 
-  // EMU slider: make visible immediately if present and preload images
-  const emuSlider = document.getElementById('emu-slider');
-  if (emuSlider) {
-    const revealAncestor = emuSlider.closest('.reveal');
-    if (revealAncestor) revealAncestor.classList.add('is-visible');
-    // Preload all slider images for faster first cycle
-    const filesAttr = emuSlider.getAttribute('data-files');
-    const files = (filesAttr && filesAttr.trim().length)
-      ? filesAttr.split(',').map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith('images/') ? s : `images/${s}`)
-      : ['images/mobil0.png','images/mobil1.png','images/mobil2.png','images/mobil3.png','images/mobil4.png','images/mobil5.png','images/mobil6.png'];
-    const head = document.head || document.getElementsByTagName('head')[0];
-    let loadedCount = 0;
-    const done = () => {
-      loadedCount += 1;
-      if (loadedCount >= files.length) {
-        const loader = emuSlider.querySelector('.slider__loader');
-        if (loader) loader.style.display = 'none';
-      }
-    };
-    files.forEach((href, i) => {
-      const l = document.createElement('link');
-      l.rel = 'preload';
-      l.as = 'image';
-      l.href = href;
-      if (i < 2) l.fetchPriority = 'high';
-      head.appendChild(l);
-      const img = new Image();
-      img.onload = done;
-      img.onerror = done;
-      img.src = href;
-    });
-  }
 });
 
 // Intersection Observer for reveal-on-scroll
@@ -202,13 +170,13 @@ if ('IntersectionObserver' in window) {
   });
 })();
 
-// Simple image modal for certificate preview
+// Image modal for certificate and award previews
 (function initImageModal() {
   const modal = document.getElementById('img-modal');
   if (!modal) return;
   const backdrop = modal.querySelector('.img-modal__backdrop');
   const modalImg = modal.querySelector('img');
-  const triggers = Array.from(document.querySelectorAll('.cert-previews img'));
+  const triggers = Array.from(document.querySelectorAll('.cert-previews img, [data-image-modal]'));
   if (!triggers.length || !modalImg || !backdrop) return;
 
   const open = (src, alt) => {
@@ -228,7 +196,9 @@ if ('IntersectionObserver' in window) {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      open(trigger.src, trigger.alt);
+      const image = trigger.matches('img') ? trigger : trigger.querySelector('img');
+      const source = trigger.getAttribute('data-image-modal') || image?.src;
+      if (source) open(source, image?.alt);
     });
   });
   backdrop.addEventListener('click', close);
@@ -276,60 +246,6 @@ if ('IntersectionObserver' in window) {
   }
 })();
 
-// EMU slider: auto-build from images/mobil*.{png,jpg,jpeg,gif}
-(function initEmuSlider() {
-  const slider = document.getElementById('emu-slider');
-  if (!slider) return;
-  const track = slider.querySelector('.slider__track');
-  if (!track) return;
-  // Ensure track lays out horizontally and hides overflow
-  track.style.whiteSpace = 'nowrap';
-  track.style.willChange = 'transform';
-
-  // Explicit file list: use data-files if provided, else default to mobil0..mobil6.png
-  const filesAttr = slider.getAttribute('data-files');
-  const files = (filesAttr && filesAttr.trim().length)
-    ? filesAttr.split(',').map((s) => s.trim()).filter(Boolean).map((s) => s.startsWith('images/') ? s : `images/${s}`)
-    : ['images/mobil0.png','images/mobil1.png','images/mobil2.png','images/mobil3.png','images/mobil4.png','images/mobil5.png','images/mobil6.png'];
-
-  const slides = [];
-  let started = false;
-  let intervalId = null;
-  const intervalMs = parseInt(slider.getAttribute('data-interval') || '4000', 10);
-
-  const addSlide = (src, index) => {
-    const slide = document.createElement('div');
-    slide.className = 'slider__slide';
-    const imgEl = new Image();
-    // First two images eager for instant start; others lazy
-    if (index < 2) { imgEl.loading = 'eager'; imgEl.fetchPriority = 'high'; }
-    else { imgEl.loading = 'lazy'; }
-    imgEl.decoding = 'async';
-    imgEl.alt = 'App screenshot';
-    imgEl.src = src;
-    slide.appendChild(imgEl);
-    track.appendChild(slide);
-    slides.push(slide);
-  };
-
-  const start = () => {
-    started = true;
-    let idx = 0;
-    track.style.transform = 'translateX(0)';
-    if (slides.length <= 1) return;
-    if (intervalId) clearInterval(intervalId);
-    intervalId = setInterval(() => {
-      idx = (idx + 1) % slides.length;
-      track.style.transform = `translateX(-${idx * 100}%)`;
-    }, Math.max(1000, intervalMs));
-  };
-
-  // Build slides immediately from provided list to avoid delayed start
-  files.forEach((src, idx) => addSlide(src, idx));
-  // Start once at least two slides exist
-  if (slides.length >= 2) start();
-})();
-
 // Contact form -> mailto fallback (no backend)
 const form = document.getElementById('contact-form');
 if (form) {
@@ -348,7 +264,7 @@ if (form) {
 (function redirectTo404IfMissing() {
   // Only run when not on index or known pages and fetch fails
   const known = [
-    '/', '/index.html', '/project-sign-language.html', '/project-emu-book-exchange.html', '/project-eraykulkizaga.html',
+    '/', '/index.html', '/project-sign-language.html', '/project-eraykulkizaga.html',
     '/privacy.html', '/404.html'
   ];
   try {

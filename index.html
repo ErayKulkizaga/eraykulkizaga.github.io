@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eray Kulkizaga — Portfolio</title>
-    <meta name="description" content="Eray Kulkizaga — Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <title>Eray Kulkizaga — Backend &amp; AI Software Engineer</title>
+    <meta name="description" content="Eray Kulkizaga — Backend &amp; AI Software Engineer building production-ready Python backends, AI systems, and real-time computer vision products." />
     <link rel="canonical" href="https://eraykulkizaga.com/" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Eray Kulkizaga — Portfolio" />
-    <meta property="og:description" content="Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <meta property="og:title" content="Eray Kulkizaga — Backend &amp; AI Software Engineer" />
+    <meta property="og:description" content="Production-ready Python backends, AI systems, and real-time computer vision products." />
     <meta property="og:url" content="https://eraykulkizaga.com/" />
     <meta property="og:image" content="/images/hero.gif" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Eray Kulkizaga — Portfolio" />
-    <meta name="twitter:description" content="Machine Learning Engineer. Projects, skills, certificates, and contact." />
+    <meta name="twitter:title" content="Eray Kulkizaga — Backend &amp; AI Software Engineer" />
+    <meta name="twitter:description" content="Production-ready Python backends, AI systems, and real-time computer vision products." />
     <meta name="twitter:image" content="/images/hero.gif" />
 
     <!-- Meta colors & PWA basics -->
@@ -26,7 +26,7 @@
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 
     <link rel="icon" href="images/main.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
@@ -79,11 +79,11 @@
           <div class="hero__content reveal">
             <h1 class="hero__title">Eray Kulkızaga</h1>
             <p class="hero__subtitle">
-              AI & ML Engineer | MLOps | Data Science
+              Backend Software Engineer | AI Systems
             </p>
             <p class="hero__subtitle">
-              Crafting clean, scalable solutions. Building
-              intelligent systems and elegant user experiences.
+              Building production-ready Python backends and AI products with
+              clean architecture, testing, observability, and reliable deployment.
             </p> 
             <div class="hero__cta">
               <a href="#projects" class="btn btn--primary">View Projects</a>
@@ -111,14 +111,11 @@
           </div>
 
           <div class="projects__grid">
-            <a href="project-sign-language.html" class="card reveal">
-              <h3 class="card__title">SignaTurk</h3>
-              <p class="card__desc">A real-time Turkish Sign Language recognition runtime using webcam input, RTMW whole-body landmarks, and a 226-class ensemble model.</p>
-            </a>
-
-            <a href="project-emu-book-exchange.html" class="card reveal">
-              <h3 class="card__title">EMU Book Exchange</h3>
-              <p class="card__desc">A book sales platform that builds bridges between students on campus.</p>
+            <a href="project-sign-language.html" class="card card--featured reveal">
+              <div class="card__eyebrow">Outstanding Graduation Project · 2025–2026</div>
+              <h3 class="card__title">SignTurk</h3>
+              <p class="card__desc">An award-winning, real-time Turkish Sign Language platform powered by FastAPI, WebSocket inference, RTMW whole-body landmarks, and a 226-class ensemble model.</p>
+              <span class="card__link">Explore the project →</span>
             </a>
 
             <a href="project-eraykulkizaga.html" class="card reveal">
@@ -126,6 +123,18 @@
               <p class="card__desc">This minimalist, performant site with scroll animations and parallax effects.</p>
             </a>
           </div>
+
+          <article class="award-feature reveal" aria-labelledby="award-title">
+            <div class="award-feature__copy">
+              <p class="award-feature__eyebrow">Eastern Mediterranean University</p>
+              <h3 id="award-title">Outstanding Project Award</h3>
+              <p>SignTurk was recognized as an outstanding graduation project by the Faculty of Engineering, Department of Computer Engineering, for the 2025–2026 Spring Semester.</p>
+              <a href="project-sign-language.html#award" class="btn">View the award and product →</a>
+            </div>
+            <button class="award-feature__image" type="button" data-image-modal="images/signturk-outstanding-project.png" aria-label="Open Outstanding Project certificate">
+              <img src="images/signturk-outstanding-project.png" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="lazy" decoding="async" />
+            </button>
+          </article>
         </div>
       </section>
 
@@ -136,7 +145,7 @@
             <div class="about__content reveal">
               <h2>About</h2>
               <p>
-                Skilled in Data Science, Deep Learning, Computer Vision, and MLOps. I have hands-on experience in model development, optimization, and deployment, including large language and multimodal models. I focus on building production-ready AI systems with an emphasis on fairness, security, and explainability.
+                I build backend and AI systems with Python, combining API design, relational data, asynchronous workloads, model integration, and real-time computer vision. My focus is on software that is tested, observable, deployable, and easy to explain—from FastAPI services to RAG and model-powered products.
               </p>
               <p class="education-row">
                 <img src="images/dau.png" alt="Eastern Mediterranean University logo" class="edu__logo" loading="lazy" decoding="async" width="120" height="120" />
@@ -145,13 +154,13 @@
             </div>
             <div class="about__media reveal">
               <div class="about__card">
-                <p class="muted">Currently exploring:</p>
+                <p class="muted">Current 12-week roadmap:</p>
                     <ul class="list">
-                      <li>LLMs: prompt engineering, fine-tuning, and Retrieval-Augmented Generation (RAG)</li>
-                      <li>Tool/function calling with agents and model evaluation</li>
-                      <li>3D vision and pose estimation</li>
-                      <li>Image enhancement and restoration techniques</li>
-                      <li>Edge AI for real-time visual analytics</li>
+                      <li>Production APIs with FastAPI, PostgreSQL, SQLAlchemy, and Alembic</li>
+                      <li>Redis caching, Celery workers, and background job design</li>
+                      <li>pytest, Ruff, Pyright, Docker, and GitHub Actions</li>
+                      <li>LLM APIs, RAG, pgvector, and retrieval evaluation</li>
+                      <li>Render deployment plus logs, metrics, and traces</li>
                     </ul>
               </div>
               <div class="edu-stats reveal" aria-label="Education stats">
@@ -178,21 +187,26 @@
           </div>
           <div class="badges reveal">
             <span class="badge">Python</span>
-            <span class="badge">NumPy</span>
-            <span class="badge">Pandas</span>
-            <span class="badge">Matplotlib</span>
-            <span class="badge">Seaborn</span>
-            <span class="badge">SQL</span>
-            <span class="badge">scikit-learn</span>
-            <span class="badge">XGBoost</span>
-            <span class="badge">TensorFlow</span>
-            <span class="badge">PyTorch</span>
-            <span class="badge">Hugging Face</span>
-            <span class="badge">OpenCV</span>
-            <span class="badge">MediaPipe</span>
-            <span class="badge">Docker</span>
             <span class="badge">FastAPI</span>
-            <span class="badge">Git & GitHub</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">SQLAlchemy</span>
+            <span class="badge">Alembic</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Celery</span>
+            <span class="badge">pytest</span>
+            <span class="badge">Ruff</span>
+            <span class="badge">Pyright</span>
+            <span class="badge">Docker</span>
+            <span class="badge">GitHub Actions</span>
+            <span class="badge">Render</span>
+            <span class="badge">OpenTelemetry</span>
+            <span class="badge">LLM APIs</span>
+            <span class="badge">RAG</span>
+            <span class="badge">pgvector</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">ONNX Runtime</span>
+            <span class="badge">OpenCV</span>
+            <span class="badge">Git &amp; GitHub</span>
 
           </div>
         </div>
@@ -388,7 +402,7 @@
     "@type": "Person",
     "name": "Eray Kulkızaga",
     "url": "https://eraykulkizaga.com/",
-    "jobTitle": "Machine Learning Engineer",
+    "jobTitle": "Backend & AI Software Engineer",
     "sameAs": [
       "https://github.com/eraykulkizaga",
       "https://www.linkedin.com/in/eraykulkizaga/"
