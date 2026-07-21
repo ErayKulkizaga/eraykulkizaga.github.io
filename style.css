@@ -93,7 +93,8 @@ section { scroll-margin-top: 80px; }
 .card--featured::after { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; right: -80px; top: -90px; background: rgba(59,130,246,0.10); pointer-events: none; }
 .card__eyebrow, .award-feature__eyebrow { margin: 0 0 10px; color: #1d4ed8; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .card__link { display: inline-block; margin-top: 18px; color: var(--primary); font-weight: 700; font-size: 14px; }
-.award-feature { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; align-items: center; margin-top: 24px; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); box-shadow: 0 10px 30px rgba(15,23,42,.06); }
+.award-feature { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; align-items: center; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); box-shadow: 0 10px 30px rgba(15,23,42,.06); }
+.projects__head { margin-top: 44px; }
 .award-feature__copy h3 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.03em; }
 .award-feature__copy > p:not(.award-feature__eyebrow) { color: var(--muted); line-height: 1.7; margin: 0 0 18px; }
 .award-feature__image { appearance: none; border: 0; padding: 0; background: transparent; border-radius: 12px; overflow: hidden; cursor: zoom-in; box-shadow: 0 8px 26px rgba(15,23,42,.14); }
