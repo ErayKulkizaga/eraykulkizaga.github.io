@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>SignTurk — Award-Winning Turkish Sign Language Platform</title>
-    <meta name="description" content="SignTurk is an award-winning FastAPI Turkish Sign Language project with a MediaPipe-to-WebSocket recognition runtime, a BiLSTM model, and Three.js sign animation." />
+    <meta name="description" content="SignTurk is an award-winning Turkish Sign Language platform combining FastAPI, MediaPipe, BiLSTM inference, PostgreSQL, Turkish sentence assembly, speech output, and Three.js animation." />
     <link rel="canonical" href="https://www.eraykulkizaga.com/project-sign-language.html" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
-    <meta property="og:description" content="Real-time Turkish Sign Language recognition with MediaPipe, FastAPI, WebSocket, TensorFlow/Keras, and Three.js animation." />
+    <meta property="og:description" content="Real-time Turkish Sign Language recognition, approved-word sentence assembly, speech output, persistence, and Three.js animation." />
     <meta property="og:url" content="https://www.eraykulkizaga.com/project-sign-language.html" />
     <meta property="og:image" content="https://www.eraykulkizaga.com/images/signturk-homepage.png" />
     <meta property="og:image:width" content="1919" />
@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260721-6" />
+    <link rel="stylesheet" href="style.css?v=20260721-7" />
     <script>document.documentElement.classList.add('js');</script>
     <style>
       .proj-hero { padding: 60px 0 40px; }
@@ -62,10 +62,12 @@
       .award-banner__eyebrow { margin: 0 0 8px; color: #1d4ed8; font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
       .award-banner h2 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.03em; }
       .award-banner p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
-      .award-banner img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 10px 28px rgba(15,23,42,.16); }
+      .award-banner .project-image-button { border-radius: 12px; box-shadow: 0 10px 28px rgba(15,23,42,.16); }
+      .award-banner img { width: 100%; height: auto; display: block; }
       .proj-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .proj-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
-      .proj-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; display: block; background: #f8fafc; }
+      .proj-gallery .project-image-button { display: grid; place-items: center; aspect-ratio: 16 / 10; background: #f8fafc; }
+      .proj-gallery img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: #f8fafc; }
       .proj-gallery figcaption { padding: 12px 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
       .contribution-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.75; }
       .contribution-list li + li { margin-top: 8px; }
@@ -125,7 +127,7 @@
           <p class="proj-hero__tag reveal">Outstanding Graduation Project · AI · Computer Vision · Backend</p>
           <h1 class="proj-hero__title reveal">SignTurk<br>Turkish Sign Language Platform</h1>
           <p class="proj-hero__sub reveal">
-            An award-winning Turkish Sign Language project that combines webcam recognition and sign animation. The public GitHub runtime uses browser-side MediaPipe landmarks, WebSocket communication, a FastAPI inference service, and a BiLSTM model; the final graduation-project interface extends that core with dashboard, dictionary, avatar, and administration experiences.
+            An award-winning Turkish Sign Language platform combining real-time recognition, user-approved sentence assembly, optional speech output, persistent history, and interactive 3D sign visualization in one FastAPI application.
           </p>
           <div class="proj-hero__actions reveal">
             <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
@@ -144,7 +146,9 @@
               <h2>Outstanding Project Award</h2>
               <p>The Faculty of Engineering, Department of Computer Engineering recognized SignTurk as an outstanding graduation project for the Spring Semester. The award highlights the project’s engineering depth, product scope, and accessibility impact.</p>
             </div>
-            <img src="images/signturk-outstanding-project.webp" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="eager" decoding="async" width="1166" height="799" />
+            <button class="project-image-button" type="button" data-image-modal="images/signturk-outstanding-project.webp" aria-label="Open the Outstanding Project certificate">
+              <img src="images/signturk-outstanding-project.webp" alt="Outstanding Graduation Project certificate awarded to Eray Kulkizaga for SignTurk" loading="eager" decoding="async" width="1166" height="799" />
+            </button>
           </article>
         </div>
       </div>
@@ -152,7 +156,9 @@
       <div class="section" style="padding-top:0">
         <div class="container">
           <div class="proj-media-item proj-media-item--full reveal">
-            <img src="images/signturk-homepage.webp" alt="SignTurk product homepage presenting real-time Turkish Sign Language recognition" loading="eager" fetchpriority="high" decoding="async" width="1919" height="1078" />
+            <button class="project-image-button" type="button" data-image-modal="images/signturk-homepage.webp" aria-label="Open the SignTurk product homepage image">
+              <img src="images/signturk-homepage.webp" alt="SignTurk product homepage presenting real-time Turkish Sign Language recognition" loading="eager" fetchpriority="high" decoding="async" width="1919" height="1078" />
+            </button>
           </div>
         </div>
       </div>
@@ -203,22 +209,24 @@
             <div class="proj-card reveal">
               <h3 class="proj-section-title" style="margin-bottom:10px;">Live Recognition</h3>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                MediaPipe runs in the browser and converts webcam input into hand landmarks. Sixteen-frame sequences are sent to the FastAPI backend through <code>/ws</code>, where the selected BiLSTM runtime returns the top predictions, confidence values, and inference latency.
+                Authenticated webcam frames stream to <code>/api/predict/live</code>. The FastAPI backend extracts MediaPipe hand landmarks, builds 16-frame sequences, and returns ranked BiLSTM predictions with confidence and latency.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li>Browser-side MediaPipe Holistic landmark extraction</li>
-                <li>16-frame sequence collection and WebSocket inference</li>
+                <li>Backend MediaPipe Hands landmark extraction</li>
+                <li>Authenticated WebSocket inference and per-session state</li>
                 <li>179-class runtime configuration with Top-3 results</li>
-                <li>Health and startup diagnostics exposed by FastAPI</li>
+                <li>User approval before persistence or sentence insertion</li>
               </ul>
             </div>
             <div class="proj-card reveal">
               <h3 class="proj-section-title" style="margin-bottom:10px;">Dictionary &amp; Avatar</h3>
               <p class="muted" style="font-size:14px; line-height:1.65; margin:0 0 12px;">
-                The public demo also exposes sign and landmark endpoints for a Three.js animation experience. Local landmark sequences drive the browser renderer, with smooth transitions between requested words.
+                Approved signs flow into a deterministic Turkish sentence engine and optional gTTS/Piper speech output. Supported words can also be replayed through the Three.js avatar using local landmark and BVH assets.
               </p>
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
-                <li><code>/signs</code> and <code>/landmark/{word}</code> endpoints</li>
+                <li>Rule-based Turkish morphology and sentence assembly</li>
+                <li>Optional gTTS with an offline Piper adapter</li>
+                <li><code>/signs</code> and <code>/landmark/{word}</code> avatar endpoints</li>
                 <li>Local JSON and BVH animation assets</li>
                 <li>Three.js browser rendering</li>
               </ul>
@@ -230,30 +238,42 @@
       <section id="product-experience" class="section" style="padding-top:0">
         <div class="container">
           <h2 class="proj-section-title reveal">Product Experience</h2>
-          <p class="model-note reveal">These screens document the broader graduation-project interface. The public GitHub repository currently contains the leaner recognition-and-animation demo that powers the core model workflow.</p>
+          <p class="model-note reveal">These screens document the current product experience included in the public repository: live translation, approval-driven sentence building, avatar playback, dictionary, history, settings, and administrator views.</p>
           <div class="proj-gallery">
             <figure class="reveal">
-              <img src="images/signturk-live-translation.webp" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" width="1908" height="831" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-live-translation.webp" aria-label="Open the SignTurk live translation screen">
+                <img src="images/signturk-live-translation.webp" alt="SignTurk live translation screen with camera inference and prediction panels" loading="lazy" decoding="async" width="1908" height="831" />
+              </button>
               <figcaption>Live Translation — webcam inference, confidence, top predictions, and diagnostics.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-recognition.webp" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" width="1906" height="923" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-recognition.webp" aria-label="Open the SignTurk recognition screen">
+                <img src="images/signturk-recognition.webp" alt="SignTurk recognition experience showing a detected Turkish sign" loading="lazy" decoding="async" width="1906" height="923" />
+              </button>
               <figcaption>Recognition — real-time sign results presented as a focused product experience.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-avatar-studio.webp" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" width="1911" height="979" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-avatar-studio.webp" aria-label="Open the SignTurk avatar studio screen">
+                <img src="images/signturk-avatar-studio.webp" alt="SignTurk avatar studio for sign language visualization" loading="lazy" decoding="async" width="1911" height="979" />
+              </button>
               <figcaption>Avatar Studio — interactive sign visualization built on landmark animation data.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-3d-animation.webp" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" width="1911" height="983" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-3d-animation.webp" aria-label="Open the SignTurk 3D animation screen">
+                <img src="images/signturk-3d-animation.webp" alt="SignTurk 3D sign animation interface" loading="lazy" decoding="async" width="1911" height="983" />
+              </button>
               <figcaption>3D Animation — smoothed motion playback for clearer sign demonstrations.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-admin-overview.webp" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" width="1911" height="980" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-admin-overview.webp" aria-label="Open the SignTurk administration overview screen">
+                <img src="images/signturk-admin-overview.webp" alt="SignTurk administration overview with activity and infrastructure status" loading="lazy" decoding="async" width="1911" height="980" />
+              </button>
               <figcaption>Admin Overview — platform activity, user intelligence, and infrastructure readiness.</figcaption>
             </figure>
             <figure class="reveal">
-              <img src="images/signturk-dictionary.webp" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" width="1911" height="982" />
+              <button class="project-image-button" type="button" data-image-modal="images/signturk-dictionary.webp" aria-label="Open the SignTurk dictionary screen">
+                <img src="images/signturk-dictionary.webp" alt="SignTurk Turkish Sign Language dictionary screen" loading="lazy" decoding="async" width="1911" height="982" />
+              </button>
               <figcaption>Dictionary — searchable signs connected to the avatar and animation experience.</figcaption>
             </figure>
           </div>
@@ -268,29 +288,29 @@
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">1</div>
                 <div class="proj-pipeline__content">
-                  <h3>Browser Landmark Extraction</h3>
-                  <p>MediaPipe Holistic runs in browser-side WASM. It extracts left- and right-hand landmarks from webcam frames and starts a sequence only when hands are detected.</p>
+                  <h3>Authenticated Camera Stream</h3>
+                  <p>The browser captures a compressed webcam frame every 250 ms and streams it to the protected <code>/api/predict/live</code> WebSocket endpoint.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">2</div>
                 <div class="proj-pipeline__content">
-                  <h3>Sequence Transport</h3>
-                  <p>The client collects 16 frames and sends landmark payloads over <code>/ws</code>. The FastAPI service maintains a separate buffer for each WebSocket session.</p>
+                  <h3>Backend Landmark Extraction</h3>
+                  <p>FastAPI decodes each frame and MediaPipe Hands extracts 21 landmarks per detected hand. The service maintains an isolated temporal buffer for every session.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">3</div>
                 <div class="proj-pipeline__content">
-                  <h3>Runtime Preprocessing</h3>
+                  <h3>Sequence Preprocessing</h3>
                   <p>The selected model contract normalizes 126 hand-landmark coordinates relative to the wrists, combines them with 30 finger-angle features, and assembles 156 features across a 16-frame temporal sequence.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">4</div>
                 <div class="proj-pipeline__content">
-                  <h3>BiLSTM Prediction</h3>
-                  <p>The 179-class BiLSTM model with temporal attention returns Top-3 labels, confidence scores, and latency. It was retained because it fits the existing live pipeline without replacing the frontend feature contract.</p>
+                  <h3>Prediction, Approval &amp; Sentence</h3>
+                  <p>The 179-class BiLSTM returns Top-3 labels and confidence. A confident word is persisted and added to the Turkish sentence only after the user approves it.</p>
                 </div>
               </div>
             </div>
@@ -305,17 +325,18 @@
               <h2 class="proj-section-title reveal">Architecture</h2>
               <div class="proj-arch reveal">
 <span class="hl">Browser UI</span><br>
-  webcam -> MediaPipe Holistic (WASM)<br>
-  16-frame hand-landmark sequence -> /ws<br><br>
+  webcam frame -> authenticated WebSocket<br>
+  approve / reject -> sentence + history<br><br>
 <span class="hl">FastAPI Backend</span><br>
-  /ws + /health + /startup-check<br>
-  per-session buffer + normalization<br><br>
+  /api/predict/live + /api/text/correct<br>
+  MediaPipe + per-session buffer<br><br>
 <span class="grn">Recognition Runtime</span><br>
-  model.keras -> 179-class BiLSTM + attention<br>
+  16 x 156 -> 179-class BiLSTM + attention<br>
   Top-3 labels + confidence + latency<br><br>
-<span class="grn">Animation Runtime</span><br>
-  /signs + /landmark/{word}<br>
-  local landmark data -> Three.js
+<span class="grn">Platform Services</span><br>
+  SQLAlchemy -> SQLite / PostgreSQL<br>
+  Turkish rules -> gTTS / Piper<br>
+  landmarks + BVH -> Three.js
               </div>
             </div>
             <div>
@@ -324,9 +345,11 @@
                 <table class="data-table">
                   <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>backend.py</strong></td><td>FastAPI app, WebSocket buffering, model inference, and landmark endpoints</td></tr>
-                    <tr><td><strong>index.html</strong></td><td>Browser UI, MediaPipe capture, recognition results, and Three.js animation</td></tr>
-                    <tr><td><strong>model_assets/</strong></td><td>Keras model, runtime config, label map, and normalization statistics</td></tr>
+                    <tr><td><strong>backend.py</strong></td><td>FastAPI app, authentication, WebSockets, inference, approval flow, and APIs</td></tr>
+                    <tr><td><strong>frontend/sign_turk_ui.html</strong></td><td>Responsive React product interface for translation, history, settings, and administration</td></tr>
+                    <tr><td><strong>database.py + models.py</strong></td><td>Environment-based SQLAlchemy persistence with SQLite and PostgreSQL support</td></tr>
+                    <tr><td><strong>demo_assets_179/</strong></td><td>Live Keras model, label map, runtime config, and normalization statistics</td></tr>
+                    <tr><td><strong>text_processing/</strong></td><td>Turkish grammar, evaluation, optional ML adapters, and gTTS/Piper speech</td></tr>
                     <tr><td><strong>extract_landmarks.py</strong></td><td>AUTSL landmark extraction utility</td></tr>
                     <tr><td><strong>dataset/landmarks/</strong></td><td>Local sign-animation landmark sequences</td></tr>
                   </tbody>
@@ -367,6 +390,7 @@
                 <span class="badge">FastAPI</span>
                 <span class="badge">Uvicorn</span>
                 <span class="badge">WebSocket</span>
+                <span class="badge">Pydantic</span>
               </div>
             </div>
             <div class="techs__group">
@@ -381,7 +405,7 @@
             <div class="techs__group">
               <h3>Computer Vision</h3>
               <div class="badges">
-                <span class="badge">MediaPipe Holistic</span>
+                <span class="badge">MediaPipe Hands</span>
                 <span class="badge">Hand Landmarks</span>
                 <span class="badge">16-frame Sequences</span>
                 <span class="badge">AUTSL</span>
@@ -390,6 +414,7 @@
             <div class="techs__group">
               <h3>Frontend</h3>
               <div class="badges">
+                <span class="badge">React</span>
                 <span class="badge">HTML</span>
                 <span class="badge">JavaScript</span>
                 <span class="badge">CSS</span>
@@ -406,6 +431,16 @@
               </div>
             </div>
             <div class="techs__group">
+              <h3>Data &amp; Speech</h3>
+              <div class="badges">
+                <span class="badge">SQLAlchemy</span>
+                <span class="badge">PostgreSQL</span>
+                <span class="badge">SQLite</span>
+                <span class="badge">gTTS</span>
+                <span class="badge">Piper</span>
+              </div>
+            </div>
+            <div class="techs__group">
               <h3>Runtime</h3>
               <div class="badges">
                 <span class="badge">Local Runtime</span>
@@ -419,6 +454,26 @@
       </section>
     </main>
 
+    <div id="img-modal" class="img-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="img-modal-title" inert>
+      <button class="img-modal__backdrop" type="button" tabindex="-1" aria-label="Close image preview"></button>
+      <div class="img-modal__content" tabindex="-1">
+        <h2 id="img-modal-title" class="sr-only">Image preview</h2>
+        <div class="img-modal__toolbar">
+          <span class="img-modal__name">Image preview</span>
+          <div class="img-modal__controls" aria-label="Image zoom controls">
+            <button class="img-modal__control" type="button" data-image-zoom-out aria-label="Zoom out">−</button>
+            <button class="img-modal__control img-modal__zoom-label" type="button" data-image-zoom-reset aria-label="Reset zoom"><span data-image-zoom-label>100%</span></button>
+            <button class="img-modal__control" type="button" data-image-zoom-in aria-label="Zoom in">+</button>
+            <button class="img-modal__close" type="button" aria-label="Close image preview">×</button>
+          </div>
+        </div>
+        <div class="img-modal__viewport">
+          <img src="images/signturk-homepage.webp" alt="" draggable="false">
+        </div>
+        <p class="img-modal__hint">Use + / −, double-click, or Ctrl/⌘ + wheel to zoom · Press 0 to fit</p>
+      </div>
+    </div>
+
     <footer id="footer" class="site-footer">
       <div class="footer-aura" aria-hidden="true"></div>
       <div class="container footer-shell">
@@ -429,6 +484,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260721-6" defer></script>
+    <script src="script.js?v=20260721-7" defer></script>
   </body>
 </html>

@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="icon" href="images/main.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=20260721-6">
+    <link rel="stylesheet" href="style.css?v=20260721-7">
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body class="home">
@@ -328,8 +328,19 @@
       <button class="img-modal__backdrop" type="button" tabindex="-1" aria-label="Close image preview"></button>
       <div class="img-modal__content" tabindex="-1">
         <h2 id="img-modal-title" class="sr-only">Image preview</h2>
-        <button class="img-modal__close" type="button" aria-label="Close image preview">×</button>
-        <img src="images/signturk-outstanding-project.webp" alt="">
+        <div class="img-modal__toolbar">
+          <span class="img-modal__name">Image preview</span>
+          <div class="img-modal__controls" aria-label="Image zoom controls">
+            <button class="img-modal__control" type="button" data-image-zoom-out aria-label="Zoom out">−</button>
+            <button class="img-modal__control img-modal__zoom-label" type="button" data-image-zoom-reset aria-label="Reset zoom"><span data-image-zoom-label>100%</span></button>
+            <button class="img-modal__control" type="button" data-image-zoom-in aria-label="Zoom in">+</button>
+            <button class="img-modal__close" type="button" aria-label="Close image preview">×</button>
+          </div>
+        </div>
+        <div class="img-modal__viewport">
+          <img src="images/signturk-outstanding-project.webp" alt="" draggable="false">
+        </div>
+        <p class="img-modal__hint">Use + / −, double-click, or Ctrl/⌘ + wheel to zoom · Press 0 to fit</p>
       </div>
     </div>
 
@@ -377,6 +388,6 @@
       "url": "https://www.eraykulkizaga.com/"
     }
     </script>
-    <script src="script.js?v=20260721-6" defer></script>
+    <script src="script.js?v=20260721-7" defer></script>
   </body>
 </html>
