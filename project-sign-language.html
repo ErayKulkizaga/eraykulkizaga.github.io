@@ -154,7 +154,7 @@
           <h2 class="proj-section-title reveal">Project Snapshot</h2>
           <div class="proj-stats-row reveal">
             <div class="proj-stat">
-              <span class="proj-stat__value">184</span>
+              <span class="proj-stat__value">179</span>
               <span class="proj-stat__label">Runtime Classes</span>
             </div>
             <div class="proj-stat">
@@ -162,7 +162,7 @@
               <span class="proj-stat__label">Frames per Sequence</span>
             </div>
             <div class="proj-stat">
-              <span class="proj-stat__value">76.14%</span>
+              <span class="proj-stat__value">85.65%</span>
               <span class="proj-stat__label">Selected Runtime Top-1</span>
             </div>
             <div class="proj-stat">
@@ -182,7 +182,7 @@
               <li>Designed and trained the recognition-model variants evaluated on the AUTSL dataset.</li>
               <li>Compared Transformer, BiLSTM, temporal-attention, and class-filtering experiments.</li>
               <li>Evaluated Top-1, Top-3, and Top-5 performance and investigated weak or visually similar sign classes.</li>
-              <li>Helped select the lower-accuracy 184-class model for the public demo because it fit the existing 16-frame MediaPipe/WebSocket pipeline more reliably.</li>
+              <li>Helped select the 179-class MediaPipe/BiLSTM model for the product pipeline; although the later RTMW ensemble achieved higher offline accuracy, the selected model fit the existing live pipeline more reliably.</li>
             </ul>
           </div>
         </div>
@@ -199,7 +199,7 @@
               <ul style="margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.7;">
                 <li>Browser-side MediaPipe Holistic landmark extraction</li>
                 <li>16-frame sequence collection and WebSocket inference</li>
-                <li>184-class runtime configuration with Top-3 results</li>
+                <li>179-class runtime configuration with Top-3 results</li>
                 <li>Health and startup diagnostics exposed by FastAPI</li>
               </ul>
             </div>
@@ -274,14 +274,14 @@
                 <div class="proj-pipeline__num">3</div>
                 <div class="proj-pipeline__content">
                   <h4>Runtime Preprocessing</h4>
-                  <p>The selected demo contract normalizes the configured 252-feature input with the stored training statistics before passing the sequence to the Keras model.</p>
+                  <p>The selected model contract normalizes 126 hand-landmark coordinates relative to the wrists, combines them with 30 finger-angle features, and assembles 156 features across a 16-frame temporal sequence.</p>
                 </div>
               </div>
               <div class="proj-pipeline__step">
                 <div class="proj-pipeline__num">4</div>
                 <div class="proj-pipeline__content">
                   <h4>BiLSTM Prediction</h4>
-                  <p>The 184-class model returns Top-3 labels, confidence scores, and latency. The lower-accuracy model was retained because it fits this existing live pipeline without replacing the frontend feature contract.</p>
+                  <p>The 179-class BiLSTM model with temporal attention returns Top-3 labels, confidence scores, and latency. It was retained because it fits the existing live pipeline without replacing the frontend feature contract.</p>
                 </div>
               </div>
             </div>
@@ -302,7 +302,7 @@
   /ws + /health + /startup-check<br>
   per-session buffer + normalization<br><br>
 <span class="grn">Recognition Runtime</span><br>
-  model.keras -> 184-class BiLSTM<br>
+  model.keras -> 179-class BiLSTM + attention<br>
   Top-3 labels + confidence + latency<br><br>
 <span class="grn">Animation Runtime</span><br>
   /signs + /landmark/{word}<br>
@@ -332,13 +332,12 @@
         <div class="container">
           <h2 class="proj-section-title reveal">Model Selection &amp; Trade-off</h2>
           <div class="proj-card reveal">
-            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk kept the lower-accuracy model in the public demo because its inputs already matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably.</p>
+            <p class="model-note">The highest-accuracy experiment was not automatically the best deployment choice. SignTurk selected the 85.65% Top-1 model because it matched the established MediaPipe/WebSocket pipeline, making the end-to-end system easier to integrate and demonstrate reliably. The 94.09% RTMW ensemble remained an offline research result.</p>
             <table class="data-table">
               <thead><tr><th>Model</th><th>Status and decision</th></tr></thead>
               <tbody>
-                <tr><td><strong>184-class BiLSTM</strong></td><td>Selected public runtime; 16 frames, 252 configured features, and 76.14% reported Top-1 accuracy.</td></tr>
-                <tr><td><strong>179-class improved model</strong></td><td>Trained experiment with color-only normalization, finger-angle features, temporal attention, and 85.65% Top-1; not integrated into the public demo pipeline.</td></tr>
-                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Later offline research result documented in the final report; not presented as the model running in the public GitHub demo.</td></tr>
+                <tr><td><strong>179-class BiLSTM + temporal attention</strong></td><td>Selected product model; 16 frames, 156 features, and 85.65% reported Top-1 accuracy. It aligned with the existing MediaPipe/WebSocket pipeline.</td></tr>
+                <tr><td><strong>226-class RTMW ensemble</strong></td><td>Achieved 94.09% Top-1 in offline evaluation, but was not integrated because it required a different extractor and multi-stream runtime.</td></tr>
               </tbody>
             </table>
             <p class="callout" style="margin:18px 0 0;">
