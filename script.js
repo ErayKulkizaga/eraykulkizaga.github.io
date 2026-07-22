@@ -124,6 +124,94 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach((element) => element.classList.add('is-visible'));
   }
 
+  document.querySelectorAll('[data-project-slideshow]').forEach((slideshow) => {
+    const slides = Array.from(slideshow.querySelectorAll('img'));
+    const dots = Array.from(slideshow.querySelectorAll('.card-slideshow__dots span'));
+    const currentLabel = slideshow.querySelector('[data-slideshow-current]');
+    const card = slideshow.closest('.card');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const interval = Math.max(3000, Number(slideshow.dataset.interval) || 4400);
+    if (slides.length < 2 || dots.length !== slides.length) return;
+
+    let current = 0;
+    let timer = 0;
+    let isVisible = false;
+    let isPaused = false;
+    let hasPreloaded = false;
+
+    const showSlide = (index) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === current));
+      if (currentLabel) currentLabel.textContent = String(current + 1).padStart(2, '0');
+    };
+
+    const stop = () => {
+      window.clearTimeout(timer);
+      timer = 0;
+    };
+
+    const schedule = () => {
+      stop();
+      if (reducedMotion || !isVisible || isPaused || document.hidden) return;
+      timer = window.setTimeout(() => {
+        showSlide(current + 1);
+        schedule();
+      }, interval);
+    };
+
+    const preloadSlides = () => {
+      if (hasPreloaded) return;
+      hasPreloaded = true;
+      slides.slice(1).forEach((slide) => {
+        const preload = new Image();
+        preload.src = slide.currentSrc || slide.src;
+      });
+    };
+
+    showSlide(0);
+    if (reducedMotion) return;
+
+    const visibilityObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => {
+        isVisible = entries.some((entry) => entry.isIntersecting);
+        if (isVisible) preloadSlides();
+        schedule();
+      }, { threshold: 0.3 })
+      : null;
+
+    if (visibilityObserver) visibilityObserver.observe(slideshow);
+    else {
+      isVisible = true;
+      preloadSlides();
+      schedule();
+    }
+
+    card?.addEventListener('mouseenter', () => {
+      isPaused = true;
+      stop();
+    });
+    card?.addEventListener('mouseleave', () => {
+      isPaused = false;
+      schedule();
+    });
+    card?.addEventListener('focusin', () => {
+      isPaused = true;
+      stop();
+    });
+    card?.addEventListener('focusout', () => {
+      window.requestAnimationFrame(() => {
+        isPaused = Boolean(card.contains(document.activeElement));
+        schedule();
+      });
+    });
+    document.addEventListener('visibilitychange', schedule);
+  });
+
   document.querySelectorAll('[data-slider]').forEach((container) => {
     const track = container.querySelector('.cert-previews__track');
     const dots = Array.from(container.querySelectorAll('.cert-previews__dot'));
