@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>SupportFlow AI — Support Copilot Case Study</title>
+    <meta name="description" content="SupportFlow AI is a tenant-aware support copilot for source-backed answer drafts, human approval, and measurable retrieval quality." />
+    <link rel="canonical" href="https://www.eraykulkizaga.com/project-supportflow.html" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SupportFlow AI — Support Copilot" />
+    <meta property="og:description" content="A tenant-aware, source-backed support copilot that keeps agents in control." />
+    <meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html" />
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eray Kulkizaga software engineering portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SupportFlow AI — Support Copilot" />
+    <meta name="twitter:description" content="Tenant-aware support workflows, source-backed drafts, and human approval." />
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
+    <meta name="theme-color" content="#08080a" />
+    <link rel="icon" href="images/main.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=20260724-1" />
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+      .proj-hero { padding: 60px 0 40px; }
+      .proj-hero__tag { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 550 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+      .proj-hero__title { max-width: 860px; margin: 0 0 18px; font-size: clamp(46px, 8vw, 92px); line-height: .94; letter-spacing: -.065em; }
+      .proj-hero__sub { max-width: 760px; margin: 0 0 28px; color: var(--muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.55; }
+      .proj-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      .proj-section-title { margin: 0 0 18px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.04em; }
+      .proj-card { padding: clamp(22px, 4vw, 36px); border: 1px solid var(--border); border-radius: 22px; background: var(--card); }
+      .proj-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .project-copy { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+      .project-copy + .project-copy { margin-top: 14px; }
+      .status-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .status-item { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); }
+      .status-item strong { display: block; margin-bottom: 9px; color: var(--primary); font-size: 18px; letter-spacing: -.025em; }
+      .status-item span { color: var(--muted); font-size: 12px; line-height: 1.5; }
+      .architecture { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #0b0c10; color: #fff; }
+      .architecture__head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .architecture__head p { margin: 0; color: #8f929b; font: 550 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      .architecture__legend { display: flex; gap: 14px; color: #8f929b; font-size: 10px; }
+      .architecture__legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #258bff; }
+      .architecture__legend span:last-child::before { border: 1px solid #777b86; background: transparent; }
+      .architecture__body { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); align-items: stretch; gap: 10px; padding: clamp(20px, 4vw, 38px); }
+      .architecture__node { position: relative; display: flex; min-height: 116px; flex-direction: column; justify-content: space-between; gap: 16px; padding: 17px; border: 1px solid rgba(135,187,255,.25); border-radius: 16px; background: rgba(8,120,255,.08); }
+      .architecture__node:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -10px; z-index: 2; color: #6f727b; transform: translate(50%,-50%); }
+      .architecture__node--planned { border-style: dashed; border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.025); }
+      .architecture__node small { color: #6f9fdb; font: 600 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .architecture__node--planned small { color: #868992; }
+      .architecture__node strong { font-size: 15px; line-height: 1.25; }
+      .architecture__node span { color: #8f929b; font-size: 11px; line-height: 1.5; }
+      .check-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
+      .check-list li { position: relative; padding-left: 25px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+      .check-list li::before { content: "—"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+      .check-list strong { color: var(--text); }
+      .phase-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: phase; }
+      .phase-list li { counter-increment: phase; display: grid; grid-template-columns: 38px 1fr; gap: 13px; padding: 15px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 14px; line-height: 1.55; }
+      .phase-list li:last-child { border-bottom: 0; }
+      .phase-list li::before { content: "0" counter(phase); color: var(--primary); font: 650 11px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+      .phase-list strong { display: block; color: var(--text); }
+      .team-note { margin: 18px 0 0; padding: 16px 18px; border-left: 3px solid var(--primary); background: var(--surface); color: var(--muted); font-size: 13px; line-height: 1.65; }
+      @media (max-width: 900px) {
+        .status-strip { grid-template-columns: 1fr 1fr; }
+        .architecture__body { grid-template-columns: 1fr; }
+        .architecture__node:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -10px; transform: translate(50%,50%); }
+      }
+      @media (max-width: 720px) {
+        .proj-hero { padding: 42px 0 24px; }
+        .proj-two-col, .status-strip { grid-template-columns: 1fr; }
+        .proj-hero__actions { flex-direction: column; }
+        .proj-hero__actions .btn { width: 100%; justify-content: center; }
+        .architecture__head { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#certificates">Credentials</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#certificates">Credentials</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      </nav>
+    </div>
+
+    <main id="project">
+      <section class="section proj-hero">
+        <div class="container">
+          <p class="proj-hero__tag reveal">Backend systems · RAG · Human-in-the-loop</p>
+          <h1 class="proj-hero__title reveal">SupportFlow AI</h1>
+          <p class="proj-hero__sub reveal">A learning-focused support copilot for Turkish B2B SaaS teams—designed to retrieve company knowledge, prepare cited answer drafts, and leave every customer-facing decision with a support agent.</p>
+          <div class="proj-hero__actions reveal">
+            <a href="index.html#projects" class="btn">← Back to Projects</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="status-strip reveal" aria-label="Current project foundations">
+            <div class="status-item"><strong>FastAPI</strong><span>Typed REST API and consistent error contracts</span></div>
+            <div class="status-item"><strong>Tenant-aware</strong><span>Verified organization context and scoped access</span></div>
+            <div class="status-item"><strong>Async-ready</strong><span>Redis-backed Celery worker foundation</span></div>
+            <div class="status-item"><strong>Reproducible</strong><span>Docker Compose, migrations, tests, and CI</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">The problem</h2>
+              <p class="project-copy">Support teams lose time searching product documentation and previous resolutions. Generic chatbots add another risk: confident answers without evidence.</p>
+              <p class="project-copy">SupportFlow is built around a stricter contract—retrieve relevant company knowledge, show the sources behind a draft, return insufficient context when evidence is weak, and require a person to approve the result.</p>
+            </article>
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">Product principles</h2>
+              <ul class="check-list">
+                <li><strong>Sources before confidence.</strong> Claims must be traceable to retrieved material.</li>
+                <li><strong>No answer beats invention.</strong> Insufficient context is a valid result.</li>
+                <li><strong>People keep control.</strong> AI output is never sent automatically in v1.</li>
+                <li><strong>Isolation is mandatory.</strong> Every organization sees only its own data.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark">
+        <div class="container">
+          <p class="eyebrow reveal">Modular monolith</p>
+          <h2 class="proj-section-title reveal" style="color:#fff;">System direction</h2>
+          <div class="architecture reveal" aria-label="SupportFlow architecture from API foundation to agent-approved draft">
+            <div class="architecture__head">
+              <p>supportflow / request lifecycle</p>
+              <div class="architecture__legend" aria-hidden="true"><span>Implemented foundation</span><span>Planned workflow</span></div>
+            </div>
+            <div class="architecture__body">
+              <div class="architecture__node">
+                <small>Implemented</small>
+                <strong>FastAPI boundary</strong>
+                <span>Authentication, validation, error contracts</span>
+              </div>
+              <div class="architecture__node">
+                <small>Implemented</small>
+                <strong>Tenant context</strong>
+                <span>Organization membership and scoped tickets</span>
+              </div>
+              <div class="architecture__node">
+                <small>Implemented</small>
+                <strong>Data &amp; jobs</strong>
+                <span>PostgreSQL, Alembic, Redis, Celery</span>
+              </div>
+              <div class="architecture__node architecture__node--planned">
+                <small>Next</small>
+                <strong>Retrieval &amp; citations</strong>
+                <span>pgvector, document chunks, evidence</span>
+              </div>
+              <div class="architecture__node architecture__node--planned">
+                <small>Next</small>
+                <strong>Agent decision</strong>
+                <span>Approve, edit, reject, audit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">Implemented foundation</h2>
+              <ul class="check-list">
+                <li>FastAPI application factory with liveness and versioned API routes.</li>
+                <li>Argon2id password hashing, short-lived access tokens, and database-verified memberships.</li>
+                <li>Organization-scoped ticket and message models with service-layer status transitions.</li>
+                <li>PostgreSQL/pgvector schema managed through reversible Alembic migrations.</li>
+                <li>Redis/Celery worker path, Docker Compose environment, and automated quality checks.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">Next product layers</h2>
+              <ol class="phase-list">
+                <li><span><strong>Document workflow</strong>Secure uploads, extraction, versioning, and background processing.</span></li>
+                <li><span><strong>Classification</strong>Provider-neutral adapters and validated structured output.</span></li>
+                <li><span><strong>Grounded RAG</strong>Tenant-filtered retrieval, citations, and no-answer thresholds.</span></li>
+                <li><span><strong>Human approval</strong>Approve, edit, reject, feedback, and complete audit events.</span></li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">My contribution</h2>
+              <ul class="check-list">
+                <li>Led the PostgreSQL, Redis, Docker Compose, testing, and initial CI foundation.</li>
+                <li>Contributed across the shared backend, authentication, ticket, documentation, and integration workflow.</li>
+                <li>Helped define development standards that keep migrations, tenant boundaries, and operational checks explicit.</li>
+              </ul>
+              <p class="team-note">SupportFlow AI is a collaborative project by Emir and Eray. Feature leadership rotates so both contributors can design, implement, review, and explain the complete system. The shared source repository is currently under private development.</p>
+            </article>
+            <article class="proj-card reveal">
+              <h2 class="proj-section-title">Engineering stack</h2>
+              <div class="badges">
+                <span class="badge">Python 3.13</span>
+                <span class="badge">FastAPI</span>
+                <span class="badge">Pydantic</span>
+                <span class="badge">PostgreSQL</span>
+                <span class="badge">pgvector</span>
+                <span class="badge">SQLAlchemy</span>
+                <span class="badge">Alembic</span>
+                <span class="badge">Redis</span>
+                <span class="badge">Celery</span>
+                <span class="badge">Docker</span>
+                <span class="badge">pytest</span>
+                <span class="badge">Ruff</span>
+                <span class="badge">Pyright</span>
+                <span class="badge">GitHub Actions</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="site-footer">
+      <div class="footer-aura" aria-hidden="true"></div>
+      <div class="container footer-shell">
+        <div class="footer-heading"><p class="footer-kicker">End of page. Start of a conversation.</p><p class="footer-title">Let’s engineer<br>what’s next.</p></div>
+        <a class="footer-launch" href="mailto:eraykulkizaga@hotmail.com"><span>Start a project</span><b aria-hidden="true">↗</b></a>
+        <div class="footer-command" role="group" aria-label="Developer connection command"><span>eray@portfolio:~</span><code>$ connect --worldwide</code><i aria-hidden="true"></i></div>
+        <div class="footer-meta"><p>© <span id="year"></span> Eray Kulkızaga · Türkiye → Worldwide</p><nav aria-label="Footer navigation"><a href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="privacy.html">Privacy</a><a href="index.html#hero">Back to top ↑</a></nav></div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=20260724-1" defer></script>
+  </body>
+</html>

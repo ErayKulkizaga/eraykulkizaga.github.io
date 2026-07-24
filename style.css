@@ -173,6 +173,8 @@ button { color: inherit; }
 .card__actions { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
 .card__link { color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 700; }
 .card__link::after { content: " →"; }
+.card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: .85fr 1.15fr; }
+.card--wide .card__media { min-height: 340px; aspect-ratio: auto; }
 
 .experience-list { border-top: 1px solid var(--border); }
 .experience-card { display: grid; grid-template-columns: 160px 1fr; gap: 34px; align-items: start; padding: 38px 0; border-bottom: 1px solid var(--border); background: transparent; }
@@ -240,7 +242,7 @@ button { color: inherit; }
   .section { padding: 88px 0; }
   .nav { display: none; }.nav-toggle { display: block; }
   .hero { min-height: 100dvh; padding: 0; }.hero__inner { grid-template-columns: 1fr; gap: 48px; padding-top: 86px; padding-bottom: 104px; }.hero__content { max-width: 760px; }.hero-blueprint-wrap { width: min(700px,100%); }.hero-blueprint { transform: none; }
-  .award-feature { grid-template-columns: 1fr; }.projects__grid, .about__grid { grid-template-columns: 1fr; }.projects__grid { gap: 22px; }
+  .award-feature { grid-template-columns: 1fr; }.projects__grid, .about__grid { grid-template-columns: 1fr; }.projects__grid { gap: 22px; }.card--wide { grid-column: auto; display: block; }.card--wide .card__media { min-height: 0; aspect-ratio: 16/9; }
   .experience-card { grid-template-columns: 1fr; gap: 22px; }.experience-card__logo { width: min(190px,100%); }.experience-card__heading { flex-direction: column; gap: 7px; }.experience-card__date { text-align: left; white-space: normal; }
   .skills-grid { grid-template-columns: 1fr; }.techs__grid { grid-template-columns: 1fr 1fr; }
 }
