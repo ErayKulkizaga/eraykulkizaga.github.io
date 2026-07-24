@@ -82,32 +82,14 @@
             <a href="#projects" class="hero__work-link">Selected work <span aria-hidden="true">↓</span></a>
           </div>
 
-          <div class="hero-blueprint-wrap hero-entrance">
-            <div class="hero-blueprint" data-hero-blueprint role="region" aria-label="Interactive software systems blueprint">
-              <div class="hero-blueprint__head">
-                <span>Software systems</span>
-                <span>Selected practice / 2026</span>
-              </div>
-              <div class="hero-blueprint__canvas">
-                <div class="hero-blueprint__axis hero-blueprint__axis--x" aria-hidden="true"></div>
-                <div class="hero-blueprint__axis hero-blueprint__axis--y" aria-hidden="true"></div>
-                <span class="hero-blueprint__coordinate hero-blueprint__coordinate--top" aria-hidden="true">01</span>
-                <span class="hero-blueprint__coordinate hero-blueprint__coordinate--side" aria-hidden="true">03</span>
-                <button class="hero-module hero-module--backend is-active" type="button" data-blueprint-module data-index="01 / BACKEND" data-detail="Reliable APIs, data models, and asynchronous services." aria-pressed="true">
-                  <span class="hero-module__number">01</span><strong>Backend</strong><small>FastAPI · PostgreSQL · Async</small>
-                </button>
-                <button class="hero-module hero-module--intelligence" type="button" data-blueprint-module data-index="02 / INTELLIGENCE" data-detail="Computer vision, retrieval, and production inference." aria-pressed="false">
-                  <span class="hero-module__number">02</span><strong>Intelligence</strong><small>CV · RAG · Inference</small>
-                </button>
-                <button class="hero-module hero-module--delivery" type="button" data-blueprint-module data-index="03 / DELIVERY" data-detail="Measured releases with testing and repeatable delivery." aria-pressed="false">
-                  <span class="hero-module__number">03</span><strong>Delivery</strong><small>Testing · Docker · CI</small>
-                </button>
-              </div>
-              <div class="hero-blueprint__foot" aria-live="polite">
-                <span data-blueprint-index>01 / BACKEND</span>
-                <p data-blueprint-detail>Reliable APIs, data models, and asynchronous services.</p>
-              </div>
-            </div>
+          <div class="hero-globe-wrap hero-entrance">
+            <figure class="hero-globe" data-hero-globe role="img" aria-label="A slowly rotating interactive three-dimensional globe">
+              <canvas class="hero-globe__canvas" data-globe-canvas aria-hidden="true"></canvas>
+              <figcaption class="hero-globe__meta">
+                <span>Türkiye → worldwide</span>
+                <span>Global systems · live 3D</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -452,6 +434,7 @@
       "url": "https://www.eraykulkizaga.com/"
     }
     </script>
+    <script type="module" src="hero-globe-3d.js?v=20260724-1"></script>
     <script src="script.js?v=20260724-2" defer></script>
   </body>
 </html>
