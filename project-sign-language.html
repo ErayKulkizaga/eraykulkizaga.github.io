@@ -228,12 +228,13 @@
         <div class="container">
           <h2 class="proj-section-title reveal">My Contribution</h2>
           <div class="proj-card reveal">
-            <p class="model-note">My primary responsibility in the graduation-project team was model design, training, and evaluation. The surrounding interface, integration, data preparation, and 3D animation work was shared across the team.</p>
+            <p class="model-note">SignTurk was co-developed as a graduation-project team effort. I led the model design, training, and evaluation work and implemented most of the FastAPI backend, including real-time inference, WebSocket communication, authentication, persistence, and operational APIs. Interface, data preparation, integration, and 3D animation work was shared across the team.</p>
             <ul class="contribution-list">
               <li>Designed and trained the recognition-model variants evaluated on the AUTSL dataset.</li>
+              <li>Implemented most of the FastAPI backend, including authenticated inference, per-session buffering, persistence, history, settings, and administrator APIs.</li>
               <li>Compared Transformer, BiLSTM, temporal-attention, and class-filtering experiments.</li>
               <li>Evaluated Top-1, Top-3, and Top-5 performance and investigated weak or visually similar sign classes.</li>
-              <li>Helped select the 179-class MediaPipe/BiLSTM model for the product pipeline; although the later RTMW ensemble achieved higher offline accuracy, the selected model fit the existing live pipeline more reliably.</li>
+              <li>Selected the 179-class MediaPipe/BiLSTM model for the live product pipeline; the 226-class RTMW/RTMPose four-stream ensemble remained the higher-accuracy offline research track.</li>
             </ul>
           </div>
         </div>
@@ -422,7 +423,7 @@
                 <div class="model-lab__fact"><strong>226</strong><span>AUTSL classes</span></div>
                 <div class="model-lab__fact"><strong>32</strong><span>RGB frames</span></div>
                 <div class="model-lab__fact"><strong>4</strong><span>temporal streams</span></div>
-                <div class="model-lab__fact"><strong>Offline</strong><span>research role</span></div>
+                <div class="model-lab__fact"><strong>99.49%</strong><span>Top-5 accuracy</span></div>
               </div>
             </div>
             <p class="callout" style="margin:0 24px 24px;">Engineering decision: ship the model that satisfies the complete product contract; migrate the higher-accuracy research model only with its extractor and regression pipeline.</p>
