@@ -391,26 +391,10 @@
           <h2 class="proj-section-title reveal">Model Selection &amp; Trade-off</h2>
           <div class="model-lab reveal" data-model-lab>
             <div class="model-lab__switch" role="tablist" aria-label="Compare SignTurk recognition models">
-              <button id="model-tab-live" type="button" role="tab" aria-selected="true" aria-controls="model-panel-live" data-model-target="model-panel-live">Selected live model</button>
-              <button id="model-tab-research" type="button" role="tab" aria-selected="false" aria-controls="model-panel-research" data-model-target="model-panel-research">Higher-accuracy research model</button>
+              <button id="model-tab-research" type="button" role="tab" aria-selected="true" aria-controls="model-panel-research" data-model-target="model-panel-research">Higher-accuracy research model</button>
+              <button id="model-tab-live" type="button" role="tab" aria-selected="false" aria-controls="model-panel-live" data-model-target="model-panel-live">Selected live model</button>
             </div>
-            <div id="model-panel-live" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-live">
-              <div class="model-lab__headline">
-                <div>
-                  <p class="model-lab__eyebrow">Integrated runtime</p>
-                  <h3>BiLSTM + temporal attention</h3>
-                  <p>Selected because its MediaPipe feature contract fits the authenticated webcam/WebSocket pipeline and the complete product flow reliably.</p>
-                </div>
-                <div class="model-lab__score">85.65%<small>Top-1</small></div>
-              </div>
-              <div class="model-lab__facts">
-                <div class="model-lab__fact"><strong>179</strong><span>runtime classes</span></div>
-                <div class="model-lab__fact"><strong>16</strong><span>frames per sequence</span></div>
-                <div class="model-lab__fact"><strong>156</strong><span>features per frame</span></div>
-                <div class="model-lab__fact"><strong>95.59%</strong><span>Top-5 accuracy</span></div>
-              </div>
-            </div>
-            <div id="model-panel-research" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-research" hidden>
+            <div id="model-panel-research" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-research">
               <div class="model-lab__headline">
                 <div>
                   <p class="model-lab__eyebrow">Offline research track</p>
@@ -424,6 +408,22 @@
                 <div class="model-lab__fact"><strong>32</strong><span>RGB frames</span></div>
                 <div class="model-lab__fact"><strong>4</strong><span>temporal streams</span></div>
                 <div class="model-lab__fact"><strong>99.49%</strong><span>Top-5 accuracy</span></div>
+              </div>
+            </div>
+            <div id="model-panel-live" class="model-lab__panel" role="tabpanel" aria-labelledby="model-tab-live" hidden>
+              <div class="model-lab__headline">
+                <div>
+                  <p class="model-lab__eyebrow">Integrated runtime</p>
+                  <h3>BiLSTM + temporal attention</h3>
+                  <p>Selected because its MediaPipe feature contract fits the authenticated webcam/WebSocket pipeline and the complete product flow reliably.</p>
+                </div>
+                <div class="model-lab__score">85.65%<small>Top-1</small></div>
+              </div>
+              <div class="model-lab__facts">
+                <div class="model-lab__fact"><strong>179</strong><span>runtime classes</span></div>
+                <div class="model-lab__fact"><strong>16</strong><span>frames per sequence</span></div>
+                <div class="model-lab__fact"><strong>156</strong><span>features per frame</span></div>
+                <div class="model-lab__fact"><strong>95.59%</strong><span>Top-5 accuracy</span></div>
               </div>
             </div>
             <p class="callout" style="margin:0 24px 24px;">Engineering decision: ship the model that satisfies the complete product contract; migrate the higher-accuracy research model only with its extractor and regression pipeline.</p>
