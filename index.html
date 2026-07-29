@@ -7,7 +7,7 @@
     <meta name="description" content="Eray Kulkizaga is a Software Engineer specializing in Python backend and AI systems, building production-oriented APIs, retrieval-augmented applications, and real-time inference products.">
     <link rel="canonical" href="https://www.eraykulkizaga.com/">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; media-src 'self' blob:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Eray Kulkizaga — Software Engineer">
@@ -73,36 +73,24 @@
     </div>
 
     <main id="main">
-      <section id="hero" class="hero-story" data-scroll-story aria-label="Cinematic introduction">
-        <div class="hero-story__stage">
-          <video
-            class="hero-story__film"
-            data-scroll-film
-            data-duration="7"
-            autoplay
-            muted
-            playsinline
-            preload="auto"
-            poster="images/hero-turkiye-globe-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="images/hero-turkiye-globe.webm" type="video/webm">
-          </video>
-          <div class="hero-story__shade" aria-hidden="true"></div>
-          <div class="container hero-story__content">
+      <section id="hero" class="section hero">
+        <div class="container hero__inner">
+          <div class="hero__content hero-entrance">
             <p class="hero__status">Eray Kulkızaga</p>
             <h1 class="hero__title"><span class="hero__title-line">Backend.</span><span class="hero__title-line"><em>Intelligence.</em></span></h1>
             <p class="hero__lead">Python × AI systems.</p>
+            <a href="#projects" class="hero__work-link">Selected work <span aria-hidden="true">↓</span></a>
           </div>
-          <div class="hero-story__cue" aria-hidden="true">
-            <span>Scroll to explore</span>
-            <i></i>
+
+          <div class="hero-globe-wrap hero-entrance">
+            <figure class="hero-globe" data-hero-globe role="img" aria-label="A slowly rotating interactive three-dimensional globe">
+              <canvas class="hero-globe__canvas" data-globe-canvas aria-hidden="true"></canvas>
+              <figcaption class="hero-globe__meta">
+                <span>Türkiye → worldwide</span>
+                <span>Global systems · live 3D</span>
+              </figcaption>
+            </figure>
           </div>
-          <div class="container hero-story__arrival" aria-hidden="true">
-            <p>Selected work</p>
-            <h2>Outstanding<br>Project Award</h2>
-          </div>
-          <div class="hero-story__progress" aria-hidden="true"><span data-story-progress></span></div>
         </div>
       </section>
 
@@ -467,6 +455,7 @@
       "url": "https://www.eraykulkizaga.com/"
     }
     </script>
-    <script src="script.js?v=20260729-1" defer></script>
+    <script type="module" src="hero-globe-3d.js?v=20260724-1"></script>
+    <script src="script.js?v=20260724-2" defer></script>
   </body>
 </html>
