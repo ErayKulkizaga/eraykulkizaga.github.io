@@ -7,7 +7,7 @@
     <meta name="description" content="SignTurk is an award-winning Turkish Sign Language platform combining FastAPI, MediaPipe, BiLSTM inference, PostgreSQL, Turkish sentence assembly, speech output, and Three.js animation." />
     <link rel="canonical" href="https://www.eraykulkizaga.com/project-sign-language.html" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SignTurk — Award-Winning Turkish Sign Language Platform" />
     <meta property="og:description" content="Real-time Turkish Sign Language recognition, approved-word sentence assembly, speech output, persistence, and Three.js animation." />
@@ -64,6 +64,17 @@
       .award-banner p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
       .award-banner .project-image-button { border-radius: 12px; box-shadow: 0 10px 28px rgba(15,23,42,.16); }
       .award-banner img { width: 100%; height: auto; display: block; }
+      .demo-showcase { overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 24px; background: #08080a; color: #fff; box-shadow: 0 24px 70px rgba(15,23,42,.18); }
+      .demo-showcase__header { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: end; padding: clamp(24px,4vw,40px); border-bottom: 1px solid rgba(255,255,255,.12); background: radial-gradient(circle at 92% 12%,rgba(8,120,255,.2),transparent 34%),#08080a; }
+      .demo-showcase__eyebrow { margin: 0 0 10px; color: #87bbff; font-size: 10px; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+      .demo-showcase__header h2 { margin: 0; font-size: clamp(30px,4.5vw,54px); line-height: .96; letter-spacing: -.055em; }
+      .demo-showcase__header p:not(.demo-showcase__eyebrow) { max-width: 690px; margin: 16px 0 0; color: #aaaab3; font-size: 14px; line-height: 1.7; }
+      .demo-showcase__meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+      .demo-showcase__meta span { padding: 7px 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: #c7c7ce; font: 650 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+      .demo-showcase__frame { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+      .demo-showcase__frame video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+      .demo-showcase__footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px clamp(20px,3vw,30px); border-top: 1px solid rgba(255,255,255,.1); color: #8f8f98; font-size: 11px; line-height: 1.5; }
+      .demo-showcase__footer span:last-child { color: #87bbff; font: 650 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
       .proj-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .proj-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
       .proj-gallery .project-image-button { display: grid; place-items: center; aspect-ratio: 16 / 10; background: #f8fafc; }
@@ -118,7 +129,7 @@
         .proj-gallery { grid-template-columns: 1fr; }
         .proj-hero__actions { flex-direction: column; }
         .proj-hero__actions .btn { width: 100%; justify-content: center; }
-        .product-tour { border-radius: 16px; }.product-tour__tabs { padding: 8px; }.product-tour__media { aspect-ratio: 16 / 10; }.product-tour__caption { grid-template-columns: 1fr; gap: 18px; padding: 18px; }.product-tour__nav { justify-content: flex-end; }.model-lab__switch { grid-template-columns: 1fr; }.model-lab__headline { grid-template-columns: 1fr; }.model-lab__score { text-align: left; }.model-lab__facts { grid-template-columns: 1fr 1fr; }
+        .demo-showcase { border-radius: 17px; }.demo-showcase__header { grid-template-columns: 1fr; gap: 18px; }.demo-showcase__meta { justify-content: flex-start; }.demo-showcase__footer { align-items: flex-start; flex-direction: column; gap: 7px; }.product-tour { border-radius: 16px; }.product-tour__tabs { padding: 8px; }.product-tour__media { aspect-ratio: 16 / 10; }.product-tour__caption { grid-template-columns: 1fr; gap: 18px; padding: 18px; }.product-tour__nav { justify-content: flex-end; }.model-lab__switch { grid-template-columns: 1fr; }.model-lab__headline { grid-template-columns: 1fr; }.model-lab__score { text-align: left; }.model-lab__facts { grid-template-columns: 1fr 1fr; }
       }
     </style>
   </head>
@@ -170,6 +181,7 @@
             <a href="https://github.com/ErayKulkizaga/SignTurk" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
               View on GitHub
             </a>
+            <a href="#product-demo" class="btn">Watch Product Demo</a>
             <a href="index.html#projects" class="btn">Back to Projects</a>
           </div>
         </div>
@@ -189,6 +201,35 @@
           </article>
         </div>
       </div>
+
+      <section id="product-demo" class="section" style="padding-top:0">
+        <div class="container">
+          <article class="demo-showcase reveal" aria-labelledby="product-demo-title">
+            <div class="demo-showcase__header">
+              <div>
+                <p class="demo-showcase__eyebrow">Product Demo · Recognition in Motion</p>
+                <h2 id="product-demo-title">SignTurk,<br>gesture by gesture.</h2>
+                <p>A music-led walkthrough showing individual Turkish Sign Language gestures and the recognition experience in motion.</p>
+              </div>
+              <div class="demo-showcase__meta" aria-label="Video details">
+                <span>01:23</span>
+                <span>1080p</span>
+                <span>Product walkthrough</span>
+              </div>
+            </div>
+            <div class="demo-showcase__frame">
+              <video controls preload="metadata" playsinline poster="images/signturk-cover.webp" aria-label="SignTurk product demo showing individual Turkish Sign Language gestures and the recognition experience">
+                <source src="videos/signturk-product-demo.mp4" type="video/mp4" />
+                Your browser cannot play this video. <a href="videos/signturk-product-demo.mp4">Open the SignTurk product demo</a>.
+              </video>
+            </div>
+            <div class="demo-showcase__footer">
+              <span>Use the player controls to pause, seek, adjust volume, or enter fullscreen.</span>
+              <span>SignTurk · 2026</span>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <div class="section" style="padding-top:0">
         <div class="container">
