@@ -1,82 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>SupportFlow AI — Support Copilot Case Study</title>
-    <meta name="description" content="SupportFlow AI is a tenant-aware support copilot for source-backed answer drafts, human approval, and measurable retrieval quality." />
-    <link rel="canonical" href="https://www.eraykulkizaga.com/project-supportflow.html" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="SupportFlow AI — Support Copilot" />
-    <meta property="og:description" content="A tenant-aware, source-backed support copilot that keeps agents in control." />
-    <meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html" />
-    <meta property="og:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Eray Kulkizaga software engineering portfolio" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SupportFlow AI — Support Copilot" />
-    <meta name="twitter:description" content="Tenant-aware support workflows, source-backed drafts, and human approval." />
-    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/og-portfolio-dark.png" />
-    <meta name="theme-color" content="#08080a" />
-    <link rel="icon" href="images/main.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260724-1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>SupportFlow AI — Multi-tenant Backend Case Study</title>
+    <meta name="description" content="SupportFlow AI is an actively developed, multi-tenant support platform with transactional ticket workflows, append-only audit events, and retry-safe document ingestion.">
+    <link rel="canonical" href="https://www.eraykulkizaga.com/project-supportflow.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SupportFlow AI — Multi-tenant Backend Case Study">
+    <meta property="og:description" content="Tenant-scoped support workflows, append-only audit events, and retry-safe document ingestion—built in public and still actively developed.">
+    <meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html">
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/supportflow-cover.webp">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="SupportFlow AI project cover">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SupportFlow AI — Multi-tenant Backend Case Study">
+    <meta name="twitter:description" content="A production-oriented support platform in active development, with implemented tenant isolation and reliable document ingestion.">
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/supportflow-cover.webp">
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" href="images/main.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=20260806-1">
     <script>document.documentElement.classList.add('js');</script>
     <style>
-      .proj-hero { padding: 60px 0 40px; }
-      .proj-hero__tag { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 550 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
-      .proj-hero__title { max-width: 860px; margin: 0 0 18px; font-size: clamp(46px, 8vw, 92px); line-height: .94; letter-spacing: -.065em; }
-      .proj-hero__sub { max-width: 760px; margin: 0 0 28px; color: var(--muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.55; }
+      .proj-hero { padding: 72px 0 42px; }
+      .proj-hero__layout { display: grid; grid-template-columns: minmax(0,1.04fr) minmax(320px,.96fr); align-items: center; gap: clamp(34px,6vw,84px); }
+      .proj-hero__tag { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 550 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .06em; text-transform: uppercase; }
+      .proj-hero__title { max-width: 860px; margin: 0 0 18px; font-size: clamp(48px,8vw,96px); line-height: .92; letter-spacing: -.065em; }
+      .proj-hero__sub { max-width: 760px; margin: 0 0 28px; color: var(--muted); font-size: clamp(17px,2vw,21px); line-height: 1.55; }
       .proj-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-      .proj-section-title { margin: 0 0 18px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.04em; }
-      .proj-card { padding: clamp(22px, 4vw, 36px); border: 1px solid var(--border); border-radius: 22px; background: var(--card); }
-      .proj-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .proj-hero__media { margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #07142c; box-shadow: 0 28px 70px rgba(5,16,38,.2); }
+      .proj-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+      .proj-hero__media figcaption { padding: 12px 15px; border-top: 1px solid rgba(255,255,255,.1); color: #8f929b; font: 500 9px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .proj-section-title { margin: 0 0 18px; font-size: clamp(26px,3vw,36px); line-height: 1.05; letter-spacing: -.045em; }
       .project-copy { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
       .project-copy + .project-copy { margin-top: 14px; }
-      .status-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .proj-card { min-width: 0; padding: clamp(22px,4vw,36px); border: 1px solid var(--border); border-radius: 22px; background: var(--card); }
+      .section--soft { background: var(--surface); }
+      .section--flush-top { padding-top: 0; }
+      .proj-section-title--light { color: #fff; }
+      .proj-two-col { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+      .proj-three-col { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+      .status-strip { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
       .status-item { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); }
-      .status-item strong { display: block; margin-bottom: 9px; color: var(--primary); font-size: 18px; letter-spacing: -.025em; }
-      .status-item span { color: var(--muted); font-size: 12px; line-height: 1.5; }
-      .architecture { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #0b0c10; color: #fff; }
-      .architecture__head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.1); }
-      .architecture__head p { margin: 0; color: #8f929b; font: 550 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
-      .architecture__legend { display: flex; gap: 14px; color: #8f929b; font-size: 10px; }
-      .architecture__legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #258bff; }
-      .architecture__legend span:last-child::before { border: 1px solid #777b86; background: transparent; }
-      .architecture__body { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); align-items: stretch; gap: 10px; padding: clamp(20px, 4vw, 38px); }
-      .architecture__node { position: relative; display: flex; min-height: 116px; flex-direction: column; justify-content: space-between; gap: 16px; padding: 17px; border: 1px solid rgba(135,187,255,.25); border-radius: 16px; background: rgba(8,120,255,.08); }
-      .architecture__node:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -10px; z-index: 2; color: #6f727b; transform: translate(50%,-50%); }
-      .architecture__node--planned { border-style: dashed; border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.025); }
-      .architecture__node small { color: #6f9fdb; font: 600 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .09em; text-transform: uppercase; }
-      .architecture__node--planned small { color: #868992; }
-      .architecture__node strong { font-size: 15px; line-height: 1.25; }
-      .architecture__node span { color: #8f929b; font-size: 11px; line-height: 1.5; }
+      .status-item strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 16px; letter-spacing: -.025em; }
+      .status-item span { color: var(--muted); font-size: 12px; line-height: 1.55; }
+      .status-label { display: inline-flex; align-items: center; min-height: 26px; margin-bottom: 17px; padding: 4px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 650 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .status-label--implemented { border-color: rgba(27,123,85,.25); background: rgba(27,123,85,.07); color: #176848; }
+      .status-label--progress { border-color: rgba(8,120,255,.25); background: rgba(8,120,255,.07); color: #075eaf; }
+      .status-label--planned { background: var(--surface); color: #6b6c73; }
       .check-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
       .check-list li { position: relative; padding-left: 25px; color: var(--muted); font-size: 14px; line-height: 1.65; }
       .check-list li::before { content: "—"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
       .check-list strong { color: var(--text); }
-      .phase-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: phase; }
-      .phase-list li { counter-increment: phase; display: grid; grid-template-columns: 38px 1fr; gap: 13px; padding: 15px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 14px; line-height: 1.55; }
-      .phase-list li:last-child { border-bottom: 0; }
-      .phase-list li::before { content: "0" counter(phase); color: var(--primary); font: 650 11px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
-      .phase-list strong { display: block; color: var(--text); }
+      .architecture { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #0b0c10; color: #fff; }
+      .architecture__head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .architecture__head p { margin: 0; color: #8f929b; font: 550 10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .1em; text-transform: uppercase; }
+      .architecture__legend { display: flex; flex-wrap: wrap; gap: 12px; color: #8f929b; font-size: 10px; }
+      .architecture__legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #258bff; }
+      .architecture__legend span:last-child::before { border: 1px solid #777b86; background: transparent; }
+      .architecture__body { display: grid; gap: 16px; padding: clamp(20px,4vw,38px); }
+      .architecture__lane { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .architecture__lane--planned { grid-template-columns: repeat(3,minmax(0,1fr)); padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); }
+      .architecture__node { position: relative; display: flex; min-height: 112px; flex-direction: column; justify-content: space-between; gap: 15px; padding: 17px; border: 1px solid rgba(135,187,255,.25); border-radius: 16px; background: rgba(8,120,255,.08); }
+      .architecture__node:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -10px; z-index: 2; color: #6f727b; transform: translate(50%,-50%); }
+      .architecture__lane--planned .architecture__node { border-style: dashed; border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.025); }
+      .architecture__node small { color: #6f9fdb; font: 650 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .architecture__lane--planned small { color: #92949c; }
+      .architecture__node strong { font-size: 15px; line-height: 1.25; }
+      .architecture__node span { color: #8f929b; font-size: 11px; line-height: 1.5; }
+      .decision-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+      .decision-card { min-width: 0; padding: 26px; border: 1px solid var(--border); border-radius: 20px; background: var(--card); }
+      .decision-card h3 { margin: 0 0 19px; font-size: 20px; letter-spacing: -.035em; }
+      .decision-card dl { display: grid; grid-template-columns: 82px 1fr; gap: 10px 14px; margin: 0; }
+      .decision-card dt { color: var(--primary); font: 650 9px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .decision-card dd { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.58; }
+      .evidence-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-bottom: 20px; }
+      .evidence-item { padding: 19px; border: 1px solid var(--border); border-radius: 17px; background: var(--surface); }
+      .evidence-item strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 20px; letter-spacing: -.035em; }
+      .evidence-item span { color: var(--muted); font-size: 11px; line-height: 1.55; }
+      .project-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; }
+      .project-links a { position: relative; color: var(--primary); font-size: 13px; font-weight: 700; text-decoration: none; }
+      .project-links a::after { content: " ↗"; }
       .team-note { margin: 18px 0 0; padding: 16px 18px; border-left: 3px solid var(--primary); background: var(--surface); color: var(--muted); font-size: 13px; line-height: 1.65; }
-      @media (max-width: 900px) {
-        .status-strip { grid-template-columns: 1fr 1fr; }
-        .architecture__body { grid-template-columns: 1fr; }
-        .architecture__node:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -10px; transform: translate(50%,50%); }
+      .source-panel { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; padding: clamp(26px,5vw,48px); border: 1px solid rgba(8,120,255,.2); border-radius: 24px; background: linear-gradient(120deg,rgba(8,120,255,.07),rgba(255,255,255,.95)); }
+      .source-panel h2 { margin: 0 0 12px; font-size: clamp(27px,4vw,44px); letter-spacing: -.05em; }
+      .source-panel p { max-width: 760px; margin: 0; color: var(--muted); line-height: 1.7; }
+      @media (max-width: 980px) {
+        .proj-hero__layout { grid-template-columns: 1fr; }
+        .proj-hero__media { max-width: 760px; }
+        .status-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        .proj-three-col { grid-template-columns: 1fr; }
+        .architecture__lane { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        .architecture__node:nth-child(2)::after { display: none; }
       }
       @media (max-width: 720px) {
-        .proj-hero { padding: 42px 0 24px; }
-        .proj-two-col, .status-strip { grid-template-columns: 1fr; }
+        .proj-hero { padding: 42px 0 26px; }
+        .proj-two-col,.decision-grid,.status-strip,.evidence-grid { grid-template-columns: 1fr; }
         .proj-hero__actions { flex-direction: column; }
         .proj-hero__actions .btn { width: 100%; justify-content: center; }
         .architecture__head { align-items: flex-start; flex-direction: column; }
+        .architecture__lane,.architecture__lane--planned { grid-template-columns: 1fr; }
+        .architecture__node:nth-child(2)::after { display: block; }
+        .architecture__node:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -10px; transform: translate(50%,50%); }
+        .decision-card dl { grid-template-columns: 1fr; gap: 4px; }
+        .decision-card dd + dt { margin-top: 8px; }
+        .source-panel { grid-template-columns: 1fr; }
+        .source-panel .btn { width: 100%; justify-content: center; }
       }
     </style>
   </head>
@@ -86,7 +121,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="index.html#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
-        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+        <button class="nav-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
         <nav id="primary-nav" class="nav" aria-label="Primary navigation">
@@ -116,42 +151,90 @@
 
     <main id="project">
       <section class="section proj-hero">
-        <div class="container">
-          <p class="proj-hero__tag reveal">Backend systems · RAG · Human-in-the-loop</p>
-          <h1 class="proj-hero__title reveal">SupportFlow AI</h1>
-          <p class="proj-hero__sub reveal">A learning-focused support copilot for Turkish B2B SaaS teams—designed to retrieve company knowledge, prepare cited answer drafts, and leave every customer-facing decision with a support agent.</p>
-          <div class="proj-hero__actions reveal">
-            <a href="index.html#projects" class="btn">← Back to Projects</a>
+        <div class="container proj-hero__layout">
+          <div>
+            <p class="proj-hero__tag reveal">Case study · Active development</p>
+            <h1 class="proj-hero__title reveal">SupportFlow AI</h1>
+            <p class="proj-hero__sub reveal">A production-oriented, multi-tenant support platform with implemented ticket, audit, and document-ingestion workflows. The AI-assisted retrieval layer is still in development.</p>
+            <div class="proj-hero__actions reveal">
+              <a href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View public source ↗</a>
+              <a href="index.html#projects" class="btn">← Back to Projects</a>
+            </div>
           </div>
+          <figure class="proj-hero__media reveal">
+            <img src="images/supportflow-cover.webp" alt="SupportFlow AI project cover showing the support workflow concept" width="1600" height="900">
+            <figcaption>Concept cover · not a live product screenshot</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="section" style="padding-top:0">
+      <section class="section section--flush-top">
         <div class="container">
-          <div class="status-strip reveal" aria-label="Current project foundations">
-            <div class="status-item"><strong>FastAPI</strong><span>Typed REST API and consistent error contracts</span></div>
-            <div class="status-item"><strong>Tenant-aware</strong><span>Verified organization context and scoped access</span></div>
-            <div class="status-item"><strong>Async-ready</strong><span>Redis-backed Celery worker foundation</span></div>
-            <div class="status-item"><strong>Reproducible</strong><span>Docker Compose, migrations, tests, and CI</span></div>
-          </div>
+          <h2 class="sr-only">SupportFlow project summary</h2>
+          <ul class="status-strip reveal">
+            <li class="status-item"><strong>Active development</strong><span>Weeks 1–4 implemented; AWS staging work is in progress</span></li>
+            <li class="status-item"><strong>Collaborative project</strong><span>Co-developed by Emir and Eray with rotating feature ownership</span></li>
+            <li class="status-item"><strong>Backend &amp; data</strong><span>Python 3.13, FastAPI, PostgreSQL, Redis, and Celery</span></li>
+            <li class="status-item"><strong>Public source</strong><span>Architecture records, tests, CI workflow, and known limits are reviewable</span></li>
+          </ul>
         </div>
       </section>
 
-      <section class="section" style="padding-top:0">
+      <section class="section section--flush-top">
         <div class="container">
           <div class="proj-two-col">
             <article class="proj-card reveal">
+              <p class="status-label">Project overview</p>
               <h2 class="proj-section-title">The problem</h2>
-              <p class="project-copy">Support teams lose time searching product documentation and previous resolutions. Generic chatbots add another risk: confident answers without evidence.</p>
-              <p class="project-copy">SupportFlow is built around a stricter contract—retrieve relevant company knowledge, show the sources behind a draft, return insufficient context when evidence is weak, and require a person to approve the result.</p>
+              <p class="project-copy">Documentation-heavy support teams spend time searching product knowledge and previous resolutions. Ungrounded assistants create a second problem: an answer can sound convincing without being traceable.</p>
+              <p class="project-copy">SupportFlow targets small and medium-sized Turkish B2B SaaS teams. The implemented system establishes the secure support and ingestion foundation before AI-generated drafts are introduced.</p>
             </article>
             <article class="proj-card reveal">
-              <h2 class="proj-section-title">Product principles</h2>
+              <p class="status-label status-label--implemented">Implemented workflow</p>
+              <h2 class="proj-section-title">What works today</h2>
               <ul class="check-list">
-                <li><strong>Sources before confidence.</strong> Claims must be traceable to retrieved material.</li>
-                <li><strong>No answer beats invention.</strong> Insufficient context is a valid result.</li>
-                <li><strong>People keep control.</strong> AI output is never sent automatically in v1.</li>
-                <li><strong>Isolation is mandatory.</strong> Every organization sees only its own data.</li>
+                <li>Authenticated agents work with tenant-scoped tickets, messages, and status transitions.</li>
+                <li>Admins upload PDF, TXT, or Markdown documents through a bounded private-storage workflow.</li>
+                <li>Redis and Celery process extraction jobs with retry and redelivery safeguards.</li>
+                <li>Ticket, membership, document, and workflow changes produce append-only audit evidence.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <p class="eyebrow reveal">Truthful delivery status</p>
+          <h2 class="proj-section-title reveal">Implemented, in progress, and planned</h2>
+          <div class="proj-three-col">
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Implemented</p>
+              <ul class="check-list">
+                <li>Argon2id authentication, short-lived tokens, and admin/agent RBAC.</li>
+                <li>Verified organization context and tenant-scoped ticket/message APIs.</li>
+                <li>Transactional mutations with database-enforced append-only audit events.</li>
+                <li>Agent workspace with server-side sessions and CSRF protection.</li>
+                <li>10 MiB bounded document uploads, extraction, and retry-safe Celery processing.</li>
+                <li>PostgreSQL, Alembic, Docker Compose, tests, and CI checks.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--progress">In progress</p>
+              <ul class="check-list">
+                <li>AWS staging platform and cost/safety guardrails.</li>
+                <li>S3 storage, production scanner, shared session, and readiness adapters.</li>
+                <li>GitHub OIDC and immutable-image deployment pipeline.</li>
+                <li>Staging verification, rollback, recovery, and teardown evidence.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--planned">Planned</p>
+              <ul class="check-list">
+                <li>Structured ticket classification with evaluation fixtures.</li>
+                <li>Tenant-filtered retrieval, citations, and no-answer thresholds.</li>
+                <li>Human approve, edit, reject, and feedback workflow for AI drafts.</li>
+                <li>Retrieval evaluation, load evidence, observability, and product validation.</li>
               </ul>
             </article>
           </div>
@@ -161,39 +244,93 @@
       <section class="section section--dark">
         <div class="container">
           <p class="eyebrow reveal">Modular monolith</p>
-          <h2 class="proj-section-title reveal" style="color:#fff;">System direction</h2>
-          <div class="architecture reveal" aria-label="SupportFlow architecture from API foundation to agent-approved draft">
+          <h2 class="proj-section-title proj-section-title--light reveal">Architecture with explicit boundaries</h2>
+          <div class="architecture reveal">
             <div class="architecture__head">
-              <p>supportflow / request lifecycle</p>
-              <div class="architecture__legend" aria-hidden="true"><span>Implemented foundation</span><span>Planned workflow</span></div>
+              <p>supportflow / current and target flow</p>
+              <div class="architecture__legend" role="group" aria-label="Architecture status legend"><span>Implemented</span><span>Planned</span></div>
             </div>
             <div class="architecture__body">
-              <div class="architecture__node">
-                <small>Implemented</small>
-                <strong>FastAPI boundary</strong>
-                <span>Authentication, validation, error contracts</span>
-              </div>
-              <div class="architecture__node">
-                <small>Implemented</small>
-                <strong>Tenant context</strong>
-                <span>Organization membership and scoped tickets</span>
-              </div>
-              <div class="architecture__node">
-                <small>Implemented</small>
-                <strong>Data &amp; jobs</strong>
-                <span>PostgreSQL, Alembic, Redis, Celery</span>
-              </div>
-              <div class="architecture__node architecture__node--planned">
-                <small>Next</small>
-                <strong>Retrieval &amp; citations</strong>
-                <span>pgvector, document chunks, evidence</span>
-              </div>
-              <div class="architecture__node architecture__node--planned">
-                <small>Next</small>
-                <strong>Agent decision</strong>
-                <span>Approve, edit, reject, audit</span>
-              </div>
+              <h3 class="sr-only">Implemented application path</h3>
+              <ol class="architecture__lane">
+                <li class="architecture__node"><small>Implemented</small><strong>Agent workspace</strong><span>Signed server-side session and CSRF-protected actions</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>FastAPI boundary</strong><span>Validation, RBAC, and verified organization context</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>PostgreSQL</strong><span>Tenant-scoped data, Alembic migrations, append-only audit</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Private documents</strong><span>Bounded uploads and local S3-ready storage abstraction</span></li>
+              </ol>
+              <h3 class="sr-only">Implemented asynchronous ingestion path</h3>
+              <ol class="architecture__lane">
+                <li class="architecture__node"><small>Implemented</small><strong>ID-only job</strong><span>No raw document content in Celery task arguments</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Redis queue</strong><span>Broker boundary for background processing</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Celery worker</strong><span>Late ACK, worker-loss rejection, bounded retry</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Extraction result</strong><span>Retry-safe terminal state and one audit effect</span></li>
+              </ol>
+              <h3 class="sr-only">Planned AI-assisted support path</h3>
+              <ol class="architecture__lane architecture__lane--planned">
+                <li class="architecture__node"><small>Planned</small><strong>Classification</strong><span>Provider-neutral structured output and evaluation</span></li>
+                <li class="architecture__node"><small>Planned</small><strong>Grounded retrieval</strong><span>Tenant filters, citations, and insufficient-context result</span></li>
+                <li class="architecture__node"><small>Planned</small><strong>Agent decision</strong><span>Approve, edit, reject, and feedback—never auto-send</span></li>
+              </ol>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="eyebrow reveal">Engineering decisions</p>
+          <h2 class="proj-section-title reveal">Choices, reasons, and trade-offs</h2>
+          <div class="decision-grid">
+            <article class="decision-card reveal">
+              <h3>Tenant isolation</h3>
+              <dl><dt>Problem</dt><dd>A valid user must not cross organization boundaries.</dd><dt>Decision</dt><dd>Reload membership and role context from PostgreSQL, then scope every repository query.</dd><dt>Reason</dt><dd>Authorization depends on current database truth—not only token claims.</dd><dt>Trade-off</dt><dd>Every request carries explicit organization context and a database authorization check.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Auditable mutations</h3>
+              <dl><dt>Problem</dt><dd>Business changes and their audit trail must not diverge.</dd><dt>Decision</dt><dd>Write the domain mutation and allowlisted audit event in one transaction; block audit UPDATE, DELETE, and TRUNCATE with PostgreSQL triggers.</dd><dt>Reason</dt><dd>Rollback keeps the change and its evidence consistent.</dd><dt>Trade-off</dt><dd>The trigger does not protect against a privileged database owner.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Retry-safe workers</h3>
+              <dl><dt>Problem</dt><dd>A worker may crash after claiming a document job.</dd><dt>Decision</dt><dd>Send only the version ID, acknowledge late, reject on worker loss, claim the row, and make terminal effects idempotent.</dd><dt>Reason</dt><dd>Redis redelivery can converge without duplicated output or audit events.</dd><dt>Trade-off</dt><dd>A small database-commit-to-queue-publish window remains until an outbox or reconciler is added.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Bounded upload boundary</h3>
+              <dl><dt>Problem</dt><dd>Document input is untrusted and can exhaust memory or bypass type checks.</dd><dt>Decision</dt><dd>Stream to a bounded temporary file, normalize names, verify extension/content, and cap files at 10 MiB.</dd><dt>Reason</dt><dd>Validation happens before persistence and background processing.</dd><dt>Trade-off</dt><dd>The current scanner is local/test only; production scanning and live S3 are still in progress.</dd></dl>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Implemented controls</p>
+              <h2 class="proj-section-title">Reliability &amp; security</h2>
+              <ul class="check-list">
+                <li><strong>Same 404 boundary</strong> for missing and cross-tenant resources reduces tenant-discovery signals.</li>
+                <li><strong>Atomic ticket workflows</strong> keep status, message, and audit mutations in one transaction.</li>
+                <li><strong>Opaque browser sessions</strong> rotate on login and invalidate on logout; cookies are HttpOnly and SameSite=Lax.</li>
+                <li><strong>Safe task payloads</strong> carry a UUID rather than file contents, extracted text, or storage paths.</li>
+                <li><strong>Worker redelivery coverage</strong> includes forced process loss and duplicate-delivery behavior.</li>
+                <li><strong>Synthetic data by default</strong>; no real customer ticket or production-user claim is made.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Repository evidence · verified Aug 2026</p>
+              <h2 class="proj-section-title">Testing that proves behavior</h2>
+              <div class="evidence-grid">
+                <div class="evidence-item"><strong>187</strong><span>Collected automated test cases across unit and PostgreSQL integration layers</span></div>
+                <div class="evidence-item"><strong>PostgreSQL</strong><span>Tenant, migration, transaction, and integration coverage</span></div>
+                <div class="evidence-item"><strong>Worker loss</strong><span>Redis redelivery and duplicate-effect convergence scenario</span></div>
+              </div>
+              <p class="project-copy">The local review passed the dependency-lock, Ruff, formatting, Pyright, and 105 environment-independent tests. The remaining 82 PostgreSQL tests were collected but not rerun locally because Docker was unavailable; the public CI history exposes the database, migration, container, ingestion, and worker-loss runs. These are engineering checks—not uptime, scale, or production-SLA claims.</p>
+              <div class="project-links">
+                <a href="https://github.com/kanfan/supportflow-ai/tree/main/tests" target="_blank" rel="noopener noreferrer">Browse tests</a>
+                <a href="https://github.com/kanfan/supportflow-ai/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">Inspect CI history</a>
+                <a href="https://github.com/kanfan/supportflow-ai/tree/main/docs" target="_blank" rel="noopener noreferrer">Read design evidence</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -202,58 +339,66 @@
         <div class="container">
           <div class="proj-two-col">
             <article class="proj-card reveal">
-              <h2 class="proj-section-title">Implemented foundation</h2>
+              <p class="status-label">Ownership</p>
+              <h2 class="proj-section-title">My contribution</h2>
               <ul class="check-list">
-                <li>FastAPI application factory with liveness and versioned API routes.</li>
-                <li>Argon2id password hashing, short-lived access tokens, and database-verified memberships.</li>
-                <li>Organization-scoped ticket and message models with service-layer status transitions.</li>
-                <li>PostgreSQL schema managed through reversible Alembic migrations, with pgvector-ready local infrastructure.</li>
-                <li>Redis/Celery worker path, Docker Compose environment, and automated quality checks.</li>
+                <li>Led the initial PostgreSQL, Redis, Docker Compose, testing, and CI foundation.</li>
+                <li>Led ticket/message workflow and agent-workspace integration, including the audit transaction boundary.</li>
+                <li>Contributed across shared authentication, document ingestion, worker reliability, review, and integration work.</li>
+                <li><strong>In progress:</strong> AWS account safety, Terraform platform, GitHub OIDC pipeline, and Week 5 release operations.</li>
+              </ul>
+              <p class="team-note">SupportFlow AI is co-developed by Emir and Eray. Feature ownership rotates and merged code is reviewed as shared system knowledge. Emir led identity/membership and audit-schema streams, plus the document-upload contract; this page separates my contribution from the team’s total output.</p>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label">Engineering stack</p>
+              <h2 class="proj-section-title">Tools used today</h2>
+              <div class="badges">
+                <span class="badge">Python 3.13</span><span class="badge">FastAPI</span><span class="badge">Pydantic</span><span class="badge">PostgreSQL</span><span class="badge">SQLAlchemy</span><span class="badge">Alembic</span><span class="badge">Redis</span><span class="badge">Celery</span><span class="badge">Docker Compose</span><span class="badge">pytest</span><span class="badge">Ruff</span><span class="badge">Pyright</span><span class="badge">GitHub Actions</span>
+              </div>
+              <p class="team-note"><strong>Designed, not deployed:</strong> AWS ECS/Fargate, RDS/pgvector, ElastiCache, S3, ECR, Secrets Manager, CloudWatch, Terraform, and GitHub OIDC.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--flush-top">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label">Known limitations</p>
+              <h2 class="proj-section-title">What this project does not claim</h2>
+              <ul class="check-list">
+                <li>No live AWS staging or production deployment yet.</li>
+                <li>No implemented AI classification, RAG, citations, or human-approval flow yet.</li>
+                <li>The browser session store is process-local and not suitable for multiple API instances.</li>
+                <li>The local/test scanner is not a production malware-scanning boundary.</li>
+                <li>No real-user validation, concurrent-load evidence, uptime record, or commercial usage.</li>
               </ul>
             </article>
             <article class="proj-card reveal">
-              <h2 class="proj-section-title">Next product layers</h2>
-              <ol class="phase-list">
-                <li><span><strong>Document workflow</strong>Secure uploads, extraction, versioning, and background processing.</span></li>
-                <li><span><strong>Classification</strong>Provider-neutral adapters and validated structured output.</span></li>
-                <li><span><strong>Grounded RAG</strong>Tenant-filtered retrieval, citations, and no-answer thresholds.</span></li>
-                <li><span><strong>Human approval</strong>Approve, edit, reject, feedback, and complete audit events.</span></li>
+              <p class="status-label status-label--planned">Next steps</p>
+              <h2 class="proj-section-title">The evidence still to earn</h2>
+              <ol class="check-list">
+                <li>Complete and verify the AWS staging platform, adapters, deployment, rollback, and teardown path.</li>
+                <li>Close the commit-to-dispatch gap with an outbox, reconciler, or explicitly accepted staging recovery plan.</li>
+                <li>Implement classification and measure structured-output quality on fixed fixtures.</li>
+                <li>Implement tenant-filtered retrieval, citations, no-answer behavior, and human approval.</li>
+                <li>Publish retrieval, latency, cost, load, and agent-decision evidence before making production claims.</li>
               </ol>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" style="padding-top:0">
+      <section class="section section--flush-top">
         <div class="container">
-          <div class="proj-two-col">
-            <article class="proj-card reveal">
-              <h2 class="proj-section-title">My contribution</h2>
-              <ul class="check-list">
-                <li>Led the PostgreSQL, Redis, Docker Compose, testing, and initial CI foundation.</li>
-                <li>Contributed across the shared backend, authentication, ticket, documentation, and integration workflow.</li>
-                <li>Helped define development standards that keep migrations, tenant boundaries, and operational checks explicit.</li>
-              </ul>
-              <p class="team-note">SupportFlow AI is a collaborative project by Emir and Eray. Feature leadership rotates so both contributors can design, implement, review, and explain the complete system. The shared source repository is currently under private development.</p>
-            </article>
-            <article class="proj-card reveal">
-              <h2 class="proj-section-title">Engineering stack</h2>
-              <div class="badges">
-                <span class="badge">Python 3.13</span>
-                <span class="badge">FastAPI</span>
-                <span class="badge">Pydantic</span>
-                <span class="badge">PostgreSQL</span>
-                <span class="badge">SQLAlchemy</span>
-                <span class="badge">Alembic</span>
-                <span class="badge">Redis</span>
-                <span class="badge">Celery</span>
-                <span class="badge">Docker</span>
-                <span class="badge">pytest</span>
-                <span class="badge">Ruff</span>
-                <span class="badge">Pyright</span>
-                <span class="badge">GitHub Actions</span>
-              </div>
-            </article>
+          <div class="source-panel reveal">
+            <div>
+              <p class="status-label status-label--implemented">Public source</p>
+              <h2>Review the implementation, not just the summary.</h2>
+              <p>The repository is public. Recruiters and engineers can inspect the application code, migrations, test suite, ADRs, CI configuration, contribution history, and open delivery work. There is no public live demo yet.</p>
+            </div>
+            <a href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Open GitHub ↗</a>
           </div>
         </div>
       </section>
@@ -269,6 +414,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260724-1" defer></script>
+    <script src="script.js?v=20260724-2" defer></script>
   </body>
 </html>

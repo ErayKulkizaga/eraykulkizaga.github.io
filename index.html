@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="icon" href="images/main.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=20260724-2">
+    <link rel="stylesheet" href="style.css?v=20260806-1">
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body class="home">
@@ -44,7 +44,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
-        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+        <button class="nav-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
         <nav id="primary-nav" class="nav" aria-label="Primary navigation">
@@ -130,7 +130,7 @@
                 <div class="card__eyebrow">Award-winning graduation project · 2025–2026</div>
                 <h3 class="card__title"><a class="card__primary-link" href="project-sign-language.html" aria-label="Open the SignTurk case study">SignTurk</a></h3>
                 <p class="card__desc">Real-time Turkish Sign Language recognition, approved-word sentence assembly, speech output, persistence, and 3D animation.</p>
-                <ul class="card__metrics" aria-label="SignTurk highlights">
+                <ul class="card__metrics">
                   <li><strong>179</strong> runtime classes</li>
                   <li><strong>94.17%</strong> offline RTMW Top-1</li>
                 </ul>
@@ -148,7 +148,7 @@
                 <div class="card__eyebrow">Portfolio engineering</div>
                 <h3 class="card__title"><a class="card__primary-link" href="project-eraykulkizaga.html" aria-label="Open the eraykulkizaga.com case study">eraykulkizaga.com</a></h3>
                 <p class="card__desc">A dependency-free portfolio shaped with semantic HTML, expressive CSS, and focused JavaScript.</p>
-                <ul class="card__metrics" aria-label="Portfolio highlights">
+                <ul class="card__metrics">
                   <li><strong>0</strong> runtime dependencies</li>
                   <li><strong>WebGL</strong> interactive globe</li>
                 </ul>
@@ -167,7 +167,7 @@
                 <div class="card__eyebrow">Microsoft Türkiye project · Local development</div>
                 <h3 class="card__title"><a class="card__primary-link" href="project-querypilot.html" aria-label="Open the QueryPilot Local case study">QueryPilot Local</a></h3>
                 <p class="card__desc">An offline-first PostgreSQL execution-plan assistant with read-only SQL controls, recursive EXPLAIN JSON analysis, deterministic diagnostics, and Foundry Local retrieval.</p>
-                <ul class="card__metrics" aria-label="QueryPilot Local highlights">
+                <ul class="card__metrics">
                   <li><strong>24</strong> citation-ready knowledge chunks</li>
                   <li><strong>3s</strong> database statement timeout</li>
                 </ul>
@@ -183,15 +183,16 @@
                 <img src="images/supportflow-cover.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
               </div>
               <div class="card__body">
-                <div class="card__eyebrow">Collaborative backend &amp; AI engineering · Active development</div>
+                <div class="card__eyebrow">Collaborative backend system · Active development</div>
                 <h3 class="card__title"><a class="card__primary-link" href="project-supportflow.html" aria-label="Open the SupportFlow AI case study">SupportFlow AI</a></h3>
-                <p class="card__desc">A tenant-aware support copilot designed to turn company knowledge into source-backed answer drafts while keeping the support agent in control.</p>
-                <ul class="card__metrics" aria-label="SupportFlow AI highlights">
-                  <li><strong>Human-in-the-loop</strong> by design</li>
+                <p class="card__desc">A multi-tenant support backend with transactional ticket workflows, append-only audit events, and retry-safe document ingestion.</p>
+                <ul class="card__metrics">
+                  <li><strong>187</strong> test cases</li>
                   <li><strong>Tenant-scoped</strong> data access</li>
                 </ul>
                 <div class="card__actions">
                   <a href="project-supportflow.html" class="card__link">Case study</a>
+                  <a href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer" class="card__link">GitHub</a>
                 </div>
               </div>
             </article>
@@ -275,12 +276,12 @@
               <span class="education-text"><strong>B.Sc. in Software Engineering</strong><span>Eastern Mediterranean University · 2021–2026</span><span class="muted abet">ABET-accredited · 100% English-taught programme</span></span>
             </div>
           </div>
-          <div class="profile-stats reveal" role="list" aria-label="Education and language highlights">
-            <div class="profile-stat" role="listitem"><strong>3.83<span>/4.00</span></strong><p>Final semester GPA</p></div>
-            <div class="profile-stat" role="listitem"><strong>C2</strong><p>EF SET English proficiency · 71/100</p></div>
-            <div class="profile-stat" role="listitem"><strong>2026</strong><p>Software Engineering graduate</p></div>
-            <div class="profile-stat" role="listitem"><strong>Global</strong><p>Remote and relocation ready</p></div>
-          </div>
+          <ul class="profile-stats reveal">
+            <li class="profile-stat"><strong>3.83<span>/4.00</span></strong><p>Final semester GPA</p></li>
+            <li class="profile-stat"><strong>C2</strong><p>EF SET English proficiency · 71/100</p></li>
+            <li class="profile-stat"><strong>2026</strong><p>Software Engineering graduate</p></li>
+            <li class="profile-stat"><strong>Global</strong><p>Remote and relocation ready</p></li>
+          </ul>
         </div>
       </section>
 
@@ -309,7 +310,7 @@
           </div>
           <div class="certs__grid">
             <article class="cert reveal">
-              <div class="cert__badge cert__badge--ef" aria-label="EF SET"><span>EF SET</span></div>
+              <div class="cert__badge cert__badge--ef"><span>EF SET</span></div>
               <div class="cert__content"><p class="cert__logo">EF Standard English Test</p><h3 class="cert__title">C2 English Proficiency · 4 Skills</h3><a class="cert__program-link" href="https://cert.efset.org/iLonpz" target="_blank" rel="noopener noreferrer">Verify score · 71/100</a></div>
               <div class="cert-previews">
                 <div class="cert-previews__track">
@@ -397,7 +398,7 @@
         <h2 id="img-modal-title" class="sr-only">Image preview</h2>
         <div class="img-modal__toolbar">
           <span class="img-modal__name">Image preview</span>
-          <div class="img-modal__controls" aria-label="Image zoom controls">
+          <div class="img-modal__controls" role="group" aria-label="Image zoom controls">
             <button class="img-modal__control" type="button" data-image-zoom-out aria-label="Zoom out">−</button>
             <button class="img-modal__control img-modal__zoom-label" type="button" data-image-zoom-reset aria-label="Reset zoom"><span data-image-zoom-label>100%</span></button>
             <button class="img-modal__control" type="button" data-image-zoom-in aria-label="Zoom in">+</button>

@@ -49,7 +49,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 | `index.html` | Main portfolio — Hero, Projects, Experience, About, Skills, Credentials, Contact |
 | `project-sign-language.html` | [SignTurk](https://github.com/ErayKulkizaga/SignTurk) — award-winning Turkish Sign Language platform |
 | `project-querypilot.html` | QueryPilot Local — offline-first PostgreSQL execution-plan assistant |
-| `project-supportflow.html` | SupportFlow AI — tenant-aware, source-backed support copilot |
+| `project-supportflow.html` | SupportFlow AI — multi-tenant support backend and document-ingestion case study |
 | `project-eraykulkizaga.html` | This portfolio site detail |
 | `privacy.html` | Privacy policy |
 | `404.html` | Custom not-found page |

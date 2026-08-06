@@ -192,7 +192,7 @@ button { color: inherit; }
 .education-row { display: flex; align-items: center; gap: 16px; margin-top: 36px; }
 .edu__logo { width: 60px; height: 60px; padding: 7px; border-radius: 14px; background: #fff; object-fit: contain; flex: none; }
 .education-text { display: flex; flex-direction: column; line-height: 1.45; }.education-text > span { color: #b6b6be; }.education-text .abet { margin-top: 3px; color: #73737c; font-size: 12px; }
-.profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding: 0; list-style: none; }
 .profile-stat { min-height: 164px; display: flex; flex-direction: column; justify-content: space-between; padding: 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 22px; background: var(--ink-card); }
 .profile-stat strong { color: #fff; font-size: clamp(30px, 4vw, 50px); line-height: 1; letter-spacing: -.055em; }.profile-stat strong span { color: #73737c; font-size: .42em; letter-spacing: 0; }.profile-stat p { margin: 20px 0 0; color: #85858e; font-size: 12px; }
 
