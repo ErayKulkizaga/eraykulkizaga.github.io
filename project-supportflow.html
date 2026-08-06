@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
     <meta property="og:type" content="website">
     <meta property="og:title" content="SupportFlow AI — Multi-tenant Backend Case Study">
-    <meta property="og:description" content="Tenant-scoped support workflows, append-only audit events, and retry-safe document ingestion—built in public and still actively developed.">
+    <meta property="og:description" content="Tenant-scoped support workflows, append-only audit events, and retry-safe document ingestion—built collaboratively and still actively developed.">
     <meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html">
     <meta property="og:image" content="https://www.eraykulkizaga.com/images/supportflow-cover.webp">
     <meta property="og:image:width" content="1600">
@@ -84,11 +84,8 @@
       .evidence-item { padding: 19px; border: 1px solid var(--border); border-radius: 17px; background: var(--surface); }
       .evidence-item strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 20px; letter-spacing: -.035em; }
       .evidence-item span { color: var(--muted); font-size: 11px; line-height: 1.55; }
-      .project-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; }
-      .project-links a { position: relative; color: var(--primary); font-size: 13px; font-weight: 700; text-decoration: none; }
-      .project-links a::after { content: " ↗"; }
       .team-note { margin: 18px 0 0; padding: 16px 18px; border-left: 3px solid var(--primary); background: var(--surface); color: var(--muted); font-size: 13px; line-height: 1.65; }
-      .source-panel { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; padding: clamp(26px,5vw,48px); border: 1px solid rgba(8,120,255,.2); border-radius: 24px; background: linear-gradient(120deg,rgba(8,120,255,.07),rgba(255,255,255,.95)); }
+      .source-panel { display: grid; grid-template-columns: 1fr; align-items: center; gap: 32px; padding: clamp(26px,5vw,48px); border: 1px solid rgba(8,120,255,.2); border-radius: 24px; background: linear-gradient(120deg,rgba(8,120,255,.07),rgba(255,255,255,.95)); }
       .source-panel h2 { margin: 0 0 12px; font-size: clamp(27px,4vw,44px); letter-spacing: -.05em; }
       .source-panel p { max-width: 760px; margin: 0; color: var(--muted); line-height: 1.7; }
       @media (max-width: 980px) {
@@ -157,8 +154,7 @@
             <h1 class="proj-hero__title reveal">SupportFlow AI</h1>
             <p class="proj-hero__sub reveal">A production-oriented, multi-tenant support platform with implemented ticket, audit, and document-ingestion workflows. The AI-assisted retrieval layer is still in development.</p>
             <div class="proj-hero__actions reveal">
-              <a href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View public source ↗</a>
-              <a href="index.html#projects" class="btn">← Back to Projects</a>
+              <a href="index.html#projects" class="btn btn--primary">← Back to Projects</a>
             </div>
           </div>
           <figure class="proj-hero__media reveal">
@@ -175,7 +171,7 @@
             <li class="status-item"><strong>Active development</strong><span>Weeks 1–4 implemented; AWS staging work is in progress</span></li>
             <li class="status-item"><strong>Collaborative project</strong><span>Co-developed by Emir and Eray with rotating feature ownership</span></li>
             <li class="status-item"><strong>Backend &amp; data</strong><span>Python 3.13, FastAPI, PostgreSQL, Redis, and Celery</span></li>
-            <li class="status-item"><strong>Public source</strong><span>Architecture records, tests, CI workflow, and known limits are reviewable</span></li>
+            <li class="status-item"><strong>Evidence-led</strong><span>Claims were checked against the private codebase, tests, CI, and ADRs</span></li>
           </ul>
         </div>
       </section>
@@ -324,12 +320,7 @@
                 <div class="evidence-item"><strong>PostgreSQL</strong><span>Tenant, migration, transaction, and integration coverage</span></div>
                 <div class="evidence-item"><strong>Worker loss</strong><span>Redis redelivery and duplicate-effect convergence scenario</span></div>
               </div>
-              <p class="project-copy">The local review passed the dependency-lock, Ruff, formatting, Pyright, and 105 environment-independent tests. The remaining 82 PostgreSQL tests were collected but not rerun locally because Docker was unavailable; the public CI history exposes the database, migration, container, ingestion, and worker-loss runs. These are engineering checks—not uptime, scale, or production-SLA claims.</p>
-              <div class="project-links">
-                <a href="https://github.com/kanfan/supportflow-ai/tree/main/tests" target="_blank" rel="noopener noreferrer">Browse tests</a>
-                <a href="https://github.com/kanfan/supportflow-ai/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">Inspect CI history</a>
-                <a href="https://github.com/kanfan/supportflow-ai/tree/main/docs" target="_blank" rel="noopener noreferrer">Read design evidence</a>
-              </div>
+              <p class="project-copy">The local review passed the dependency-lock, Ruff, formatting, Pyright, and 105 environment-independent tests. The remaining 82 PostgreSQL tests were collected but not rerun locally because Docker was unavailable; the private CI workflow defines database, migration, container, ingestion, and worker-loss runs. These are engineering checks—not uptime, scale, or production-SLA claims.</p>
             </article>
           </div>
         </div>
@@ -394,11 +385,10 @@
         <div class="container">
           <div class="source-panel reveal">
             <div>
-              <p class="status-label status-label--implemented">Public source</p>
-              <h2>Review the implementation, not just the summary.</h2>
-              <p>The repository is public. Recruiters and engineers can inspect the application code, migrations, test suite, ADRs, CI configuration, contribution history, and open delivery work. There is no public live demo yet.</p>
+              <p class="status-label">Private repository</p>
+              <h2>Source access is disclosed clearly.</h2>
+              <p>The shared team repository is private. This case study summarizes claims verified against the application code, migrations, test suite, ADRs, CI configuration, and contribution history. Public source access and a live demo are not currently available.</p>
             </div>
-            <a href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Open GitHub ↗</a>
           </div>
         </div>
       </section>
