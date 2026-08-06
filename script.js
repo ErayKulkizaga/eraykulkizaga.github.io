@@ -17,6 +17,214 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  const aiField = document.querySelector('[data-ai-field]');
+  if (aiField) {
+    const canvas = aiField.querySelector('canvas');
+    const context = canvas?.getContext('2d');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (canvas && context) {
+      const layerSizes = [5, 8, 7, 3];
+      const nodes = [];
+      const layers = [];
+      const edges = [];
+      let seed = 2187;
+      const random = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+      };
+
+      layerSizes.forEach((size, layerIndex) => {
+        const layer = [];
+        for (let nodeIndex = 0; nodeIndex < size; nodeIndex += 1) {
+          const node = {
+            x: -1.55 + layerIndex * (3.1 / (layerSizes.length - 1)),
+            y: size === 1 ? 0 : -1.05 + nodeIndex * (2.1 / (size - 1)),
+            z: (random() - 0.5) * 0.72,
+            phase: random() * Math.PI * 2,
+            layerIndex,
+          };
+          nodes.push(node);
+          layer.push(node);
+        }
+        layers.push(layer);
+      });
+
+      for (let layerIndex = 0; layerIndex < layers.length - 1; layerIndex += 1) {
+        layers[layerIndex].forEach((from, fromIndex) => {
+          layers[layerIndex + 1].forEach((to, toIndex) => {
+            if ((fromIndex * 3 + toIndex * 2 + layerIndex) % 4 === 0 || random() > 0.72) {
+              edges.push({ from, to, layerIndex, phase: random() });
+            }
+          });
+        });
+      }
+
+      let width = 0;
+      let height = 0;
+      let pixelRatio = 1;
+      let frame = 0;
+      let visible = true;
+      let yaw = 0;
+      let pitch = 0;
+      let targetYaw = 0;
+      let targetPitch = 0;
+      let pointerX = -1000;
+      let pointerY = -1000;
+
+      const resize = () => {
+        const bounds = aiField.getBoundingClientRect();
+        width = Math.max(1, bounds.width);
+        height = Math.max(1, bounds.height);
+        pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * pixelRatio);
+        canvas.height = Math.round(height * pixelRatio);
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      };
+
+      const project = (node, elapsed) => {
+        const breathing = reducedMotion ? 0 : Math.sin(elapsed * 0.00055 + node.phase) * 0.035;
+        const x = node.x;
+        const y = node.y + breathing;
+        const z = node.z;
+        const cosY = Math.cos(yaw);
+        const sinY = Math.sin(yaw);
+        const cosX = Math.cos(pitch);
+        const sinX = Math.sin(pitch);
+        const rotatedX = x * cosY + z * sinY;
+        const rotatedZ = -x * sinY + z * cosY;
+        const rotatedY = y * cosX - rotatedZ * sinX;
+        const depth = y * sinX + rotatedZ * cosX;
+        const perspective = 4.7 / (4.7 - depth);
+        const scale = Math.min(width * 0.24, height * 0.34);
+        return {
+          x: width * 0.5 + rotatedX * scale * perspective,
+          y: height * 0.52 + rotatedY * scale * perspective,
+          depth,
+          perspective,
+        };
+      };
+
+      const draw = (elapsed = 0) => {
+        context.clearRect(0, 0, width, height);
+        yaw += (targetYaw - yaw) * 0.055;
+        pitch += (targetPitch - pitch) * 0.055;
+
+        const projected = new Map(nodes.map((node) => [node, project(node, elapsed)]));
+        const flow = reducedMotion ? 0.68 : (elapsed * 0.00012) % 1;
+        const activeLayer = flow * (layers.length - 1);
+
+        edges.forEach((edge) => {
+          const from = projected.get(edge.from);
+          const to = projected.get(edge.to);
+          const pointerDistance = Math.min(
+            Math.hypot(from.x - pointerX, from.y - pointerY),
+            Math.hypot(to.x - pointerX, to.y - pointerY),
+          );
+          const pointerEnergy = Math.max(0, 1 - pointerDistance / 170);
+          const layerEnergy = Math.max(0, 1 - Math.abs(activeLayer - edge.layerIndex - 0.5) * 1.7);
+          const alpha = 0.09 + pointerEnergy * 0.2 + layerEnergy * 0.09;
+          context.beginPath();
+          context.moveTo(from.x, from.y);
+          context.lineTo(to.x, to.y);
+          context.strokeStyle = `rgba(100, 164, 255, ${alpha})`;
+          context.lineWidth = 0.7 + pointerEnergy * 0.8;
+          context.stroke();
+
+          if (!reducedMotion && edge.phase > 0.72) {
+            const localFlow = activeLayer - edge.layerIndex;
+            if (localFlow >= 0 && localFlow <= 1) {
+              const pulseX = from.x + (to.x - from.x) * localFlow;
+              const pulseY = from.y + (to.y - from.y) * localFlow;
+              context.beginPath();
+              context.arc(pulseX, pulseY, 2.1, 0, Math.PI * 2);
+              context.fillStyle = 'rgba(185, 222, 255, .92)';
+              context.shadowColor = 'rgba(70, 145, 255, .9)';
+              context.shadowBlur = 11;
+              context.fill();
+              context.shadowBlur = 0;
+            }
+          }
+        });
+
+        nodes
+          .map((node) => ({ node, point: projected.get(node) }))
+          .sort((a, b) => a.point.depth - b.point.depth)
+          .forEach(({ node, point }) => {
+            const pointerDistance = Math.hypot(point.x - pointerX, point.y - pointerY);
+            const pointerEnergy = Math.max(0, 1 - pointerDistance / 145);
+            const layerEnergy = Math.max(0, 1 - Math.abs(activeLayer - node.layerIndex) * 1.25);
+            const radius = (2.4 + point.perspective * 1.25) * (1 + pointerEnergy * 0.65);
+
+            context.beginPath();
+            context.arc(point.x, point.y, radius * 2.8, 0, Math.PI * 2);
+            context.fillStyle = `rgba(41, 116, 255, ${0.025 + pointerEnergy * 0.09 + layerEnergy * 0.04})`;
+            context.fill();
+
+            context.beginPath();
+            context.arc(point.x, point.y, radius, 0, Math.PI * 2);
+            context.fillStyle = `rgba(197, 224, 255, ${0.48 + pointerEnergy * 0.4 + layerEnergy * 0.24})`;
+            context.shadowColor = 'rgba(61, 137, 255, .75)';
+            context.shadowBlur = 8 + pointerEnergy * 12;
+            context.fill();
+            context.shadowBlur = 0;
+          });
+
+        if (!reducedMotion && visible) frame = window.requestAnimationFrame(draw);
+      };
+
+      resize();
+      draw(reducedMotion ? 2400 : 0);
+
+      if ('ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(() => {
+          resize();
+          if (reducedMotion) draw(2400);
+        });
+        resizeObserver.observe(aiField);
+      } else {
+        window.addEventListener('resize', resize, { passive: true });
+      }
+
+      if (finePointer && !reducedMotion) {
+        aiField.addEventListener('pointermove', (event) => {
+          const bounds = aiField.getBoundingClientRect();
+          const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
+          const normalizedY = (event.clientY - bounds.top) / bounds.height - 0.5;
+          pointerX = event.clientX - bounds.left;
+          pointerY = event.clientY - bounds.top;
+          targetYaw = normalizedX * 0.34;
+          targetPitch = -normalizedY * 0.22;
+          aiField.style.setProperty('--field-x', `${normalizedY * -2.4}deg`);
+          aiField.style.setProperty('--field-y', `${normalizedX * 3.2}deg`);
+        });
+        aiField.addEventListener('pointerleave', () => {
+          pointerX = -1000;
+          pointerY = -1000;
+          targetYaw = 0;
+          targetPitch = 0;
+          aiField.style.setProperty('--field-x', '0deg');
+          aiField.style.setProperty('--field-y', '0deg');
+        });
+      }
+
+      if (!reducedMotion && 'IntersectionObserver' in window) {
+        const fieldObserver = new IntersectionObserver((entries) => {
+          const nextVisible = entries.some((entry) => entry.isIntersecting);
+          if (nextVisible === visible) return;
+          visible = nextVisible;
+          if (visible && !frame) frame = window.requestAnimationFrame(draw);
+          if (!visible && frame) {
+            window.cancelAnimationFrame(frame);
+            frame = 0;
+          }
+        }, { threshold: 0.05 });
+        fieldObserver.observe(aiField);
+      }
+    }
+  }
+
   const blueprint = document.querySelector('[data-hero-blueprint]');
   if (blueprint) {
     const modules = Array.from(blueprint.querySelectorAll('[data-blueprint-module]'));

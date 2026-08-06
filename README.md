@@ -15,7 +15,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ## Features
 
 - **Animated opening signature** — a short CSS-native `E R A Y` sequence introduces the site without a third-party visual
-- **Editorial image-led hero** — a licensed real-world infrastructure photograph and direct positioning statement establish the engineering direction
+- **Interactive inference hero** — a dependency-free canvas visualises a layered AI graph, responds to precise pointer movement, and keeps a calm autonomous state on touch devices
 - **Alternating section surfaces** — dark, white, neutral, and blue-tinted scenes separate the portfolio narrative
 - **Reveal-on-scroll animations** — `IntersectionObserver`-powered elements animate once as they enter the viewport
 - **Hero-first navigation** — the home page opens without navigation chrome, then reveals the compact glass-like header after scrolling
@@ -37,7 +37,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 | Markup | HTML5, Semantic elements, ARIA, JSON-LD |
 | Styling | CSS3, CSS Grid, Flexbox, Custom Properties |
 | Behaviour | Vanilla JavaScript, IntersectionObserver, rAF |
-| Performance | Lazy loading, async decoding, priority hero media, deferred scripts |
+| Performance | Lazy loading, async decoding, DPR-capped canvas rendering, deferred scripts |
 | SEO | Open Graph, Twitter Cards, Canonical URLs, Sitemap XML |
 | Deployment | GitHub Pages + Custom Domain (CNAME) |
 
@@ -75,7 +75,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ├── CNAME                       # Custom domain for GitHub Pages
 └── images/
     ├── main.png                # Favicon / logo
-    ├── hero-server-room.webp   # Licensed and optimised Unsplash hero photograph
+    ├── *-cover.webp            # Optimised project cover artwork
     ├── og-portfolio-dark.png   # Social sharing artwork
     ├── cert1–cert7.*           # Certificate preview images
     └── signturk-*.webp         # Optimised SignTurk UI and award media
@@ -86,14 +86,14 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ## Implementation Notes
 
 - **CSS custom properties** (`--bg`, `--text`, `--border`, `--shadow`) centralise the entire design token system — theming is a single `:root` block change.
-- **Restrained hero motion** introduces the opening signature, documentary photograph, and copy while keeping the first viewport lightweight.
+- **The canvas hero** uses deterministic geometry, a capped device-pixel ratio, viewport pausing, and pointer-aware perspective without a rendering library.
 - **Slider logic** reads `container.clientWidth` at runtime and recalculates on `resize`, so slide positions stay aligned at every viewport.
 - **Responsive project media** uses zero-minimum grid tracks and intrinsic image sizing to prevent wide product screenshots from escaping mobile viewports.
-- **`prefers-reduced-motion`** disables every animation and transition globally via a single media query — no conditional JS needed.
+- **`prefers-reduced-motion`** freezes the interactive model graph and disables entrance/reveal animation while retaining the full composition.
 - **JSON-LD** `Person` and `Website` schemas provide search-engine context.
 
 ---
 
 ## License
 
-Code © 2026 Eray Kulkızaga. All rights reserved. Hero photograph by Kevin Ache, used under the Unsplash License.
+Code © 2026 Eray Kulkızaga. All rights reserved.
