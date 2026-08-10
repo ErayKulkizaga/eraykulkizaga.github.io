@@ -15,7 +15,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ## Features
 
 - **Animated opening signature** — a short CSS-native `E R A Y` sequence introduces the site without a third-party visual
-- **Interactive inference hero** — a dependency-free canvas visualises a layered AI graph, responds to precise pointer movement, and keeps a calm autonomous state on touch devices
+- **Interactive data-flow hero** — a dependency-free canvas creates luminous AI-inspired streams that bend around the pointer and move autonomously on touch devices
 - **Alternating section surfaces** — dark, white, neutral, and blue-tinted scenes separate the portfolio narrative
 - **Reveal-on-scroll animations** — `IntersectionObserver`-powered elements animate once as they enter the viewport
 - **Hero-first navigation** — the home page opens without navigation chrome, then reveals the compact glass-like header after scrolling
@@ -86,7 +86,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ## Implementation Notes
 
 - **CSS custom properties** (`--bg`, `--text`, `--border`, `--shadow`) centralise the entire design token system — theming is a single `:root` block change.
-- **The canvas hero** uses deterministic geometry, a capped device-pixel ratio, viewport pausing, and pointer-aware perspective without a rendering library.
+- **The canvas hero** uses deterministic stream geometry, a capped device-pixel ratio, viewport pausing, and pointer-aware flow distortion without a rendering library.
 - **Slider logic** reads `container.clientWidth` at runtime and recalculates on `resize`, so slide positions stay aligned at every viewport.
 - **Responsive project media** uses zero-minimum grid tracks and intrinsic image sizing to prevent wide product screenshots from escaping mobile viewports.
 - **`prefers-reduced-motion`** freezes the interactive model graph and disables entrance/reveal animation while retaining the full composition.
