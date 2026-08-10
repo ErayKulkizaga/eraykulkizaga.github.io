@@ -74,11 +74,10 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 ├── robots.txt                  # Crawler rules
 ├── CNAME                       # Custom domain for GitHub Pages
 └── images/
-    ├── main.png                # Favicon / logo
-    ├── *-cover.webp            # Optimised project cover artwork
-    ├── og-portfolio-dark.png   # Social sharing artwork
-    ├── cert1–cert7.*           # Certificate preview images
-    └── signturk-*.webp         # Optimised SignTurk UI and award media
+    ├── brand/                  # Favicon, app icons, and social preview
+    ├── certificates/           # Optimised credential and award previews
+    ├── logos/                  # Company and university marks
+    └── projects/               # Project covers and product screenshots
 ```
 
 ---
@@ -89,6 +88,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 - **The canvas hero** uses deterministic stream geometry, a capped device-pixel ratio, viewport pausing, and pointer-aware flow distortion without a rendering library.
 - **Slider logic** reads `container.clientWidth` at runtime and recalculates on `resize`, so slide positions stay aligned at every viewport.
 - **Responsive project media** uses zero-minimum grid tracks and intrinsic image sizing to prevent wide product screenshots from escaping mobile viewports.
+- **Asset organisation** keeps deployable media in `brand/`, `certificates/`, `logos/`, and `projects/`; filenames use descriptive kebab-case and raw source exports stay outside the published image tree.
 - **`prefers-reduced-motion`** freezes the interactive model graph and disables entrance/reveal animation while retaining the full composition.
 - **JSON-LD** `Person` and `Website` schemas provide search-engine context.
 
