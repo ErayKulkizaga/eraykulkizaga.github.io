@@ -26,7 +26,7 @@
     <link rel="apple-touch-icon" href="images/main-192.png">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="images/main.png" type="image/png">
-    <link rel="stylesheet" href="style.css?v=20260810-1">
+    <link rel="stylesheet" href="style.css?v=20260810-2">
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body class="home">
@@ -48,6 +48,7 @@
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#certificates">Credentials</a>
+          <a href="#references">References</a>
           <a href="#contact">Contact</a>
           <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
@@ -62,6 +63,7 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#certificates">Credentials</a>
+        <a href="#references">References</a>
         <a href="#contact">Contact</a>
         <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
       </nav>
@@ -307,12 +309,13 @@
 
             <article class="cert reveal">
               <div class="cert__badge"><img src="images/dau.png" alt="Eastern Mediterranean University" loading="lazy" decoding="async" width="1000" height="1000"></div>
-              <div class="cert__content"><p class="cert__logo">Eastern Mediterranean University</p><h3 class="cert__title">High Honour Student · Spring 2025–2026</h3></div>
-              <div class="cert-previews">
+              <div class="cert__content"><p class="cert__logo">Eastern Mediterranean University</p><h3 class="cert__title">Academic Honours · 2025–2026</h3></div>
+              <div class="cert-previews" data-slider>
                 <div class="cert-previews__track">
-                  <button class="certificate-frame certificate-frame--contain" type="button" data-image-modal="images/high-honour-student.webp" aria-label="Open High Honour Student certificate"><img src="images/high-honour-student.webp" alt="High Honour Student certificate awarded by Eastern Mediterranean University Faculty of Engineering for the 2025–2026 Spring Semester" loading="lazy" decoding="async" width="963" height="665"></button>
+                  <button class="certificate-frame certificate-frame--contain" type="button" data-image-modal="images/high-honour-student.webp" aria-label="Open High Honour Student certificate"><img src="images/high-honour-student.webp" alt="High Honour Student certificate awarded by Eastern Mediterranean University Faculty of Engineering for the 2025–2026 Spring Semester" loading="lazy" decoding="async" width="1171" height="825"></button>
+                  <button class="certificate-frame certificate-frame--contain" type="button" data-image-modal="images/honour-student.webp" aria-label="Open Honour Student certificate"><img src="images/honour-student.webp" alt="Honour Student certificate awarded by Eastern Mediterranean University Faculty of Engineering for the 2025–2026 Fall Semester" loading="lazy" decoding="async" width="1600" height="1125"></button>
                 </div>
-                <div class="cert-previews__dots cert-previews__dots--placeholder" aria-hidden="true"></div>
+                <div class="cert-previews__dots" role="group" aria-label="Choose academic honour certificate"><button class="cert-previews__dot is-active" type="button" aria-label="Show High Honour certificate" aria-current="true"></button><button class="cert-previews__dot" type="button" aria-label="Show Honour certificate"></button></div>
               </div>
             </article>
 
@@ -358,6 +361,35 @@
               <div class="cert-previews"><div class="cert-previews__track"><button class="certificate-frame" type="button" data-image-modal="images/cert5.webp" aria-label="Open Introduction to Artificial Intelligence certificate"><img src="images/cert5.webp" alt="Introduction to Artificial Intelligence certificate" loading="lazy" decoding="async" width="1429" height="1010"></button></div><div class="cert-previews__dots cert-previews__dots--placeholder" aria-hidden="true"></div></div>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section id="references" class="section section--dark references">
+        <div class="container">
+          <div class="references__head reveal">
+            <p class="eyebrow">Academic recommendations</p>
+            <h2>What my professors observed.</h2>
+            <p>Selected excerpts from signed reference letters.</p>
+          </div>
+          <div class="references__grid">
+            <blockquote class="reference-quote reveal">
+              <p>“He is a highly motivated individual – working very well in teams and at the same time can take the initiative in leading the team…”</p>
+              <footer>
+                <strong>Asst. Prof. Dr. Ahmet Ünveren</strong>
+                <span>Vice Chair · Department of Computer Engineering</span>
+                <span>Eastern Mediterranean University · 29 July 2026</span>
+              </footer>
+            </blockquote>
+            <blockquote class="reference-quote reveal">
+              <p>“Eray is a hardworking and dependable individual who is capable of working both independently and as part of a team.”</p>
+              <footer>
+                <strong>Prof. Dr. Alexander G. Chefranov</strong>
+                <span>Department of Computer Engineering</span>
+                <span>Eastern Mediterranean University · 6 August 2026</span>
+              </footer>
+            </blockquote>
+          </div>
+          <p class="references__note reveal">Signed letters are available to employers on request. Personal contact details are not published.</p>
         </div>
       </section>
 

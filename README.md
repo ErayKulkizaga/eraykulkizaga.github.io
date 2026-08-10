@@ -47,7 +47,7 @@ A minimalist, performant portfolio built entirely from scratch with **pure HTML,
 
 | Page | Description |
 |---|---|
-| `index.html` | Main portfolio — Hero, Projects, Experience, About, Skills, Credentials, Contact |
+| `index.html` | Main portfolio — Hero, Projects, Experience, About, Skills, Credentials, Academic References, Contact |
 | `project-sign-language.html` | [SignTurk](https://github.com/ErayKulkizaga/SignTurk) — award-winning Turkish Sign Language platform |
 | `project-querypilot.html` | QueryPilot Local — offline-first PostgreSQL execution-plan assistant |
 | `project-supportflow.html` | SupportFlow AI — multi-tenant support backend and document-ingestion case study |
