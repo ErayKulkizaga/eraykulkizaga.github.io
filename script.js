@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const translate = value => window.portfolioI18n?.translate(value) || value;
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
   const header = document.querySelector('.site-header');
   if (header && document.body.classList.contains('home')) {
+    const hero = document.querySelector('.entry-hero, .hero');
     let ticking = false;
     const updateHeader = () => {
-      header.classList.toggle('is-visible', window.scrollY > 24);
+      const heroEnd = hero ? Math.max(0, hero.offsetHeight - window.innerHeight) : 24;
+      header.classList.toggle('is-visible', window.scrollY > heroEnd + 24);
       ticking = false;
     };
     updateHeader();
@@ -261,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNav.setAttribute('aria-hidden', 'true');
     mobileNav.setAttribute('inert', '');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
+    toggle.setAttribute('aria-label', translate('Open navigation'));
     document.body.classList.remove('nav-open');
     if (restoreFocus) toggle.focus();
   };
@@ -272,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNav.classList.add('is-open');
     mobileNav.setAttribute('aria-hidden', 'false');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
+    toggle.setAttribute('aria-label', translate('Close navigation'));
     document.body.classList.add('nav-open');
     mobileNav.querySelector(focusableSelector)?.focus();
   };
@@ -461,7 +464,8 @@ document.addEventListener('DOMContentLoaded', () => {
         image.src = source;
         image.alt = alt;
         imageButton.setAttribute('data-image-modal', source);
-        imageButton.setAttribute('aria-label', `Open the ${tab.dataset.title || 'product'} screen`);
+        const screenTitle = tab.dataset.title || 'product';
+        imageButton.setAttribute('aria-label', document.documentElement.lang === 'tr' ? `${screenTitle} ekranını aç` : `Open the ${screenTitle} screen`);
         title.textContent = tab.dataset.title || '';
         copy.textContent = tab.dataset.copy || '';
         count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(tabs.length).padStart(2, '0')}`;
@@ -484,6 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     previous?.addEventListener('click', () => selectScreen(current - 1));
     next?.addEventListener('click', () => selectScreen(current + 1));
+    window.addEventListener('portfolio-language-change', () => selectScreen(current));
   });
 
   document.querySelectorAll('[data-model-lab]').forEach((lab) => {
@@ -593,7 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTrigger = trigger;
     modalImage.src = source;
     modalImage.alt = image?.alt || 'Image preview';
-    if (modalName) modalName.textContent = image?.alt || 'Image preview';
+    if (modalName) modalName.textContent = image?.alt || translate('Image preview');
     modalZoom = 1;
     modalImage.onload = () => updateModalZoom(1, false);
     modal.removeAttribute('inert');
