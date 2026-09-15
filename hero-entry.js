@@ -20,7 +20,6 @@
     loader.setAttribute('aria-hidden','true');
     requestDraw();
   }
-  loader.querySelector('button').addEventListener('click', dismissLoader);
   const mediaReady = new Promise(resolve => {
     if (reduced.matches || saveData) return resolve();
     if (video.readyState >= 2) return resolve();

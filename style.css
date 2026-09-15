@@ -130,6 +130,9 @@ button { color: inherit; }
 .card--portfolio { --card-accent: #67a0ff; }
 .card--querypilot { --card-accent: #175f48; }
 .card--supportflow { --card-accent: #2457d6; }
+.card--yazaris { --card-accent: #203e34; }
+.card__media--yazaris { background: #f6f3ec; }
+.card__media--yazaris img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .card--featured { border-color: #bcd9ff; }
 .card:hover { transform: translateY(-4px); border-color: rgba(8,120,255,.32); box-shadow: 0 22px 54px rgba(16,20,32,.11); }
 .card:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(8,120,255,.18); }
@@ -206,7 +209,7 @@ button { color: inherit; }
 .cert-previews__dots { display: flex; justify-content: center; align-items: center; min-height: 44px; }.cert-previews__dots--placeholder { visibility: hidden; }.cert-previews__dot { position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }.cert-previews__dot::after { content: ""; position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: #b6b6bb; transform: translate(-50%,-50%); }.cert-previews__dot.is-active::after { background: var(--text); }
 
 .references { position: relative; overflow: hidden; }
-.references::before { content: "“"; position: absolute; top: -92px; right: max(2vw,24px); color: rgba(255,255,255,.035); font: 700 clamp(240px,32vw,500px)/1 Georgia,serif; pointer-events: none; }
+.references::before { content: none; }
 .references__head { position: relative; max-width: 760px; margin-bottom: 48px; }
 .references__head h2 { margin: 0; color: #fff; font-size: clamp(42px,5.5vw,72px); line-height: .98; letter-spacing: -.055em; }
 .references__head > p:last-child { max-width: 560px; margin: 20px 0 0; color: #92929b; font-size: 17px; }
@@ -280,4 +283,26 @@ button { color: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .intro-screen { display: none; }.reveal,.home .hero__status,.home .hero__title-line,.home .hero__lead,.home .hero__work-link { opacity: 1 !important; transform: none !important; filter: none !important; animation-delay: 0s !important; }
+}
+
+/* CV-aligned skills and restrained academic references. */
+.experience-card__project { margin: 16px 0 12px; font-weight: 600; color: var(--text); }
+#skills .skills-grid { gap: 0 48px; }
+#skills .skill-group { padding: 28px 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; background: transparent; }
+#skills .skill-group:hover { transform: none; box-shadow: none; }
+#skills .skill-group h3::before { content: none; }
+#skills .skill-group ul { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; color: var(--text); font-size: 15px; }
+#references { background: var(--bg); color: var(--text); }
+#references .references__head h2 { color: var(--text); font-size: clamp(32px,4vw,48px); line-height: 1.15; letter-spacing: -.035em; }
+#references .references__head > p:last-child { color: var(--muted); font-size: 16px; margin-top: 16px; }
+#references .references__grid { display: block; border: 0; border-radius: 0; background: transparent; }
+#references .reference-quote { display: grid; grid-template-columns: minmax(0,1.55fr) minmax(0,1fr); align-items: start; gap: 48px; min-height: 0; padding: 36px 0; border-top: 1px solid var(--border); background: transparent; }
+#references .reference-quote > p { max-width: 38ch; color: var(--text); font: 400 clamp(21px,2.2vw,27px)/1.55 Georgia,serif; letter-spacing: -.015em; }
+#references .reference-quote footer { margin: 4px 0 0; gap: 8px; }
+#references .reference-quote strong { color: var(--text); font-size: 15px; }
+#references .reference-quote span { color: var(--muted); font-size: 13px; }
+#references .references__note { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 0; color: var(--muted); font-size: 13px; }
+@media (max-width: 640px) {
+  #references .reference-quote { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 28px 0; }
+  #references .reference-quote > p { max-width: none; }
 }

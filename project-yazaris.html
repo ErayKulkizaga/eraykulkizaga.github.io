@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YazarIS — Turkish B2B Order Intelligence</title><meta name="description" content="An AI-assisted order assistant turning Turkish B2B messages into catalog-validated drafts, with human confirmation at the center.">
+<link rel="canonical" href="https://www.eraykulkizaga.com/project-yazaris.html">
+<meta property="og:type" content="website"><meta property="og:title" content="YazarIS — Turkish B2B Order Intelligence"><meta property="og:description" content="An AI-assisted order assistant turning Turkish B2B messages into catalog-validated drafts, with human confirmation at the center."><meta property="og:url" content="https://www.eraykulkizaga.com/project-yazaris.html">
+<meta name="theme-color" content="#f6f3ec"><meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="images/brand/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css?v=20260913-1"><link rel="stylesheet" href="yazaris.css?v=20260913-2">
+</head><body>    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
+        <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#certificates">Credentials</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#certificates">Credentials</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      </nav>
+    </div>
+
+
+<main id="project" class="yazaris">
+  <section class="yz-hero">
+    <div class="container yz-opening">
+      <div>
+        <p class="yz-kicker">Independent venture · In development</p>
+        <h1>YazarIS<span aria-hidden="true">.</span></h1>
+        <p class="yz-headline">Every order starts with a conversation.</p>
+        <p class="yz-lead">An AI-assisted order assistant turning Turkish B2B messages into catalog-validated drafts, with human confirmation at the center.</p>
+        <a class="yz-link" href="#workflow">Follow the order <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="yz-product-shot">
+        <img src="images/projects/yazaris-order-assistant-mockup.png" alt="Illustrated YazarIS supplier order desk with a Turkish business message and catalog-validated wholesale order draft." width="1672" height="941" loading="eager" decoding="async">
+        <figcaption>Illustrated concept screen with fictional wholesaler data. It shows a proposed operator interface, not a live product screen.</figcaption>
+      </figure>
+    </div>
+    <div class="container yz-milestone">
+      <span class="yz-milestone-mark" aria-hidden="true">01</span>
+      <div><p class="yz-kicker">TÜBİTAK BiGG / BİGGNITE</p><h2>First stage passed.</h2><p>A founder-reported accelerator milestone, recorded in the project documentation. It is not an investment or funding decision.</p></div>
+    </div>
+  </section>
+
+  <section class="yz-section container yz-editorial">
+    <p class="yz-kicker">The problem</p>
+    <div><h2>Natural language.<br>Operational consequences.</h2><p>Wholesale orders arrive as shorthand, corrections and references to earlier messages. A plausible interpretation is not enough: the product, quantity and unit must match the business catalog.</p><p>The initial product direction is packaging and cleaning wholesalers in Kahramanmaraş: an operator pastes a message, reviews the draft and remains in control.</p></div>
+  </section>
+
+  <section id="workflow" class="yz-workflow">
+    <div class="container yz-editorial">
+      <div class="yz-sticky"><p class="yz-kicker">The engineering story</p><h2>Understand.<br>Validate.<br>Confirm.</h2><p>An understandable decision at every step.</p></div>
+      <ol class="yz-steps">
+        <li><span class="yz-step-number">01</span><h3>Intent before inference</h3><p>Distinguish a new order from a correction, cancellation or price question. Earlier context must never turn a cancellation into a fresh order.</p><div class="yz-contract" data-no-translate>create_order · modify_order<br>cancel_order · ask_price</div></li>
+        <li><span class="yz-step-number">02</span><h3>The catalog is the boundary</h3><p>Resolve products against the catalog and validate allowed units and quantities. Unclear requests become review or clarification states rather than silent guesses.</p><div class="yz-contract" data-no-translate>draft → needs_review<br>→ needs_clarification</div></li>
+        <li><span class="yz-step-number">03</span><h3>One confirmation. An audit trail.</h3><p>The implemented SQLite store encrypts draft payloads and protects creation and confirmation against concurrent retries. Confirmation and its audit event share a transaction.</p><div class="yz-contract" data-no-translate>SQLite · AES-GCM<br>idempotency · audit</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="yz-section container">
+    <p class="yz-kicker">My role</p><div class="yz-editorial"><h2>Product intent.<br>Engineering discipline.</h2><div><h3>Founder & developer</h3><p>My work connects the product scope with the underlying order contracts, catalog resolution, evaluation datasets and persistent draft lifecycle.</p><p>A key decision is to measure whether a draft is safe to accept, not merely whether a model returns valid JSON. The project records rejected model candidates and keeps synthetic, human and operational evidence separate.</p></div></div>
+    <div class="yz-stack"><span>Python 3.11+</span><span>FastAPI</span><span>Pydantic</span><span>SQLite</span><span>AES-GCM</span><span>pytest</span><span>Ruff</span><span>mypy</span></div>
+  </section>
+
+  <section class="yz-evidence">
+    <div class="container"><p class="yz-kicker">Evidence, with context</p><h2>Designed to be checked.</h2>
+      <div class="yz-stats"><div><strong>640</strong><p>Fictional catalog SKUs</p></div><div><strong>60,000</strong><p>Programmatically generated examples</p></div><div><strong>69</strong><p>Human-origin messages in an internal evaluation set</p></div></div>
+      <p class="yz-evidence-note">These describe development datasets, not customers, live orders or production accuracy. Historical resolver scores do not establish the quality of the current version.</p>
+    </div>
+  </section>
+
+  <section class="yz-section container">
+    <p class="yz-kicker">Where the project stands</p>
+    <div class="yz-status-grid"><div><h2>Built today</h2><ul><li>Typed order contracts, intent handling and catalog validation.</li><li>Encrypted draft storage, idempotent creation and transactional confirmation.</li><li>FastAPI boundaries and reproducible evaluation infrastructure.</li></ul></div><div><h2>Next product milestones</h2><ul><li>Complete decimal quantity handling in free text and model output.</li><li>Build the business API, operator interface and reviewed CSV/XLSX export.</li><li>Validate usefulness with real businesses before making adoption or production claims.</li></ul></div></div>
+    <div class="yz-source"><h3>Private source. Clear scope.</h3><p>This case study was checked against the private repository on 12 September 2026. The product is in development; a public demo and automatic ERP submission are not available.</p><div class="yz-actions"><a class="yz-link" href="mailto:eraykulkizaga@hotmail.com">Discuss YazarIS ↗</a><a class="yz-link" href="index.html#projects">← Back to Projects</a></div></div>
+  </section>
+</main>    <footer id="footer" class="site-footer">
+      <div class="footer-aura" aria-hidden="true"></div>
+      <div class="container footer-shell">
+        <div class="footer-heading"><p class="footer-kicker">End of page. Start of a conversation.</p><p class="footer-title">Let’s engineer<br>what’s next.</p></div>
+        <a class="footer-launch" href="mailto:eraykulkizaga@hotmail.com"><span>Start a project</span><b aria-hidden="true">↗</b></a>
+        <div class="footer-command" role="group" aria-label="Developer connection command"><span>eray@portfolio:~</span><code>$ connect --worldwide</code><i aria-hidden="true"></i></div>
+        <div class="footer-meta"><p>© <span id="year"></span> Eray Kulkızaga · Türkiye → Worldwide</p><nav aria-label="Footer navigation"><a href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="privacy.html">Privacy</a><a href="index.html#hero">Back to top ↑</a></nav></div>
+      </div>
+    </footer>
+
+
+<script src="i18n.js?v=20260913-2" defer></script><script src="script.js?v=20260912-4" defer></script>
+</body></html>

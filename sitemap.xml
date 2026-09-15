@@ -24,4 +24,8 @@
     <loc>https://www.eraykulkizaga.com/privacy.html</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://www.eraykulkizaga.com/project-yazaris.html</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
