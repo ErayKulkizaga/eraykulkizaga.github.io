@@ -1,99 +1,62 @@
-# eraykulkizaga.github.io
+# Eray Kulkızaga — portfolio
 
-Personal portfolio website for **Eray Kulkızaga** — Backend & AI Software Engineer.
+An editorial portfolio built with static HTML, CSS and JavaScript for GitHub Pages. One continuous nature film spans the whole homepage; document scroll controls its time while real HTML introduces the work and experience. Individual case studies explain the product, contribution and engineering decisions.
 
-**Live:** [www.eraykulkizaga.com](https://www.eraykulkizaga.com)
+Public domain: [www.eraykulkizaga.com](https://www.eraykulkizaga.com). Working-tree changes require publication before they appear there.
 
----
+## Run and verify
 
-## About
+Python 3 is sufficient; there is no package install or production bundler.
 
-A minimalist, performant portfolio built entirely from scratch with **pure HTML, CSS and JavaScript** — no frameworks, no build tools, no dependencies. Designed for fast load times, clean code, and full accessibility.
-
----
-
-## Features
-
-- **Animated opening signature** — a short CSS-native `E R A Y` sequence introduces the site without a third-party visual
-- **Interactive data-flow hero** — a dependency-free canvas creates luminous AI-inspired streams that bend around the pointer and move autonomously on touch devices
-- **Alternating section surfaces** — dark, white, neutral, and blue-tinted scenes separate the portfolio narrative
-- **Reveal-on-scroll animations** — `IntersectionObserver`-powered elements animate once as they enter the viewport
-- **Hero-first navigation** — the home page opens without navigation chrome, then reveals the compact glass-like header after scrolling
-- **Privacy-first analytics** — Cloudflare Web Analytics reports aggregate visits, page views, referral sources, devices, and performance without adding an on-site admin surface
-- **Responsive overlay navigation** — full-screen mobile menu with focus trapping, Escape key support, ARIA roles
-- **Certificate slider** — user-controlled image carousel with pixel-based JS translation for exact alignment
-- **Image modal** — click certificate or award media to zoom in; close with Escape or backdrop click
-- **Direct contact** — email, LinkedIn, GitHub, and current CV without form friction
-- **Responsive product media** — wide SignTurk interface captures remain inside phone and tablet viewports
-- **Custom 404 page**
-- **PWA manifest** — add-to-home-screen support
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Markup | HTML5, Semantic elements, ARIA, JSON-LD |
-| Styling | CSS3, CSS Grid, Flexbox, Custom Properties |
-| Behaviour | Vanilla JavaScript, IntersectionObserver, rAF |
-| Performance | Lazy loading, async decoding, DPR-capped canvas rendering, deferred scripts |
-| SEO | Open Graph, Twitter Cards, Canonical URLs, Sitemap XML |
-| Deployment | GitHub Pages + Custom Domain (CNAME) |
-
----
-
-## Project Pages
-
-| Page | Description |
-|---|---|
-| `index.html` | Main portfolio — Hero, Projects, Experience, About, Skills, Credentials, Academic References, Contact |
-| `project-sign-language.html` | [SignTurk](https://github.com/ErayKulkizaga/SignTurk) — award-winning Turkish Sign Language platform |
-| `project-querypilot.html` | QueryPilot Local — offline-first PostgreSQL execution-plan assistant |
-| `project-supportflow.html` | SupportFlow AI — multi-tenant support backend and document-ingestion case study |
-| `project-eraykulkizaga.html` | This portfolio site detail |
-| `privacy.html` | Privacy policy |
-| `404.html` | Custom not-found page |
-
----
-
-## File Structure
-
-```
-├── index.html                  # Main page
-├── project-sign-language.html  # Project detail — SignTurk
-├── project-querypilot.html     # Project detail — QueryPilot Local
-├── project-supportflow.html    # Project detail — SupportFlow AI
-├── project-eraykulkizaga.html  # Project detail — This portfolio
-├── privacy.html                # Privacy policy
-├── 404.html                    # Custom 404
-├── style.css                   # Single shared stylesheet
-├── script.js                   # Single shared JS file
-├── manifest.webmanifest        # PWA manifest
-├── sitemap.xml                 # Sitemap for search engines
-├── robots.txt                  # Crawler rules
-├── CNAME                       # Custom domain for GitHub Pages
-└── images/
-    ├── brand/                  # Favicon, app icons, and social preview
-    ├── certificates/           # Optimised credential and award previews
-    ├── logos/                  # Company and university marks
-    └── projects/               # Project covers and product screenshots
+```sh
+python tools/build_site.py
+python tools/verify_site.py
+python tools/serve.py
 ```
 
----
+Open `http://127.0.0.1:4174`. If Node.js is available, check browser-script syntax with `node --check script.js` and `node --check case-interactions.js`, plus `node --check film.js`.
 
-## Implementation Notes
+`verify_site.py` checks local navigation and asset references, duplicate IDs, one H1 per page, publishing metadata, image attributes, selected projects and unresolved template slots. Browser interaction and visual checks remain separate; see [redesign notes](docs/redesign.md).
 
-- **CSS custom properties** (`--bg`, `--text`, `--border`, `--shadow`) centralise the entire design token system — theming is a single `:root` block change.
-- **The canvas hero** uses deterministic stream geometry, a capped device-pixel ratio, viewport pausing, and pointer-aware flow distortion without a rendering library.
-- **Slider logic** reads `container.clientWidth` at runtime and recalculates on `resize`, so slide positions stay aligned at every viewport.
-- **Responsive project media** uses zero-minimum grid tracks and intrinsic image sizing to prevent wide product screenshots from escaping mobile viewports.
-- **Asset organisation** keeps deployable media in `brand/`, `certificates/`, `logos/`, and `projects/`; filenames use descriptive kebab-case and raw source exports stay outside the published image tree.
-- **`prefers-reduced-motion`** freezes the interactive model graph and disables entrance/reveal animation while retaining the full composition.
-- **JSON-LD** `Person` and `Website` schemas provide search-engine context.
+## Authoring
 
----
+| Source | Responsibility |
+| --- | --- |
+| `tools/build_site.py` | Shared shell, verified project data, auxiliary pages and sitemap |
+| `tools/home_film.py` / `tools/experience.html` | Continuous homepage and restored professional experience |
+| `tools/cases/*.html` | Five independently authored case studies |
+| `style.css` / `film.css` | Shared styles and full-screen nature-film layouts |
+| `case-studies.css` | Project-specific compositions; loaded on case pages |
+| `film.js` | One document-wide video clock, HTML overlay timing and reduced-motion fallback |
+| `script.js` | Common font readiness and legacy case-page behavior |
+| `case-interactions.js` | Billing's local illustrative request/replay interaction |
 
-## License
+Edit these sources, run the generator and include the generated root HTML with the change. GitHub Pages serves the generated files directly; Python never runs in the visitor's browser.
 
-Code © 2026 Eray Kulkızaga. All rights reserved.
+## Project selection
+
+- [SupportFlow AI](https://github.com/kanfan/supportflow-ai): shared ownership, verified organization context, document ingestion and the release path.
+- [YazarIS](https://github.com/ErayKulkizaga/yazaris): Turkish order interpretation, catalog validation and human review. TÜBİTAK BiGG first-stage milestone; product in development.
+- [SignTurk](https://github.com/ErayKulkizaga/SignTurk): live sign recognition, human approval and separate offline research evidence.
+- [QueryPilot](https://github.com/ErayKulkizaga/QueryPilot): deterministic PostgreSQL plan evidence and distinct local/public runtime boundaries.
+- [Capstone Metering & Billing](https://github.com/ErayKulkizaga/Capstone-Metering-Billing): idempotency, quotas and Stripe test-mode state.
+
+Velora is a smaller mobile-learning Lab entry. The previous portfolio self-case URL remains as a noindex legacy page.
+
+## Motion and media
+
+Content, navigation and experience logos are real HTML. A single 20.687-second landscape shot stays on screen from introduction to contact. It never restarts at project boundaries. The video is paused: scrolling forwards or backwards changes its time. There is no autoplay, looping, wheel interception or idle render loop.
+
+Desktop uses a 1280×720 H.264 file (11.1 MB); phones use a 450×800 portrait file (4.0 MB). Matching posters render before video is available. Both variants have frequent keyframes for seeking. Source and licensing are recorded in [the media note](videos/landscape/README.md).
+
+System reduced motion and save-data start with the complete readable page and no film request. The Motion control switches between the film and this reading mode. Without JavaScript, all content remains in normal document flow. Failed video loading preserves the landscape poster and usable HTML.
+
+Use the supplied preview server: random-access HTML video needs byte-range responses, which Python's basic `http.server` does not provide. Production hosting must also support byte ranges.
+
+The SignTurk case retains its user-controlled 185 KB silent clip. QueryPilot retains its authentic public-demo screenshot. The five bespoke case pages are preserved.
+
+## Publishing
+
+The existing GitHub Pages custom-domain configuration and Cloudflare Web Analytics are retained. `CNAME`, canonical URLs, Open Graph, JSON-LD, sitemap and crawler settings belong to the same static deployment. There is no application server, secret-bearing environment file or model API in this portfolio.
+
+Code © 2026 Eray Kulkızaga. All rights reserved. Third-party fonts retain their included licenses.

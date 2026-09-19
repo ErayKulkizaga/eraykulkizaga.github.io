@@ -1,0 +1,158 @@
+<main id="main">
+  <section class="meter-opening section-shell">
+    <a class="text-link" href="index.html#billing">← Selected work</a>
+    <p class="eyebrow">Capstone Metering & Billing / Backend systems</p>
+    <div class="meter-title">
+      <h1>Retry safely.<br /><em>Count once.</em></h1>
+      <p>
+        A PostgreSQL-first usage engine with tenant quotas, integer pricing and
+        verified Stripe test-mode events.
+      </p>
+    </div>
+    <div class="meter-console" id="meter-demo">
+      <div class="meter-request">
+        <div class="console-heading">
+          <span>Request / Illustrated contract</span><span>POST /v1/meter</span>
+        </div>
+        <p>Idempotency-Key: <strong>event_001</strong></p>
+        <pre><code>{
+  "usage_type": "api_call",
+  "quantity": <span id="meter-quantity">1</span>
+}</code></pre>
+        <div class="meter-actions">
+          <button type="button" data-meter-action="retry">
+            Replay same request <span aria-hidden="true">↻</span></button
+          ><button type="button" data-meter-action="conflict">
+            Change payload <span aria-hidden="true">↗</span></button
+          ><button type="button" data-meter-action="reset">Reset</button>
+        </div>
+      </div>
+      <div class="meter-result">
+        <div class="console-heading">
+          <span>Usage ledger</span><span>Tenant / demo</span>
+        </div>
+        <p class="meter-total">1<span>event recorded</span></p>
+        <div
+          class="meter-response"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <strong id="meter-status">201 · Created</strong>
+          <p id="meter-explanation">The original event is recorded once.</p>
+        </div>
+      </div>
+    </div>
+    <p class="meter-disclosure">
+      Interactive contract illustration. It runs locally in this page and
+      creates no real usage or payment.
+    </p>
+  </section>
+  <section class="meter-contract section-shell">
+    <p class="eyebrow">01 / A narrow, testable promise</p>
+    <h2>A repeat request<br />is <em>still the same event.</em></h2>
+    <div class="meter-contract-rows">
+      <article>
+        <span>01 / First request</span>
+        <h3>Validate, price, record.</h3>
+        <p>
+          Authenticate the tenant and validate the event. Quota and pricing
+          rules determine whether the request can be recorded.
+        </p>
+      </article>
+      <article>
+        <span>02 / Identical retry</span>
+        <h3>Return the original response.</h3>
+        <p>
+          The same key and payload return the stored status and body.
+          Deduplication happens before metering.
+        </p>
+      </article>
+      <article>
+        <span>03 / Changed payload</span>
+        <h3>Make the conflict explicit.</h3>
+        <p>
+          Reusing the key with different input returns a 409 conflict. The
+          original ledger record remains unchanged.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section class="meter-engineering section-shell">
+    <div>
+      <p class="eyebrow">02 / Correctness under concurrency</p>
+      <h2>The database<br />holds <em>the boundary.</em></h2>
+    </div>
+    <div class="editorial-decisions">
+      <article>
+        <span>Quota writes</span>
+        <h3>Serialize per tenant.</h3>
+        <p>
+          PostgreSQL advisory locks prevent concurrent quota checks from
+          independently accepting the same remaining capacity.
+        </p>
+      </article>
+      <article>
+        <span>Pricing</span>
+        <h3>Keep money exact.</h3>
+        <p>
+          Prices are stored as integer micro-USD. Token categories price
+          independently; floating-point storage is avoided.
+        </p>
+      </article>
+      <article>
+        <span>Background work</span>
+        <h3>Claim jobs explicitly.</h3>
+        <p>
+          Workers use FOR UPDATE SKIP LOCKED to claim alert jobs and apply
+          bounded retries.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section class="stripe-boundary section-shell">
+    <p class="eyebrow">03 / Stripe integration · Test mode</p>
+    <h2>A redirect is a journey.<br /><em>A signed event is evidence.</em></h2>
+    <div class="stripe-event-flow">
+      <span>Raw event</span><span>Verify signature</span><span>Deduplicate</span
+      ><span>Check ordering</span><strong>Update mirror</strong>
+    </div>
+    <div class="context-columns">
+      <p>
+        Checkout redirects do not grant subscription access. State changes
+        follow signature verification and event deduplication.
+      </p>
+      <p>
+        A stale-event guard prevents older subscription events from overwriting
+        a newer state. The capstone keeps billing scope limited to test-mode
+        integration.
+      </p>
+    </div>
+  </section>
+  <section class="case-handoff section-shell">
+    <div>
+      <p class="eyebrow">My contribution</p>
+      <h2>Small service.<br /><em>Serious contracts.</em></h2>
+    </div>
+    <div>
+      <p class="handoff-role">{{ROLE}}</p>
+      <p class="handoff-stack">{{STACK}}</p>
+      <p>
+        The service separates HTTP, business rules, provider integration and
+        persistence. Alembic owns schema history; PostgreSQL is the
+        production-shaped persistence target.
+      </p>
+      <p>
+        The capstone demonstrates metering, quotas and payment-state contracts.
+        Invoicing, tax and proration are outside its scope.
+      </p>
+      {{SOURCE_LINK}}
+      <p class="source-note">
+        Source: current README, API routes and metering service. Checked 10
+        September 2026.
+      </p>
+    </div>
+  </section>
+  {{NEXT}}
+</main>
+<script src="case-interactions.js?v=20260910" defer></script>
