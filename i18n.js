@@ -217,7 +217,6 @@
     "Machine Learning Specialization": "Makine Öğrenmesi Uzmanlığı",
     "Programme page": "Program sayfası",
     "Verify certificate": "Sertifikayı doğrula",
-    "Download certificate (PDF)": "Sertifikayı indir (PDF)",
     "Open Machine Learning Specialization certificate": "Makine Öğrenmesi Uzmanlığı sertifikasını aç",
     "Machine Learning Specialization completion certificate": "Makine Öğrenmesi Uzmanlığı tamamlama sertifikası",
     "Data Science Professional Certificate": "Veri Bilimi Profesyonel Sertifikası",
