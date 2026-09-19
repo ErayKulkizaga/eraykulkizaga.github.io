@@ -1,329 +1,408 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SupportFlow AI — Eray Kulkızaga</title>
-<meta name="description" content="A support workspace built around tenant isolation, auditable tickets and retry-safe document ingestion.">
-<link rel="canonical" href="https://www.eraykulkizaga.com/project-supportflow.html">
-<meta name="theme-color" content="#ecebe5">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com; form-action 'self' mailto:; upgrade-insecure-requests">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SupportFlow AI — Eray Kulkızaga">
-<meta property="og:description" content="A support workspace built around tenant isolation, auditable tickets and retry-safe document ingestion.">
-<meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html">
-<meta property="og:image" content="https://www.eraykulkizaga.com/images/brand/portfolio-social-preview.png">
-<meta property="og:image:alt" content="Eray Kulkızaga — Backend engineering and applied AI">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="images/brand/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="images/brand/app-icon-192.png">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=20260910r3">
-<link rel="stylesheet" href="case-studies.css?v=20260910r3">
-<script>document.documentElement.classList.add('fonts-pending');setTimeout(()=>document.documentElement.classList.remove('fonts-pending'),2200);</script>
-<script src="script.js?v=20260910r3" defer>
-</script>
-</head>
-<body class="case-page case-supportflow">
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-<a class="wordmark" href="index.html#hero">Eray Kulkızaga<span class="brand-period">.</span>
-</a>
-<nav aria-label="Main navigation">
-<a href="index.html#projects">Work <span class="nav-count">05</span>
-</a>
-<a href="index.html#experience">Experience</a>
-<a href="index.html#about">About</a>
-<a href="index.html#contact">Contact</a>
-<a class="cv-link" href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span>
-</a>
-</nav>
-<div class="reading-progress" aria-hidden="true">
-</div>
-</header>
-<main id="main">
-  <section class="support-opening section-shell">
-    <a class="text-link" href="index.html#supportflow">← Selected work</a>
-    <div class="support-heading">
-      <div>
-        <p class="eyebrow">
-          SupportFlow AI / A collaborative engineering project
-        </p>
-        <h1>Support<br />needs <em>trust.</em>
-</h1>
-        <p class="support-deck">
-          A support copilot starts with the system that earns an agent's
-          confidence.
-        </p>
-        <p class="support-byline">
-          Built with Emir. Shared feature ownership.<br />My current lead:
-          Terraform foundations and the release pipeline.
-        </p>
-        <a class="text-link" href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer">Explore the repository<span aria-hidden="true">↗</span>
-</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>SupportFlow AI — Multi-tenant Backend Case Study</title>
+    <meta name="description" content="SupportFlow AI is an actively developed, multi-tenant support platform with transactional ticket workflows, append-only audit events, and retry-safe document ingestion.">
+    <link rel="canonical" href="https://www.eraykulkizaga.com/project-supportflow.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SupportFlow AI — Multi-tenant Backend Case Study">
+    <meta property="og:description" content="Tenant-scoped support workflows, append-only audit events, and retry-safe document ingestion—built collaboratively and still actively developed.">
+    <meta property="og:url" content="https://www.eraykulkizaga.com/project-supportflow.html">
+    <meta property="og:image" content="https://www.eraykulkizaga.com/images/projects/supportflow-cover.webp">
+    <meta property="og:image:width" content="1264">
+    <meta property="og:image:height" content="694">
+    <meta property="og:image:alt" content="SupportFlow AI project cover">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SupportFlow AI — Multi-tenant Backend Case Study">
+    <meta name="twitter:description" content="A production-oriented support platform in active development, with implemented tenant isolation and reliable document ingestion.">
+    <meta name="twitter:image" content="https://www.eraykulkizaga.com/images/projects/supportflow-cover.webp">
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" href="images/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css?v=20260912-5">
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+      .proj-hero { padding: 72px 0 42px; }
+      .proj-hero__layout { display: grid; grid-template-columns: minmax(0,1.04fr) minmax(320px,.96fr); align-items: center; gap: clamp(34px,6vw,84px); }
+      .proj-hero__tag { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 550 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .06em; text-transform: uppercase; }
+      .proj-hero__title { max-width: 860px; margin: 0 0 18px; font-size: clamp(48px,8vw,96px); line-height: .92; letter-spacing: -.065em; }
+      .proj-hero__sub { max-width: 760px; margin: 0 0 28px; color: var(--muted); font-size: clamp(17px,2vw,21px); line-height: 1.55; }
+      .proj-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      .proj-hero__media { margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #07142c; box-shadow: 0 28px 70px rgba(5,16,38,.2); }
+      .proj-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+      .proj-hero__media figcaption { padding: 12px 15px; border-top: 1px solid rgba(255,255,255,.1); color: #8f929b; font: 500 9px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .proj-section-title { margin: 0 0 18px; font-size: clamp(26px,3vw,36px); line-height: 1.05; letter-spacing: -.045em; }
+      .project-copy { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+      .project-copy + .project-copy { margin-top: 14px; }
+      .proj-card { min-width: 0; padding: clamp(22px,4vw,36px); border: 1px solid var(--border); border-radius: 22px; background: var(--card); }
+      .section--soft { background: var(--surface); }
+      .section--flush-top { padding-top: 0; }
+      .proj-section-title--light { color: #fff; }
+      .proj-two-col { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+      .proj-three-col { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+      .status-strip { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+      .status-item { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); }
+      .status-item strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 16px; letter-spacing: -.025em; }
+      .status-item span { color: var(--muted); font-size: 12px; line-height: 1.55; }
+      .status-label { display: inline-flex; align-items: center; min-height: 26px; margin-bottom: 17px; padding: 4px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 650 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .status-label--implemented { border-color: rgba(27,123,85,.25); background: rgba(27,123,85,.07); color: #176848; }
+      .status-label--progress { border-color: rgba(8,120,255,.25); background: rgba(8,120,255,.07); color: #075eaf; }
+      .status-label--planned { background: var(--surface); color: #6b6c73; }
+      .check-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
+      .check-list li { position: relative; padding-left: 25px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+      .check-list li::before { content: "—"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+      .check-list strong { color: var(--text); }
+      .architecture { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: #0b0c10; color: #fff; }
+      .architecture__head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .architecture__head p { margin: 0; color: #8f929b; font: 550 10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .1em; text-transform: uppercase; }
+      .architecture__legend { display: flex; flex-wrap: wrap; gap: 12px; color: #8f929b; font-size: 10px; }
+      .architecture__legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #258bff; }
+      .architecture__legend span:last-child::before { border: 1px solid #777b86; background: transparent; }
+      .architecture__body { display: grid; gap: 16px; padding: clamp(20px,4vw,38px); }
+      .architecture__lane { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .architecture__lane--planned { grid-template-columns: repeat(3,minmax(0,1fr)); padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); }
+      .architecture__node { position: relative; display: flex; min-height: 112px; flex-direction: column; justify-content: space-between; gap: 15px; padding: 17px; border: 1px solid rgba(135,187,255,.25); border-radius: 16px; background: rgba(8,120,255,.08); }
+      .architecture__node:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -10px; z-index: 2; color: #6f727b; transform: translate(50%,-50%); }
+      .architecture__lane--planned .architecture__node { border-style: dashed; border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.025); }
+      .architecture__node small { color: #6f9fdb; font: 650 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .architecture__lane--planned small { color: #92949c; }
+      .architecture__node strong { font-size: 15px; line-height: 1.25; }
+      .architecture__node span { color: #8f929b; font-size: 11px; line-height: 1.5; }
+      .decision-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+      .decision-card { min-width: 0; padding: 26px; border: 1px solid var(--border); border-radius: 20px; background: var(--card); }
+      .decision-card h3 { margin: 0 0 19px; font-size: 20px; letter-spacing: -.035em; }
+      .decision-card dl { display: grid; grid-template-columns: 82px 1fr; gap: 10px 14px; margin: 0; }
+      .decision-card dt { color: var(--primary); font: 650 9px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .decision-card dd { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.58; }
+      .evidence-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-bottom: 20px; }
+      .evidence-item { padding: 19px; border: 1px solid var(--border); border-radius: 17px; background: var(--surface); }
+      .evidence-item strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 20px; letter-spacing: -.035em; }
+      .evidence-item span { color: var(--muted); font-size: 11px; line-height: 1.55; }
+      .team-note { margin: 18px 0 0; padding: 16px 18px; border-left: 3px solid var(--primary); background: var(--surface); color: var(--muted); font-size: 13px; line-height: 1.65; }
+      .source-panel { display: grid; grid-template-columns: 1fr; align-items: center; gap: 32px; padding: clamp(26px,5vw,48px); border: 1px solid rgba(8,120,255,.2); border-radius: 24px; background: linear-gradient(120deg,rgba(8,120,255,.07),rgba(255,255,255,.95)); }
+      .source-panel h2 { margin: 0 0 12px; font-size: clamp(27px,4vw,44px); letter-spacing: -.05em; }
+      .source-panel p { max-width: 760px; margin: 0; color: var(--muted); line-height: 1.7; }
+      @media (max-width: 980px) {
+        .proj-hero__layout { grid-template-columns: 1fr; }
+        .proj-hero__media { max-width: 760px; }
+        .status-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        .proj-three-col { grid-template-columns: 1fr; }
+        .architecture__lane { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        .architecture__node:nth-child(2)::after { display: none; }
+      }
+      @media (max-width: 720px) {
+        .proj-hero { padding: 42px 0 26px; }
+        .proj-two-col,.decision-grid,.status-strip,.evidence-grid { grid-template-columns: 1fr; }
+        .proj-hero__actions { flex-direction: column; }
+        .proj-hero__actions .btn { width: 100%; justify-content: center; }
+        .architecture__head { align-items: flex-start; flex-direction: column; }
+        .architecture__lane,.architecture__lane--planned { grid-template-columns: 1fr; }
+        .architecture__node:nth-child(2)::after { display: block; }
+        .architecture__node:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -10px; transform: translate(50%,50%); }
+        .decision-card dl { grid-template-columns: 1fr; gap: 4px; }
+        .decision-card dd + dt { margin-top: 8px; }
+        .source-panel { grid-template-columns: 1fr; }
+        .source-panel .btn { width: 100%; justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html#hero" class="brand__text" aria-label="Go to the top of the page">E R A Y</a>
+        <button class="nav-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Primary navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#certificates">Credentials</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
       </div>
-      <div
-        class="support-map"
-        role="img"
-        aria-label="The implemented foundation connects an agent workspace through a verified organization context to ticket workflows, document ingestion and an append-only audit trail."
-      >
-        <div class="map-label">
-          <span>System / Current foundation</span>
-<span>01—04</span>
-        </div>
-        <div class="map-workspace">
-          <span>01 / Agent workspace</span
-          >
-<strong>A person<br />stays in control.</strong>
-          <p>Server-side session · CSRF protection</p>
-        </div>
-        <div class="map-boundary">
-          <span>02 / Verified organization context</span>
-          <div class="map-modules">
-            <div>
-              <strong>Tickets</strong>
-              <p>Messages<br />Status transitions</p>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation" inert>
+      <button class="mobile-nav__backdrop" type="button" tabindex="-1" aria-label="Close navigation"></button>
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation links">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#certificates">Credentials</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="documents/eray-kulkizaga-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+      </nav>
+    </div>
+
+    <main id="project">
+      <section class="section proj-hero">
+        <div class="container proj-hero__layout">
+          <div>
+            <p class="proj-hero__tag reveal">Case study · Active development</p>
+            <h1 class="proj-hero__title reveal">SupportFlow AI</h1>
+            <p class="proj-hero__sub reveal">A production-oriented, multi-tenant support platform with implemented ticket, audit, and document-ingestion workflows. The AI-assisted retrieval layer is still in development.</p>
+            <div class="proj-hero__actions reveal">
+              <a href="index.html#projects" class="btn btn--primary">← Back to Projects</a>
             </div>
-            <div>
-              <strong>Documents</strong>
-              <p>Versions<br />Background ingestion</p>
+          </div>
+          <figure class="proj-hero__media reveal">
+            <img src="images/projects/supportflow-cover.webp" alt="SupportFlow AI project cover showing the support workflow concept" width="1264" height="694">
+            <figcaption>Concept cover · not a live product screenshot</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--flush-top">
+        <div class="container">
+          <h2 class="sr-only">SupportFlow project summary</h2>
+          <ul class="status-strip reveal">
+            <li class="status-item"><strong>Active development</strong><span>Weeks 1–4 implemented; AWS staging work is in progress</span></li>
+            <li class="status-item"><strong>Collaborative project</strong><span>Co-developed by Emir and Eray with rotating feature ownership</span></li>
+            <li class="status-item"><strong>Backend &amp; data</strong><span>Python 3.13, FastAPI, PostgreSQL, Redis, and Celery</span></li>
+            <li class="status-item"><strong>Evidence-led</strong><span>Claims were checked against the private codebase, tests, CI, and ADRs</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--flush-top">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label">Project overview</p>
+              <h2 class="proj-section-title">The problem</h2>
+              <p class="project-copy">Documentation-heavy support teams spend time searching product knowledge and previous resolutions. Ungrounded assistants create a second problem: an answer can sound convincing without being traceable.</p>
+              <p class="project-copy">SupportFlow targets small and medium-sized Turkish B2B SaaS teams. The implemented system establishes the secure support and ingestion foundation before AI-generated drafts are introduced.</p>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Implemented workflow</p>
+              <h2 class="proj-section-title">What works today</h2>
+              <ul class="check-list">
+                <li>Authenticated agents work with tenant-scoped tickets, messages, and status transitions.</li>
+                <li>Admins upload PDF, TXT, or Markdown documents through a bounded private-storage workflow.</li>
+                <li>Redis and Celery process extraction jobs with retry and redelivery safeguards.</li>
+                <li>Ticket, membership, document, and workflow changes produce append-only audit evidence.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <p class="eyebrow reveal">Truthful delivery status</p>
+          <h2 class="proj-section-title reveal">Implemented, in progress, and planned</h2>
+          <div class="proj-three-col">
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Implemented</p>
+              <ul class="check-list">
+                <li>Argon2id authentication, short-lived tokens, and admin/agent RBAC.</li>
+                <li>Verified organization context and tenant-scoped ticket/message APIs.</li>
+                <li>Transactional mutations with database-enforced append-only audit events.</li>
+                <li>Agent workspace with server-side sessions and CSRF protection.</li>
+                <li>10 MiB bounded document uploads, extraction, and retry-safe Celery processing.</li>
+                <li>PostgreSQL, Alembic, Docker Compose, tests, and CI checks.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--progress">In progress</p>
+              <ul class="check-list">
+                <li>AWS staging platform and cost/safety guardrails.</li>
+                <li>S3 storage, production scanner, shared session, and readiness adapters.</li>
+                <li>GitHub OIDC and immutable-image deployment pipeline.</li>
+                <li>Staging verification, rollback, recovery, and teardown evidence.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--planned">Planned</p>
+              <ul class="check-list">
+                <li>Structured ticket classification with evaluation fixtures.</li>
+                <li>Tenant-filtered retrieval, citations, and no-answer thresholds.</li>
+                <li>Human approve, edit, reject, and feedback workflow for AI drafts.</li>
+                <li>Retrieval evaluation, load evidence, observability, and product validation.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark">
+        <div class="container">
+          <p class="eyebrow reveal">Modular monolith</p>
+          <h2 class="proj-section-title proj-section-title--light reveal">Architecture with explicit boundaries</h2>
+          <div class="architecture reveal">
+            <div class="architecture__head">
+              <p>supportflow / current and target flow</p>
+              <div class="architecture__legend" role="group" aria-label="Architecture status legend"><span>Implemented</span><span>Planned</span></div>
+            </div>
+            <div class="architecture__body">
+              <h3 class="sr-only">Implemented application path</h3>
+              <ol class="architecture__lane">
+                <li class="architecture__node"><small>Implemented</small><strong>Agent workspace</strong><span>Signed server-side session and CSRF-protected actions</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>FastAPI boundary</strong><span>Validation, RBAC, and verified organization context</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>PostgreSQL</strong><span>Tenant-scoped data, Alembic migrations, append-only audit</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Private documents</strong><span>Bounded uploads and local S3-ready storage abstraction</span></li>
+              </ol>
+              <h3 class="sr-only">Implemented asynchronous ingestion path</h3>
+              <ol class="architecture__lane">
+                <li class="architecture__node"><small>Implemented</small><strong>ID-only job</strong><span>No raw document content in Celery task arguments</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Redis queue</strong><span>Broker boundary for background processing</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Celery worker</strong><span>Late ACK, worker-loss rejection, bounded retry</span></li>
+                <li class="architecture__node"><small>Implemented</small><strong>Extraction result</strong><span>Retry-safe terminal state and one audit effect</span></li>
+              </ol>
+              <h3 class="sr-only">Planned AI-assisted support path</h3>
+              <ol class="architecture__lane architecture__lane--planned">
+                <li class="architecture__node"><small>Planned</small><strong>Classification</strong><span>Provider-neutral structured output and evaluation</span></li>
+                <li class="architecture__node"><small>Planned</small><strong>Grounded retrieval</strong><span>Tenant filters, citations, and insufficient-context result</span></li>
+                <li class="architecture__node"><small>Planned</small><strong>Agent decision</strong><span>Approve, edit, reject, and feedback—never auto-send</span></li>
+              </ol>
             </div>
           </div>
         </div>
-        <div class="map-audit">
-          <span>03 / PostgreSQL</span>
-<strong>State + audit</strong>
-          <p>One transaction boundary</p>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <p class="eyebrow reveal">Engineering decisions</p>
+          <h2 class="proj-section-title reveal">Choices, reasons, and trade-offs</h2>
+          <div class="decision-grid">
+            <article class="decision-card reveal">
+              <h3>Tenant isolation</h3>
+              <dl><dt>Problem</dt><dd>A valid user must not cross organization boundaries.</dd><dt>Decision</dt><dd>Reload membership and role context from PostgreSQL, then scope every repository query.</dd><dt>Reason</dt><dd>Authorization depends on current database truth—not only token claims.</dd><dt>Trade-off</dt><dd>Every request carries explicit organization context and a database authorization check.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Auditable mutations</h3>
+              <dl><dt>Problem</dt><dd>Business changes and their audit trail must not diverge.</dd><dt>Decision</dt><dd>Write the domain mutation and allowlisted audit event in one transaction; block audit UPDATE, DELETE, and TRUNCATE with PostgreSQL triggers.</dd><dt>Reason</dt><dd>Rollback keeps the change and its evidence consistent.</dd><dt>Trade-off</dt><dd>The trigger does not protect against a privileged database owner.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Retry-safe workers</h3>
+              <dl><dt>Problem</dt><dd>A worker may crash after claiming a document job.</dd><dt>Decision</dt><dd>Send only the version ID, acknowledge late, reject on worker loss, claim the row, and make terminal effects idempotent.</dd><dt>Reason</dt><dd>Redis redelivery can converge without duplicated output or audit events.</dd><dt>Trade-off</dt><dd>A small database-commit-to-queue-publish window remains until an outbox or reconciler is added.</dd></dl>
+            </article>
+            <article class="decision-card reveal">
+              <h3>Bounded upload boundary</h3>
+              <dl><dt>Problem</dt><dd>Document input is untrusted and can exhaust memory or bypass type checks.</dd><dt>Decision</dt><dd>Stream to a bounded temporary file, normalize names, verify extension/content, and cap files at 10 MiB.</dd><dt>Reason</dt><dd>Validation happens before persistence and background processing.</dd><dt>Trade-off</dt><dd>The current scanner is local/test only; production scanning and live S3 are still in progress.</dd></dl>
+            </article>
+          </div>
         </div>
-        <div class="map-queue">
-          <span>04 / Celery + Redis</span
-          >
-<strong>Work that survives a retry.</strong>
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Implemented controls</p>
+              <h2 class="proj-section-title">Reliability &amp; security</h2>
+              <ul class="check-list">
+                <li><strong>Same 404 boundary</strong> for missing and cross-tenant resources reduces tenant-discovery signals.</li>
+                <li><strong>Atomic ticket workflows</strong> keep status, message, and audit mutations in one transaction.</li>
+                <li><strong>Opaque browser sessions</strong> rotate on login and invalidate on logout; cookies are HttpOnly and SameSite=Lax.</li>
+                <li><strong>Safe task payloads</strong> carry a UUID rather than file contents, extracted text, or storage paths.</li>
+                <li><strong>Worker redelivery coverage</strong> includes forced process loss and duplicate-delivery behavior.</li>
+                <li><strong>Synthetic data by default</strong>; no real customer ticket or production-user claim is made.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--implemented">Repository evidence · verified Aug 2026</p>
+              <h2 class="proj-section-title">Testing that proves behavior</h2>
+              <div class="evidence-grid">
+                <div class="evidence-item"><strong>187</strong><span>Collected automated test cases across unit and PostgreSQL integration layers</span></div>
+                <div class="evidence-item"><strong>PostgreSQL</strong><span>Tenant, migration, transaction, and integration coverage</span></div>
+                <div class="evidence-item"><strong>Worker loss</strong><span>Redis redelivery and duplicate-effect convergence scenario</span></div>
+              </div>
+              <p class="project-copy">The local review passed the dependency-lock, Ruff, formatting, Pyright, and 105 environment-independent tests. The remaining 82 PostgreSQL tests were collected but not rerun locally because Docker was unavailable; the private CI workflow defines database, migration, container, ingestion, and worker-loss runs. These are engineering checks—not uptime, scale, or production-SLA claims.</p>
+            </article>
+          </div>
         </div>
-        <p class="map-caption">
-          Architecture illustration / implemented application scope
-        </p>
-      </div>
-    </div>
-    <div class="support-foundation">
-      <p>Python · FastAPI · PostgreSQL · Redis · Celery</p>
-      <p>Foundation implemented / AWS evidence work in progress</p>
-    </div>
-  </section>
+      </section>
 
-  <section class="support-problem section-shell">
-    <p class="eyebrow">01 / Product intent</p>
-    <h2>Useful answers begin<br />with <em>checkable sources.</em>
-</h2>
-    <div class="context-columns">
-      <p>
-        Turkish B2B SaaS support teams work across tickets, internal documents
-        and product knowledge. The intended copilot helps an agent prepare a
-        source-backed answer and decide what to send.
-      </p>
-      <p>
-        The current application supplies the foundations: authenticated
-        workspaces, verified organization context, ticket workflows and document
-        ingestion. Classification, retrieval and cited answer drafts are the
-        next product milestones.
-      </p>
-    </div>
-  </section>
-
-  <section class="transaction-section section-shell">
-    <div class="case-section-heading">
-      <div>
-        <p class="eyebrow">02 / The boundary that matters</p>
-        <h2>The change and its history<br />
-<em>belong together.</em>
-</h2>
-      </div>
-      <p>
-        Business services own the transaction. Repositories add records without
-        committing independently, so a failed write cannot leave a
-        successful-looking audit trail behind.
-      </p>
-    </div>
-    <div class="transaction-diagram">
-      <div class="transaction-input">
-        <span>Verified actor</span>
-<strong>Organization member</strong>
-        <p>Authenticated · Authorized</p>
-      </div>
-      <span class="transaction-arrow" aria-hidden="true">→</span>
-      <div class="transaction-group">
-        <p>One database transaction</p>
-        <div>
-          <article>
-            <span>Mutation</span>
-            <h3>Business state</h3>
-            <p>Membership or ticket change</p>
-          </article>
-          <span aria-hidden="true">+</span>
-          <article>
-            <span>History</span>
-            <h3>Audit event</h3>
-            <p>Allowlisted metadata</p>
-          </article>
+      <section class="section">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label">Ownership</p>
+              <h2 class="proj-section-title">My contribution</h2>
+              <ul class="check-list">
+                <li>Led the initial PostgreSQL, Redis, Docker Compose, testing, and CI foundation.</li>
+                <li>Led ticket/message workflow and agent-workspace integration, including the audit transaction boundary.</li>
+                <li>Contributed across shared authentication, document ingestion, worker reliability, review, and integration work.</li>
+                <li><strong>In progress:</strong> AWS account safety, Terraform platform, GitHub OIDC pipeline, and Week 5 release operations.</li>
+              </ul>
+              <p class="team-note">SupportFlow AI is co-developed by Emir and Eray. Feature ownership rotates and merged code is reviewed as shared system knowledge. Emir led identity/membership and audit-schema streams, plus the document-upload contract; this page separates my contribution from the team’s total output.</p>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label">Engineering stack</p>
+              <h2 class="proj-section-title">Tools used today</h2>
+              <div class="badges">
+                <span class="badge">Python 3.13</span><span class="badge">FastAPI</span><span class="badge">Pydantic</span><span class="badge">PostgreSQL</span><span class="badge">SQLAlchemy</span><span class="badge">Alembic</span><span class="badge">Redis</span><span class="badge">Celery</span><span class="badge">Docker Compose</span><span class="badge">pytest</span><span class="badge">Ruff</span><span class="badge">Pyright</span><span class="badge">GitHub Actions</span>
+              </div>
+              <p class="team-note"><strong>Designed, not deployed:</strong> AWS ECS/Fargate, RDS/pgvector, ElastiCache, S3, ECR, Secrets Manager, CloudWatch, Terraform, and GitHub OIDC.</p>
+            </article>
+          </div>
         </div>
-        <p>Both commit. Or both roll back.</p>
+      </section>
+
+      <section class="section section--flush-top">
+        <div class="container">
+          <div class="proj-two-col">
+            <article class="proj-card reveal">
+              <p class="status-label">Known limitations</p>
+              <h2 class="proj-section-title">What this project does not claim</h2>
+              <ul class="check-list">
+                <li>No live AWS staging or production deployment yet.</li>
+                <li>No implemented AI classification, RAG, citations, or human-approval flow yet.</li>
+                <li>The browser session store is process-local and not suitable for multiple API instances.</li>
+                <li>The local/test scanner is not a production malware-scanning boundary.</li>
+                <li>No real-user validation, concurrent-load evidence, uptime record, or commercial usage.</li>
+              </ul>
+            </article>
+            <article class="proj-card reveal">
+              <p class="status-label status-label--planned">Next steps</p>
+              <h2 class="proj-section-title">The evidence still to earn</h2>
+              <ol class="check-list">
+                <li>Complete and verify the AWS staging platform, adapters, deployment, rollback, and teardown path.</li>
+                <li>Close the commit-to-dispatch gap with an outbox, reconciler, or explicitly accepted staging recovery plan.</li>
+                <li>Implement classification and measure structured-output quality on fixed fixtures.</li>
+                <li>Implement tenant-filtered retrieval, citations, no-answer behavior, and human approval.</li>
+                <li>Publish retrieval, latency, cost, load, and agent-decision evidence before making production claims.</li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--flush-top">
+        <div class="container">
+          <div class="source-panel reveal">
+            <div>
+              <p class="status-label">Private repository</p>
+              <h2>Source access is disclosed clearly.</h2>
+              <p>The shared team repository is private. This case study summarizes claims verified against the application code, migrations, test suite, ADRs, CI configuration, and contribution history. Public source access and a live demo are not currently available.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="site-footer">
+      <div class="footer-aura" aria-hidden="true"></div>
+      <div class="container footer-shell">
+        <div class="footer-heading"><p class="footer-kicker">End of page. Start of a conversation.</p><p class="footer-title">Let’s engineer<br>what’s next.</p></div>
+        <a class="footer-launch" href="mailto:eraykulkizaga@hotmail.com"><span>Start a project</span><b aria-hidden="true">↗</b></a>
+        <div class="footer-command" role="group" aria-label="Developer connection command"><span>eray@portfolio:~</span><code>$ connect --worldwide</code><i aria-hidden="true"></i></div>
+        <div class="footer-meta"><p>© <span id="year"></span> Eray Kulkızaga · Türkiye → Worldwide</p><nav aria-label="Footer navigation"><a href="https://github.com/ErayKulkizaga" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/eraykulkizaga/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="privacy.html">Privacy</a><a href="index.html#hero">Back to top ↑</a></nav></div>
       </div>
-    </div>
-    <div class="support-principles">
-      <article>
-        <h3>Every lookup has a tenant.</h3>
-        <p>
-          Organization membership is verified before access. Cross-tenant
-          document identifiers resolve to the same missing-record response.
-        </p>
-      </article>
-      <article>
-        <h3>History is append-only.</h3>
-        <p>
-          PostgreSQL rejects ordinary updates, deletes and truncation on the
-          audit table. Audit records omit credentials and raw message bodies.
-        </p>
-      </article>
-      <article>
-        <h3>The browser holds an opaque ID.</h3>
-        <p>
-          Session and CSRF state stay server-side. Login rotates session context
-          and logout invalidates it.
-        </p>
-      </article>
-    </div>
-  </section>
+    </footer>
 
-  <section class="ingestion-section section-shell">
-    <div class="case-section-heading">
-      <div>
-        <p class="eyebrow">03 / A document becomes background work</p>
-        <h2>Follow the document.<br />
-<em>Keep the evidence.</em>
-</h2>
-      </div>
-      <p>
-        PDF, TXT and Markdown files move through explicit states. Upload,
-        extraction, failures and retries remain inspectable.
-      </p>
-    </div>
-    <ol class="ingestion-track">
-      <li>
-        <span>01 / Receive</span>
-        <h3>Bound and validate</h3>
-        <p>
-          Stream a size-limited upload. Check its content and generate a
-          tenant/document/version object key.
-        </p>
-      </li>
-      <li>
-        <span>02 / Persist</span>
-        <h3>Commit the version</h3>
-        <p>
-          Store the document version and upload audit event atomically before
-          queue publication.
-        </p>
-      </li>
-      <li>
-        <span>03 / Process</span>
-        <h3>Scan and extract</h3>
-        <p>
-          Celery workers scan and extract the version. Terminal state and its
-          audit event share a transaction.
-        </p>
-      </li>
-      <li>
-        <span>04 / Recover</span>
-        <h3>Make retries explicit</h3>
-        <p>
-          Retry-safe workers preserve the version contract. Broker failures
-          leave an inspectable failure state.
-        </p>
-      </li>
-    </ol>
-    <div class="engineering-note">
-      <span>Design tradeoff / ADR 0005</span>
-      <p>
-        A crash window remains between database commit and queue publication.
-        The repository records an outbox or reconciler as a future reliability
-        decision.
-      </p>
-    </div>
-  </section>
-
-  <section class="deployment-editorial section-shell">
-    <div>
-      <p class="eyebrow">04 / My current focus</p>
-      <h2>Deploy. Verify.<br />
-<em>Reproduce.</em>
-</h2>
-      <p>
-        I'm leading the Terraform platform foundation and GitHub OIDC
-        release-pipeline work, with Emir reviewing and pairing. Ownership
-        rotates so we both understand the complete system.
-      </p>
-    </div>
-    <div class="deployment-state">
-      <p class="eyebrow">AWS portfolio evidence / In progress</p>
-      <h3>The proof is the<br />reproducible process.</h3>
-      <ol>
-        <li>
-<span>01</span>Reviewed infrastructure and cost controls</li>
-        <li>
-<span>02</span>Immutable API and worker image</li>
-        <li>
-<span>03</span>Migration, smoke and recovery checks</li>
-        <li>
-<span>04</span>Sanitized evidence and teardown</li>
-      </ol>
-      <p>
-        The target is a short-lived environment with synthetic data. Live AWS
-        deployment evidence is still pending.
-      </p>
-    </div>
-  </section>
-
-  <section class="case-handoff section-shell">
-    <div>
-      <p class="eyebrow">My work / Shared system ownership</p>
-      <h2>Engineering is also<br />
-<em>how we work together.</em>
-</h2>
-    </div>
-    <div>
-      <p class="handoff-role">Co-developer with Emir. Shared feature ownership across the backend and system foundations.</p>
-      <p class="handoff-stack">Python / FastAPI / PostgreSQL / Redis / Celery</p>
-      <p>
-        The project is developed through reviewed changes, paired work on
-        sensitive boundaries and documented architecture decisions. The current
-        main branch contains the workspace, tenant controls, audit system and
-        document-processing foundation.
-      </p>
-      <a class="text-link" href="https://github.com/kanfan/supportflow-ai" target="_blank" rel="noopener noreferrer">Explore the repository<span aria-hidden="true">↗</span>
-</a>
-      <p class="source-note">
-        Source: current README and ADRs 0005–0007. Checked 10 September 2026.
-      </p>
-    </div>
-  </section>
-  <a class="next-project section-shell" href="project-yazaris.html">
-<span>Next project</span>
-<strong>YazarIS</strong>
-<span aria-hidden="true">↗</span>
-</a>
-</main>
-<footer class="footer">
-<p>© 2026 Eray Kulkızaga</p>
-<p>Software, with the details considered.</p>
-<nav aria-label="Footer">
-<a href="privacy.html">Privacy</a>
-<a href="index.html#hero">Back to top ↑</a>
-</nav>
-</footer>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"d46780bf523547b7b603a3b28e38f1fe"}'>
-</script>
-</body>
+  <script src="i18n.js?v=20260913-2" defer></script>
+  <script src="script.js?v=20260912-4" defer></script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"d46780bf523547b7b603a3b28e38f1fe"}'></script>
+  </body>
 </html>
